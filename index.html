@@ -10,7 +10,16 @@
     <style>
         body {
             font-family: "Roboto", sans-serif;
-            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            flex: 1;
+            margin: 0 auto; /* Center content horizontally */
+            max-width: 1200px; /* Set a maximum width */
+            padding: 20px; /* Add padding around the content */
         }
         .header {
             text-align: center;
@@ -30,101 +39,129 @@
         a:hover {
             text-decoration: underline;
         }
+        footer {
+            background-color: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: auto;
+        }
+        footer a {
+            color: #1e88e5;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Enable table scrolling for large datasets */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        table.striped {
+            min-width: 800px; /* Prevent collapsing for smaller viewports */
+        }
     </style>
+    
 </head>
 <body>
     <div class="container">
         <div class="header">
             <h1 class="blue-text text-darken-2">HPC Systems in Thailand</h1>
         </div>
-        <table class="striped highlight responsive-table">
-            <thead>
-                <tr>
-                    <th>System Name</th>
-                    <th>Specifications</th>
-                    <th>Applications</th>
-                    <th>Organization</th>
-                    <th>Location</th>
-                    <th>Contact</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="https://www.pttep.com/en/home" target="_blank">The Crust 2.5</a></td>
-                    <td>CPU: 47,360 cores, GPU: ~512 NVIDIA H100 94GB</td>
-                    <td>Private sector (Exploration and Production), AI</td>
-                    <td>PTT Exploration and Production Public Company Limited</td>
-                    <td>555/1 Energy Complex Building A, Floors 19–36 Vibhavadi Rangsit Rd., Chatuchak, Bangkok, Thailand</td>
-                    <td>+66 (0) 2537 4000</td>
-                </tr>
-                <tr>
-                    <td><a href="https://thaisc.io/thaisc-resorces/lanta" target="_blank">LANTA</a></td>
-                    <td>CPU: 31,744 cores, GPU: 704 NVIDIA A100 40GB</td>
-                    <td>Bioinformatics, Simulations, Weather Forecasting, AI</td>
-                    <td>ThaiSC, NSTDA</td>
-                    <td>ThaiSC, Room INC2A 301,144 Innovation Cluster 2 Building (INC2) Thailand Science Park (TSP), Phahonyothin Road, Khlong Nueng, Khlong Luang, Pathum Thani 12120, Thailand</td>
-                    <td>thaisc@nstda.or.th</td>
-                </tr>
-                <tr>
-                    <td><a href="https://hpc.cmu.ac.th/" target="_blank">ERAWAN</a></td>
-                    <td>CPU: 384 cores, GPU: 24 NVIDIA A100 80GB</td>
-                    <td>Simulations, AI</td>
-                    <td>ITSC, Chiang Mai University</td>
-                    <td>Information Technology Service Center, Chiang Mai University 239, Huay Kaew Road,Muang District, Chiang Mai, Thailand, 50200</td>
-                    <td>053-943800 กด 1</td>
-                </tr>
-                <tr>
-                    <td><a href="https://www.cmkl.ac.th/research/apex" target="_blank">APEX</a></td>
-                    <td>CPU: 768 cores, GPU: 48 NVIDIA A100 40GB</td>
-                    <td>AI</td>
-                    <td>CMKL University</td>
-                    <td>CMKL University 1 Soi Chalongkrung 1 Ladkrabang Bangkok 10520</td>
-                    <td>apex@cmkl.ac.th</td>
-                </tr>
-                <tr>
-                    <td><a href="https://nontriai.ku.ac.th/" target="_blank">KU Nontri AI</a></td>
-                    <td>CPU: 512 cores, GPU: 32 NVIDIA A100 80GB</td>
-                    <td>AI</td>
-                    <td>OCS, Kasetsart University</td>
-                    <td>Kasetsart University 50 Ngamwongwan Rd, Chatuchak Bangkok 10900 Thailand</td>
-                    <td>0-2562-0951-6</td>
-                </tr>
-                <tr>
-                    <td><a href="https://www.ict.mahidol.ac.th/" target="_blank">MU-AI Center</a></td>
-                    <td>CPU: 624 cores, GPU: 16 NVIDIA A100 40GB | 8 NVIDIA H100 80GB</td>
-                    <td>AI</td>
-                    <td>MUICT, Mahidol University</td>
-                    <td>Faculty of ICT, Mahidol University 999 Phuttamonthon 4 Road, Salaya, Nakhon Pathom 73170 THAILAND</td>
-                    <td>+66 (02) 441-0909</td>
-                </tr>
-                <tr>
-                    <td><a href="https://vistec.ist/" target="_blank">VISTEC</a></td>
-                    <td>CPU: 2,464 cores, GPU: 32 NVIDIA V100 32GB | 52 NVIDIA A100 80GB </td>
-                    <td>AI</td>
-                    <td>School of Information Science and Technology (IST), VISTEC</td>
-                    <td>IST, VISTEC 555 Moo 1 Payupnai, Wangchan, Rayong 21210 Thailand</td>
-                    <td>+66 (86)-5335-899</td>
-                <tr>
-                    <td><a href="https://www.facebook.com/drii.psu" target="_blank">PSU-Singkhorn</a></td>
-                    <td>CPU: 256 cores, GPU: 16 NVIDIA A100 40GB</td>
-                    <td>AI</td>
-                    <td>Digital Research and Innovation Institute - DRii, Prince of Songkla University</td>
-                    <td>Prince of Songkla University, LRC, 15 Karnchanavanich Road, Hat Yai, Songkhla 90110 Thailand</td>
-                    <td>0-7428-6940</td>
-                </tr>
-                <tr>
-                    <td><a href="https://digital.kku.ac.th/" target="_blank">KKU</a></td>
-                    <td>CPU: 256 cores, GPU: 16 NVIDIA A100 40GB</td>
-                    <td>AI</td>
-                    <td>Office of Digital Technology - ODT, Khon Kaen University</td>
-                    <td>Khon Kaen University 123 Moo 16 Mittraphap Rd., Nai-Muang, Muang District, Khon Kaen 40002</td>
-                    <td>043-009700</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-wrapper">
+            <table class="striped highlight responsive-table">
+                <thead>
+                    <tr>
+                        <th>System Name</th>
+                        <th>Specifications</th>
+                        <th>Applications</th>
+                        <th>Organization</th>
+                        <th>Location</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="https://www.pttep.com/en/home" target="_blank">The Crust 2.5</a></td>
+                        <td>CPU: 47,360 cores, GPU: ~512 NVIDIA H100 94GB</td>
+                        <td>Private sector (Exploration and Production), AI</td>
+                        <td>PTT Exploration and Production Public Company Limited</td>
+                        <td>555/1 Energy Complex Building A, Floors 19–36 Vibhavadi Rangsit Rd., Chatuchak, Bangkok, Thailand</td>
+                        <td>+66 (0) 2537 4000</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://thaisc.io/thaisc-resorces/lanta" target="_blank">LANTA</a></td>
+                        <td>CPU: 31,744 cores, GPU: 704 NVIDIA A100 40GB</td>
+                        <td>Bioinformatics, Simulations, Weather Forecasting, AI</td>
+                        <td>ThaiSC, NSTDA</td>
+                        <td>ThaiSC, Room INC2A 301,144 Innovation Cluster 2 Building (INC2) Thailand Science Park (TSP), Phahonyothin Road, Khlong Nueng, Khlong Luang, Pathum Thani 12120, Thailand</td>
+                        <td>thaisc@nstda.or.th</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://hpc.cmu.ac.th/" target="_blank">ERAWAN</a></td>
+                        <td>CPU: 384 cores, GPU: 24 NVIDIA A100 80GB</td>
+                        <td>Simulations, AI</td>
+                        <td>ITSC, Chiang Mai University</td>
+                        <td>Information Technology Service Center, Chiang Mai University 239, Huay Kaew Road,Muang District, Chiang Mai, Thailand, 50200</td>
+                        <td>053-943800 กด 1</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.cmkl.ac.th/research/apex" target="_blank">APEX</a></td>
+                        <td>CPU: 768 cores, GPU: 48 NVIDIA A100 40GB</td>
+                        <td>AI</td>
+                        <td>CMKL University</td>
+                        <td>CMKL University 1 Soi Chalongkrung 1 Ladkrabang Bangkok 10520</td>
+                        <td>apex@cmkl.ac.th</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://nontriai.ku.ac.th/" target="_blank">KU Nontri AI</a></td>
+                        <td>CPU: 512 cores, GPU: 32 NVIDIA A100 80GB</td>
+                        <td>AI</td>
+                        <td>OCS, Kasetsart University</td>
+                        <td>Kasetsart University 50 Ngamwongwan Rd, Chatuchak Bangkok 10900 Thailand</td>
+                        <td>0-2562-0951-6</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://www.ict.mahidol.ac.th/" target="_blank">MU-AI Center</a></td>
+                        <td>CPU: 624 cores, GPU: 16 NVIDIA A100 40GB | 8 NVIDIA H100 80GB</td>
+                        <td>AI</td>
+                        <td>MUICT, Mahidol University</td>
+                        <td>Faculty of ICT, Mahidol University 999 Phuttamonthon 4 Road, Salaya, Nakhon Pathom 73170 THAILAND</td>
+                        <td>+66 (02) 441-0909</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://vistec.ist/" target="_blank">VISTEC</a></td>
+                        <td>CPU: 2,464 cores, GPU: 32 NVIDIA V100 32GB | 52 NVIDIA A100 80GB </td>
+                        <td>AI</td>
+                        <td>School of Information Science and Technology (IST), VISTEC</td>
+                        <td>IST, VISTEC 555 Moo 1 Payupnai, Wangchan, Rayong 21210 Thailand</td>
+                        <td>+66 (86)-5335-899</td>
+                    <tr>
+                        <td><a href="https://www.facebook.com/drii.psu" target="_blank">PSU-Singkhorn</a></td>
+                        <td>CPU: 256 cores, GPU: 16 NVIDIA A100 40GB</td>
+                        <td>AI</td>
+                        <td>Digital Research and Innovation Institute - DRii, Prince of Songkla University</td>
+                        <td>Prince of Songkla University, LRC, 15 Karnchanavanich Road, Hat Yai, Songkhla 90110 Thailand</td>
+                        <td>0-7428-6940</td>
+                    </tr>
+                    <tr>
+                        <td><a href="https://digital.kku.ac.th/" target="_blank">KKU</a></td>
+                        <td>CPU: 256 cores, GPU: 16 NVIDIA A100 40GB</td>
+                        <td>AI</td>
+                        <td>Office of Digital Technology - ODT, Khon Kaen University</td>
+                        <td>Khon Kaen University 123 Moo 16 Mittraphap Rd., Nai-Muang, Muang District, Khon Kaen 40002</td>
+                        <td>043-009700</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <!-- Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <footer>
+        <p>© 2025 HPC Thailand. All rights reserved.</p>
+        <p>
+            <a href="https://github.com/HPC-Thailand/hpc-th.github.io" target="_blank">Contribute HPC Thailand on GitHub</a>
+        </p>
+    </footer>
 </body>
 </html>
