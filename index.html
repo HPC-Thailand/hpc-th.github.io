@@ -3,7 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HPC Thailand</title>
+    <title>HPC Thailand - High Performance Computing Systems</title>
+
+    <!-- SEO and Social Media Meta Tags -->
+    <meta
+      name="description"
+      content="Interactive database of High Performance Computing systems across Thailand. Search and explore CPU cores, GPU specifications, and research applications."
+    />
+    <meta
+      name="keywords"
+      content="HPC Thailand, High Performance Computing, GPU, CPU, Research, Thailand, Supercomputer, AI"
+    />
+    <meta
+      property="og:title"
+      content="HPC Thailand - High Performance Computing Systems"
+    />
+    <meta
+      property="og:description"
+      content="Interactive database of High Performance Computing systems across Thailand"
+    />
+    <meta property="og:url" content="https://hpc.in.th/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🖥️%3C/text%3E%3C/svg%3E"
+    />
+
     <!-- Material-UI CDN -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -20,70 +47,224 @@
         flex-direction: column;
         min-height: 100vh;
         margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       }
       .container {
         flex: 1;
-        margin: 0 auto; /* Center content horizontally */
-        max-width: 1200px; /* Set a maximum width */
-        padding: 20px; /* Add padding around the content */
+        margin: 0 auto;
+        max-width: 1400px;
+        padding: 20px;
       }
       .header {
         text-align: center;
         margin-bottom: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        background: linear-gradient(45deg, #1e88e5, #1565c0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .header p {
+        margin: 10px 0 0 0;
+        color: #666;
+        font-size: 1.1rem;
+      }
+      .nav-buttons {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .nav-buttons a {
+        margin: 0 10px;
+        border-radius: 25px;
+        padding: 0 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .nav-buttons a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      .nav-buttons a.active {
+        background: linear-gradient(45deg, #1e88e5, #1565c0) !important;
+      }
+      .table-wrapper {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        overflow-x: auto;
+        margin-bottom: 30px;
+      }
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .stat-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        border-left: 5px solid #1e88e5;
+      }
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+      }
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1e88e5;
+        margin-bottom: 5px;
+      }
+      .stat-label {
+        color: #666;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
       table {
-        margin-top: 20px;
+        margin: 0;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
       th {
-        background-color: #1e88e5; /* Material Blue */
+        background: linear-gradient(45deg, #1e88e5, #1565c0);
         color: white;
+        font-weight: 600;
+        padding: 15px 10px;
+        border: none;
+      }
+      td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #eee;
+        vertical-align: top;
+      }
+      tr:hover {
+        background-color: rgba(30, 136, 229, 0.05);
       }
       a {
         color: #1e88e5;
         text-decoration: none;
+        transition: color 0.3s ease;
       }
       a:hover {
+        color: #1565c0;
         text-decoration: underline;
       }
+      .hpc-name {
+        font-weight: 600;
+        color: #333;
+      }
+      .specs-highlight {
+        background: linear-gradient(45deg, #e3f2fd, #f3e5f5);
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        margin: 2px 0;
+        display: inline-block;
+      }
       footer {
-        background-color: #f4f4f4;
-        padding: 10px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
         text-align: center;
-        font-size: 14px;
-        margin-top: auto;
+        margin-top: 30px;
+        border-radius: 15px 15px 0 0;
+        color: #666;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
       }
       footer a {
         color: #1e88e5;
-        text-decoration: none;
+        transition: color 0.3s ease;
       }
       footer a:hover {
-        text-decoration: underline;
+        color: #1565c0;
       }
-      /* Enable table scrolling for large datasets */
-      .table-wrapper {
-        overflow-x: auto;
-        margin-top: 20px;
+
+      /* Mobile responsiveness */
+      @media (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+        .header h1 {
+          font-size: 2rem;
+        }
+        .nav-buttons a {
+          margin: 5px;
+          padding: 0 20px;
+        }
+        table {
+          font-size: 0.8rem;
+        }
+        th,
+        td {
+          padding: 8px 5px;
+        }
       }
-      table.striped {
-        min-width: 800px; /* Prevent collapsing for smaller viewports */
+
+      /* Loading animation */
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+        flex-direction: column;
+      }
+      .loading-spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid #1e88e5;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .loading-text {
+        color: white;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      .error-container {
+        background: rgba(244, 67, 54, 0.1);
+        border: 2px solid #f44336;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: center;
+        color: #f44336;
       }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="header">
-        <h1 class="blue-text text-darken-2">HPC Systems in Thailand</h1>
+        <h1>HPC Systems in Thailand</h1>
+        <p>
+          Comprehensive overview of High Performance Computing infrastructure
+          across Thailand
+        </p>
       </div>
 
-      <!-- Add navigation buttons -->
-      <div
-        class="nav-buttons"
-        style="
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 20px;
-        "
-      >
+      <div class="nav-buttons">
         <a
           href="index.html"
           class="waves-effect waves-light btn blue darken-2 active"
@@ -93,163 +274,75 @@
         <a href="map.html" class="waves-effect waves-light btn blue darken-2">
           <i class="material-icons left">map</i>View Map
         </a>
+        <a
+          href="dashboard.html"
+          class="waves-effect waves-light btn blue darken-2"
+        >
+          <i class="material-icons left">dashboard</i>Dashboard
+        </a>
+      </div>
+
+      <!-- Statistics Cards -->
+      <div id="statistics" class="row">
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading HPC statistics...</div>
+        </div>
+      </div>
+
+      <!-- Search and Filter Section -->
+      <div
+        style="
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 15px;
+          padding: 20px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+          margin-bottom: 20px;
+        "
+      >
+        <div class="row" style="margin-bottom: 0">
+          <div class="col s12 m6">
+            <div class="input-field">
+              <i class="material-icons prefix">search</i>
+              <input type="text" id="search-input" onkeyup="filterTable()" />
+              <label for="search-input">Search HPC systems...</label>
+            </div>
+          </div>
+          <div class="col s12 m6">
+            <div class="input-field">
+              <select id="city-filter" onchange="filterTable()">
+                <option value="">All Cities</option>
+              </select>
+              <label>Filter by City</label>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="table-wrapper">
-        <table class="striped highlight responsive-table">
+        <div id="loading" class="loading-container">
+          <div class="loading-spinner"></div>
+          <span class="loading-text">Loading HPC data...</span>
+        </div>
+        <table class="striped highlight responsive-table" style="display: none">
           <thead>
             <tr>
               <th>System Name</th>
+              <th>Organization</th>
               <th>Specifications</th>
               <th>Applications</th>
-              <th>Organization</th>
               <th>Location</th>
               <th>Contact</th>
+              <th>Website</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>
-                <a href="https://www.pttep.com/en/home" target="_blank"
-                  >The Crust 2.5</a
-                >
-              </td>
-              <td>CPU: 47,360 cores, GPU: ~512 NVIDIA H100 94GB</td>
-              <td>Private sector (Exploration and Production), AI</td>
-              <td>PTT Exploration and Production Public Company Limited</td>
-              <td>
-                555/1 Energy Complex Building A, Floors 19–36 Vibhavadi Rangsit
-                Rd., Chatuchak, Bangkok, Thailand
-              </td>
-              <td>+66 (0) 2537 4000</td>
-            </tr>
-            <tr>
-              <td>
-                <a
-                  href="https://thaisc.io/thaisc-resorces/lanta"
-                  target="_blank"
-                  >LANTA</a
-                >
-              </td>
-              <td>CPU: 31,744 cores, GPU: 704 NVIDIA A100 40GB</td>
-              <td>Bioinformatics, Simulations, Weather Forecasting, AI</td>
-              <td>ThaiSC, NSTDA</td>
-              <td>
-                ThaiSC, Room INC2A 301,144 Innovation Cluster 2 Building (INC2)
-                Thailand Science Park (TSP), Phahonyothin Road, Khlong Nueng,
-                Khlong Luang, Pathum Thani 12120, Thailand
-              </td>
-              <td>thaisc@nstda.or.th</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://hpc.cmu.ac.th/" target="_blank">ERAWAN</a>
-              </td>
-              <td>CPU: 384 cores, GPU: 24 NVIDIA A100 80GB</td>
-              <td>Simulations, AI</td>
-              <td>ITSC, Chiang Mai University</td>
-              <td>
-                Information Technology Service Center, Chiang Mai University
-                239, Huay Kaew Road,Muang District, Chiang Mai, Thailand, 50200
-              </td>
-              <td>053-943800 กด 1</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://www.cmkl.ac.th/research/apex" target="_blank"
-                  >APEX</a
-                >
-              </td>
-              <td>CPU: 768 cores, GPU: 48 NVIDIA A100 40GB</td>
-              <td>AI</td>
-              <td>CMKL University</td>
-              <td>
-                CMKL University 1 Soi Chalongkrung 1 Ladkrabang Bangkok 10520
-              </td>
-              <td>apex@cmkl.ac.th</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://nontriai.ku.ac.th/" target="_blank"
-                  >KU Nontri AI</a
-                >
-              </td>
-              <td>CPU: 512 cores, GPU: 32 NVIDIA A100 80GB</td>
-              <td>AI</td>
-              <td>OCS, Kasetsart University</td>
-              <td>
-                Kasetsart University 50 Ngamwongwan Rd, Chatuchak Bangkok 10900
-                Thailand
-              </td>
-              <td>0-2562-0951-6</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://www.ict.mahidol.ac.th/" target="_blank"
-                  >MU-AI Center</a
-                >
-              </td>
-              <td>
-                CPU: 624 cores, GPU: 16 NVIDIA A100 40GB | 8 NVIDIA H100 80GB
-              </td>
-              <td>AI</td>
-              <td>MUICT, Mahidol University</td>
-              <td>
-                Faculty of ICT, Mahidol University 999 Phuttamonthon 4 Road,
-                Salaya, Nakhon Pathom 73170 THAILAND
-              </td>
-              <td>+66 (02) 441-0909</td>
-            </tr>
-            <tr>
-              <td><a href="https://vistec.ist/" target="_blank">VISTEC</a></td>
-              <td>
-                CPU: 2,464 cores, GPU: 32 NVIDIA V100 32GB | 52 NVIDIA A100 80GB
-              </td>
-              <td>AI</td>
-              <td>
-                School of Information Science and Technology (IST), VISTEC
-              </td>
-              <td>
-                IST, VISTEC 555 Moo 1 Payupnai, Wangchan, Rayong 21210 Thailand
-              </td>
-              <td>+66 (86)-5335-899</td>
-            </tr>
-
-            <tr>
-              <td>
-                <a href="https://www.facebook.com/drii.psu" target="_blank"
-                  >PSU-Singkhorn</a
-                >
-              </td>
-              <td>CPU: 256 cores, GPU: 16 NVIDIA A100 40GB</td>
-              <td>AI</td>
-              <td>
-                Digital Research and Innovation Institute - DRii, Prince of
-                Songkla University
-              </td>
-              <td>
-                Prince of Songkla University, LRC, 15 Karnchanavanich Road, Hat
-                Yai, Songkhla 90110 Thailand
-              </td>
-              <td>0-7428-6940</td>
-            </tr>
-            <tr>
-              <td>
-                <a href="https://digital.kku.ac.th/" target="_blank">KKU</a>
-              </td>
-              <td>CPU: 256 cores, GPU: 16 NVIDIA A100 40GB</td>
-              <td>AI</td>
-              <td>Office of Digital Technology - ODT, Khon Kaen University</td>
-              <td>
-                Khon Kaen University 123 Moo 16 Mittraphap Rd., Nai-Muang, Muang
-                District, Khon Kaen 40002
-              </td>
-              <td>043-009700</td>
-            </tr>
+          <tbody id="hpc-table-body">
+            <!-- Table content will be dynamically generated -->
           </tbody>
         </table>
       </div>
     </div>
+
     <footer>
       <p>© 2025 HPC Thailand. All rights reserved.</p>
       <p>
@@ -260,5 +353,198 @@
         >
       </p>
     </footer>
+
+    <!-- JavaScript libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fetch HPC data
+        fetch("data/hpc-locations.json")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Remove loading state and show statistics
+            updateStatistics(data);
+            displayHPCTable(data);
+            allData = data; // Store for search functionality
+          })
+          .catch((error) => {
+            console.error("Error loading HPC data:", error);
+            // Show error message
+            document.getElementById("statistics").innerHTML = `
+              <div class="col s12">
+                <div class="error-container">
+                  <h5>⚠️ Error Loading Data</h5>
+                  <p>Failed to load HPC data. Please check your internet connection and try again.</p>
+                  <button onclick="location.reload()" class="waves-effect waves-light btn red">
+                    <i class="material-icons left">refresh</i>Retry
+                  </button>
+                </div>
+              </div>
+            `;
+            document.getElementById("hpc-table-container").innerHTML = `
+              <div class="error-container">
+                <p>Unable to display HPC systems table.</p>
+              </div>
+            `;
+          });
+
+        function updateStatistics(data) {
+          // Calculate statistics
+          const totalSystems = data.length;
+          const totalCities = [...new Set(data.map((hpc) => hpc.location.city))]
+            .length;
+
+          // Extract CPU cores (parse numbers from specs)
+          const totalCpuCores = data.reduce((sum, hpc) => {
+            const match = hpc.specs.match(/CPU:\s*([\d,]+)\s*cores/);
+            return match ? sum + parseInt(match[1].replace(/,/g, "")) : sum;
+          }, 0);
+
+          // Extract GPU count
+          const totalGpus = data.reduce((sum, hpc) => {
+            const match = hpc.specs.match(/GPU:\s*[~]?([\d,]+)/);
+            return match ? sum + parseInt(match[1].replace(/,/g, "")) : sum;
+          }, 0);
+
+          // Update statistics display
+          document.getElementById("statistics").innerHTML = `
+            <div class="col s12 m6 l3">
+              <div class="stat-card">
+                <div class="stat-number">${totalSystems}</div>
+                <div class="stat-label">HPC Systems</div>
+              </div>
+            </div>
+            <div class="col s12 m6 l3">
+              <div class="stat-card">
+                <div class="stat-number">${totalCities}</div>
+                <div class="stat-label">Cities</div>
+              </div>
+            </div>
+            <div class="col s12 m6 l3">
+              <div class="stat-card">
+                <div class="stat-number">${totalCpuCores.toLocaleString()}</div>
+                <div class="stat-label">CPU Cores</div>
+              </div>
+            </div>
+            <div class="col s12 m6 l3">
+              <div class="stat-card">
+                <div class="stat-number">${totalGpus.toLocaleString()}</div>
+                <div class="stat-label">GPUs</div>
+              </div>
+            </div>
+          `;
+        }
+
+        function displayHPCTable(data) {
+          const tableBody = document.getElementById("hpc-table-body");
+          tableBody.innerHTML = "";
+
+          data.forEach((hpc) => {
+            const row = document.createElement("tr");
+
+            // Format specifications with highlights
+            const specsFormatted = hpc.specs
+              .split(",")
+              .map(
+                (spec) => `<span class="specs-highlight">${spec.trim()}</span>`
+              )
+              .join(" ");
+
+            row.innerHTML = `
+              <td class="hpc-name">${hpc.name}</td>
+              <td>${hpc.organization}</td>
+              <td>${specsFormatted}</td>
+              <td>${hpc.applications}</td>
+              <td>
+                <i class="material-icons tiny" style="vertical-align: middle; color: #1e88e5;">location_on</i>
+                ${hpc.location.city}
+              </td>
+              <td>
+                <i class="material-icons tiny" style="vertical-align: middle; color: #1e88e5;">contact_phone</i>
+                ${hpc.contact}
+              </td>
+              <td>
+                <a href="${hpc.website}" target="_blank" style="display: inline-flex; align-items: center;">
+                  <i class="material-icons tiny" style="margin-right: 5px;">open_in_new</i>
+                  Visit
+                </a>
+              </td>
+            `;
+            tableBody.appendChild(row);
+          });
+
+          // Hide loading animation and show table
+          document.getElementById("loading").style.display = "none";
+          document.querySelector(
+            ".striped.highlight.responsive-table"
+          ).style.display = "table";
+        }
+
+        function populateCityFilter(data) {
+          const cityFilter = document.getElementById("city-filter");
+          const cities = new Set(data.map((hpc) => hpc.location.city));
+
+          cities.forEach((city) => {
+            const option = document.createElement("option");
+            option.value = city;
+            option.textContent = city;
+            cityFilter.appendChild(option);
+          });
+        }
+
+        window.filterTable = function () {
+          const searchInput = document
+            .getElementById("search-input")
+            .value.toLowerCase();
+          const cityFilter = document.getElementById("city-filter").value;
+          const tableRows = document.querySelectorAll("#hpc-table-body tr");
+
+          tableRows.forEach((row) => {
+            const cells = row.getElementsByTagName("td");
+            let rowVisible = true;
+
+            // Check search term
+            if (searchInput) {
+              rowVisible = Array.from(cells).some((cell) =>
+                cell.textContent.toLowerCase().includes(searchInput)
+              );
+            }
+
+            // Check city filter
+            if (rowVisible && cityFilter) {
+              const cityCell = cells[4]; // Assuming city is in the 5th column
+              rowVisible = cityCell.textContent.includes(cityFilter);
+            }
+
+            row.style.display = rowVisible ? "" : "none";
+          });
+        };
+      });
+
+      // Search and filter functionality
+      function filterTable() {
+        const searchValue = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        const cityFilter = document.getElementById("city-filter").value;
+        const rows = document.querySelectorAll("#hpc-table-body tr");
+
+        rows.forEach((row) => {
+          const text = row.textContent.toLowerCase();
+          const cityCell = row.children[4].textContent.trim();
+
+          const matchesSearch = text.includes(searchValue);
+          const matchesCity = !cityFilter || cityCell.includes(cityFilter);
+
+          row.style.display = matchesSearch && matchesCity ? "" : "none";
+        });
+      }
+    </script>
   </body>
 </html>

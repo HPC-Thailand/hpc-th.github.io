@@ -3,7 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HPC Thailand Map</title>
+    <title>HPC Thailand Map - Interactive Location View</title>
+
+    <!-- SEO and Social Media Meta Tags -->
+    <meta
+      name="description"
+      content="Interactive map of High Performance Computing systems across Thailand. Explore locations, specifications, and research applications."
+    />
+    <meta
+      name="keywords"
+      content="HPC Thailand Map, High Performance Computing locations, GPU, CPU, Research centers Thailand"
+    />
+    <meta
+      property="og:title"
+      content="HPC Thailand Map - Interactive Location View"
+    />
+    <meta
+      property="og:description"
+      content="Interactive map of High Performance Computing systems across Thailand"
+    />
+    <meta property="og:url" content="https://hpc.in.th/map.html" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🗺️%3C/text%3E%3C/svg%3E"
+    />
+
     <!-- Material-UI CDN -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -29,6 +55,7 @@
         flex-direction: column;
         min-height: 100vh;
         margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       }
       .container {
         flex: 1;
@@ -38,66 +65,115 @@
       }
       .header {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        background: linear-gradient(45deg, #1e88e5, #1565c0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .header p {
+        margin: 10px 0 0 0;
+        color: #666;
+        font-size: 1.1rem;
+      }
+      .nav-buttons {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .nav-buttons a {
+        margin: 0 10px;
+        border-radius: 25px;
+        padding: 0 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .nav-buttons a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      .nav-buttons a.active {
+        background: linear-gradient(45deg, #1e88e5, #1565c0) !important;
       }
       #map-container {
         height: 600px;
         width: 100%;
-        border-radius: 4px;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        border: 3px solid rgba(255, 255, 255, 0.3);
       }
       .map-card {
         padding: 15px;
-        border-radius: 4px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        background: white;
       }
-      .nav-buttons {
-        display: flex;
-        justify-content: space-between;
+      .hpc-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 25px;
         margin-bottom: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border-left: 5px solid #1e88e5;
+      }
+      .hpc-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        border-left-color: #1565c0;
+      }
+      .hpc-card h5 {
+        color: #1e88e5;
+        margin-bottom: 15px;
+        font-weight: 600;
+        font-size: 1.4rem;
+      }
+      .hpc-info p {
+        margin: 8px 0;
+        line-height: 1.6;
+        color: #555;
+      }
+      .hpc-info strong {
+        color: #333;
+        font-weight: 600;
+      }
+      .hpc-info a.btn-small {
+        margin-top: 15px;
+        border-radius: 20px;
+        background: linear-gradient(45deg, #1e88e5, #1565c0);
+        transition: all 0.3s ease;
+      }
+      .hpc-info a.btn-small:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
       }
       footer {
-        background-color: #f4f4f4;
-        padding: 10px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
         text-align: center;
-        font-size: 14px;
-        margin-top: auto;
+        margin-top: 30px;
+        border-radius: 15px 15px 0 0;
+        color: #666;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
       }
       footer a {
         color: #1e88e5;
-        text-decoration: none;
+        transition: color 0.3s ease;
       }
       footer a:hover {
-        text-decoration: underline;
+        color: #1565c0;
       }
-      .hpc-info {
-        margin-top: 10px;
-      }
-      .hpc-info p {
-        margin: 5px 0;
-      }
-      .hpc-card {
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-      }
-      .hpc-card:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transform: translateY(-2px);
-      }
-      .hpc-card h5 {
-        margin-top: 0;
-        margin-bottom: 10px;
-        color: #1e88e5;
-      }
+      /* Custom map marker styling */
       .custom-marker {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
         background-color: #1e88e5;
         border: 3px solid white;
@@ -107,12 +183,73 @@
         font-weight: bold;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       }
+      /* Loading animation */
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        margin: 20px 0;
+      }
+      .loading-spinner {
+        border: 4px solid rgba(30, 136, 229, 0.3);
+        border-top: 4px solid #1e88e5;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .loading-text {
+        color: #666;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      .error-container {
+        background: rgba(244, 67, 54, 0.1);
+        border: 2px solid #f44336;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: center;
+        color: #f44336;
+      }
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+        .header h1 {
+          font-size: 2rem;
+        }
+        #map-container {
+          height: 400px;
+        }
+        .nav-buttons a {
+          margin: 5px;
+          padding: 0 20px;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="header">
-        <h1 class="blue-text text-darken-2">HPC Systems in Thailand</h1>
+        <h1>HPC Systems in Thailand</h1>
+        <p>
+          Interactive map of High Performance Computing systems across Thailand
+        </p>
       </div>
 
       <div class="nav-buttons">
@@ -125,12 +262,39 @@
         >
           <i class="material-icons left">map</i>View Map
         </a>
+        <a
+          href="dashboard.html"
+          class="waves-effect waves-light btn blue darken-2"
+        >
+          <i class="material-icons left">dashboard</i>Dashboard
+        </a>
       </div>
 
       <div id="map-container"></div>
 
-      <div id="hpc-list" class="row">
-        <!-- HPC cards will be dynamically generated here -->
+      <!-- Search HPC Systems -->
+      <div
+        style="
+          background: rgba(255, 255, 255, 0.95);
+          border-radius: 15px;
+          padding: 20px;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+          margin-bottom: 20px;
+        "
+      >
+        <div class="input-field">
+          <i class="material-icons prefix">search</i>
+          <input type="text" id="hpc-search" onkeyup="searchHPC()" />
+          <label for="hpc-search">Search HPC systems on map...</label>
+        </div>
+      </div>
+
+      <!-- HPC Cards Grid -->
+      <div class="row" id="hpc-list">
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">Loading HPC locations...</div>
+        </div>
       </div>
     </div>
 
@@ -155,7 +319,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Initialize map
+        // Initialize map centered on Thailand
         const map = L.map("map-container").setView([13.7563, 100.5018], 6);
 
         // Add OpenStreetMap tile layer
@@ -166,75 +330,143 @@
 
         // Fetch HPC data
         fetch("data/hpc-locations.json")
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
           .then((data) => {
-            // Process each HPC location
-            data.forEach((hpc) => {
-              // Add marker to map
-              const marker = L.marker(hpc.location.coordinates).addTo(map);
+            // Clear loading state
+            document.getElementById("hpc-list").innerHTML = "";
 
-              // Add popup with basic info
+            // Process each HPC location
+            data.forEach((hpc, index) => {
+              // Convert coordinates from [lng, lat] to [lat, lng] for Leaflet
+              const coords = [
+                hpc.location.coordinates[1],
+                hpc.location.coordinates[0],
+              ];
+
+              // Create custom marker with number
+              const customIcon = L.divIcon({
+                className: "custom-marker",
+                html: `<div style="width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(45deg, #1e88e5, #1565c0); border: 3px solid white; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">${
+                  index + 1
+                }</div>`,
+                iconSize: [35, 35],
+                iconAnchor: [17, 35],
+              });
+
+              const marker = L.marker(coords, { icon: customIcon }).addTo(map);
+              allMarkers.push(marker);
+
+              // Enhanced popup with more information
               marker.bindPopup(`
-                            <strong>${hpc.name}</strong><br>
-                            ${hpc.organization}<br>
-                            <a href="${hpc.website}" target="_blank">Visit Website</a>
-                        `);
+                <div style="min-width: 250px;">
+                  <h6 style="margin: 0 0 10px 0; color: #1e88e5; font-weight: bold;">${hpc.name}</h6>
+                  <p style="margin: 5px 0;"><strong>Organization:</strong> ${hpc.organization}</p>
+                  <p style="margin: 5px 0;"><strong>Specs:</strong> ${hpc.specs}</p>
+                  <p style="margin: 5px 0;"><strong>Applications:</strong> ${hpc.applications}</p>
+                  <p style="margin: 5px 0;"><strong>Location:</strong> ${hpc.location.city}</p>
+                  <p style="margin: 10px 0 5px 0;">
+                    <a href="${hpc.website}" target="_blank" style="background: linear-gradient(45deg, #1e88e5, #1565c0); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 12px;">Visit Website</a>
+                  </p>
+                </div>
+              `);
 
               // Create card for each HPC
-              createHPCCard(hpc);
+              createHPCCard(hpc, index + 1);
             });
           })
           .catch((error) => {
             console.error("Error loading HPC data:", error);
             document.getElementById("hpc-list").innerHTML = `
-                        <div class="col s12">
-                            <div class="card-panel red lighten-4">
-                                <span class="red-text text-darken-4">
-                                    Error loading HPC data. Please try again later.
-                                </span>
-                            </div>
-                        </div>
-                    `;
+              <div class="col s12">
+                <div class="error-container">
+                  <h5>⚠️ Error Loading Map Data</h5>
+                  <p>Failed to load HPC location data. Please check your internet connection and try again.</p>
+                  <button onclick="location.reload()" class="waves-effect waves-light btn red">
+                    <i class="material-icons left">refresh</i>Retry
+                  </button>
+                </div>
+              </div>
+            `;
+            // Also show error on map
+            const errorPopup = L.popup()
+              .setLatLng([13.7563, 100.5018]) // Bangkok coordinates
+              .setContent(
+                '<div style="text-align: center;"><h6 style="color: #f44336;">Error Loading Data</h6><p>Unable to load HPC locations</p></div>'
+              )
+              .openOn(map);
           });
 
         // Function to create cards for each HPC
-        function createHPCCard(hpc) {
+        function createHPCCard(hpc, number) {
           const cardDiv = document.createElement("div");
           cardDiv.className = "col s12 m6 l4";
           cardDiv.innerHTML = `
-                    <div class="hpc-card">
-                        <h5>${hpc.name}</h5>
-                        <div class="hpc-info">
-                            <p><strong>Organization:</strong> ${hpc.organization}</p>
-                            <p><strong>Specifications:</strong> ${hpc.specs}</p>
-                            <p><strong>Applications:</strong> ${hpc.applications}</p>
-                            <p><strong>Location:</strong> ${hpc.location.city}</p>
-                            <p><strong>Contact:</strong> ${hpc.contact}</p>
-                            <a href="${hpc.website}" target="_blank" class="waves-effect waves-light btn-small blue darken-2">Visit Website</a>
-                        </div>
-                    </div>
-                `;
+            <div class="hpc-card">
+              <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(45deg, #1e88e5, #1565c0); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 15px;">${number}</div>
+                <h5 style="margin: 0;">${hpc.name}</h5>
+              </div>
+              <div class="hpc-info">
+                <p><strong>Organization:</strong> ${hpc.organization}</p>
+                <p><strong>Specifications:</strong> ${hpc.specs}</p>
+                <p><strong>Applications:</strong> ${hpc.applications}</p>
+                <p><strong>Location:</strong> ${hpc.location.city}</p>
+                <p><strong>Contact:</strong> ${hpc.contact}</p>
+                <a href="${hpc.website}" target="_blank" class="waves-effect waves-light btn-small blue darken-2">Visit Website</a>
+              </div>
+            </div>
+          `;
           document.getElementById("hpc-list").appendChild(cardDiv);
+          allCards.push(cardDiv);
 
           // Add click listener to center map on this HPC when card is clicked
           cardDiv
             .querySelector(".hpc-card")
             .addEventListener("click", function () {
-              map.setView(hpc.location.coordinates, 12);
+              const coords = [
+                hpc.location.coordinates[1],
+                hpc.location.coordinates[0],
+              ];
+              map.setView(coords, 12);
               // Find the corresponding marker and open its popup
               map.eachLayer((layer) => {
                 if (layer instanceof L.Marker) {
                   const pos = layer.getLatLng();
                   if (
-                    pos.lat === hpc.location.coordinates[0] &&
-                    pos.lng === hpc.location.coordinates[1]
+                    Math.abs(pos.lat - coords[0]) < 0.001 &&
+                    Math.abs(pos.lng - coords[1]) < 0.001
                   ) {
                     layer.openPopup();
                   }
                 }
               });
             });
+
+          // Store all markers and cards for search functionality
+          allMarkers.push(marker);
+          allCards.push(cardDiv);
         }
+
+        // Search functionality
+        window.searchHPC = function () {
+          const query = document
+            .getElementById("hpc-search")
+            .value.toLowerCase();
+          const cards = document.querySelectorAll(".hpc-card");
+          cards.forEach((card) => {
+            const text = card.innerText.toLowerCase();
+            if (text.includes(query)) {
+              card.parentElement.style.display = ""; // Show card
+            } else {
+              card.parentElement.style.display = "none"; // Hide card
+            }
+          });
+        };
       });
     </script>
   </body>

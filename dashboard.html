@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HPC Thailand Dashboard - Analytics & Insights</title>
+
+    <!-- SEO and Social Media Meta Tags -->
+    <meta
+      name="description"
+      content="Analytics dashboard for High Performance Computing systems in Thailand. Charts, statistics, and insights about CPU cores, GPUs, and research applications."
+    />
+    <meta
+      name="keywords"
+      content="HPC Thailand Dashboard, High Performance Computing analytics, GPU statistics, CPU metrics"
+    />
+    <meta
+      property="og:title"
+      content="HPC Thailand Dashboard - Analytics & Insights"
+    />
+    <meta
+      property="og:description"
+      content="Analytics dashboard for High Performance Computing systems in Thailand"
+    />
+    <meta property="og:url" content="https://hpc.in.th/dashboard.html" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📊%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Material-UI CDN -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      .container {
+        flex: 1;
+        margin: 0 auto;
+        max-width: 1400px;
+        padding: 20px;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        background: linear-gradient(45deg, #1e88e5, #1565c0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .nav-buttons {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .nav-buttons a {
+        margin: 0 10px;
+        border-radius: 25px;
+        padding: 0 30px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+      .nav-buttons a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      .nav-buttons a.active {
+        background: linear-gradient(45deg, #1e88e5, #1565c0) !important;
+      }
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+      .chart-card,
+      .info-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+      }
+      .chart-card:hover,
+      .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+      }
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #1e88e5;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+      .card-title i {
+        margin-right: 10px;
+      }
+      footer {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        text-align: center;
+        margin-top: 30px;
+        border-radius: 15px 15px 0 0;
+        color: #666;
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+      }
+      /* Loading animation */
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        margin: 20px 0;
+      }
+      .loading-spinner {
+        border: 4px solid rgba(30, 136, 229, 0.3);
+        border-top: 4px solid #1e88e5;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .loading-text {
+        color: #666;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      .error-container {
+        background: rgba(244, 67, 54, 0.1);
+        border: 2px solid #f44336;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        text-align: center;
+        color: #f44336;
+      }
+      @media (max-width: 768px) {
+        .container {
+          padding: 10px;
+        }
+        .header h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>HPC Thailand Dashboard</h1>
+        <p>Analytics and insights for High Performance Computing in Thailand</p>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="index.html" class="waves-effect waves-light btn blue darken-2">
+          <i class="material-icons left">list</i>View Table
+        </a>
+        <a href="map.html" class="waves-effect waves-light btn blue darken-2">
+          <i class="material-icons left">map</i>View Map
+        </a>
+        <a
+          href="dashboard.html"
+          class="waves-effect waves-light btn blue darken-2 active"
+        >
+          <i class="material-icons left">dashboard</i>Dashboard
+        </a>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="chart-card">
+          <div class="card-title">
+            <i class="material-icons">memory</i>
+            CPU Cores Distribution
+          </div>
+          <canvas id="cpuChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-title">
+            <i class="material-icons">videogame_asset</i>
+            GPU Distribution
+          </div>
+          <canvas id="gpuChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-title">
+            <i class="material-icons">location_city</i>
+            Systems by City
+          </div>
+          <canvas id="locationChart"></canvas>
+        </div>
+
+        <div class="info-card">
+          <div class="card-title">
+            <i class="material-icons">analytics</i>
+            Key Metrics
+          </div>
+          <div id="keyMetrics"></div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-title">
+            <i class="material-icons">business</i>
+            Organizations
+          </div>
+          <div id="organizationsList"></div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-title">
+            <i class="material-icons">apps</i>
+            Applications
+          </div>
+          <div id="applicationsList"></div>
+        </div>
+      </div>
+
+      <div class="loading-container" id="loadingContainer">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading data, please wait...</div>
+      </div>
+
+      <div class="error-container" id="errorContainer" style="display: none">
+        <i class="material-icons" style="font-size: 2rem">error</i>
+        <div style="font-weight: 500; margin-top: 10px">
+          An error occurred while loading the data.
+        </div>
+        <div>Please try refreshing the page or check back later.</div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 HPC Thailand. All rights reserved.</p>
+      <p>
+        <a
+          href="https://github.com/HPC-Thailand/hpc-th.github.io"
+          target="_blank"
+        >
+          Contribute HPC Thailand on GitHub
+        </a>
+      </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("data/hpc-locations.json")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("loadingContainer").style.display = "none";
+            generateCharts(data);
+            generateMetrics(data);
+            generateLists(data);
+          })
+          .catch((error) => {
+            document.getElementById("loadingContainer").style.display = "none";
+            document.getElementById("errorContainer").style.display = "block";
+            console.error("Error loading HPC data:", error);
+          });
+
+        function generateCharts(data) {
+          // CPU Cores Chart
+          const cpuData = data.map((hpc) => {
+            const match = hpc.specs.match(/CPU:\s*([\d,]+)\s*cores/);
+            return {
+              name: hpc.name,
+              cores: match ? parseInt(match[1].replace(/,/g, "")) : 0,
+            };
+          });
+
+          new Chart(document.getElementById("cpuChart"), {
+            type: "bar",
+            data: {
+              labels: cpuData.map((d) => d.name),
+              datasets: [
+                {
+                  label: "CPU Cores",
+                  data: cpuData.map((d) => d.cores),
+                  backgroundColor: "rgba(30, 136, 229, 0.7)",
+                  borderColor: "rgba(30, 136, 229, 1)",
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: { beginAtZero: true },
+              },
+            },
+          });
+
+          // GPU Chart
+          const gpuData = data.map((hpc) => {
+            let totalGPUs = 0;
+            const gpuMatches = hpc.specs.match(/(\d+)\s*NVIDIA/g);
+            if (gpuMatches) {
+              gpuMatches.forEach((match) => {
+                const gpuCount = parseInt(match.match(/(\d+)/)[1]);
+                totalGPUs += gpuCount;
+              });
+            }
+            return { name: hpc.name, gpus: totalGPUs };
+          });
+
+          new Chart(document.getElementById("gpuChart"), {
+            type: "doughnut",
+            data: {
+              labels: gpuData.map((d) => d.name),
+              datasets: [
+                {
+                  data: gpuData.map((d) => d.gpus),
+                  backgroundColor: [
+                    "#1e88e5",
+                    "#1565c0",
+                    "#0d47a1",
+                    "#42a5f5",
+                    "#64b5f6",
+                    "#90caf9",
+                    "#bbdefb",
+                    "#e3f2fd",
+                    "#f3e5f5",
+                  ],
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { position: "bottom" },
+              },
+            },
+          });
+
+          // Location Chart
+          const locationCount = {};
+          data.forEach((hpc) => {
+            locationCount[hpc.location.city] =
+              (locationCount[hpc.location.city] || 0) + 1;
+          });
+
+          new Chart(document.getElementById("locationChart"), {
+            type: "pie",
+            data: {
+              labels: Object.keys(locationCount),
+              datasets: [
+                {
+                  data: Object.values(locationCount),
+                  backgroundColor: [
+                    "#1e88e5",
+                    "#1565c0",
+                    "#0d47a1",
+                    "#42a5f5",
+                    "#64b5f6",
+                    "#90caf9",
+                    "#bbdefb",
+                  ],
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { position: "bottom" },
+              },
+            },
+          });
+        }
+
+        function generateMetrics(data) {
+          let totalCPU = 0,
+            totalGPU = 0;
+          data.forEach((hpc) => {
+            const cpuMatch = hpc.specs.match(/CPU:\s*([\d,]+)\s*cores/);
+            if (cpuMatch) totalCPU += parseInt(cpuMatch[1].replace(/,/g, ""));
+
+            const gpuMatches = hpc.specs.match(/(\d+)\s*NVIDIA/g);
+            if (gpuMatches) {
+              gpuMatches.forEach((match) => {
+                totalGPU += parseInt(match.match(/(\d+)/)[1]);
+              });
+            }
+          });
+
+          document.getElementById("keyMetrics").innerHTML = `
+                    <p><strong>Total HPC Systems:</strong> ${data.length}</p>
+                    <p><strong>Total CPU Cores:</strong> ${totalCPU.toLocaleString()}</p>
+                    <p><strong>Total GPUs:</strong> ${totalGPU}</p>
+                    <p><strong>Cities:</strong> ${
+                      new Set(data.map((h) => h.location.city)).size
+                    }</p>
+                    <p><strong>Average CPU per System:</strong> ${Math.round(
+                      totalCPU / data.length
+                    ).toLocaleString()}</p>
+                `;
+        }
+
+        function generateLists(data) {
+          const organizations = [...new Set(data.map((h) => h.organization))];
+          document.getElementById("organizationsList").innerHTML = organizations
+            .map((org) => `<p>• ${org}</p>`)
+            .join("");
+
+          const applications = [
+            ...new Set(data.flatMap((h) => h.applications.split(", "))),
+          ];
+          document.getElementById("applicationsList").innerHTML = applications
+            .map(
+              (app) =>
+                `<span style="background: #e3f2fd; padding: 2px 8px; border-radius: 10px; margin: 2px; display: inline-block; font-size: 0.8rem;">${app}</span>`
+            )
+            .join(" ");
+        }
+      });
+    </script>
+  </body>
+</html>
