@@ -1,0 +1,119 @@
+[
+  {
+    "name": "The Crust 2.5",
+    "organization": "PTT Exploration and Production Public Company Limited",
+    "specs": "CPU: 47,360 cores, GPU: ~512 NVIDIA H100 94GB",
+    "applications": "Private sector (Exploration and Production), AI",
+    "contact": "+66 (0) 2537 4000",
+    "website": "https://www.pttep.com/en/home",
+    "location": {
+      "address": "555/1 Energy Complex Building A, Floors 19–36 Vibhavadi Rangsit Rd., Chatuchak, Bangkok, Thailand",
+      "coordinates": [100.5619, 13.8125],
+      "city": "Bangkok"
+    }
+  },
+  {
+    "name": "LANTA",
+    "organization": "ThaiSC, NSTDA",
+    "specs": "CPU: 31,744 cores, GPU: 704 NVIDIA A100 40GB",
+    "applications": "Bioinformatics, Simulations, Weather Forecasting, AI",
+    "contact": "thaisc@nstda.or.th",
+    "website": "https://thaisc.io/thaisc-resorces/lanta",
+    "location": {
+      "address": "ThaiSC, Room INC2A 301,144 Innovation Cluster 2 Building (INC2) Thailand Science Park (TSP), Phahonyothin Road, Khlong Nueng, Khlong Luang, Pathum Thani 12120, Thailand",
+      "coordinates": [100.6035, 14.0674],
+      "city": "Pathum Thani"
+    }
+  },
+  {
+    "name": "ERAWAN",
+    "organization": "ITSC, Chiang Mai University",
+    "specs": "CPU: 384 cores, GPU: 24 NVIDIA A100 80GB",
+    "applications": "Simulations, AI",
+    "contact": "053-943800 กด 1",
+    "website": "https://hpc.cmu.ac.th/",
+    "location": {
+      "address": "Information Technology Service Center, Chiang Mai University 239, Huay Kaew Road, Muang District, Chiang Mai, Thailand, 50200",
+      "coordinates": [98.9513, 18.7967],
+      "city": "Chiang Mai"
+    }
+  },
+  {
+    "name": "APEX",
+    "organization": "CMKL University",
+    "specs": "CPU: 768 cores, GPU: 48 NVIDIA A100 40GB",
+    "applications": "AI",
+    "contact": "apex@cmkl.ac.th",
+    "website": "https://www.cmkl.ac.th/research/apex",
+    "location": {
+      "address": "CMKL University 1 Soi Chalongkrung 1 Ladkrabang Bangkok 10520",
+      "coordinates": [100.7782, 13.7299],
+      "city": "Bangkok"
+    }
+  },
+  {
+    "name": "KU Nontri AI",
+    "organization": "OCS, Kasetsart University",
+    "specs": "CPU: 512 cores, GPU: 32 NVIDIA A100 80GB",
+    "applications": "AI",
+    "contact": "0-2562-0951-6",
+    "website": "https://nontriai.ku.ac.th/",
+    "location": {
+      "address": "Kasetsart University 50 Ngamwongwan Rd, Chatuchak Bangkok 10900 Thailand",
+      "coordinates": [100.5653, 13.8463],
+      "city": "Bangkok"
+    }
+  },
+  {
+    "name": "MU-AI Center",
+    "organization": "MUICT, Mahidol University",
+    "specs": "CPU: 624 cores, GPU: 16 NVIDIA A100 40GB | 8 NVIDIA H100 80GB",
+    "applications": "AI",
+    "contact": "+66 (02) 441-0909",
+    "website": "https://www.ict.mahidol.ac.th/",
+    "location": {
+      "address": "Faculty of ICT, Mahidol University 999 Phuttamonthon 4 Road, Salaya, Nakhon Pathom 73170 THAILAND",
+      "coordinates": [100.3258, 13.7923],
+      "city": "Nakhon Pathom"
+    }
+  },
+  {
+    "name": "VISTEC",
+    "organization": "School of Information Science and Technology (IST), VISTEC",
+    "specs": "CPU: 2,464 cores, GPU: 32 NVIDIA V100 32GB | 52 NVIDIA A100 80GB",
+    "applications": "AI",
+    "contact": "+66 (86)-5335-899",
+    "website": "https://vistec.ist/",
+    "location": {
+      "address": "IST, VISTEC 555 Moo 1 Payupnai, Wangchan, Rayong 21210 Thailand",
+      "coordinates": [101.1789, 12.8755],
+      "city": "Rayong"
+    }
+  },
+  {
+    "name": "PSU-Singkhorn",
+    "organization": "Digital Research and Innovation Institute - DRii, Prince of Songkla University",
+    "specs": "CPU: 256 cores, GPU: 16 NVIDIA A100 40GB",
+    "applications": "AI",
+    "contact": "0-7428-6940",
+    "website": "https://www.facebook.com/drii.psu",
+    "location": {
+      "address": "Prince of Songkla University, LRC, 15 Karnchanavanich Road, Hat Yai, Songkhla 90110 Thailand",
+      "coordinates": [100.4974, 7.0086],
+      "city": "Songkhla"
+    }
+  },
+  {
+    "name": "KKU",
+    "organization": "Office of Digital Technology - ODT, Khon Kaen University",
+    "specs": "CPU: 256 cores, GPU: 16 NVIDIA A100 40GB",
+    "applications": "AI",
+    "contact": "043-009700",
+    "website": "https://digital.kku.ac.th/",
+    "location": {
+      "address": "Khon Kaen University 123 Moo 16 Mittraphap Rd., Nai-Muang, Muang District, Khon Kaen 40002",
+      "coordinates": [102.8255, 16.4754],
+      "city": "Khon Kaen"
+    }
+  }
+]

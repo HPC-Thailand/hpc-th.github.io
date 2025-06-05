@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HPC Thailand Map</title>
+    <!-- Material-UI CDN -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .container {
+        flex: 1;
+        margin: 0 auto;
+        max-width: 1200px;
+        padding: 20px;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      #map-container {
+        height: 600px;
+        width: 100%;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .map-card {
+        padding: 15px;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        background: white;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      footer {
+        background-color: #f4f4f4;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+        margin-top: auto;
+      }
+      footer a {
+        color: #1e88e5;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      .hpc-info {
+        margin-top: 10px;
+      }
+      .hpc-info p {
+        margin: 5px 0;
+      }
+      .hpc-card {
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .hpc-card:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+      }
+      .hpc-card h5 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #1e88e5;
+      }
+      .custom-marker {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #1e88e5;
+        border: 3px solid white;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1 class="blue-text text-darken-2">HPC Systems in Thailand</h1>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="index.html" class="waves-effect waves-light btn blue darken-2">
+          <i class="material-icons left">list</i>View Table
+        </a>
+        <a
+          href="map.html"
+          class="waves-effect waves-light btn blue darken-2 active"
+        >
+          <i class="material-icons left">map</i>View Map
+        </a>
+      </div>
+
+      <div id="map-container"></div>
+
+      <div id="hpc-list" class="row">
+        <!-- HPC cards will be dynamically generated here -->
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 HPC Thailand. All rights reserved.</p>
+      <p>
+        <a
+          href="https://github.com/HPC-Thailand/hpc-th.github.io"
+          target="_blank"
+          >Contribute HPC Thailand on GitHub</a
+        >
+      </p>
+    </footer>
+
+    <!-- JavaScript libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize map
+        const map = L.map("map-container").setView([13.7563, 100.5018], 6);
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(map);
+
+        // Fetch HPC data
+        fetch("data/hpc-locations.json")
+          .then((response) => response.json())
+          .then((data) => {
+            // Process each HPC location
+            data.forEach((hpc) => {
+              // Add marker to map
+              const marker = L.marker(hpc.location.coordinates).addTo(map);
+
+              // Add popup with basic info
+              marker.bindPopup(`
+                            <strong>${hpc.name}</strong><br>
+                            ${hpc.organization}<br>
+                            <a href="${hpc.website}" target="_blank">Visit Website</a>
+                        `);
+
+              // Create card for each HPC
+              createHPCCard(hpc);
+            });
+          })
+          .catch((error) => {
+            console.error("Error loading HPC data:", error);
+            document.getElementById("hpc-list").innerHTML = `
+                        <div class="col s12">
+                            <div class="card-panel red lighten-4">
+                                <span class="red-text text-darken-4">
+                                    Error loading HPC data. Please try again later.
+                                </span>
+                            </div>
+                        </div>
+                    `;
+          });
+
+        // Function to create cards for each HPC
+        function createHPCCard(hpc) {
+          const cardDiv = document.createElement("div");
+          cardDiv.className = "col s12 m6 l4";
+          cardDiv.innerHTML = `
+                    <div class="hpc-card">
+                        <h5>${hpc.name}</h5>
+                        <div class="hpc-info">
+                            <p><strong>Organization:</strong> ${hpc.organization}</p>
+                            <p><strong>Specifications:</strong> ${hpc.specs}</p>
+                            <p><strong>Applications:</strong> ${hpc.applications}</p>
+                            <p><strong>Location:</strong> ${hpc.location.city}</p>
+                            <p><strong>Contact:</strong> ${hpc.contact}</p>
+                            <a href="${hpc.website}" target="_blank" class="waves-effect waves-light btn-small blue darken-2">Visit Website</a>
+                        </div>
+                    </div>
+                `;
+          document.getElementById("hpc-list").appendChild(cardDiv);
+
+          // Add click listener to center map on this HPC when card is clicked
+          cardDiv
+            .querySelector(".hpc-card")
+            .addEventListener("click", function () {
+              map.setView(hpc.location.coordinates, 12);
+              // Find the corresponding marker and open its popup
+              map.eachLayer((layer) => {
+                if (layer instanceof L.Marker) {
+                  const pos = layer.getLatLng();
+                  if (
+                    pos.lat === hpc.location.coordinates[0] &&
+                    pos.lng === hpc.location.coordinates[1]
+                  ) {
+                    layer.openPopup();
+                  }
+                }
+              });
+            });
+        }
+      });
+    </script>
+  </body>
+</html>
