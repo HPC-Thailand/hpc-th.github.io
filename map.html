@@ -319,6 +319,10 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Initialize arrays to store markers and cards
+        let allMarkers = [];
+        let allCards = [];
+        
         // Initialize map centered on Thailand
         const map = L.map("map-container").setView([13.7563, 100.5018], 6);
 
@@ -329,14 +333,16 @@
         }).addTo(map);
 
         // Fetch HPC data
-        fetch("data/hpc-locations.json")
+        fetch("./data/hpc-locations.json")
           .then((response) => {
+            console.log("Fetch response status:", response.status);
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
           })
           .then((data) => {
+            console.log("HPC data loaded successfully:", data.length, "systems");
             // Clear loading state
             document.getElementById("hpc-list").innerHTML = "";
 
@@ -381,13 +387,24 @@
           })
           .catch((error) => {
             console.error("Error loading HPC data:", error);
+            console.error("Error details:", {
+              message: error.message,
+              stack: error.stack,
+              currentURL: window.location.href
+            });
+            
             document.getElementById("hpc-list").innerHTML = `
               <div class="col s12">
                 <div class="error-container">
                   <h5>⚠️ Error Loading Map Data</h5>
-                  <p>Failed to load HPC location data. Please check your internet connection and try again.</p>
+                  <p>Failed to load HPC location data.</p>
+                  <p><strong>Error:</strong> ${error.message}</p>
+                  <p><strong>URL:</strong> ${window.location.href}</p>
                   <button onclick="location.reload()" class="waves-effect waves-light btn red">
                     <i class="material-icons left">refresh</i>Retry
+                  </button>
+                  <button onclick="window.open('./data/hpc-locations.json', '_blank')" class="waves-effect waves-light btn blue" style="margin-left: 10px;">
+                    <i class="material-icons left">data_usage</i>Test Data URL
                   </button>
                 </div>
               </div>
@@ -446,10 +463,6 @@
                 }
               });
             });
-
-          // Store all markers and cards for search functionality
-          allMarkers.push(marker);
-          allCards.push(cardDiv);
         }
 
         // Search functionality
