@@ -1,0 +1,98 @@
+[
+  {
+    "year": 1990,
+    "systemName": "Early Computing Infrastructure",
+    "organization": "National Science and Technology Development Agency (NSTDA)",
+    "description": "NSTDA was established to promote science and technology development in Thailand. Early computing infrastructure was developed to support research activities across various scientific disciplines.",
+    "link": "https://www.nstda.or.th/en"
+  },
+  {
+    "year": 1995,
+    "systemName": "University Research Computing",
+    "organization": "Chulalongkorn University, King Mongkut's Universities",
+    "description": "Major universities began establishing dedicated computing centers to support research in engineering, sciences, and computational studies. These early systems laid the foundation for advanced computing in Thailand.",
+    "link": "https://www.chula.ac.th/en/"
+  },  {
+    "year": 2000,
+    "systemName": "National Grid Computing Initiative",
+    "organization": "NSTDA, NECTEC & University Consortium",
+    "description": "Thailand launched its first national grid computing initiative, connecting multiple universities and research institutions to share computational resources and collaborate on large-scale research projects. NECTEC played a key role in coordinating this early grid infrastructure.",
+    "link": "https://www.nstda.or.th/en"
+  },{
+    "year": 2005,
+    "systemName": "Advanced Computing Infrastructure Program",
+    "organization": "Ministry of Science and Technology",
+    "description": "Government initiative to establish advanced computing infrastructure to support national research priorities including biotechnology, materials science, and environmental studies.",
+    "link": ""
+  },
+  {
+    "year": 2007,
+    "systemName": "National e-Science Infrastructure Consortium",
+    "organization": "NECTEC",
+    "description": "Establishment of the National e-Science Infrastructure Consortium under NECTEC to coordinate and develop e-Science infrastructure across Thailand. This consortium became a cornerstone for national research computing coordination.",
+    "link": "http://www.e-science.in.th/"
+  },
+  {
+    "year": 2010,
+    "systemName": "Thailand National e-Science Infrastructure",
+    "organization": "NSTDA & National e-Science Infrastructure Consortium",
+    "description": "Development of comprehensive e-Science infrastructure including high-performance computing resources, data storage systems, and network connectivity to support national research programs. The consortium provided HPC services and grid computing capabilities.",
+    "link": "http://www.e-science.in.th/"
+  },
+  {
+    "year": 2015,
+    "systemName": "HPC Modernization Program",
+    "organization": "NSTDA & Academic Institutions",
+    "description": "Major upgrade of HPC infrastructure with modern multi-core processors, GPU accelerators, and high-speed interconnects to support emerging computational science applications.",
+    "link": ""
+  },
+  {
+    "year": 2019,
+    "systemName": "ThaiSC Establishment",
+    "organization": "NSTDA Supercomputer Center (ThaiSC)",
+    "description": "Official establishment of ThaiSC as Thailand's national supercomputing center, marking a significant milestone in the country's HPC development. ThaiSC was founded to provide cutting-edge HPC services for national R&D community.",
+    "link": "https://thaisc.io/"
+  },
+  {
+    "year": 2020,
+    "systemName": "LANTA Supercomputer",
+    "organization": "ThaiSC, NSTDA",
+    "description": "Deployment of LANTA, Thailand's flagship supercomputer with 31,744 CPU cores and 704 NVIDIA A100 GPUs. LANTA supports bioinformatics, simulations, weather forecasting, and AI research across the nation.",
+    "link": "https://thaisc.io/thaisc-resorces/lanta"
+  },
+  {
+    "year": 2021,
+    "systemName": "University HPC Expansion",
+    "organization": "Chiang Mai University, CMKL University",
+    "description": "Major universities deployed dedicated HPC systems including ERAWAN at CMU and APEX at CMKL University, expanding Thailand's distributed HPC ecosystem for specialized research applications.",
+    "link": "https://hpc.cmu.ac.th/"
+  },
+  {
+    "year": 2022,
+    "systemName": "AI-HPC Integration",
+    "organization": "Multiple Institutions",
+    "description": "Integration of artificial intelligence capabilities with HPC infrastructure across universities and research centers, including systems at Kasetsart University (KU Nontri AI) and Mahidol University (MU-AI Center).",
+    "link": "https://nontriai.ku.ac.th/"
+  },
+  {
+    "year": 2023,
+    "systemName": "Private Sector HPC",
+    "organization": "PTT Exploration and Production",
+    "description": "Deployment of 'The Crust 2.5' by PTTEP, marking significant private sector investment in HPC with 47,360 CPU cores and ~512 NVIDIA H100 GPUs for exploration and production applications.",
+    "link": "https://www.pttep.com/en/home"
+  },
+  {
+    "year": 2024,
+    "systemName": "Regional HPC Networks",
+    "organization": "Prince of Songkla University, Khon Kaen University",
+    "description": "Expansion of HPC infrastructure to regional universities including PSU-Singkhorn in the south and KKU systems in the northeast, creating a truly national HPC network.",
+    "link": "https://www.facebook.com/drii.psu"
+  },
+  {
+    "year": 2025,
+    "systemName": "Next-Generation HPC Vision",
+    "organization": "National HPC Consortium",
+    "description": "Thailand's roadmap for next-generation HPC includes exascale computing capabilities, quantum-classical hybrid systems, and sustainable computing infrastructure to support national digital transformation.",
+    "link": "https://thaisc.io/"
+  }
+]

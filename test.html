@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HPC Data Test</title>
+</head>
+<body>
+    <h1>HPC Data Structure Test</h1>
+    <div id="output"></div>
+    
+    <script>
+        // Function to format structured specs data
+        function formatSpecs(specs) {
+          if (!specs) return 'N/A';
+          
+          const parts = [];
+          
+          // CPU information
+          if (specs.cpu) {
+            const cpuInfo = `CPU: ${specs.cpu.type || 'N/A'}, ${(specs.cpu.cores || 0).toLocaleString()} cores`;
+            parts.push(cpuInfo);
+          }
+          
+          // GPU information
+          if (specs.gpu) {
+            const gpuInfo = `GPU: ${specs.gpu.type || 'N/A'}, ${specs.gpu.count || 0} units`;
+            parts.push(gpuInfo);
+          }
+          
+          // Storage information
+          if (specs.storage) {
+            const storageInfo = `Storage: ${specs.storage.nvme || 'N/A'} NVMe, ${specs.storage.disk || 'N/A'} HDD`;
+            parts.push(storageInfo);
+          }
+          
+          return parts.join(' | ');
+        }
+
+        // Test the data loading
+        fetch('./data/hpc-locations.json')
+            .then(response => response.json())
+            .then(data => {
+                let html = '<h2>Systems loaded: ' + data.length + '</h2>';
+                
+                // Calculate totals
+                const totalCPU = data.reduce((sum, hpc) => sum + (hpc.specs?.cpu?.cores || 0), 0);
+                const totalGPU = data.reduce((sum, hpc) => sum + (hpc.specs?.gpu?.count || 0), 0);
+                
+                html += '<p><strong>Total CPU Cores:</strong> ' + totalCPU.toLocaleString() + '</p>';
+                html += '<p><strong>Total GPUs:</strong> ' + totalGPU.toLocaleString() + '</p>';
+                
+                html += '<h3>Sample Systems:</h3>';
+                
+                // Show first 3 systems
+                data.slice(0, 3).forEach(hpc => {
+                    html += '<div style="border: 1px solid #ccc; margin: 10px 0; padding: 10px;">';
+                    html += '<h4>' + hpc.name + '</h4>';
+                    html += '<p><strong>Organization:</strong> ' + hpc.organization + '</p>';
+                    html += '<p><strong>Specs:</strong> ' + formatSpecs(hpc.specs) + '</p>';
+                    html += '<p><strong>Applications:</strong> ' + hpc.applications + '</p>';
+                    html += '<p><strong>Location:</strong> ' + hpc.location.city + '</p>';
+                    html += '</div>';
+                });
+                
+                document.getElementById('output').innerHTML = html;
+            })
+            .catch(error => {
+                document.getElementById('output').innerHTML = '<p style="color: red;">Error loading data: ' + error.message + '</p>';
+            });
+    </script>
+</body>
+</html>

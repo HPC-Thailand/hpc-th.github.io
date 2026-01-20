@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประวัติศาสตร์ HPC ในประเทศไทย - ไทม์ไลน์</title>
+
+    <!-- SEO and Social Media Meta Tags -->
+    <meta name="description"
+        content="ไทม์ไลน์แบบโต้ตอบของการพัฒนาคอมพิวเตอร์ประสิทธิภาพสูงในประเทศไทย สำรวจประวัติศาสตร์ ก้าวสำคัญ และวิวัฒนาการของโครงสร้างพื้นฐาน HPC จากระบบแรกเริ่มสู่ซูเปอร์คอมพิวเตอร์สมัยใหม่">
+    <meta name="keywords"
+        content="ประวัติศาสตร์ HPC ไทย, ไทม์ไลน์คอมพิวเตอร์ประสิทธิภาพสูง, ประวัติศาสตร์ซูเปอร์คอมพิวเตอร์ไทย, สวทช., ThaiSC, การพัฒนา HPC">
+    <meta property="og:title" content="ประวัติศาสตร์ HPC ในประเทศไทย - ไทม์ไลน์">
+    <meta property="og:description" content="ไทม์ไลน์แบบโต้ตอบของการพัฒนาคอมพิวเตอร์ประสิทธิภาพสูงในประเทศไทย">
+    <meta property="og:url" content="https://hpc.in.th/timeline.html">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⏰%3C/text%3E%3C/svg%3E">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --background: #0f0f23;
+            --background-light: #16162c;
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border: #374151;
+            --glow: #3b82f650;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animated background particles */
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Tailwind utility classes */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Responsive utilities */
+        .min-h-screen {
+            min-height: 100vh;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .fixed {
+            position: fixed;
+        }
+
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .z-10 {
+            z-index: 10;
+        }
+
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        .pointer-events-none {
+            pointer-events: none;
+        }
+
+        .max-w-7xl {
+            max-width: 80rem;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .pt-8 {
+            padding-top: 2rem;
+        }
+
+        .pb-16 {
+            padding-bottom: 4rem;
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem;
+        }
+
+        .mb-16 {
+            margin-bottom: 4rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .space-x-2> :not([hidden])~ :not([hidden]) {
+            margin-left: 0.5rem;
+        }
+
+        .p-2 {
+            padding: 0.5rem;
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .px-6 {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .font-medium {
+            font-weight: 500;
+        }
+
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        .mr-2 {
+            margin-right: 0.5rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .inline-flex {
+            display: inline-flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .leading-tight {
+            line-height: 1.25;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .max-w-3xl {
+            max-width: 48rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .leading-relaxed {
+            line-height: 1.625;
+        }
+
+        .py-12 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .border-t {
+            border-top-width: 1px;
+        }
+
+        .border-gray-800 {
+            border-color: #1f2937;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .text-gray-400 {
+            color: #9ca3af;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .space-x-6> :not([hidden])~ :not([hidden]) {
+            margin-left: 1.5rem;
+        }
+
+        .hover\:text-blue-400:hover {
+            color: #60a5fa;
+        }
+
+        .transition-colors {
+            transition: color 0.3s ease;
+        }
+
+        .w-2 {
+            width: 0.5rem;
+        }
+
+        .h-2 {
+            height: 0.5rem;
+        }
+
+        .w-3 {
+            width: 0.75rem;
+        }
+
+        .h-3 {
+            height: 0.75rem;
+        }
+
+        .w-1 {
+            width: 0.25rem;
+        }
+
+        .h-1 {
+            height: 0.25rem;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+        }
+
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .md\:text-7xl {
+                font-size: 4.5rem;
+            }
+
+            .md\:flex-row {
+                flex-direction: row;
+            }
+
+            .md\:mb-0 {
+                margin-bottom: 0;
+            }
+        }
+
+        /* Navigation styles */
+        .nav-pill {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-pill:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-pill.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* Vertical Timeline Styles */
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: calc(50% + 2rem);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: calc(50% + 2rem);
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid var(--background);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+            border-color: var(--primary);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -30px;
+            border-left-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -30px;
+            border-right-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-organization {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .timeline-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: 15px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: 6px solid var(--background);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            z-index: 10;
+            box-shadow: 0 0 30px var(--glow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-icon:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 40px var(--glow);
+        }
+
+        .timeline-icon img {
+            width: 60%;
+            height: 60%;
+            object-fit: contain;
+            filter: brightness(1.2);
+        }
+
+        .timeline-icon .emoji-icon {
+            font-size: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-item .timeline-content {
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-dot,
+            .timeline-icon {
+                left: 40px !important;
+                transform: none !important;
+            }
+
+            .timeline-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .timeline-content::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated background particles -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="particle w-2 h-2" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle w-3 h-3" style="top: 60%; left: 80%; animation-delay: 2s;"></div>
+        <div class="particle w-1 h-1" style="top: 30%; left: 60%; animation-delay: 4s;"></div>
+        <div class="particle w-2 h-2" style="top: 80%; left: 20%; animation-delay: 1s;"></div>
+        <div class="particle w-1 h-1" style="top: 10%; left: 70%; animation-delay: 3s;"></div>
+    </div>
+
+    <!-- Main container -->
+    <div class="min-h-screen relative z-10">
+        <!-- Header -->
+        <header class="pt-8 pb-16">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Navigation -->
+                <nav class="flex justify-center mb-12">
+                    <div class="flex space-x-2 p-2 glass rounded-full">
+                        <a href="index.html" class="nav-pill px-6 py-3 rounded-full text-sm font-medium transition-all">
+                            <span class="material-icons-round text-sm mr-2">table_view</span>
+                            Systems
+                        </a>
+                        <a href="map.html" class="nav-pill px-6 py-3 rounded-full text-sm font-medium transition-all">
+                            <span class="material-icons-round text-sm mr-2">map</span>
+                            Map
+                        </a>
+                        <a href="dashboard.html"
+                            class="nav-pill px-6 py-3 rounded-full text-sm font-medium transition-all">
+                            <span class="material-icons-round text-sm mr-2">analytics</span>
+                            Analytics
+                        </a>
+                        <a href="timeline.html"
+                            class="nav-pill active px-6 py-3 rounded-full text-sm font-medium transition-all">
+                            <span class="material-icons-round text-sm mr-2">timeline</span>
+                            Timeline
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- Hero section -->
+                <div class="text-center mb-16">
+                    <div
+                        class="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
+                        <span class="material-icons-round text-xs mr-2">timeline</span>
+                        HPC Development History
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                        <span class="gradient-text">ประวัติศาสตร์ HPC</span><br>
+                        <span class="text-white">ในประเทศไทย</span>
+                    </h1>
+                    <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed">
+                        เดินทางผ่านการพัฒนาคอมพิวเตอร์ประสิทธิภาพสูงในประเทศไทย
+                        จากระบบแรกเริ่มสู่ซูเปอร์คอมพิวเตอร์ที่ทรงพลังที่สุดในภูมิภาค
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Timeline Section -->
+        <section class="mb-16">
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div id="timeline-content">
+                    <!-- Timeline items will be loaded here -->
+                    <div class="text-center py-12 text-gray-400">
+                        <span class="material-icons-round animate-spin text-3xl mb-4">refresh</span>
+                        <div>Loading timeline...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-12 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        © 2025 HPC Thailand. Open source project for the community.
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="https://github.com/HPC-Thailand/hpc-th.github.io" target="_blank"
+                            class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <span class="text-sm">GitHub</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <span class="text-sm">API</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <span class="text-sm">Documentation</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>        // Global variables
+        let timelineData = [];
+
+        // Load timeline data from JSON file
+        async function loadTimelineData() {
+            try {
+                // Try to fetch from JSON file first
+                const response = await fetch('./data/hpc-timeline-th.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch timeline data');
+                }
+                timelineData = await response.json();
+                console.log('Timeline data loaded from JSON file:', timelineData.length, 'items');
+
+                renderTimeline();
+
+            } catch (error) {
+                console.error('Error loading timeline data from file, using fallback:', error);
+                // Use fallback data for file:// protocol
+                loadFallbackTimelineData();
+            }
+        }
+
+        // Fallback timeline data for when JSON can't be loaded
+        function loadFallbackTimelineData() {
+            console.log('Loading fallback timeline data...');
+            timelineData = [
+                {
+                    "year": 1991,
+                    "generation": "First Generation: The dawn of HPC",
+                    "systemName": "จุดเริ่มต้น HPCC",
+                    "organization": "สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช.)",
+                    "description": "สวทช. จัดตั้ง High Performance Computing Center (HPCC) เพื่อสนับสนุนงานวิจัยในสาขาวิทยาศาสตร์ต่างๆ เป็นจุดเริ่มต้นของการให้บริการ HPC ในประเทศไทย",
+                    "link": "https://www.nstda.or.th/"
+                },
+                {
+                    "year": 1992,
+                    "generation": "First Generation: The dawn of HPC",
+                    "systemName": "ไทยเชื่อมต่ออินเทอร์เน็ต",
+                    "organization": "จุฬาลงกรณ์มหาวิทยาลัย / NECTEC",
+                    "description": "ประเทศไทยเชื่อมต่ออินเทอร์เน็ตอย่างเป็นทางการ ก่อให้เกิดเครือข่ายไทยสาร (ThaiSarn) เชื่อมโยงมหาวิทยาลัยและสถาบันวิจัย 6 แห่ง",
+                    "link": "https://www.thaisarn.net/"
+                },
+                {
+                    "year": 1994,
+                    "generation": "First Generation: The dawn of HPC",
+                    "systemName": "CRAY EL98 (ซูเปอร์คอมพิวเตอร์เครื่องแรก)",
+                    "organization": "NECTEC",
+                    "description": "ประเทศไทยติดตั้งซูเปอร์คอมพิวเตอร์เครื่องแรก CRAY EL98 (8 processors / 2GB DRAM) ที่ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (NECTEC)",
+                    "link": ""
+                },
+                {
+                    "year": 1995,
+                    "generation": "First Generation: The dawn of HPC",
+                    "systemName": "คอมพิวเตอร์เพื่อการวิจัยในมหาวิทยาลัย",
+                    "organization": "จุฬาลงกรณ์มหาวิทยาลัย มหาวิทยาลัยเทคโนโลยีพระจอมเกล้า",
+                    "description": "มหาวิทยาลัยชั้นนำเริ่มจัดตั้งศูนย์คอมพิวเตอร์เฉพาะเพื่อสนับสนุนการวิจัย (BEOWULF cluster) สนับสนุนสาขาวิศวกรรมศาสตร์และวิทยาศาสตร์",
+                    "link": "https://www.chula.ac.th/th/"
+                },
+                {
+                    "year": 2000,
+                    "generation": "Second Generation: Grid Computing",
+                    "systemName": "โครงการกริดคอมพิวติ้งแห่งชาติ",
+                    "organization": "สวทช. เนคเทค และกลุ่มมหาวิทยาลัย",
+                    "description": "เปิดตัวโครงการกริดคอมพิวติ้งแห่งชาติ (Thai National Grid Project) เชื่อมโยงทรัพยากรคำนวณของมหาวิทยาลัยและสถาบันวิจัย สร้างเครือข่ายความร่วมมือด้านการคำนวณ",
+                    "link": ""
+                },
+                {
+                    "year": 2007,
+                    "generation": "Second Generation: Grid Computing",
+                    "systemName": "Tera Cluster",
+                    "organization": "Thai National Grid Center (TNGC)",
+                    "description": "TNGC ติดตั้งระบบ 'Tera Cluster' คอมพิวเตอร์คลัสเตอร์ที่เร็วที่สุดในประเทศไทยในขณะนั้น พร้อมกับการก่อตั้งสมาคมวิทยาการและวิศวกรรมเชิงคอมพิวเตอร์ (CSEA)",
+                    "link": "http://www.e-science.in.th/"
+                },
+                {
+                    "year": 2011,
+                    "generation": "Third Generation: Uninet2 and National E-science",
+                    "systemName": "National e-Science Infrastructure",
+                    "organization": "National e-Science Infrastructure Consortium",
+                    "description": "ก่อตั้งภาคีโครงสร้างพื้นฐาน e-Science แห่งชาติ (5 หน่วยงานหลัก: สวทช., จุฬาฯ, มทส., มจธ., สสนก.) เพื่อพัฒนาและให้บริการ HPC ร่วมกันบนเครือข่าย UniNet",
+                    "link": "http://www.e-science.in.th/"
+                },
+                {
+                    "year": 2014,
+                    "generation": "Third Generation: Uninet2 and National E-science",
+                    "systemName": "เชื่อมต่อ CERN",
+                    "organization": "National e-Science Infrastructure Consortium",
+                    "description": "ประสบความสำเร็จในการเชื่อมต่อและประมวลผลข้อมูลร่วมกับเครื่องเร่งอนุภาค LHC ที่ CERN ในระดับ Tier 2/3",
+                    "link": "https://cern.ch"
+                },
+                {
+                    "year": 2017,
+                    "generation": "Third Generation: Uninet2 and National E-science",
+                    "systemName": "Chalawan HPC",
+                    "organization": "สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT)",
+                    "description": "ติดตั้งระบบคลัสเตอร์ 'Chalawan' (High Performance Computing Cluster) เพื่อรองรับการคำนวณและแบบจำลองทางดาราศาสตร์ฟิสิกส์",
+                    "link": "https://www.narit.or.th/"
+                },
+                {
+                    "year": 2019,
+                    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+                    "systemName": "การก่อตั้ง ThaiSC",
+                    "organization": "ศูนย์ซูเปอร์คอมพิวเตอร์แห่งชาติ สวทช. (ThaiSC)",
+                    "description": "ยกระดับงานบริการ HPC สู่ระดับชาติด้วยการก่อตั้ง ThaiSC พร้อมให้บริการระบบ TARA HPC Cluster",
+                    "link": "https://thaisc.io/"
+                },
+                {
+                    "year": 2020,
+                    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+                    "systemName": "LANTA Supercomputer",
+                    "organization": "ThaiSC สวทช.",
+                    "description": "ติดตั้ง 'LANTA' ซูเปอร์คอมพิวเตอร์เรือธง (Cray EX) ประสิทธิภาพอันดับ 1 ในอาเซียน (ณ ขณะนั้น) เพื่อรองรับงานวิจัยขั้นสูงและการพัฒนา AI",
+                    "link": "https://thaisc.io/thaisc-resorces/lanta"
+                },
+                {
+                    "year": 2021,
+                    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+                    "systemName": "AI-HPC ในมหาวิทยาลัย",
+                    "organization": "CMKL (APEX), CMU (ERAWAN)",
+                    "description": "การขยายตัวของโครงสร้างพื้นฐาน AI-HPC ในมหาวิทยาลัย: ระบบ APEX ที่ CMKL และ ERAWAN ที่ มช. รองรับงานวิจัยด้าน AI และ Data Science",
+                    "link": "https://hpc.cmu.ac.th/"
+                },
+                {
+                    "year": 2023,
+                    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+                    "systemName": "AI for Everyone",
+                    "organization": "Thailand AI University Consortium",
+                    "description": "กระแส Generative AI ผลักดันให้เกิดความร่วมมือระดับชาติในการพัฒนาบุคลากรและโครงสร้างพื้นฐาน AI (AI University Consortium)",
+                    "link": "https://th-ai.org/"
+                },
+                {
+                    "year": 2024,
+                    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+                    "systemName": "THE CRUST 2.5 & Siam AI",
+                    "organization": "ปตท.สผ. / Siam AI Cloud",
+                    "description": "ก้าวสำคัญของภาคเอกชน: ปตท.สผ. ติดตั้ง 'The Crust 2.5' และการเปิดตัว Siam AI Cloud ผู้ให้บริการ Cloud AI เชิงพาณิชย์",
+                    "link": "https://www.pttep.com/th/home"
+                }
+            ];
+
+            console.log('Fallback timeline data loaded:', timelineData.length, 'items');
+            renderTimeline();
+        }// Generate timeline icon based on organization and year
+        function getTimelineIcon(year, systemName, organization) {
+            // Organization-based logos (using emoji as placeholders for now)
+            if (organization.includes('ThaiSC') || organization.includes('สวทช.')) {
+                return '<div class="emoji-icon">🔬</div>'; // ThaiSC/NSTDA
+            }
+            if (organization.includes('เนคเทค') || organization.includes('NECTEC')) {
+                return '<div class="emoji-icon">🌐</div>'; // NECTEC
+            }
+            if (organization.includes('AIEI') || organization.includes('ปัญญาประดิษฐ์')) {
+                return '<div class="emoji-icon">🤖</div>'; // AIEI
+            }
+            if (organization.includes('จุฬาลงกรณ์') || organization.includes('Chula')) {
+                return '<div class="emoji-icon">🎓</div>'; // Chulalongkorn University
+            }
+            if (organization.includes('เชียงใหม่') || organization.includes('CMU')) {
+                return '<div class="emoji-icon">🏔️</div>'; // Chiang Mai University
+            }
+            if (organization.includes('CMKL')) {
+                return '<div class="emoji-icon">🔗</div>'; // CMKL University
+            }
+            if (organization.includes('เกษตรศาสตร์') || organization.includes('KU')) {
+                return '<div class="emoji-icon">🌾</div>'; // Kasetsart University
+            }
+            if (organization.includes('มหิดล') || organization.includes('Mahidol')) {
+                return '<div class="emoji-icon">⚕️</div>'; // Mahidol University
+            }
+            if (organization.includes('สงขลานครินทร์') || organization.includes('PSU')) {
+                return '<div class="emoji-icon">🌊</div>'; // Prince of Songkla University
+            }
+            if (organization.includes('ขอนแก่น') || organization.includes('KKU')) {
+                return '<div class="emoji-icon">🌾</div>'; // Khon Kaen University
+            }
+            if (organization.includes('ปตท') || organization.includes('PTTEP')) {
+                return '<div class="emoji-icon">🏢</div>'; // PTTEP
+            }
+            if (organization.includes('กระทรวง')) {
+                return '<div class="emoji-icon">🏛️</div>'; // Government Ministry
+            }
+
+            // Fallback to year-based icons
+            if (year <= 1995) return '<div class="emoji-icon">🖥️</div>';
+            if (year <= 2005 && systemName.includes('กริด')) return '<div class="emoji-icon">🌐</div>';
+            if (year <= 2010 && systemName.includes('e-Science')) return '<div class="emoji-icon">🔬</div>';
+            if (year <= 2015) return '<div class="emoji-icon">⚡</div>';
+            if (year <= 2019) return '<div class="emoji-icon">🏗️</div>';
+            if (systemName.includes('LANTA')) return '<div class="emoji-icon">🚀</div>';
+            if (systemName.includes('AI') || systemName.includes('ปัญญาประดิษฐ์')) return '<div class="emoji-icon">🤖</div>';
+            if (systemName.includes('ภาคเอกชน')) return '<div class="emoji-icon">🏢</div>';
+            if (year >= 2024) return '<div class="emoji-icon">🌟</div>';
+            return '<div class="emoji-icon">💻</div>';
+            // Render timeline
+            function renderTimeline() {
+                const container = document.getElementById('timeline-content');
+
+                if (timelineData.length === 0) {
+                    container.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <p>ไม่สามารถโหลดข้อมูลไทม์ไลน์ได้</p>
+                    </div>
+                `;
+                    return;
+                }
+
+                let lastGeneration = "";
+
+                container.innerHTML = timelineData.map((item, index) => {
+                    let generationHtml = "";
+                    if (item.generation && item.generation !== lastGeneration) {
+                        lastGeneration = item.generation;
+                        generationHtml = `
+                        <div class="timeline-generation text-center my-12 relative z-10">
+                            <span class="px-6 py-2 rounded-full glass border border-blue-500/30 text-blue-300 font-bold text-lg inline-block backdrop-blur-md">
+                                ${item.generation}
+                            </span>
+                        </div>
+                    `;
+                    }
+
+                    return `
+                ${generationHtml}
+                <div class="timeline-item" style="animation-delay: ${index * 0.1}s">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-icon">
+                        ${getTimelineIcon(item.year, item.systemName, item.organization)}
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">${item.year}</div>
+                        <h3 class="timeline-title">${item.systemName}</h3>
+                        <div class="timeline-organization">${item.organization}</div>
+                        <p class="timeline-description">${item.description}</p>
+                        ${item.link ? `<a href="${item.link}" target="_blank" class="timeline-link">
+                            <span class="material-icons-round">link</span>
+                            เรียนรู้เพิ่มเติม
+                        </a>` : ''}
+                    </div>
+                </div>
+            `}).join('');
+
+                // Add scroll animations
+                observeTimelineItems();
+            }
+
+            // Intersection Observer for scroll animations
+            function observeTimelineItems() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.timeline-item').forEach(item => {
+                    observer.observe(item);
+                });
+            }        // Initialize
+            document.addEventListener('DOMContentLoaded', async () => {
+                await loadTimelineData();
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+{
+  "templateInstructions": "Use this template to add new entries to the HPC timeline",
+  "jsonStructure": {
+    "year": "YYYY (number)",
+    "systemName": "Name of the HPC system or milestone",
+    "organization": "Organization or institution responsible",
+    "description": "Detailed description of the system, milestone, or development. Include technical specifications, significance, and impact on Thailand's HPC landscape.",
+    "link": "URL to official page or documentation (optional, can be empty string)"
+  },
+  "example": {
+    "year": 2020,
+    "systemName": "LANTA Supercomputer",
+    "organization": "ThaiSC, NSTDA",
+    "description": "Deployment of LANTA, Thailand's flagship supercomputer with 31,744 CPU cores and 704 NVIDIA A100 GPUs. LANTA supports bioinformatics, simulations, weather forecasting, and AI research across the nation.",
+    "link": "https://thaisc.io/thaisc-resorces/lanta"
+  },
+  "instructions": [
+    "1. Copy the example structure above",
+    "2. Fill in the appropriate information",
+    "3. Add the new entry to the main hpc-timeline.json file",
+    "4. Ensure the year is a number (not a string)",
+    "5. Keep descriptions informative but concise",
+    "6. Include links to official sources when available",
+    "7. Sort entries chronologically by year"
+  ],
+  "categories": [
+    "Government Initiatives",
+    "University Systems", 
+    "Private Sector HPC",
+    "Infrastructure Milestones",
+    "Technology Upgrades",
+    "Policy & Strategy",
+    "International Collaborations",
+    "Research Achievements"
+  ],
+  "suggestedSources": [
+    "ThaiSC official documentation",
+    "NSTDA annual reports",
+    "University press releases",
+    "Academic publications on HPC in Thailand",
+    "Government technology policy documents",
+    "International HPC conference presentations by Thai institutions"
+  ]
+}

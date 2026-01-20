@@ -1,0 +1,114 @@
+[
+  {
+    "year": 1991,
+    "generation": "First Generation: The dawn of HPC",
+    "systemName": "จุดเริ่มต้น HPCC",
+    "organization": "สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (สวทช.)",
+    "description": "สวทช. จัดตั้ง High Performance Computing Center (HPCC) เพื่อสนับสนุนงานวิจัยในสาขาวิทยาศาสตร์ต่างๆ เป็นจุดเริ่มต้นของการให้บริการ HPC ในประเทศไทย",
+    "link": "https://www.nstda.or.th/"
+  },
+  {
+    "year": 1992,
+    "generation": "First Generation: The dawn of HPC",
+    "systemName": "ไทยเชื่อมต่ออินเทอร์เน็ต",
+    "organization": "จุฬาลงกรณ์มหาวิทยาลัย / NECTEC",
+    "description": "ประเทศไทยเชื่อมต่ออินเทอร์เน็ตอย่างเป็นทางการ ก่อให้เกิดเครือข่ายไทยสาร (ThaiSarn) เชื่อมโยงมหาวิทยาลัยและสถาบันวิจัย 6 แห่ง",
+    "link": "https://www.thaisarn.net/"
+  },
+  {
+    "year": 1994,
+    "generation": "First Generation: The dawn of HPC",
+    "systemName": "CRAY EL98 (ซูเปอร์คอมพิวเตอร์เครื่องแรก)",
+    "organization": "NECTEC",
+    "description": "ประเทศไทยติดตั้งซูเปอร์คอมพิวเตอร์เครื่องแรก CRAY EL98 (8 processors / 2GB DRAM) ที่ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (NECTEC)",
+    "link": ""
+  },
+  {
+    "year": 1995,
+    "generation": "First Generation: The dawn of HPC",
+    "systemName": "คอมพิวเตอร์เพื่อการวิจัยในมหาวิทยาลัย",
+    "organization": "จุฬาลงกรณ์มหาวิทยาลัย มหาวิทยาลัยเทคโนโลยีพระจอมเกล้า",
+    "description": "มหาวิทยาลัยชั้นนำเริ่มจัดตั้งศูนย์คอมพิวเตอร์เฉพาะเพื่อสนับสนุนการวิจัย (BEOWULF cluster) สนับสนุนสาขาวิศวกรรมศาสตร์และวิทยาศาสตร์",
+    "link": "https://www.chula.ac.th/th/"
+  },
+  {
+    "year": 2000,
+    "generation": "Second Generation: Grid Computing",
+    "systemName": "โครงการกริดคอมพิวติ้งแห่งชาติ",
+    "organization": "สวทช. เนคเทค และกลุ่มมหาวิทยาลัย",
+    "description": "เปิดตัวโครงการกริดคอมพิวติ้งแห่งชาติ (Thai National Grid Project) เชื่อมโยงทรัพยากรคำนวณของมหาวิทยาลัยและสถาบันวิจัย สร้างเครือข่ายความร่วมมือด้านการคำนวณ",
+    "link": ""
+  },
+  {
+    "year": 2007,
+    "generation": "Second Generation: Grid Computing",
+    "systemName": "Tera Cluster",
+    "organization": "Thai National Grid Center (TNGC)",
+    "description": "TNGC ติดตั้งระบบ 'Tera Cluster' คอมพิวเตอร์คลัสเตอร์ที่เร็วที่สุดในประเทศไทยในขณะนั้น พร้อมกับการก่อตั้งสมาคมวิทยาการและวิศวกรรมเชิงคอมพิวเตอร์ (CSEA)",
+    "link": "http://www.e-science.in.th/"
+  },
+  {
+    "year": 2011,
+    "generation": "Third Generation: Uninet2 and National E-science",
+    "systemName": "National e-Science Infrastructure",
+    "organization": "National e-Science Infrastructure Consortium",
+    "description": "ก่อตั้งภาคีโครงสร้างพื้นฐาน e-Science แห่งชาติ (5 หน่วยงานหลัก: สวทช., จุฬาฯ, มทส., มจธ., สสนก.) เพื่อพัฒนาและให้บริการ HPC ร่วมกันบนเครือข่าย UniNet",
+    "link": "http://www.e-science.in.th/"
+  },
+  {
+    "year": 2014,
+    "generation": "Third Generation: Uninet2 and National E-science",
+    "systemName": "เชื่อมต่อ CERN",
+    "organization": "National e-Science Infrastructure Consortium",
+    "description": "ประสบความสำเร็จในการเชื่อมต่อและประมวลผลข้อมูลร่วมกับเครื่องเร่งอนุภาค LHC ที่ CERN ในระดับ Tier 2/3",
+    "link": "https://cern.ch"
+  },
+  {
+    "year": 2017,
+    "generation": "Third Generation: Uninet2 and National E-science",
+    "systemName": "Chalawan HPC",
+    "organization": "สถาบันวิจัยดาราศาสตร์แห่งชาติ (NARIT)",
+    "description": "ติดตั้งระบบคลัสเตอร์ 'Chalawan' (High Performance Computing Cluster) เพื่อรองรับการคำนวณและแบบจำลองทางดาราศาสตร์ฟิสิกส์",
+    "link": "https://www.narit.or.th/"
+  },
+  {
+    "year": 2019,
+    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+    "systemName": "การก่อตั้ง ThaiSC",
+    "organization": "ศูนย์ซูเปอร์คอมพิวเตอร์แห่งชาติ สวทช. (ThaiSC)",
+    "description": "ยกระดับงานบริการ HPC สู่ระดับชาติด้วยการก่อตั้ง ThaiSC พร้อมให้บริการระบบ TARA HPC Cluster",
+    "link": "https://thaisc.io/"
+  },
+  {
+    "year": 2020,
+    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+    "systemName": "LANTA Supercomputer",
+    "organization": "ThaiSC สวทช.",
+    "description": "ติดตั้ง 'LANTA' ซูเปอร์คอมพิวเตอร์เรือธง (Cray EX) ประสิทธิภาพอันดับ 1 ในอาเซียน (ณ ขณะนั้น) เพื่อรองรับงานวิจัยขั้นสูงและการพัฒนา AI",
+    "link": "https://thaisc.io/thaisc-resorces/lanta"
+  },
+  {
+    "year": 2021,
+    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+    "systemName": "AI-HPC ในมหาวิทยาลัย",
+    "organization": "CMKL (APEX), CMU (ERAWAN)",
+    "description": "การขยายตัวของโครงสร้างพื้นฐาน AI-HPC ในมหาวิทยาลัย: ระบบ APEX ที่ CMKL และ ERAWAN ที่ มช. รองรับงานวิจัยด้าน AI และ Data Science",
+    "link": "https://hpc.cmu.ac.th/"
+  },
+  {
+    "year": 2023,
+    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+    "systemName": "AI for Everyone",
+    "organization": "Thailand AI University Consortium",
+    "description": "กระแส Generative AI ผลักดันให้เกิดความร่วมมือระดับชาติในการพัฒนาบุคลากรและโครงสร้างพื้นฐาน AI (AI University Consortium)",
+    "link": "https://th-ai.org/"
+  },
+  {
+    "year": 2024,
+    "generation": "Fourth Generation: Supercomputer & AI-HPC",
+    "systemName": "THE CRUST 2.5 & Siam AI",
+    "organization": "ปตท.สผ. / Siam AI Cloud",
+    "description": "ก้าวสำคัญของภาคเอกชน: ปตท.สผ. ติดตั้ง 'The Crust 2.5' และการเปิดตัว Siam AI Cloud ผู้ให้บริการ Cloud AI เชิงพาณิชย์",
+    "link": "https://www.pttep.com/th/home"
+  }
+]

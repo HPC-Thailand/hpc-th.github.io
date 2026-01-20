@@ -1,0 +1,180 @@
+{
+  "th": {
+    "meta": {
+      "title": "HPC Thailand - ระบบคอมพิวเตอร์ประสิทธิภาพสูง",
+      "description": "ฐานข้อมูลแบบโต้ตอบของระบบคอมพิวเตอร์ประสิทธิภาพสูงทั่วประเทศไทย ค้นหาและสำรวจ CPU cores, GPU specifications และการใช้งานวิจัย",
+      "keywords": "HPC Thailand, คอมพิวเตอร์ประสิทธิภาพสูง, GPU, CPU, วิจัย, ไทย, ซูเปอร์คอมพิวเตอร์, AI"
+    },
+    "navigation": {
+      "current": "ระบบปัจจุบัน",
+      "map": "แผนที่",
+      "dashboard": "แดชบอร์ด",
+      "timeline": "ไทม์ไลน์"
+    },
+    "header": {
+      "title": "ระบบ HPC ในประเทศไทย",
+      "description": "ภาพรวมที่ครอบคลุมของโครงสร้างพื้นฐานคอมพิวเตอร์ประสิทธิภาพสูงทั่วประเทศไทย",
+      "mapDescription": "แผนที่แบบโต้ตอบของระบบคอมพิวเตอร์ประสิทธิภาพสูงทั่วประเทศไทย",
+      "dashboardDescription": "การวิเคราะห์และข้อมูลเชิงลึกสำหรับคอมพิวเตอร์ประสิทธิภาพสูงในประเทศไทย",
+      "timelineDescription": "เดินทางผ่านวิวัฒนาการของโครงสร้างพื้นฐานคอมพิวเตอร์ประสิทธิภาพสูงในประเทศไทย จากระบบวิจัยยุคแรกเริ่มสู่ซูเปอร์คอมพิวเตอร์ที่ขับเคลื่อนด้วย AI สมัยใหม่"
+    },    "table": {
+      "systemName": "ชื่อระบบ",
+      "organization": "องค์กร",
+      "specifications": "ข้อมูลจำเพาะ",
+      "applications": "การใช้งาน",
+      "location": "สถานที่",
+      "contact": "ติดต่อ",
+      "website": "เว็บไซต์",
+      "visit": "เยี่ยมชม",
+      "consortium": "กลุ่มเครือข่าย"
+    },
+    "search": {
+      "placeholder": "ค้นหาระบบ HPC...",
+      "cityFilter": "กรองตามเมือง",
+      "allCities": "เมืองทั้งหมด",
+      "mapPlaceholder": "ค้นหาระบบ HPC บนแผนที่..."
+    },
+    "stats": {
+      "hpcSystems": "ระบบ HPC",
+      "cities": "เมือง",
+      "cpuCores": "CPU Cores",
+      "gpus": "GPUs",
+      "milestones": "ก้าวสำคัญ",
+      "years": "ปี",
+      "organizations": "องค์กร",
+      "decades": "ทศวรรษ",
+      "overview": "ภาพรวมการพัฒนา HPC",
+      "keyMetrics": "ตัวชี้วัดสำคัญ",
+      "totalSystems": "ระบบ HPC ทั้งหมด",
+      "totalCpu": "CPU Cores ทั้งหมด",
+      "totalGpu": "GPUs ทั้งหมด",
+      "averageCpu": "CPU เฉลี่ยต่อระบบ"
+    },
+    "charts": {
+      "cpuDistribution": "การกระจาย CPU Cores",
+      "gpuDistribution": "การกระจาย GPU",
+      "systemsByCity": "ระบบตามเมือง",
+      "cpuCores": "CPU Cores",
+      "gpus": "GPUs"
+    },
+    "loading": {
+      "statistics": "กำลังโหลดสถิติ HPC...",
+      "data": "กำลังโหลดข้อมูล HPC...",
+      "locations": "กำลังโหลดตำแหน่ง HPC...",
+      "timeline": "กำลังโหลดสถิติไทม์ไลน์...",
+      "general": "กำลังโหลดข้อมูล กรุณารอสักครู่..."
+    },
+    "error": {
+      "loadingData": "⚠️ เกิดข้อผิดพลาดในการโหลดข้อมูล",
+      "loadingMap": "⚠️ เกิดข้อผิดพลาดในการโหลดข้อมูลแผนที่",
+      "loadingTimeline": "⚠️ เกิดข้อผิดพลาดในการโหลดไทม์ไลน์",
+      "message": "ไม่สามารถโหลดข้อมูล HPC ได้ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตและลองใหม่อีกครั้ง",
+      "mapMessage": "ไม่สามารถโหลดข้อมูลตำแหน่ง HPC ได้",
+      "timelineMessage": "ไม่สามารถโหลดข้อมูลไทม์ไลน์ HPC ได้ กรุณาตรวจสอบการเชื่อมต่อและลองใหม่อีกครั้ง",
+      "retry": "ลองใหม่",
+      "testData": "ทดสอบ URL ข้อมูล",
+      "unavailable": "ไม่พร้อมใช้งาน",
+      "statsUnavailable": "สถิติไม่พร้อมใช้งาน"
+    },
+    "footer": {
+      "copyright": "© 2025 HPC Thailand. สงวนลิขสิทธิ์",
+      "github": "สนับสนุน HPC Thailand บน GitHub",
+      "thaisc": "เยี่ยมชม ThaiSC",
+      "escience": "กลุ่ม e-Science"
+    },
+    "timeline": {
+      "learnMore": "เรียนรู้เพิ่มเติม",
+      "sources": "ข้อมูลไทม์ไลน์รวบรวมจากแหล่งต่างๆ รวมถึงเอกสาร ThaiSC, บันทึกกลุ่มโครงสร้างพื้นฐาน e-Science แห่งชาติ, บทความทางวิชาการ และเอกสารสถาบัน",
+      "basedOn": "อ้างอิงจาก \"การสำรวจโครงสร้างพื้นฐานคอมพิวเตอร์ประสิทธิภาพสูง (HPC) ในประเทศไทย\", บันทึก ThaiSC และเอกสารกลุ่มโครงสร้างพื้นฐาน e-Science แห่งชาติ"
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "HPC Thailand - High Performance Computing Systems",
+      "description": "Interactive database of High Performance Computing systems across Thailand. Search and explore CPU cores, GPU specifications, and research applications.",
+      "keywords": "HPC Thailand, High Performance Computing, GPU, CPU, Research, Thailand, Supercomputer, AI"
+    },
+    "navigation": {
+      "current": "Current Systems",
+      "map": "View Map",
+      "dashboard": "Dashboard",
+      "timeline": "Timeline"
+    },
+    "header": {
+      "title": "HPC Systems in Thailand",
+      "description": "Comprehensive overview of High Performance Computing infrastructure across Thailand",
+      "mapDescription": "Interactive map of High Performance Computing systems across Thailand",
+      "dashboardDescription": "Analytics and insights for High Performance Computing in Thailand",
+      "timelineDescription": "Journey through the evolution of High Performance Computing infrastructure in Thailand, from early research systems to modern AI-powered supercomputers"
+    },    "table": {
+      "systemName": "System Name",
+      "organization": "Organization",
+      "specifications": "Specifications",
+      "applications": "Applications",
+      "location": "Location",
+      "contact": "Contact",
+      "website": "Website",
+      "visit": "Visit",
+      "consortium": "Consortium"
+    },
+    "search": {
+      "placeholder": "Search HPC systems...",
+      "cityFilter": "Filter by City",
+      "allCities": "All Cities",
+      "mapPlaceholder": "Search HPC systems on map..."
+    },
+    "stats": {
+      "hpcSystems": "HPC Systems",
+      "cities": "Cities",
+      "cpuCores": "CPU Cores",
+      "gpus": "GPUs",
+      "milestones": "Milestones",
+      "years": "Years",
+      "organizations": "Organizations",
+      "decades": "Decades",
+      "overview": "HPC Development Overview",
+      "keyMetrics": "Key Metrics",
+      "totalSystems": "Total HPC Systems",
+      "totalCpu": "Total CPU Cores",
+      "totalGpu": "Total GPUs",
+      "averageCpu": "Average CPU per System"
+    },
+    "charts": {
+      "cpuDistribution": "CPU Cores Distribution",
+      "gpuDistribution": "GPU Distribution",
+      "systemsByCity": "Systems by City",
+      "cpuCores": "CPU Cores",
+      "gpus": "GPUs"
+    },
+    "loading": {
+      "statistics": "Loading HPC statistics...",
+      "data": "Loading HPC data...",
+      "locations": "Loading HPC locations...",
+      "timeline": "Loading timeline statistics...",
+      "general": "Loading data, please wait..."
+    },
+    "error": {
+      "loadingData": "⚠️ Error Loading Data",
+      "loadingMap": "⚠️ Error Loading Map Data",
+      "loadingTimeline": "⚠️ Error Loading Timeline",
+      "message": "Failed to load HPC data. Please check your internet connection and try again.",
+      "mapMessage": "Failed to load HPC location data.",
+      "timelineMessage": "Unable to load HPC timeline data. Please check your connection and try again.",
+      "retry": "Retry",
+      "testData": "Test Data URL",
+      "unavailable": "Unable to display HPC systems table.",
+      "statsUnavailable": "Statistics unavailable"
+    },
+    "footer": {
+      "copyright": "© 2025 HPC Thailand. All rights reserved.",
+      "github": "Contribute HPC Thailand on GitHub",
+      "thaisc": "Visit ThaiSC",
+      "escience": "e-Science Consortium"
+    },
+    "timeline": {
+      "learnMore": "Learn More",
+      "sources": "Timeline data compiled from various sources including ThaiSC documentation, National e-Science Infrastructure Consortium records, academic publications, and institutional archives",
+      "basedOn": "Based on \"A Survey of High Performance Computing (HPC) Infrastructure in Thailand\", ThaiSC records, and National e-Science Infrastructure Consortium documentation"
+    }
+  }
+}

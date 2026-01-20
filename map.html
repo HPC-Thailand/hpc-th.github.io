@@ -1,494 +1,585 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<!DOCTYPE html    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"><html lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HPC Thailand Map - Interactive Location View</title>
-
-      .error-container {
-        background: rgba(255, 255, 255, 0.98);
-        border: 2px solid #e74c3c;
-        border-radius: 8px;
-        padding: 20px;
-        margin: 20px 0;
-        text-align: center;
-        color: #e74c3c;
-      }SEO and Social Media Meta Tags -->
-    <meta
-      name="description"
-      content="Interactive map of High Performance Computing systems across Thailand. Explore locations, specifications, and research applications."
-    />
-    <meta
-      name="keywords"
-      content="HPC Thailand Map, High Performance Computing locations, GPU, CPU, Research centers Thailand"
-    />
-    <meta
-      property="og:title"
-      content="HPC Thailand Map - Interactive Location View"
-    />
-    <meta
-      property="og:description"
-      content="Interactive map of High Performance Computing systems across Thailand"
-    />
-    <meta property="og:url" content="https://hpc.in.th/map.html" />
-
+    <title>HPC Thailand - Interactive Map</title>
+    
+    <!-- SEO and Social Media Meta Tags -->
+    <meta name="description" content="Interactive map of Thailand's HPC infrastructure with real-time system locations" />
+    <meta name="keywords" content="HPC Thailand Map, Supercomputer Locations, Interactive Visualization" />
+    
     <!-- Favicon -->
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🗺️%3C/text%3E%3C/svg%3E"
-    />
-
-    <!-- Material-UI CDN -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-      rel="stylesheet"
-    />
-
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E" />
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Leaflet CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
     <style>
-      body {
-        font-family: "Roboto", sans-serif;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        margin: 0;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      }
-      .container {
-        flex: 1;
-        margin: 0 auto;
-        max-width: 1200px;
-        padding: 20px;
-      }
-      .header {
-        text-align: center;
-        margin-bottom: 30px;
-        padding: 30px 20px;
-        background: rgba(255, 255, 255, 0.98);
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-      }
-      .header h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        color: #2c3e50;
-        font-weight: 600;
-        letter-spacing: -0.5px;
-      }
-      .header p {
-        margin: 15px 0 0 0;
-        color: #6c757d;
-        font-size: 1.1rem;
-        font-weight: 400;
-      }
-      .nav-buttons {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-      .nav-buttons a {
-        margin: 0 8px;
-        border-radius: 8px;
-        padding: 0 28px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        background: #34495e;
-        border: none;
-      }
-      .nav-buttons a:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        background: #2c3e50;
-      }
-      .nav-buttons a.active {
-        background: #2c3e50 !important;
-        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
-      }
-      #map-container {
-        height: 600px;
-        width: 100%;
-        border-radius: 12px;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-      }
-      .map-card {
-        padding: 15px;
-      }
-      .hpc-card {
-        background: rgba(255, 255, 255, 0.98);
-        border-radius: 12px;
-        padding: 25px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border-left: 4px solid #34495e;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-      }
-      .hpc-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        border-left-color: #2c3e50;
-      }
-      .hpc-card h5 {
-        color: #2c3e50;
-        margin-bottom: 15px;
-        font-weight: 600;
-        font-size: 1.4rem;
-      }
-      .hpc-info p {
-        margin: 8px 0;
-        line-height: 1.6;
-        color: #555;
-      }
-      .hpc-info strong {
-        color: #333;
-        font-weight: 600;
-      }
-      .hpc-info a.btn-small {
-        margin-top: 15px;
-        border-radius: 8px;
-        background: #34495e;
-        transition: all 0.3s ease;
-      }
-      .hpc-info a.btn-small:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(52, 73, 94, 0.3);
-        background: #2c3e50;
-      }
-      footer {
-        background: rgba(255, 255, 255, 0.98);
-        padding: 20px;
-        text-align: center;
-        margin-top: 30px;
-        border-radius: 12px 12px 0 0;
-        color: #6c757d;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-      }
-      footer a {
-        color: #34495e;
-        transition: color 0.3s ease;
-      }
-      footer a:hover {
-        color: #2c3e50;
-      }
-      /* Loading animation */
-      .loading-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 300px;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.98);
-        border-radius: 12px;
-        margin: 20px 0;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-      }
-      .loading-spinner {
-        border: 4px solid rgba(52, 73, 94, 0.3);
-        border-top: 4px solid #34495e;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-        margin-bottom: 20px;
-      }
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
+        /* Custom CSS Variables */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --background: #0f0f23;
+            --surface: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --border: #374151;
+            --glow: #3b82f650;
         }
-        100% {
-          transform: rotate(360deg);
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
-      .loading-text {
-        color: #666;
-        font-size: 1.1rem;
-        text-align: center;
-      }
-      .error-container {
-        background: rgba(244, 67, 54, 0.1);
-        border: 2px solid #f44336;
-        border-radius: 10px;
-        padding: 20px;
-        margin: 20px 0;
-        text-align: center;
-        color: #f44336;
-      }
-      /* Responsive design */
-      @media (max-width: 768px) {
-        .container {
-          padding: 10px;
+          body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background: linear-gradient(135deg, var(--background) 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
         }
-        .header h1 {
-          font-size: 2rem;
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        #map-container {
-          height: 400px;
+        
+        ::-webkit-scrollbar-track {
+            background: var(--surface);
         }
-        .nav-buttons a {
-          margin: 5px;
-          padding: 0 20px;
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
         }
-      }
+        
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Magic UI inspired components */
+        .magic-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .magic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .magic-card:hover::before {
+            left: 100%;
+        }
+        
+        .magic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 60px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Navigation styles */
+        .nav-pill {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-pill:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .nav-pill.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        /* Map container */
+        .map-container {
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+          /* Custom marker styles */
+        .custom-marker {
+            background: transparent !important;
+            border: none !important;
+        }
+        
+        /* Custom popup */
+        .leaflet-popup-content-wrapper {
+            background: linear-gradient(135deg, rgba(15, 15, 35, 0.95), rgba(26, 26, 46, 0.95));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+          .leaflet-popup-content {
+            color: white;
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+        
+        .leaflet-popup-tip {
+            background: rgba(15, 15, 35, 0.95);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Search bar */
+        .magic-search {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 12px 20px;
+            color: white;
+            width: 100%;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .magic-search:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .magic-search::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        /* Spec tags */
+        .spec-tag {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin: 2px;
+            display: inline-block;
+        }
+        
+        /* System cards */
+        .system-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .system-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+        
+        .system-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1>HPC Systems in Thailand</h1>
-        <p>
-          Interactive map of High Performance Computing systems across Thailand
-        </p>
-      </div>
-
-      <div class="nav-buttons">
-        <a href="index.html" class="waves-effect waves-light btn">
-          <i class="material-icons left">list</i>View Table
-        </a>
-        <a
-          href="map.html"
-          class="waves-effect waves-light btn active"
-        >
-          <i class="material-icons left">map</i>View Map
-        </a>
-        <a
-          href="dashboard.html"
-          class="waves-effect waves-light btn"
-        >
-          <i class="material-icons left">dashboard</i>Dashboard
-        </a>
-      </div>
-
-      <div id="map-container"></div>
-
-      <!-- Search HPC Systems -->
-      <div
-        style="
-          background: rgba(255, 255, 255, 0.98);
-          border-radius: 12px;
-          padding: 20px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-          margin-bottom: 20px;
-          border: 1px solid rgba(0, 0, 0, 0.05);
-        "
-      >
-        <div class="input-field">
-          <i class="material-icons prefix">search</i>
-          <input type="text" id="hpc-search" onkeyup="searchHPC()" />
-          <label for="hpc-search">Search HPC systems on map...</label>
-        </div>
-      </div>
-
-      <!-- HPC Cards Grid -->
-      <div class="row" id="hpc-list">
-        <div class="loading-container">
-          <div class="loading-spinner"></div>
-          <div class="loading-text">Loading HPC locations...</div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <p>© 2025 HPC Thailand. All rights reserved.</p>
-      <p>
-        <a
-          href="https://github.com/HPC-Thailand/hpc-th.github.io"
-          target="_blank"
-          >Contribute HPC Thailand on GitHub</a
-        >
-      </p>
-    </footer>
-
-    <!-- JavaScript libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize arrays to store markers and cards
-        let allMarkers = [];
-        let allCards = [];
-
-        // Initialize map centered on Thailand
-        const map = L.map("map-container").setView([13.7563, 100.5018], 6);
-
-        // Add OpenStreetMap tile layer
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
-
-        // Fetch HPC data
-        fetch("./data/hpc-locations.json")
-          .then((response) => {
-            console.log("Fetch response status:", response.status);
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-          })
-          .then((data) => {
-            console.log(
-              "HPC data loaded successfully:",
-              data.length,
-              "systems"
-            );
-            // Clear loading state
-            document.getElementById("hpc-list").innerHTML = "";
-
-            // Process each HPC location
-            data.forEach((hpc, index) => {
-              // Convert coordinates from [lng, lat] to [lat, lng] for Leaflet
-              const coords = [
-                hpc.location.coordinates[1],
-                hpc.location.coordinates[0],
-              ];
-
-              // Create custom marker with number - single clean marker
-              const customIcon = L.divIcon({
-                className: 'hpc-marker',
-                html: `<div style="width: 32px; height: 32px; border-radius: 50%; background: #34495e; border: 2px solid white; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">${
-                  index + 1
-                }</div>`,
-                iconSize: [32, 32],
-                iconAnchor: [16, 32],
-              });
-
-              const marker = L.marker(coords, { icon: customIcon }).addTo(map);
-              allMarkers.push(marker);
-
-              // Enhanced popup with more information
-              marker.bindPopup(`
-                <div style="min-width: 250px;">
-                  <h6 style="margin: 0 0 10px 0; color: #2c3e50; font-weight: 600;">${hpc.name}</h6>
-                  <p style="margin: 5px 0;"><strong>Organization:</strong> ${hpc.organization}</p>
-                  <p style="margin: 5px 0;"><strong>Specs:</strong> ${hpc.specs}</p>
-                  <p style="margin: 5px 0;"><strong>Applications:</strong> ${hpc.applications}</p>
-                  <p style="margin: 5px 0;"><strong>Location:</strong> ${hpc.location.city}</p>
-                  <p style="margin: 10px 0 5px 0;">
-                    <a href="${hpc.website}" target="_blank" style="background: #34495e; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; display: inline-block; font-size: 12px; transition: background 0.3s ease;" onmouseover="this.style.background='#2c3e50'" onmouseout="this.style.background='#34495e'">Visit Website</a>
-                  </p>
+</head>
+<body>
+    <!-- Main container -->
+    <div class="min-h-screen relative">
+        <!-- Header -->
+        <header class="pt-8 pb-12">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Navigation -->
+                <nav class="flex justify-center mb-12">                    <div class="flex space-x-2 p-2 glass rounded-full">
+                        <a href="index.html" class="nav-pill px-6 py-3 rounded-full text-sm font-medium transition-all">
+                            <span class="material-icons-round text-sm mr-2">table_view</span>
+                            Systems
+                        </a>
+                        <a href="map.html" class="nav-pill active px-6 py-3 rounded-full text-sm font-medium transition-all">
+                            <span class="material-icons-round text-sm mr-2">map</span>
+                            Map
+                        </a>
+                        <a href="dashboard.html" class="nav-pill px-6 py-3 rounded-full text-sm font-medium transition-all">
+                            <span class="material-icons-round text-sm mr-2">analytics</span>
+                            Analytics
+                        </a>
+                        <a href="timeline.html" class="nav-pill px-6 py-3 rounded-full text-sm font-medium transition-all">
+                            <span class="material-icons-round text-sm mr-2">timeline</span>
+                            Timeline
+                        </a>
+                    </div>
+                </nav>
+                
+                <!-- Hero section -->
+                <div class="text-center mb-12">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
+                        <span class="material-icons-round text-xs mr-2">location_on</span>
+                        Interactive Infrastructure Map
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                        <span class="gradient-text">HPC Locations</span><br>
+                        <span class="text-white">Across Thailand</span>
+                    </h1>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                        Explore the geographical distribution of Thailand's high-performance computing infrastructure.
+                    </p>
                 </div>
-              `);
-
-              // Create card for each HPC
-              createHPCCard(hpc, index + 1);
-            });
-          })
-          .catch((error) => {
-            console.error("Error loading HPC data:", error);
-            console.error("Error details:", {
-              message: error.message,
-              stack: error.stack,
-              currentURL: window.location.href,
-            });
-
-            document.getElementById("hpc-list").innerHTML = `
-              <div class="col s12">
-                <div class="error-container">
-                  <h5>⚠️ Error Loading Map Data</h5>
-                  <p>Failed to load HPC location data.</p>
-                  <p><strong>Error:</strong> ${error.message}</p>
-                  <p><strong>URL:</strong> ${window.location.href}</p>
-                  <button onclick="location.reload()" class="waves-effect waves-light btn" style="background: #e74c3c;">
-                    <i class="material-icons left">refresh</i>Retry
-                  </button>
-                  <button onclick="window.open('./data/hpc-locations.json', '_blank')" class="waves-effect waves-light btn" style="margin-left: 10px; background: #34495e;">
-                    <i class="material-icons left">data_usage</i>Test Data URL
-                  </button>
-                </div>
-              </div>
-            `;
-            // Also show error on map
-            const errorPopup = L.popup()
-              .setLatLng([13.7563, 100.5018]) // Bangkok coordinates
-              .setContent(
-                '<div style="text-align: center;"><h6 style="color: #e74c3c;">Error Loading Data</h6><p>Unable to load HPC locations</p></div>'
-              )
-              .openOn(map);
-          });
-
-        // Function to create cards for each HPC
-        function createHPCCard(hpc, number) {
-          const cardDiv = document.createElement("div");
-          cardDiv.className = "col s12 m6 l4";
-          cardDiv.innerHTML = `
-            <div class="hpc-card">
-              <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                <div style="width: 28px; height: 28px; border-radius: 50%; background: #34495e; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; margin-right: 15px; font-size: 14px;">${number}</div>
-                <h5 style="margin: 0;">${hpc.name}</h5>
-              </div>
-              <div class="hpc-info">
-                <p><strong>Organization:</strong> ${hpc.organization}</p>
-                <p><strong>Specifications:</strong> ${hpc.specs}</p>
-                <p><strong>Applications:</strong> ${hpc.applications}</p>
-                <p><strong>Location:</strong> ${hpc.location.city}</p>
-                <p><strong>Contact:</strong> ${hpc.contact}</p>
-                <a href="${hpc.website}" target="_blank" class="waves-effect waves-light btn-small blue darken-2">Visit Website</a>
-              </div>
             </div>
-          `;
-          document.getElementById("hpc-list").appendChild(cardDiv);
-          allCards.push(cardDiv);
-
-          // Add click listener to center map on this HPC when card is clicked
-          cardDiv
-            .querySelector(".hpc-card")
-            .addEventListener("click", function () {
-              const coords = [
-                hpc.location.coordinates[1],
-                hpc.location.coordinates[0],
-              ];
-              map.setView(coords, 12);
-              // Find the corresponding marker and open its popup
-              map.eachLayer((layer) => {
-                if (layer instanceof L.Marker) {
-                  const pos = layer.getLatLng();
-                  if (
-                    Math.abs(pos.lat - coords[0]) < 0.001 &&
-                    Math.abs(pos.lng - coords[1]) < 0.001
-                  ) {
-                    layer.openPopup();
-                  }
-                }
-              });
+        </header>
+        
+        <!-- Search Section -->
+        <section class="mb-8">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-md mx-auto">
+                    <div class="relative">
+                        <span class="material-icons-round absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Search HPC systems..." 
+                            class="magic-search pl-12"
+                            autocomplete="off"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Map and Systems Grid -->
+        <section class="mb-16">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Map Column -->
+                    <div class="lg:col-span-2">
+                        <div class="magic-card p-6">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-2xl font-bold text-white flex items-center">
+                                    <span class="material-icons-round mr-3 text-blue-400">map</span>
+                                    HPC Infrastructure Map
+                                </h2>
+                                <div class="text-sm text-gray-400">
+                                    <span id="map-count">Loading...</span>
+                                </div>
+                            </div>
+                            <div id="map-container" class="map-container"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Systems List Column -->
+                    <div class="lg:col-span-1">
+                        <div class="magic-card p-6">
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                                <span class="material-icons-round mr-3 text-purple-400">computer</span>
+                                Systems List
+                            </h3>
+                            <div id="systems-list" class="space-y-4 max-h-96 overflow-y-auto">
+                                <!-- Systems will be populated by JavaScript -->
+                                <div class="text-center py-8 text-gray-400">
+                                    <span class="material-icons-round animate-spin text-2xl mb-2">refresh</span>
+                                    <div>Loading systems...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="py-12 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
+                        © 2025 HPC Thailand. Open source project for the community.
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="https://github.com/HPC-Thailand/hpc-th.github.io" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <span class="text-sm">GitHub</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <span class="text-sm">API</span>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <span class="text-sm">Documentation</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Global variables
+        let map;
+        let allData = [];
+        let filteredData = [];
+        let markers = [];
+        
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', async function() {
+            initializeMap();
+            await loadHPCData();
+            setupSearch();
+            initializeAnimations();
+        });
+        
+        // Initialize the map
+        function initializeMap() {
+            map = L.map('map-container', {
+                center: [13.7563, 100.5018], // Thailand center
+                zoom: 6,
+                zoomControl: false,
+                scrollWheelZoom: true,
+                doubleClickZoom: true,
+                touchZoom: true
+            });
+            
+            // Add custom zoom control
+            L.control.zoom({
+                position: 'topright'
+            }).addTo(map);
+            
+            // Add dark themed tile layer
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+        }
+        
+        // Load HPC data
+        async function loadHPCData() {
+            try {
+                const response = await fetch('./data/hpc-locations.json');
+                const data = await response.json();
+                
+                allData = data;
+                filteredData = data;
+                
+                addMarkersToMap(data);
+                displaySystemsList(data);
+                
+                document.getElementById('map-count').textContent = `${data.length} systems mapped`;
+                
+            } catch (error) {
+                console.error('Error loading HPC data:', error);
+                displayError();
+            }
+        }
+        
+        // Add markers to map
+        function addMarkersToMap(data) {
+            // Clear existing markers
+            markers.forEach(marker => map.removeLayer(marker));
+            markers = [];
+            
+            data.forEach((hpc, index) => {
+                const coords = [hpc.location.coordinates[1], hpc.location.coordinates[0]]; // [lat, lng]
+                  // Create custom marker
+                const customIcon = L.divIcon({
+                    className: 'custom-marker',
+                    html: `<div style="width: 40px; height: 40px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border: 3px solid white; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px; box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4); cursor: pointer;">${index + 1}</div>`,
+                    iconSize: [40, 40],
+                    iconAnchor: [20, 20]
+                });
+                
+                const marker = L.marker(coords, { icon: customIcon }).addTo(map);
+                
+                // Create popup content
+                const popupContent = `
+                    <div style="min-width: 280px; padding: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                            <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px; margin-right: 12px;">${index + 1}</div>
+                            <h3 style="margin: 0; color: #3b82f6; font-weight: 600; font-size: 18px;">${hpc.name}</h3>
+                        </div>
+                        <div style="margin-bottom: 8px;"><strong style="color: #8b5cf6;">Organization:</strong> <span style="color: #e2e8f0;">${hpc.organization}</span></div>
+                        ${(hpc.consortium && hpc.consortium.length > 0) ? `<div style="margin-bottom: 8px;"><strong style="color: #8b5cf6;">Consortium:</strong> ${hpc.consortium.map(c => `<span style="background: #8b5cf6; color: white; padding: 2px 8px; border-radius: 12px; margin: 2px; font-size: 11px; display: inline-block;">${c}</span>`).join(' ')}</div>` : ''}
+                        <div style="margin-bottom: 8px;"><strong style="color: #8b5cf6;">Specs:</strong> <div style="margin-top: 4px;">${formatSpecs(hpc.specs)}</div></div>
+                        <div style="margin-bottom: 8px;"><strong style="color: #8b5cf6;">Applications:</strong> <span style="color: #e2e8f0;">${hpc.applications}</span></div>
+                        <div style="margin-bottom: 12px;"><strong style="color: #8b5cf6;">Location:</strong> <span style="color: #e2e8f0;">${hpc.location.city}</span></div>
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <span style="color: #94a3b8; font-size: 12px;">${hpc.contact}</span>
+                            <a href="${hpc.website}" target="_blank" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 6px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; display: inline-flex; align-items: center;">
+                                <span style="margin-right: 4px;">Visit</span>
+                                <span class="material-icons-round" style="font-size: 14px;">open_in_new</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                marker.bindPopup(popupContent);
+                markers.push(marker);
             });
         }
-
-        // Search functionality
-        window.searchHPC = function () {
-          const query = document
-            .getElementById("hpc-search")
-            .value.toLowerCase();
-          const cards = document.querySelectorAll(".hpc-card");
-          cards.forEach((card) => {
-            const text = card.innerText.toLowerCase();
-            if (text.includes(query)) {
-              card.parentElement.style.display = ""; // Show card
-            } else {
-              card.parentElement.style.display = "none"; // Hide card
+        
+        // Format specs for display
+        function formatSpecs(specs) {
+            if (!specs) return '<span class="spec-tag">N/A</span>';
+            
+            const tags = [];
+            
+            // CPU information
+            if (specs.cpu) {
+                tags.push(`<span class="spec-tag">CPU: ${specs.cpu.type || 'N/A'}</span>`);
+                tags.push(`<span class="spec-tag">${(specs.cpu.cores || 0).toLocaleString()} cores</span>`);
             }
-          });
-        };
-      });
+            
+            // GPU information
+            if (specs.gpu) {
+                tags.push(`<span class="spec-tag">GPU: ${specs.gpu.type || 'N/A'}</span>`);
+                tags.push(`<span class="spec-tag">${specs.gpu.count || 0} units</span>`);
+            }
+            
+            return tags.join(' ');
+        }
+        
+        // Display systems list
+        function displaySystemsList(data) {
+            const systemsList = document.getElementById('systems-list');
+            systemsList.innerHTML = '';
+            
+            data.forEach((hpc, index) => {
+                const systemCard = document.createElement('div');
+                systemCard.className = 'system-card';
+                systemCard.onclick = () => {
+                    const coords = [hpc.location.coordinates[1], hpc.location.coordinates[0]];
+                    map.setView(coords, 10);
+                    markers[index].openPopup();
+                };
+                
+                const consortiumBadges = (hpc.consortium || []).map(c => 
+                    `<span style="background: #8b5cf6; color: white; padding: 2px 6px; border-radius: 8px; font-size: 10px; margin-right: 4px;">${c}</span>`
+                ).join('');
+                
+                systemCard.innerHTML = `
+                    <div class="system-number">${index + 1}</div>
+                    <h4 class="text-blue-400 font-semibold text-lg mb-2">${hpc.name}</h4>
+                    <p class="text-gray-300 text-sm mb-2">${hpc.organization}</p>
+                    ${consortiumBadges ? `<div class="mb-2">${consortiumBadges}</div>` : ''}
+                    <div class="flex items-center text-gray-400 text-sm mb-2">
+                        <span class="material-icons-round text-xs mr-1">location_on</span>
+                        ${hpc.location.city}
+                    </div>                    <div class="text-gray-400 text-xs">
+                        ${hpc.specs && hpc.specs.cpu ? `${(hpc.specs.cpu.cores || 0).toLocaleString()} CPU cores` : 'N/A'} • 
+                        ${hpc.specs && hpc.specs.gpu ? `${hpc.specs.gpu.count || 0} GPUs` : 'N/A'}
+                    </div>
+                `;
+                
+                systemsList.appendChild(systemCard);
+            });
+        }
+        
+        // Setup search functionality
+        function setupSearch() {
+            const searchInput = document.getElementById('search-input');
+            
+            searchInput.addEventListener('input', function(e) {
+                const query = e.target.value.toLowerCase().trim();
+                
+                if (query === '') {
+                    filteredData = allData;
+                } else {
+                    filteredData = allData.filter(hpc => 
+                        hpc.name.toLowerCase().includes(query) ||
+                        hpc.organization.toLowerCase().includes(query) ||
+                        hpc.applications.toLowerCase().includes(query) ||
+                        hpc.location.city.toLowerCase().includes(query) ||
+                        (hpc.consortium || []).some(c => c.toLowerCase().includes(query))
+                    );
+                }
+                
+                addMarkersToMap(filteredData);
+                displaySystemsList(filteredData);
+                document.getElementById('map-count').textContent = `${filteredData.length} system${filteredData.length !== 1 ? 's' : ''} mapped`;
+            });
+        }
+        
+        // Initialize GSAP animations
+        function initializeAnimations() {
+            gsap.from('.magic-card', {
+                duration: 0.8,
+                y: 50,
+                opacity: 0,
+                stagger: 0.2,
+                ease: 'power2.out'
+            });
+            
+            gsap.from('.system-card', {
+                duration: 0.6,
+                x: 30,
+                opacity: 0,
+                stagger: 0.1,
+                delay: 0.5,
+                ease: 'power2.out'
+            });
+        }
+        
+        // Display error message
+        function displayError() {
+            const systemsList = document.getElementById('systems-list');
+            
+            systemsList.innerHTML = `
+                <div class="text-center py-12">
+                    <span class="material-icons-round text-red-400 text-3xl mb-4">error</span>
+                    <h3 class="text-lg font-semibold text-red-400 mb-2">Failed to load data</h3>
+                    <p class="text-gray-400 text-sm">Please check your connection and try again.</p>
+                    <button onclick="location.reload()" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors text-sm">
+                        <span class="material-icons-round text-xs mr-1">refresh</span>
+                        Retry
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('map-count').textContent = 'Error loading data';
+        }
     </script>
-  </body>
+</body>
 </html>
