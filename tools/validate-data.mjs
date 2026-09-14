@@ -8,7 +8,7 @@
  * break the site: missing ids, broken bilingual strings, dangling era refs.
  */
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -171,6 +171,71 @@ function checkEvents() {
     if (Number.isNaN(Date.parse(e.start))) fail(file, `${at}: start is not a date`);
     if (e.end && Number.isNaN(Date.parse(e.end))) fail(file, `${at}: end is not a date`);
     if (e.end && Date.parse(e.end) < Date.parse(e.start)) fail(file, `${at}: end is before start`);
+    if (e.url) {
+      try { new URL(e.url); } catch { fail(file, `${at}: url is not a URL`); }
+    }
+    if (e.image) {
+      if (e.image.startsWith('/')) fail(file, `${at}: image must be relative to the site root`);
+      else if (!existsSync(join(root, e.image))) fail(file, `${at}: image not found — ${e.image}`);
+    }
+  }
+}
+
+/* ------------------------------------------------------------ reference */
+
+function checkReference() {
+  const file = 'data/reference.json';
+  const doc = read(file);
+  if (!doc) return;
+
+  const catIds = new Set();
+  for (const c of doc.categories ?? []) {
+    if (!SLUG.test(c.id ?? '')) fail(file, `category id "${c.id}" is not a slug`);
+    if (catIds.has(c.id)) fail(file, `duplicate category id "${c.id}"`);
+    catIds.add(c.id);
+    checkI18n(file, `category ${c.id}.label`, c.label);
+    checkI18n(file, `category ${c.id}.blurb`, c.blurb);
+  }
+
+  const FORMATS = new Set(['pdf', 'image', 'html', 'link']);
+  const seen = new Set();
+
+  for (const d of doc.documents ?? []) {
+    const at = `document ${d.id}`;
+    if (!SLUG.test(d.id ?? '')) fail(file, `${at}: id is not a slug`);
+    if (seen.has(d.id)) fail(file, `${at}: duplicate id`);
+    seen.add(d.id);
+
+    if (!catIds.has(d.category)) fail(file, `${at}: category "${d.category}" is not defined`);
+    if (!FORMATS.has(d.format)) fail(file, `${at}: unknown format "${d.format}"`);
+    checkI18n(file, `${at}.title`, d.title);
+    checkI18n(file, `${at}.description`, d.description, false);
+
+    if (!d.file && !d.url) fail(file, `${at}: needs either a file or a url`);
+    if (d.file && d.url) fail(file, `${at}: has both file and url — pick one`);
+
+    if (d.url) {
+      try { new URL(d.url); } catch { fail(file, `${at}: url is not a URL`); }
+    }
+
+    if (d.file) {
+      if (d.file.startsWith('/')) fail(file, `${at}: file must be relative to the site root`);
+      const abs = join(root, d.file);
+      if (!existsSync(abs)) {
+        fail(file, `${at}: file not found — ${d.file}`);
+      } else {
+        const { size } = statSync(abs);
+        // GitHub rejects any pushed file over 100 MB outright.
+        if (size > 100 * 1024 * 1024) {
+          fail(file, `${at}: ${(size / 1024 / 1024).toFixed(0)} MB exceeds GitHub's 100 MB file limit — host it elsewhere and use \`url\``);
+        } else if (size > 40 * 1024 * 1024) {
+          warn(file, `${at}: ${(size / 1024 / 1024).toFixed(0)} MB is large for a Pages download`);
+        }
+        if (d.bytes && d.bytes !== size) {
+          warn(file, `${at}: bytes says ${d.bytes} but the file is ${size}`);
+        }
+      }
+    }
   }
 }
 
@@ -180,6 +245,7 @@ checkUI();
 checkTimeline();
 checkSystems();
 checkEvents();
+checkReference();
 
 warnings.forEach((w) => console.warn(`warn  ${w}`));
 errors.forEach((e) => console.error(`error ${e}`));
