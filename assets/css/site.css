@@ -1032,6 +1032,171 @@ pre.code {
   .doc-action { grid-column: 2; justify-self: start; margin-top: 4px; }
 }
 
+/* Document viewer ------------------------------------------------ */
+
+.viewer {
+  width: min(1280px, 95vw);
+  max-width: 95vw;
+  height: min(92vh, 1100px);
+  max-height: 92vh;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.viewer::backdrop { background: rgba(8, 15, 26, .78); backdrop-filter: blur(3px); }
+.viewer[open] { display: flex; flex-direction: column; }
+
+.viewer-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+  flex: none;
+}
+.viewer-heading { min-width: 0; margin-inline-end: auto; }
+.viewer-heading strong {
+  display: block;
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.viewer-heading span { font-size: .76rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.viewer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease);
+}
+.viewer-btn:hover {
+  text-decoration: none;
+  background: var(--brand-50);
+  color: var(--brand-600);
+  border-color: var(--brand-200);
+}
+.viewer-btn svg { width: 15px; height: 15px; }
+.viewer-close { background: var(--brand); color: #fff; border-color: var(--brand); }
+.viewer-close:hover { background: var(--brand-600); color: #fff; border-color: var(--brand-600); }
+:root[data-theme="dark"] .viewer-close,
+:root[data-theme="dark"] .viewer-close:hover { color: #08111d; }
+
+.viewer-paging {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  padding: 3px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.viewer-icon {
+  appearance: none;
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.viewer-icon:hover { background: var(--brand-50); color: var(--brand-600); }
+.viewer-icon svg { width: 15px; height: 15px; }
+.viewer-page {
+  font-size: .78rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 52px;
+  text-align: center;
+}
+.viewer-sep { width: 1px; height: 18px; background: var(--line); margin-inline: 4px; }
+
+.viewer-stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: var(--bg-alt);
+  display: grid;
+}
+.viewer-stage > * { grid-area: 1 / 1; }
+.viewer-stage > iframe,
+.viewer-stage > img {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.viewer-stage > img { object-fit: contain; background: #fff; }
+
+.pdf-stage {
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 16px 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+.pdf-page {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .18), 0 8px 24px -12px rgba(0, 0, 0, .3);
+  flex: none;
+  /* Centres while it fits, and stays fully reachable once zoomed past the
+     stage width — `align-items: center` would clip the left edge instead. */
+  margin-inline: auto;
+}
+.pdf-page canvas { display: block; border-radius: 3px; }
+
+.viewer-status {
+  align-self: center;
+  justify-self: center;
+  margin: 0;
+  padding: 0 32px;
+  max-width: 46ch;
+  text-align: center;
+  font-size: .9rem;
+  color: var(--muted);
+  z-index: 2;
+}
+
+@media (max-width: 860px) {
+  .viewer { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; border: 0; }
+  .viewer-bar { flex-wrap: wrap; row-gap: 8px; padding: 10px 12px; }
+  /* Title on its own row, every control on the next one. */
+  .viewer-heading { flex: 1 0 100%; order: -1; }
+  .viewer-heading strong { font-size: .88rem; white-space: normal; }
+  .viewer-btn span { display: none; }
+  .viewer-btn { padding: 7px 10px; }
+  .viewer-close { margin-inline-start: auto; }
+  .viewer-page { min-width: 44px; font-size: .74rem; }
+  .pdf-stage { padding: 10px 0 18px; gap: 10px; }
+}
+
+@media (max-width: 560px) {
+  /* The reader and the download button already cover this. */
+  #viewer-tab { display: none; }
+}
+
 /* ============================================================
    Events
    ============================================================ */

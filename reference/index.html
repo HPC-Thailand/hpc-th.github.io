@@ -69,6 +69,53 @@
   </section>
 </main>
 
+<dialog class="viewer" id="viewer" aria-labelledby="viewer-title">
+  <header class="viewer-bar">
+    <div class="viewer-heading">
+      <strong id="viewer-title"></strong>
+      <span id="viewer-meta"></span>
+    </div>
+
+    <div class="viewer-paging" id="viewer-paging">
+      <button type="button" class="viewer-icon" id="viewer-prev" aria-label="Previous page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <span class="viewer-page" id="viewer-page">–</span>
+      <button type="button" class="viewer-icon" id="viewer-next" aria-label="Next page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+      <span class="viewer-sep"></span>
+      <button type="button" class="viewer-icon" id="viewer-zoom-out" aria-label="Zoom out">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M20 20l-3.5-3.5"/></svg>
+      </button>
+      <span class="viewer-page" id="viewer-zoom">100%</span>
+      <button type="button" class="viewer-icon" id="viewer-zoom-in" aria-label="Zoom in">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M11 8v6M20 20l-3.5-3.5"/></svg>
+      </button>
+    </div>
+
+    <a class="viewer-btn" id="viewer-tab" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg>
+      <span data-i18n="reference.openNewTab"></span>
+    </a>
+    <a class="viewer-btn" id="viewer-download">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 21h16"/></svg>
+      <span data-i18n="reference.download"></span>
+    </a>
+    <button type="button" class="viewer-btn viewer-close" id="viewer-close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      <span data-i18n="reference.close"></span>
+    </button>
+  </header>
+
+  <div class="viewer-stage">
+    <p class="viewer-status" id="viewer-status" hidden></p>
+    <div class="pdf-stage" id="pdf-stage" hidden></div>
+    <iframe id="viewer-frame" title="Document" src="about:blank" hidden></iframe>
+    <img id="viewer-image" src="" alt="" hidden>
+  </div>
+</dialog>
+
 <footer class="site-footer" id="site-footer"></footer>
 <script type="module" src="/assets/js/reference.js"></script>
 </body>

@@ -8,7 +8,10 @@
   "categories": [
     {
       "id": "grid",
-      "label": { "th": "ยุคกริด — ThaiGrid & TNGC", "en": "The grid era — ThaiGrid & TNGC" },
+      "label": {
+        "th": "ยุคกริด — ThaiGrid & TNGC",
+        "en": "The grid era — ThaiGrid & TNGC"
+      },
       "blurb": {
         "th": "เอกสารนำเสนอจากยุคที่ประเทศไทยสร้างระบบกริดเชื่อมมหาวิทยาลัยเข้าด้วยกัน",
         "en": "Presentations from the period when Thailand built a national grid linking its universities."
@@ -16,7 +19,10 @@
     },
     {
       "id": "escience",
-      "label": { "th": "National e-Science Infrastructure Consortium", "en": "National e-Science Infrastructure Consortium" },
+      "label": {
+        "th": "National e-Science Infrastructure Consortium",
+        "en": "National e-Science Infrastructure Consortium"
+      },
       "blurb": {
         "th": "รายงานประจำปีของคอนซอร์เทียม — โฮสต์อยู่ที่ e-science.in.th ลิงก์ไปยังต้นฉบับโดยตรง",
         "en": "The consortium's annual reports — hosted at e-science.in.th; these link straight to the source."
@@ -24,7 +30,10 @@
     },
     {
       "id": "systems",
-      "label": { "th": "ระบบและคลัสเตอร์", "en": "Systems & clusters" },
+      "label": {
+        "th": "ระบบและคลัสเตอร์",
+        "en": "Systems & clusters"
+      },
       "blurb": {
         "th": "เอกสารเฉพาะเครื่อง ตั้งแต่ PIRUN ยุคบุกเบิกจนถึง TARA และ Krypton",
         "en": "Machine-specific documents, from the pioneering PIRUN through to TARA and Krypton."
@@ -32,7 +41,10 @@
     },
     {
       "id": "national",
-      "label": { "th": "ภาพรวมระดับประเทศ", "en": "National landscape" },
+      "label": {
+        "th": "ภาพรวมระดับประเทศ",
+        "en": "National landscape"
+      },
       "blurb": {
         "th": "สถานะและทิศทาง HPC / AI ของประเทศไทย จากเวทีวิชาการและการสำรวจ",
         "en": "The state and direction of HPC and AI in Thailand, from conference sessions and surveys."
@@ -40,7 +52,10 @@
     },
     {
       "id": "research",
-      "label": { "th": "งานวิจัย", "en": "Research papers" },
+      "label": {
+        "th": "งานวิจัย",
+        "en": "Research papers"
+      },
       "blurb": {
         "th": "บทความวิชาการที่เกี่ยวข้องกับ HPC ในบริบทของประเทศไทย",
         "en": "Academic papers relating to HPC in a Thai context."
@@ -48,7 +63,10 @@
     },
     {
       "id": "web",
-      "label": { "th": "หน้าเว็บที่บันทึกไว้", "en": "Archived web pages" },
+      "label": {
+        "th": "หน้าเว็บที่บันทึกไว้",
+        "en": "Archived web pages"
+      },
       "blurb": {
         "th": "สำเนาหน้าเว็บที่เก็บไว้กันสูญหาย เนื้อหาตามต้นฉบับ ณ วันที่บันทึก",
         "en": "Saved copies of web pages, preserved as they stood on the day they were archived."
@@ -57,6 +75,96 @@
   ],
   "documents": [
     {
+      "id": "access-grid-thailand",
+      "category": "grid",
+      "title": {
+        "th": "Access Grid in Thailand",
+        "en": "Access Grid in Thailand"
+      },
+      "description": {
+        "th": "การนำ Access Grid มาใช้ในประเทศไทย นำเสนอที่ Access Grid Workshop ในการประชุม APAN เมืองปูซาน เกาหลีใต้ สิงหาคม 2546",
+        "en": "Deploying Access Grid in Thailand — presented at the Access Grid Workshop, APAN meeting, Busan, South Korea, August 2003."
+      },
+      "file": "reference/docs/Access Grid in Thailand.pdf",
+      "format": "pdf",
+      "pages": 13,
+      "bytes": 479404,
+      "tags": [
+        "Access Grid",
+        "Collaboration"
+      ],
+      "year": 2003,
+      "author": "Putchong Uthayopas"
+    },
+    {
+      "id": "opensce",
+      "category": "grid",
+      "title": {
+        "th": "OpenSCE — Middleware and Tools set for Cluster and Grid System",
+        "en": "OpenSCE — Middleware and Tools set for Cluster and Grid System"
+      },
+      "description": {
+        "th": "ชุดมิดเดิลแวร์และเครื่องมือสำหรับคลัสเตอร์และกริดที่พัฒนาในประเทศไทย ต่อยอดจากงาน SMILE นำเสนอที่ Gridbus2003 มหาวิทยาลัยเมลเบิร์น",
+        "en": "A Thai-developed middleware and tool set for clusters and grids, growing out of the SMILE work — presented at Gridbus2003, University of Melbourne."
+      },
+      "file": "reference/docs/OpenSCE Middleware and Tools set  for Cluster and Grid System.pdf",
+      "format": "pdf",
+      "pages": 43,
+      "bytes": 1357119,
+      "tags": [
+        "OpenSCE",
+        "SMILE",
+        "KU",
+        "Open Source"
+      ],
+      "year": 2003,
+      "author": "Putchong Uthayopas"
+    },
+    {
+      "id": "gistda-grid",
+      "category": "grid",
+      "title": {
+        "th": "Activities on Grid Technology at GISTDA",
+        "en": "Activities on Grid Technology at GISTDA"
+      },
+      "author": "Pakorn Apaphant, Ph.D.",
+      "description": {
+        "th": "กิจกรรมด้านเทคโนโลยีกริดของ GISTDA นำเสนอในการประชุม 18th WGISS ณ กรุงปักกิ่ง กันยายน 2547",
+        "en": "GISTDA's grid technology work, presented at the 18th WGISS Meeting in Beijing, September 2004."
+      },
+      "file": "reference/docs/Activities on Grid Technology at GISTDA.pdf",
+      "format": "pdf",
+      "pages": 13,
+      "bytes": 460525,
+      "tags": [
+        "GISTDA",
+        "Grid"
+      ],
+      "year": 2004
+    },
+    {
+      "id": "recent-development-escience-grid",
+      "category": "grid",
+      "title": {
+        "th": "Recent Development of e-Science & Grid in Thailand",
+        "en": "Recent Development of e-Science & Grid in Thailand"
+      },
+      "author": "Piyawut Srichaikul, Putchong Uthayopas",
+      "description": {
+        "th": "รายงานความคืบหน้าของงาน e-Science และกริดในประเทศไทย ลงวันที่ 24 มกราคม 2549 โดย NECTEC ร่วมกับ มหาวิทยาลัยเกษตรศาสตร์",
+        "en": "A progress report on e-Science and grid work in Thailand, dated 24 January 2006, from NECTEC together with Kasetsart University."
+      },
+      "file": "reference/docs/Recent development of e-Science & Grid in Thailand.pdf",
+      "format": "pdf",
+      "pages": 14,
+      "bytes": 1737001,
+      "tags": [
+        "e-Science",
+        "Grid"
+      ],
+      "year": 2006
+    },
+    {
       "id": "thaigrid-intro",
       "category": "grid",
       "title": {
@@ -64,31 +172,18 @@
         "en": "Introduction to Thai National Grid Project"
       },
       "description": {
-        "th": "เอกสารแนะนำโครงการไทยกริดแห่งชาติ (TNGP) ภาพรวมของโครงการและหน่วยงานที่เข้าร่วม",
-        "en": "An introduction to the Thai National Grid Project (TNGP) — its scope and participating institutions."
+        "th": "เอกสารแนะนำโครงการไทยกริดแห่งชาติ (TNGP) โดยศูนย์ไทยกริดแห่งชาติ ภายใต้ SIPA กระทรวงเทคโนโลยีสารสนเทศและการสื่อสาร",
+        "en": "An introduction to the Thai National Grid Project (TNGP) from the Thai National Grid Center, under SIPA, Ministry of Information and Communication Technology."
       },
       "file": "reference/docs/Thailand_Introduction_to_Thai_National_Grid_Project.pdf",
       "format": "pdf",
       "pages": 19,
       "bytes": 1203834,
-      "tags": ["ThaiGrid", "TNGP"]
-    },
-    {
-      "id": "tngc-development",
-      "category": "grid",
-      "title": {
-        "th": "The Development of the Thai National Grid Center",
-        "en": "The Development of the Thai National Grid Center"
-      },
-      "description": {
-        "th": "พัฒนาการของศูนย์ไทยกริดแห่งชาติ (TNGC) ตั้งแต่การจัดตั้งจนถึงการให้บริการ",
-        "en": "How the Thai National Grid Center (TNGC) came together, from establishment through to service."
-      },
-      "file": "reference/docs/The Development of the Thai National Grid Center.pdf",
-      "format": "pdf",
-      "pages": 27,
-      "bytes": 2331350,
-      "tags": ["TNGC", "ThaiGrid"]
+      "tags": [
+        "ThaiGrid",
+        "TNGP"
+      ],
+      "year": 2006
     },
     {
       "id": "thaigrid-current-status",
@@ -97,7 +192,7 @@
         "th": "ThaiGrid: Preliminary Studies on Thai's High Performance Computing Infrastructure",
         "en": "ThaiGrid: Preliminary Studies on Thai's High Performance Computing Infrastructure"
       },
-      "author": "Vara Varavithya",
+      "author": "Vara Varavithya, Putchong Uthayopas",
       "description": {
         "th": "การศึกษาเบื้องต้นเกี่ยวกับโครงสร้างพื้นฐาน HPC ของไทย และสถานะของ ThaiGrid ในขณะนั้น",
         "en": "A preliminary study of Thailand's HPC infrastructure and the status of ThaiGrid at the time."
@@ -106,7 +201,10 @@
       "format": "pdf",
       "pages": 21,
       "bytes": 1153382,
-      "tags": ["ThaiGrid", "KMUTNB"]
+      "tags": [
+        "ThaiGrid",
+        "KMUTNB"
+      ]
     },
     {
       "id": "thaigrid-escience",
@@ -123,76 +221,132 @@
       "format": "pdf",
       "pages": 40,
       "bytes": 4505374,
-      "tags": ["ThaiGrid", "e-Science"]
+      "tags": [
+        "ThaiGrid",
+        "e-Science"
+      ]
     },
     {
-      "id": "access-grid-thailand",
-      "category": "grid",
-      "title": { "th": "Access Grid in Thailand", "en": "Access Grid in Thailand" },
-      "description": {
-        "th": "การนำ Access Grid มาใช้ในประเทศไทยสำหรับการประชุมและทำงานร่วมกันทางไกลระหว่างสถาบัน",
-        "en": "Deploying Access Grid in Thailand for remote collaboration between institutions."
-      },
-      "file": "reference/docs/Access Grid in Thailand.pdf",
-      "format": "pdf",
-      "pages": 13,
-      "bytes": 479404,
-      "tags": ["Access Grid", "Collaboration"]
-    },
-    {
-      "id": "gistda-grid",
+      "id": "tngc-development",
       "category": "grid",
       "title": {
-        "th": "Activities on Grid Technology at GISTDA",
-        "en": "Activities on Grid Technology at GISTDA"
+        "th": "The Development of the Thai National Grid Center",
+        "en": "The Development of the Thai National Grid Center"
       },
-      "author": "Pakorn Apaphant, Ph.D.",
       "description": {
-        "th": "กิจกรรมด้านเทคโนโลยีกริดของสำนักงานพัฒนาเทคโนโลยีอวกาศและภูมิสารสนเทศ (GISTDA)",
-        "en": "Grid technology work at the Geo-Informatics and Space Technology Development Agency (GISTDA)."
+        "th": "พัฒนาการของศูนย์ไทยกริดแห่งชาติ (TNGC) ตั้งแต่การจัดตั้งจนถึงการให้บริการ",
+        "en": "How the Thai National Grid Center (TNGC) came together, from establishment through to service."
       },
-      "file": "reference/docs/Activities on Grid Technology at GISTDA.pdf",
+      "file": "reference/docs/The Development of the Thai National Grid Center.pdf",
       "format": "pdf",
-      "pages": 13,
-      "bytes": 460525,
-      "tags": ["GISTDA", "Grid"]
+      "pages": 27,
+      "bytes": 2331350,
+      "tags": [
+        "TNGC",
+        "ThaiGrid"
+      ],
+      "author": "Dr. Tiranee Achalakul"
     },
     {
-      "id": "recent-development-escience-grid",
-      "category": "grid",
+      "id": "escience-2013",
+      "category": "escience",
+      "year": 2013,
       "title": {
-        "th": "Recent Development of e-Science & Grid in Thailand",
-        "en": "Recent Development of e-Science & Grid in Thailand"
+        "th": "รายงานประจำปี e-Science 2013",
+        "en": "e-Science Annual Report 2013"
       },
-      "author": "Joe Srichaikul",
       "description": {
-        "th": "รายงานความคืบหน้าของงาน e-Science และกริดในประเทศไทย จากคณะทำงาน e-Science",
-        "en": "A progress report on e-Science and grid work in Thailand, from the e-Science working group."
+        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium",
+        "en": "Annual report of the National e-Science Infrastructure Consortium."
       },
-      "file": "reference/docs/Recent development of e-Science & Grid in Thailand.pdf",
-      "format": "pdf",
-      "pages": 14,
-      "bytes": 1737001,
-      "tags": ["e-Science", "Grid"]
+      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
+      "format": "link",
+      "pages": 34,
+      "tags": [
+        "e-Science",
+        "Annual report"
+      ]
     },
     {
-      "id": "opensce",
-      "category": "grid",
+      "id": "escience-2015",
+      "category": "escience",
+      "year": 2015,
       "title": {
-        "th": "OpenSCE — Middleware and Tools set for Cluster and Grid System",
-        "en": "OpenSCE — Middleware and Tools set for Cluster and Grid System"
+        "th": "รายงานประจำปี e-Science 2015",
+        "en": "e-Science Annual Report 2015"
       },
       "description": {
-        "th": "ชุดมิดเดิลแวร์และเครื่องมือสำหรับคลัสเตอร์และกริด ที่พัฒนาขึ้นในประเทศไทย ต่อยอดจากงาน SMILE",
-        "en": "A Thai-developed middleware and tool set for clusters and grids, growing out of the SMILE work."
+        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium",
+        "en": "Annual report of the National e-Science Infrastructure Consortium."
       },
-      "file": "reference/docs/OpenSCE Middleware and Tools set  for Cluster and Grid System.pdf",
-      "format": "pdf",
-      "pages": 43,
-      "bytes": 1357119,
-      "tags": ["OpenSCE", "SMILE", "KU", "Open Source"]
+      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
+      "format": "link",
+      "pages": 37,
+      "tags": [
+        "e-Science",
+        "Annual report"
+      ]
     },
-
+    {
+      "id": "escience-2017",
+      "category": "escience",
+      "year": 2017,
+      "title": {
+        "th": "รายงานประจำปี e-Science 2017",
+        "en": "e-Science Annual Report 2017"
+      },
+      "description": {
+        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium",
+        "en": "Annual report of the National e-Science Infrastructure Consortium."
+      },
+      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
+      "format": "link",
+      "pages": 23,
+      "tags": [
+        "e-Science",
+        "Annual report"
+      ]
+    },
+    {
+      "id": "escience-2018",
+      "category": "escience",
+      "year": 2018,
+      "title": {
+        "th": "รายงานประจำปี e-Science 2018",
+        "en": "e-Science Annual Report 2018"
+      },
+      "description": {
+        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium ปีที่มีสมาชิกครบ 9 หน่วยงาน",
+        "en": "Annual report of the National e-Science Infrastructure Consortium, the year it reached nine members."
+      },
+      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
+      "format": "link",
+      "pages": 39,
+      "tags": [
+        "e-Science",
+        "Annual report"
+      ]
+    },
+    {
+      "id": "escience-2020",
+      "category": "escience",
+      "year": 2020,
+      "title": {
+        "th": "รายงานประจำปี e-Science 2020",
+        "en": "e-Science Annual Report 2020"
+      },
+      "description": {
+        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium",
+        "en": "Annual report of the National e-Science Infrastructure Consortium."
+      },
+      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
+      "format": "link",
+      "pages": 44,
+      "tags": [
+        "e-Science",
+        "Annual report"
+      ]
+    },
     {
       "id": "escience-download-index",
       "category": "escience",
@@ -207,84 +361,18 @@
       "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
       "format": "link",
       "featured": true,
-      "tags": ["e-Science"]
+      "tags": [
+        "e-Science"
+      ]
     },
-    {
-      "id": "escience-2013",
-      "category": "escience",
-      "year": 2013,
-      "title": { "th": "รายงานประจำปี e-Science 2013", "en": "e-Science Annual Report 2013" },
-      "description": {
-        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium",
-        "en": "Annual report of the National e-Science Infrastructure Consortium."
-      },
-      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
-      "format": "link",
-      "pages": 34,
-      "tags": ["e-Science", "Annual report"]
-    },
-    {
-      "id": "escience-2015",
-      "category": "escience",
-      "year": 2015,
-      "title": { "th": "รายงานประจำปี e-Science 2015", "en": "e-Science Annual Report 2015" },
-      "description": {
-        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium",
-        "en": "Annual report of the National e-Science Infrastructure Consortium."
-      },
-      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
-      "format": "link",
-      "pages": 37,
-      "tags": ["e-Science", "Annual report"]
-    },
-    {
-      "id": "escience-2017",
-      "category": "escience",
-      "year": 2017,
-      "title": { "th": "รายงานประจำปี e-Science 2017", "en": "e-Science Annual Report 2017" },
-      "description": {
-        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium",
-        "en": "Annual report of the National e-Science Infrastructure Consortium."
-      },
-      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
-      "format": "link",
-      "pages": 23,
-      "tags": ["e-Science", "Annual report"]
-    },
-    {
-      "id": "escience-2018",
-      "category": "escience",
-      "year": 2018,
-      "title": { "th": "รายงานประจำปี e-Science 2018", "en": "e-Science Annual Report 2018" },
-      "description": {
-        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium ปีที่มีสมาชิกครบ 9 หน่วยงาน",
-        "en": "Annual report of the National e-Science Infrastructure Consortium, the year it reached nine members."
-      },
-      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
-      "format": "link",
-      "pages": 39,
-      "tags": ["e-Science", "Annual report"]
-    },
-    {
-      "id": "escience-2020",
-      "category": "escience",
-      "year": 2020,
-      "title": { "th": "รายงานประจำปี e-Science 2020", "en": "e-Science Annual Report 2020" },
-      "description": {
-        "th": "รายงานประจำปีของ National e-Science Infrastructure Consortium",
-        "en": "Annual report of the National e-Science Infrastructure Consortium."
-      },
-      "url": "http://www.e-science.in.th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/#sub12",
-      "format": "link",
-      "pages": 44,
-      "tags": ["e-Science", "Annual report"]
-    },
-
     {
       "id": "pirun-cluster",
       "category": "systems",
       "year": 2001,
-      "title": { "th": "The PIRUN Cluster at Kasetsart University", "en": "The PIRUN Cluster at Kasetsart University" },
+      "title": {
+        "th": "The PIRUN Cluster at Kasetsart University",
+        "en": "The PIRUN Cluster at Kasetsart University"
+      },
       "description": {
         "th": "เอกสารเกี่ยวกับคลัสเตอร์ PIRUN ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทยเมื่อปี 2542",
         "en": "On the PIRUN cluster — the fastest supercomputer in Thailand when it was built in 1999."
@@ -293,7 +381,11 @@
       "format": "pdf",
       "pages": 7,
       "bytes": 176550,
-      "tags": ["PIRUN", "KU", "Beowulf"]
+      "tags": [
+        "PIRUN",
+        "KU",
+        "Beowulf"
+      ]
     },
     {
       "id": "beowulf-ku",
@@ -310,21 +402,10 @@
       "format": "pdf",
       "pages": 6,
       "bytes": 1699281,
-      "tags": ["Beowulf", "KU"]
-    },
-    {
-      "id": "tara-hpc-th",
-      "category": "systems",
-      "title": { "th": "TARA HPC", "en": "TARA HPC" },
-      "description": {
-        "th": "เอกสารเกี่ยวกับ TARA คลัสเตอร์ของ ThaiSC ที่เปิดใช้งานในปี 2562",
-        "en": "On TARA, the ThaiSC cluster brought into service in 2019."
-      },
-      "file": "reference/docs/TARA-HPC-TH.pdf",
-      "format": "pdf",
-      "pages": 13,
-      "bytes": 1936002,
-      "tags": ["TARA", "ThaiSC", "NSTDA"]
+      "tags": [
+        "Beowulf",
+        "KU"
+      ]
     },
     {
       "id": "krypton-manual",
@@ -334,30 +415,19 @@
         "en": "Krypton Cluster user manual"
       },
       "description": {
-        "th": "คู่มือผู้ใช้สำหรับคลัสเตอร์ Krypton ทรัพยากรของ e-Science Consortium ที่ติดตั้งอยู่ที่ NSTDA",
-        "en": "User manual for the Krypton cluster, an e-Science Consortium resource hosted at NSTDA."
+        "th": "คู่มือผู้ใช้สำหรับเข้าใช้งานเครื่อง HPC ของ e-Science ผ่าน SSH ครอบคลุมโหนดที่ NECTEC และจุฬาฯ รวมถึงการใช้ Sybyl X",
+        "en": "User manual for reaching the e-Science HPC machines over SSH, covering the NECTEC and Chulalongkorn nodes and Sybyl X."
       },
       "file": "reference/docs/e-Science/คู่มือการใช้งาน-Krypton-Cluster.pdf",
       "format": "pdf",
       "pages": 10,
       "bytes": 503099,
-      "tags": ["Krypton", "e-Science", "NSTDA", "Manual"]
-    },
-
-    {
-      "id": "nac2018-summary",
-      "category": "national",
-      "year": 2018,
-      "title": { "th": "HPC & AI — สรุปการเสวนา", "en": "HPC & AI — session summary" },
-      "description": {
-        "th": "บทสรุปการเสวนาหัวข้อ HPC และ AI จากการประชุมวิชาการ สวทช. ประจำปี 2561 (NAC2018)",
-        "en": "Summary of the HPC and AI session at the NSTDA Annual Conference 2018 (NAC2018)."
-      },
-      "file": "reference/docs/13_HPCAI_Summary.pdf",
-      "format": "pdf",
-      "pages": 2,
-      "bytes": 216642,
-      "tags": ["NAC2018", "NSTDA", "AI"]
+      "tags": [
+        "Krypton",
+        "e-Science",
+        "NSTDA",
+        "Manual"
+      ]
     },
     {
       "id": "nac2018-ku",
@@ -376,28 +446,21 @@
       "pages": 50,
       "bytes": 2526793,
       "featured": true,
-      "tags": ["NAC2018", "KU", "History"]
-    },
-    {
-      "id": "nac2018-nectec",
-      "category": "national",
-      "year": 2018,
-      "title": { "th": "HPC & AI — NECTEC", "en": "HPC & AI — NECTEC" },
-      "description": {
-        "th": "มุมมองของ NECTEC ต่อ HPC และ AI จากการเสวนา NAC2018",
-        "en": "NECTEC's perspective on HPC and AI, from the NAC2018 session."
-      },
-      "file": "reference/docs/13_HPC_AI_NECTEC.pdf",
-      "format": "pdf",
-      "pages": 17,
-      "bytes": 1084022,
-      "tags": ["NAC2018", "NECTEC", "AI"]
+      "tags": [
+        "NAC2018",
+        "KU",
+        "History"
+      ],
+      "author": "Putchong Uthayopas"
     },
     {
       "id": "nac2018-nanotec",
       "category": "national",
       "year": 2018,
-      "title": { "th": "HPC & AI — NANOTEC", "en": "HPC & AI — NANOTEC" },
+      "title": {
+        "th": "HPC & AI — NANOTEC",
+        "en": "HPC & AI — NANOTEC"
+      },
       "description": {
         "th": "การใช้งาน HPC ในงานวิจัยนาโนเทคโนโลยี จากการเสวนา NAC2018",
         "en": "Using HPC in nanotechnology research, from the NAC2018 session."
@@ -406,7 +469,54 @@
       "format": "pdf",
       "pages": 18,
       "bytes": 1223489,
-      "tags": ["NAC2018", "NANOTEC"]
+      "tags": [
+        "NAC2018",
+        "NANOTEC"
+      ]
+    },
+    {
+      "id": "nac2018-nectec",
+      "category": "national",
+      "year": 2018,
+      "title": {
+        "th": "HPC & AI — NECTEC",
+        "en": "HPC & AI — NECTEC"
+      },
+      "description": {
+        "th": "มุมมองของ NECTEC ต่อ HPC และ AI จากการเสวนา NAC2018",
+        "en": "NECTEC's perspective on HPC and AI, from the NAC2018 session."
+      },
+      "file": "reference/docs/13_HPC_AI_NECTEC.pdf",
+      "format": "pdf",
+      "pages": 17,
+      "bytes": 1084022,
+      "tags": [
+        "NAC2018",
+        "NECTEC",
+        "AI"
+      ]
+    },
+    {
+      "id": "nac2018-summary",
+      "category": "national",
+      "year": 2018,
+      "title": {
+        "th": "HPC & AI — สรุปการเสวนา",
+        "en": "HPC & AI — session summary"
+      },
+      "description": {
+        "th": "บทสรุปการเสวนาหัวข้อ HPC และ AI จากการประชุมวิชาการ สวทช. ประจำปี 2561 (NAC2018)",
+        "en": "Summary of the HPC and AI session at the NSTDA Annual Conference 2018 (NAC2018)."
+      },
+      "file": "reference/docs/13_HPCAI_Summary.pdf",
+      "format": "pdf",
+      "pages": 2,
+      "bytes": 216642,
+      "tags": [
+        "NAC2018",
+        "NSTDA",
+        "AI"
+      ]
     },
     {
       "id": "apan55-status",
@@ -425,13 +535,19 @@
       "format": "pdf",
       "pages": 23,
       "bytes": 2816148,
-      "tags": ["APAN", "NSTDA"]
+      "tags": [
+        "APAN",
+        "NSTDA"
+      ]
     },
     {
       "id": "hpc-th-survey",
       "category": "national",
       "year": 2023,
-      "title": { "th": "HPC TH Survey", "en": "HPC TH Survey" },
+      "title": {
+        "th": "HPC TH Survey",
+        "en": "HPC TH Survey"
+      },
       "description": {
         "th": "ผลสำรวจสถานะระบบ HPC ในประเทศไทย",
         "en": "Survey results on the state of HPC systems in Thailand."
@@ -440,13 +556,18 @@
       "format": "pdf",
       "pages": 10,
       "bytes": 998888,
-      "tags": ["Survey"]
+      "tags": [
+        "Survey"
+      ]
     },
     {
       "id": "ai-ecosystem-2026",
       "category": "national",
       "year": 2026,
-      "title": { "th": "แผนผังระบบนิเวศ AI ของไทย", "en": "Thailand AI ecosystem map" },
+      "title": {
+        "th": "แผนผังระบบนิเวศ AI ของไทย",
+        "en": "Thailand AI ecosystem map"
+      },
       "description": {
         "th": "แผนผังภาพรวมผู้เล่นในระบบนิเวศ AI ของประเทศไทย (กุมภาพันธ์ 2569)",
         "en": "A map of the players across Thailand's AI ecosystem (February 2026)."
@@ -454,9 +575,35 @@
       "file": "reference/docs/aiecosystem-feb2026.webp",
       "format": "image",
       "bytes": 194690,
-      "tags": ["AI", "Ecosystem"]
+      "tags": [
+        "AI",
+        "Ecosystem"
+      ]
     },
-
+    {
+      "id": "tara-hpc-th",
+      "category": "research",
+      "title": {
+        "th": "TARA: A Year in Review",
+        "en": "TARA: A Year in Review"
+      },
+      "description": {
+        "th": "บทความทบทวนการใช้งาน TARA คลัสเตอร์ของ ThaiSC ตลอดหนึ่งปีแรก ตีพิมพ์ใน Thai Journal of Mathematics ปีที่ 19 ฉบับที่ 3 (2564)",
+        "en": "A review of the first year of TARA, the ThaiSC cluster, published in the Thai Journal of Mathematics, Volume 19 Number 3 (2021)."
+      },
+      "file": "reference/docs/TARA-HPC-TH.pdf",
+      "format": "pdf",
+      "pages": 13,
+      "bytes": 1936002,
+      "tags": [
+        "TARA",
+        "ThaiSC",
+        "NSTDA",
+        "Research"
+      ],
+      "year": 2021,
+      "author": "Putt Sakdhnagool et al."
+    },
     {
       "id": "trusted-electronic-contract",
       "category": "research",
@@ -473,24 +620,10 @@
       "format": "pdf",
       "pages": 18,
       "bytes": 4399397,
-      "tags": ["Research", "Resource sharing"]
-    },
-
-    {
-      "id": "nectec-business-industry",
-      "category": "web",
-      "title": {
-        "th": "Business and Industry Development — NECTEC",
-        "en": "Business and Industry Development — NECTEC"
-      },
-      "description": {
-        "th": "สำเนาหน้าเว็บของ NECTEC ว่าด้วยการพัฒนาธุรกิจและอุตสาหกรรม",
-        "en": "An archived NECTEC page on business and industry development."
-      },
-      "file": "reference/docs/Business and Industry Development, Natioanal Electronics and Computer Technology Center.html",
-      "format": "html",
-      "bytes": 37843,
-      "tags": ["NECTEC"]
+      "tags": [
+        "Research",
+        "Resource sharing"
+      ]
     },
     {
       "id": "internet-progress-thailand",
@@ -506,7 +639,29 @@
       "file": "reference/docs/ความก้าวหน้าของอินเทอร์เน็ตในประเทศไทย.html",
       "format": "html",
       "bytes": 52650,
-      "tags": ["Internet", "ThaiSarn", "History"]
+      "tags": [
+        "Internet",
+        "ThaiSarn",
+        "History"
+      ]
+    },
+    {
+      "id": "nectec-business-industry",
+      "category": "web",
+      "title": {
+        "th": "Business and Industry Development — NECTEC",
+        "en": "Business and Industry Development — NECTEC"
+      },
+      "description": {
+        "th": "สำเนาหน้าเว็บของ NECTEC ว่าด้วยการพัฒนาธุรกิจและอุตสาหกรรม",
+        "en": "An archived NECTEC page on business and industry development."
+      },
+      "file": "reference/docs/Business and Industry Development, Natioanal Electronics and Computer Technology Center.html",
+      "format": "html",
+      "bytes": 37843,
+      "tags": [
+        "NECTEC"
+      ]
     }
   ]
 }

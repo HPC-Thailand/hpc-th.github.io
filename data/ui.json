@@ -211,6 +211,26 @@
     "pages": {
       "th": "หน้า",
       "en": "pages"
+    },
+    "view": {
+      "th": "เปิดอ่าน",
+      "en": "Read"
+    },
+    "openNewTab": {
+      "th": "เปิดแท็บใหม่",
+      "en": "Open in new tab"
+    },
+    "close": {
+      "th": "ปิด",
+      "en": "Close"
+    },
+    "viewerLoading": {
+      "th": "กำลังเปิดเอกสาร…",
+      "en": "Opening document…"
+    },
+    "viewerFallback": {
+      "th": "เบราว์เซอร์นี้เปิดไฟล์ในหน้าไม่ได้ — กดเปิดแท็บใหม่หรือดาวน์โหลดแทน",
+      "en": "This browser cannot display the file inline — open it in a new tab or download it instead."
     }
   },
   "systems": {
