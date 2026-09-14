@@ -1,0 +1,22 @@
+name: Submit an event
+description: ส่งกิจกรรม สัมมนา หรือเวิร์กช็อปด้าน HPC / Submit an HPC event
+title: "[event] "
+labels: ["data", "event"]
+body:
+  - type: input
+    id: title
+    attributes: { label: ชื่องาน / Event title }
+    validations: { required: true }
+  - type: input
+    id: dates
+    attributes: { label: วันที่ / Dates (YYYY-MM-DD) }
+    validations: { required: true }
+  - type: input
+    id: organizer
+    attributes: { label: ผู้จัด / Organiser }
+  - type: input
+    id: location
+    attributes: { label: สถานที่ / Venue }
+  - type: input
+    id: url
+    attributes: { label: ลิงก์ลงทะเบียน / Registration URL }

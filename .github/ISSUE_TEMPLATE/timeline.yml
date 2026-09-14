@@ -1,0 +1,30 @@
+name: Add a timeline milestone
+description: เพิ่มเหตุการณ์ในไทม์ไลน์ประวัติศาสตร์ HPC / Add an entry to the HPC history timeline
+title: "[timeline] "
+labels: ["data", "timeline"]
+body:
+  - type: input
+    id: year
+    attributes:
+      label: ปี ค.ศ. / Year (CE)
+    validations: { required: true }
+  - type: input
+    id: title_th
+    attributes:
+      label: หัวข้อ (ไทย)
+    validations: { required: true }
+  - type: input
+    id: title_en
+    attributes:
+      label: Title (English)
+    validations: { required: true }
+  - type: textarea
+    id: details
+    attributes:
+      label: รายละเอียด / Details
+    validations: { required: true }
+  - type: input
+    id: source
+    attributes:
+      label: แหล่งอ้างอิง / Source
+      description: ลิงก์ข่าว เอกสาร หรือหน้าเว็บของหน่วยงาน

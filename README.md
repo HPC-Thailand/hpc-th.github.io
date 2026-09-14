@@ -1,56 +1,91 @@
-# HPC Thailand
-## วัตถุประสงค์ / ความตั้งใจ
+# HPC Thailand — hpc.in.th
 
-1. เว็บไซต์นี้ถูกพัฒนาขึ้นเพื่อรวบรวมข้อมูลการพัฒนาระบบ HPC ในประเทศไทย
-   โดยอาศัยแหล่งข้อมูลโดยตรงจากบุคลากร หรือผู้ที่เกี่ยวข้องกับระบบ HPC ในประเทศไทย
+ประวัติศาสตร์และภูมิทัศน์ของคอมพิวเตอร์สมรรถนะสูงในประเทศไทย
+_The history and landscape of high performance computing in Thailand._
 
-- [ ] ประวัตศาสตร์การพัฒนา
-- [ ] บุคคลที่มีส่วนเกี่ยวข้อง
-- [ ] แนวทางการพัฒนา
-- [ ] ข้อมูลทั่วไปของระบบ HPC
-- [ ] เป็นแหล่งอ้างอิงข้อมูลให้กับผู้ที่สนใจ
-- [ ] อื่นๆ
+เว็บไซต์แบบ static ล้วน ไม่มี build step — แก้ JSON แล้ว merge ได้เลย
+รองรับสองภาษา (ไทย / อังกฤษ) ด้วยฟอนต์ **Prompt** และ deploy บน GitHub Pages
 
-2. เป็นแรงบรรดาลใจให้กับนักเรียน นักศึกษา ในการวาง Career path ของตนเองเพื่อประกอบอาชีพที่เกี่ยวข้องกับ HPC
+## หน้าเว็บ / Pages
 
-- [ ] Network Engineer / System Engineer / Infrastructure Engineer / DevOps / SRE
-- [ ] อัปเดตเทคโนโลยีที่ HPC ปัจจุบัน และอนาคต
-- [ ] เป็นแหล่งรวบรวม HPC Keyword ที่ให้ผู้ที่สนใจนำไปศึกษาต่อยอด
-- [ ] Workshop / Intro to HPC
+| Path | เนื้อหา |
+| --- | --- |
+| `/` | ไทม์ไลน์ประวัติศาสตร์ HPC ในประเทศไทย (พ.ศ. 2506 – ปัจจุบัน) + สไลด์ต้นฉบับ |
+| `/systems/` | ไดเรกทอรีระบบ HPC ที่เปิดให้บริการ + แผนที่ |
+| `/stats/` | สถิติรวม CPU cores / GPU / การกระจายตัว |
+| `/events/` | กิจกรรมและงานประชุม |
+| `/submit/` | ฟอร์มส่งข้อมูล และคู่มือส่ง Pull Request |
 
-3. เป็นศูนย์กลางในการแลกเปลี่ยนองค์ความรู้ ปัญหา และวิธีการแก้ไขปัญหา
+## โครงสร้าง / Layout
 
-- [ ] สำหรับนักวิจัย วิศกร แพทย์ บุคลากรหรือผู้ดูแลระบบ ที่รับผิดชอบกับระบบ HPC โดยตรง
-- [ ] องค์ความรู้มีการถ่ายทอดซึ่งกันและกันข้าม Domain ได้
-- [ ] ช่วยพัฒนาแวดวง HPC Community ในประเทศให้แข็งแกร่ง พึ่งพาตนเองในการแก้ไขปัญหาได้
+```
+.
+├── index.html            ไทม์ไลน์ (หน้าแรก)
+├── systems/ stats/ events/ submit/
+├── assets/
+│   ├── css/site.css      design tokens + ทุกคอมโพเนนต์
+│   ├── js/core.js        i18n, ธีม, header/footer, data loader
+│   ├── js/*.js           ตัวควบคุมรายหน้า
+│   └── img/slides/       สไลด์ต้นฉบับที่ย่อขนาดแล้ว (p1–p10)
+├── data/
+│   ├── timeline.json     เหตุการณ์ในไทม์ไลน์ (สองภาษา)
+│   ├── systems.json      ระบบ HPC
+│   ├── events.json       กิจกรรม
+│   ├── ui.json           ข้อความ UI ทั้งหมด (สองภาษา)
+│   └── schema/           JSON Schema สำหรับ editor autocomplete
+├── historical/page png/  สไลด์ต้นฉบับความละเอียดเต็ม (4K)
+├── tools/validate-data.mjs
+└── docs/                 คู่มือ deploy และการเพิ่ม subdomain
+```
 
-4. พัฒนาอย่างยั่งยืน
+## ข้อมูลทุกอย่างอยู่ใน `data/`
 
-- [ ] ส่งเสริมอาชีพ HPC System Engineer
-- [ ] ส่งเสริมความตระหนักรู้ของบุคคลทั่วไปให้เห็นถึงประโยชน์ของและความสำคัญของ HPC
-- [ ] HPC / AI-HPC / AI-Factory จะกลายเป็นเรื่องปกติเหมือนดัง Internet
+หน้าเว็บอ่านข้อมูลจาก JSON โดยตรง — ไม่มี generator, ไม่มี framework
+เพิ่มระบบใหม่ = เพิ่ม object ใน `data/systems.json` แล้วเปิด PR
 
-## เป้าหมาย
+ทุกข้อความที่ผู้ใช้เห็นเป็น object สองภาษา:
 
-เนื่องจากการพัฒนากำลังคนทางด้านวิศวกร นักวิจัยและดูแลระบบ HPC โดยเฉพาะ HPC System Engineer เป็นส่วนสำคัญในการพัฒนาและดูแลบำรุงรักษาระบบ HPC
-จึงมีความสำคัญและจำเป็นอย่างยิ่งที่บุคลากรด้าน HPC ต้องมีองค์ความรู้และทักษะในการใช้สร้างและใช้งานระบบ HPC เพื่อประสิทธิภาพสูงสุดของระบบ ฉะนั้นแล้วการพัฒนาคน
-จำเป็ฯต้องอาศัยระยะเวลา
+```json
+{ "th": "ข้อความภาษาไทย", "en": "English text" }
+```
 
-## To Community
+ตรวจความถูกต้องก่อน push:
 
-ทางผู้จัดทำได้อาศัยประสบการณ์ส่วนตัวที่ได้พบได้เจอกับระบบ HPC ต่างๆ มาใช้ในการพัฒนาเนื้อหา หากส่วนใดส่วนหนึ่งของเนื้อหามีข้อผิดพลาดและไม่ตรงกับความเป็นจริง
-ผู้จัดทำน้อมรับในการปรับปรุงแก้ไข หากท่านใดเป็นเจ้าของข้อมูลหรือ Ownership สามารถ Contribute แก้ไขปรับปรุงได้เลยทางผู้จัดทำยินดีเป็นอย่างยิ่ง
-หวังว่าใน 2-3 ปีต่อจากนี้ไป HPC Community ในไทยจะเติมโตขึ้นไปอีกและได้รับการยอมรับในสากลเฉกเช่นที่เหมือนดังที่ผ่านมาครับ
+```bash
+node tools/validate-data.mjs
+```
 
-## Contributing | การมีส่วนร่วม
+GitHub Actions รันคำสั่งนี้อัตโนมัติกับทุก PR ที่แตะ `data/`
 
-- **GitHub**: [hpc-th.github.io](https://github.com/HPC-Thailand/hpc-th.github.io)
-- **Data Updates**: Submit pull requests to update HPC system information
-- **Language Improvements**: Help improve translations in `data/translations.json`
-- **Timeline Updates**: Add historical milestones to timeline data files
+## รันบนเครื่อง / Local preview
 
-## References | อ้างอิง
+ต้องเสิร์ฟผ่าน HTTP (ES modules + `fetch` ใช้ `file://` ไม่ได้):
 
-- [ThaiSC](https://www.thaisc.io/) - Thai Supercomputing Center
-- [e-Science Infrastructure Consortium](https://e-science.in.th/) - National e-Science Infrastructure
-- Academic publications and institutional records
+```bash
+python3 -m http.server 8000
+```
+
+แล้วเปิด <http://localhost:8000>
+
+## Deploy
+
+GitHub Pages เสิร์ฟจาก branch `main` root โดยตรง ไม่ต้องมี workflow build
+รายละเอียดการตั้งค่า DNS และแผน subdomain (`event.` / `stat.` / `submit.`)
+อยู่ที่ [docs/DEPLOY.md](docs/DEPLOY.md)
+
+## ที่มาของข้อมูลไทม์ไลน์
+
+เนื้อหาไทม์ไลน์เรียบเรียงจากสไลด์ "ประวัติศาสตร์ HPC ในประเทศไทย" 10 หน้า
+ซึ่งเก็บไว้ที่ `historical/page png/` และแสดงเป็นแกลเลอรีท้ายหน้าแรก
+
+ปี พ.ศ. ในสไลด์ต้นฉบับมีคลาดเคลื่อนบางจุด (เช่น 1995 → พ.ศ. 2537, 1997 → พ.ศ. 2506)
+เว็บไซต์จึงคำนวณ **พ.ศ. = ค.ศ. + 543** เสมอ แทนการคัดลอกค่าจากสไลด์
+
+## ร่วมพัฒนา / Contributing
+
+ดู [CONTRIBUTING.md](CONTRIBUTING.md) — หรือใช้ฟอร์มที่ <https://hpc.in.th/submit/>
+
+## License
+
+เนื้อหา (ไฟล์ใน `data/` และข้อความบนเว็บไซต์) เผยแพร่ภายใต้ **CC BY 4.0**
+สไลด์ต้นฉบับใน `historical/` เป็นลิขสิทธิ์ของผู้จัดทำสไลด์

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="submit.title">ส่งข้อมูลเข้าสู่ระบบ</title>
+<meta name="description" content="ศูนย์ HPC และวิศวกรระบบส่งข้อมูลระบบ สถิติ กิจกรรม หรือเหตุการณ์ในไทม์ไลน์ เข้ามาได้ที่นี่ — Contribute HPC data to hpc.in.th.">
+<link rel="canonical" href="https://hpc.in.th/submit/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HPC Thailand">
+<meta property="og:title" content="ส่งข้อมูลเข้าสู่ระบบ — HPC Thailand">
+<meta property="og:url" content="https://hpc.in.th/submit/">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  try { document.documentElement.dataset.theme =
+    localStorage.getItem('hpcth.theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-i18n="nav.skip">ข้ามไปยังเนื้อหาหลัก</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <section class="hero" style="padding-block:clamp(36px,4vw,60px)">
+    <div class="container">
+      <span class="eyebrow" data-i18n="nav.submit"></span>
+      <h1 data-i18n="submit.title"></h1>
+      <p class="lead" data-i18n="submit.lead"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start">
+
+      <div class="panel reveal">
+        <h2 data-i18n="submit.optionIssue" style="font-size:1.2rem"></h2>
+        <p class="text-muted" style="font-size:.92rem" data-i18n="submit.optionIssueDesc"></p>
+
+        <div class="notice" style="margin-bottom:20px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20.5h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
+          </svg>
+          <p class="mb-0" data-i18n="submit.privacyNote"></p>
+        </div>
+
+        <form id="submit-form" class="form-grid">
+          <div class="field">
+            <label for="f-type" data-i18n="submit.formType"></label>
+            <select id="f-type"></select>
+          </div>
+          <div class="form-row-2">
+            <div class="field">
+              <label for="f-name"><span data-i18n="submit.fieldName"></span><span class="req" data-i18n="submit.required"></span></label>
+              <input id="f-name" required autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="f-org" data-i18n="submit.fieldOrg"></label>
+              <input id="f-org" autocomplete="organization">
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="field">
+              <label for="f-contact" data-i18n="submit.fieldContactName"></label>
+              <input id="f-contact" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="f-email" data-i18n="submit.fieldContactEmail"></label>
+              <input id="f-email" type="email" autocomplete="off">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-details"><span data-i18n="submit.fieldDetails"></span><span class="req" data-i18n="submit.required"></span></label>
+            <textarea id="f-details" required></textarea>
+            <p class="hint" data-i18n="submit.fieldDetailsHint"></p>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button type="submit" class="btn btn-primary" data-i18n="submit.generate"></button>
+            <button type="button" class="btn btn-ghost" id="copy-preview" data-i18n="submit.copy"></button>
+          </div>
+        </form>
+
+        <h3 style="margin-top:26px;font-size:.95rem" data-i18n="submit.preview"></h3>
+        <pre class="code" id="preview"></pre>
+      </div>
+
+      <div class="panel reveal">
+        <h2 data-i18n="submit.optionPr" style="font-size:1.2rem"></h2>
+        <p class="text-muted" style="font-size:.92rem" data-i18n="submit.optionPrDesc"></p>
+
+        <ol class="steps">
+          <li data-i18n="submit.step1"></li>
+          <li id="step-2"></li>
+          <li data-i18n="submit.step3"></li>
+          <li data-i18n="submit.step4"></li>
+        </ol>
+
+        <div id="tpl-wrap" style="margin-top:20px">
+          <h3 style="font-size:.95rem" data-i18n="submit.schemaTitle"></h3>
+          <pre class="code" id="tpl-json"></pre>
+        </div>
+
+        <div class="notice notice-info" style="margin-top:20px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/>
+          </svg>
+          <p class="mb-0" data-i18n="submit.noBuild"></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script type="module" src="/assets/js/submit.js"></script>
+<style>
+  @media (max-width: 900px) {
+    #main .section > .container { grid-template-columns: 1fr !important; }
+  }
+</style>
+</body>
+</html>

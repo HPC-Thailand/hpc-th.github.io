@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hpc.in.th/data/schema/i18n-string.json",
+  "title": "Bilingual string",
+  "type": "object",
+  "required": ["th", "en"],
+  "properties": {
+    "th": { "type": "string" },
+    "en": { "type": "string" },
+    "tone": { "enum": ["plus", "minus", "neutral"] }
+  }
+}

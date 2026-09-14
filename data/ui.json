@@ -1,0 +1,530 @@
+{
+  "site": {
+    "name": {
+      "th": "HPC Thailand",
+      "en": "HPC Thailand"
+    },
+    "tagline": {
+      "th": "ประวัติศาสตร์และภูมิทัศน์ของคอมพิวเตอร์สมรรถนะสูงในประเทศไทย",
+      "en": "The history and landscape of high performance computing in Thailand"
+    }
+  },
+  "nav": {
+    "timeline": {
+      "th": "ไทม์ไลน์",
+      "en": "Timeline"
+    },
+    "systems": {
+      "th": "ระบบ HPC",
+      "en": "Systems"
+    },
+    "stats": {
+      "th": "สถิติ",
+      "en": "Statistics"
+    },
+    "events": {
+      "th": "กิจกรรม",
+      "en": "Events"
+    },
+    "submit": {
+      "th": "ส่งข้อมูล",
+      "en": "Submit data"
+    },
+    "menu": {
+      "th": "เมนู",
+      "en": "Menu"
+    },
+    "skip": {
+      "th": "ข้ามไปยังเนื้อหาหลัก",
+      "en": "Skip to main content"
+    }
+  },
+  "home": {
+    "eyebrow": {
+      "th": "ประวัติศาสตร์ HPC ประเทศไทย",
+      "en": "History of HPC in Thailand"
+    },
+    "title": {
+      "th": "หกทศวรรษของการประมวลผลสมรรถนะสูงในประเทศไทย",
+      "en": "Six decades of high performance computing in Thailand"
+    },
+    "lead": {
+      "th": "จาก IBM 1620 เครื่องแรกในปี พ.ศ. 2506 สู่ยุค AI-HPC ระดับเพตาฟลอป — เส้นทางของเครื่อง เครือข่าย และผู้คนที่สร้างโครงสร้างพื้นฐานการคำนวณของประเทศ",
+      "en": "From the first IBM 1620 in 1963 to the petascale AI-HPC era — the machines, networks and people that built the country's computing infrastructure."
+    },
+    "ctaTimeline": {
+      "th": "ดูไทม์ไลน์",
+      "en": "Explore the timeline"
+    },
+    "ctaSubmit": {
+      "th": "ส่งข้อมูลระบบของคุณ",
+      "en": "Submit your system"
+    },
+    "statYears": {
+      "th": "ปีของประวัติศาสตร์",
+      "en": "years of history"
+    },
+    "statMilestones": {
+      "th": "เหตุการณ์สำคัญ",
+      "en": "milestones"
+    },
+    "statGenerations": {
+      "th": "ยุคของ HPC",
+      "en": "HPC generations"
+    },
+    "statSystems": {
+      "th": "ระบบที่เปิดให้บริการ",
+      "en": "systems in service"
+    }
+  },
+  "timeline": {
+    "filterAll": {
+      "th": "ทั้งหมด",
+      "en": "All"
+    },
+    "searchLabel": {
+      "th": "ค้นหาในไทม์ไลน์",
+      "en": "Search the timeline"
+    },
+    "searchPlaceholder": {
+      "th": "ค้นหาปี ระบบ หรือหน่วยงาน…",
+      "en": "Search year, system or organisation…"
+    },
+    "empty": {
+      "th": "ไม่พบเหตุการณ์ที่ตรงกับเงื่อนไข",
+      "en": "No entries match your filters."
+    },
+    "clear": {
+      "th": "ล้างตัวกรอง",
+      "en": "Clear filters"
+    },
+    "resultCount": {
+      "th": "แสดง {n} เหตุการณ์",
+      "en": "Showing {n} entries"
+    },
+    "sourceSlide": {
+      "th": "ดูสไลด์ต้นฉบับ",
+      "en": "View source slide"
+    },
+    "more": {
+      "th": "อ่านเพิ่มเติม",
+      "en": "Read more"
+    },
+    "beShort": {
+      "th": "พ.ศ.",
+      "en": "BE"
+    }
+  },
+  "categories": {
+    "system": {
+      "th": "ระบบ",
+      "en": "System"
+    },
+    "network": {
+      "th": "เครือข่าย",
+      "en": "Network"
+    },
+    "org": {
+      "th": "องค์กร",
+      "en": "Organisation"
+    },
+    "software": {
+      "th": "ซอฟต์แวร์",
+      "en": "Software"
+    },
+    "industry": {
+      "th": "ภาคเอกชน",
+      "en": "Industry"
+    },
+    "global": {
+      "th": "ระดับโลก",
+      "en": "Global"
+    },
+    "era": {
+      "th": "ยุค",
+      "en": "Era"
+    }
+  },
+  "slides": {
+    "title": {
+      "th": "สไลด์ต้นฉบับ",
+      "en": "Source slides"
+    },
+    "lead": {
+      "th": "เนื้อหาในไทม์ไลน์นี้เรียบเรียงจากสไลด์ 10 หน้า ซึ่งยังมีภาพถ่ายและแผนผังระบบที่น่าสนใจ",
+      "en": "This timeline was compiled from a 10-page deck that also contains photographs and system diagrams."
+    },
+    "page": {
+      "th": "หน้า",
+      "en": "Page"
+    },
+    "openFull": {
+      "th": "เปิดภาพขนาดเต็ม",
+      "en": "Open full size"
+    },
+    "close": {
+      "th": "ปิด",
+      "en": "Close"
+    },
+    "prev": {
+      "th": "ก่อนหน้า",
+      "en": "Previous"
+    },
+    "next": {
+      "th": "ถัดไป",
+      "en": "Next"
+    }
+  },
+  "systems": {
+    "title": {
+      "th": "ระบบ HPC ในประเทศไทย",
+      "en": "HPC systems in Thailand"
+    },
+    "lead": {
+      "th": "ภาพรวมของระบบคอมพิวเตอร์สมรรถนะสูงที่เปิดให้บริการอยู่ในปัจจุบัน ข้อมูลมาจากศูนย์ HPC และทีมวิศวกรโดยตรง",
+      "en": "An overview of the high performance computing systems currently in service, contributed directly by HPC centres and their engineering teams."
+    },
+    "searchPlaceholder": {
+      "th": "ค้นหาระบบ หน่วยงาน หรือจังหวัด…",
+      "en": "Search system, organisation or province…"
+    },
+    "filterConsortium": {
+      "th": "คอนซอร์เทียม",
+      "en": "Consortium"
+    },
+    "sortBy": {
+      "th": "เรียงตาม",
+      "en": "Sort by"
+    },
+    "sortCores": {
+      "th": "CPU cores",
+      "en": "CPU cores"
+    },
+    "sortGpu": {
+      "th": "จำนวน GPU",
+      "en": "GPU count"
+    },
+    "sortName": {
+      "th": "ชื่อ",
+      "en": "Name"
+    },
+    "cpu": {
+      "th": "ซีพียู",
+      "en": "CPU"
+    },
+    "gpu": {
+      "th": "จีพียู",
+      "en": "GPU"
+    },
+    "storage": {
+      "th": "สตอเรจ",
+      "en": "Storage"
+    },
+    "network": {
+      "th": "เครือข่าย",
+      "en": "Interconnect"
+    },
+    "cooling": {
+      "th": "ระบบระบายความร้อน",
+      "en": "Cooling"
+    },
+    "applications": {
+      "th": "การใช้งาน",
+      "en": "Applications"
+    },
+    "location": {
+      "th": "ที่ตั้ง",
+      "en": "Location"
+    },
+    "contact": {
+      "th": "ติดต่อ",
+      "en": "Contact"
+    },
+    "website": {
+      "th": "เว็บไซต์",
+      "en": "Website"
+    },
+    "cores": {
+      "th": "คอร์",
+      "en": "cores"
+    },
+    "nodes": {
+      "th": "โหนด",
+      "en": "nodes"
+    },
+    "mapTitle": {
+      "th": "แผนที่ระบบ HPC",
+      "en": "Map of HPC systems"
+    },
+    "empty": {
+      "th": "ไม่พบระบบที่ตรงกับเงื่อนไข",
+      "en": "No systems match your filters."
+    },
+    "resultCount": {
+      "th": "แสดง {n} ระบบ",
+      "en": "Showing {n} systems"
+    }
+  },
+  "stats": {
+    "title": {
+      "th": "สถิติโครงสร้างพื้นฐาน HPC",
+      "en": "HPC infrastructure statistics"
+    },
+    "lead": {
+      "th": "ตัวเลขรวมจากระบบที่อยู่ในฐานข้อมูล อัปเดตทุกครั้งที่มีศูนย์ส่งข้อมูลเข้ามา",
+      "en": "Aggregate figures across every system in the database, updated whenever a centre submits new data."
+    },
+    "totalCores": {
+      "th": "CPU cores รวม",
+      "en": "Total CPU cores"
+    },
+    "totalGpus": {
+      "th": "GPU รวม",
+      "en": "Total GPUs"
+    },
+    "totalSystems": {
+      "th": "ระบบ",
+      "en": "Systems"
+    },
+    "totalOrgs": {
+      "th": "หน่วยงาน",
+      "en": "Organisations"
+    },
+    "byOrg": {
+      "th": "CPU cores แยกตามระบบ",
+      "en": "CPU cores by system"
+    },
+    "byGpu": {
+      "th": "GPU แยกตามระบบ",
+      "en": "GPUs by system"
+    },
+    "byRegion": {
+      "th": "ระบบแยกตามจังหวัด",
+      "en": "Systems by province"
+    },
+    "byConsortium": {
+      "th": "ระบบแยกตามคอนซอร์เทียม",
+      "en": "Systems by consortium"
+    },
+    "byVendor": {
+      "th": "สถาปัตยกรรม GPU",
+      "en": "GPU architecture"
+    },
+    "note": {
+      "th": "ตัวเลขเป็นค่าที่ประกาศโดยแต่ละศูนย์ ไม่ใช่ผลการวัด benchmark",
+      "en": "Figures are as declared by each centre, not benchmarked results."
+    }
+  },
+  "events": {
+    "title": {
+      "th": "กิจกรรมและงานประชุม",
+      "en": "Events and conferences"
+    },
+    "lead": {
+      "th": "งานสัมมนา เวิร์กช็อป และการอบรมด้าน HPC / AI-HPC ในประเทศไทย",
+      "en": "Seminars, workshops and training on HPC and AI-HPC in Thailand."
+    },
+    "upcoming": {
+      "th": "กำลังจะถึง",
+      "en": "Upcoming"
+    },
+    "past": {
+      "th": "ที่ผ่านมา",
+      "en": "Past"
+    },
+    "empty": {
+      "th": "ยังไม่มีกิจกรรมในขณะนี้ — ส่งกิจกรรมของคุณเข้ามาได้เลย",
+      "en": "No events listed yet — submit yours."
+    },
+    "register": {
+      "th": "ลงทะเบียน",
+      "en": "Register"
+    },
+    "addEvent": {
+      "th": "ส่งกิจกรรม",
+      "en": "Submit an event"
+    }
+  },
+  "submit": {
+    "title": {
+      "th": "ส่งข้อมูลเข้าสู่ระบบ",
+      "en": "Submit data"
+    },
+    "lead": {
+      "th": "ศูนย์ HPC และวิศวกรระบบสามารถส่งข้อมูลระบบ สถิติ กิจกรรม หรือเหตุการณ์ในไทม์ไลน์ เข้ามาได้ผ่าน GitHub ข้อมูลทั้งหมดเป็นสาธารณะและตรวจสอบย้อนกลับได้",
+      "en": "HPC centres and system engineers can contribute systems, statistics, events or timeline entries through GitHub. Everything is public and traceable."
+    },
+    "optionIssue": {
+      "th": "วิธีที่ 1 — กรอกฟอร์ม (ง่ายที่สุด)",
+      "en": "Option 1 — Fill in the form (easiest)"
+    },
+    "optionIssueDesc": {
+      "th": "กรอกข้อมูลด้านล่าง ระบบจะสร้าง GitHub issue พร้อมข้อมูลให้อัตโนมัติ ทีมดูแลจะตรวจสอบและนำขึ้นเว็บไซต์",
+      "en": "Fill in the form below and we will open a pre-filled GitHub issue for you. Maintainers review it and publish it to the site."
+    },
+    "optionPr": {
+      "th": "วิธีที่ 2 — ส่ง Pull Request",
+      "en": "Option 2 — Open a pull request"
+    },
+    "optionPrDesc": {
+      "th": "แก้ไขไฟล์ JSON ใน data/ โดยตรง เหมาะกับผู้ที่คุ้นเคยกับ Git",
+      "en": "Edit the JSON files under data/ directly. Best if you are comfortable with Git."
+    },
+    "formType": {
+      "th": "ประเภทข้อมูล",
+      "en": "Type of submission"
+    },
+    "typeSystem": {
+      "th": "ระบบ HPC",
+      "en": "HPC system"
+    },
+    "typeStats": {
+      "th": "อัปเดตสถิติของระบบเดิม",
+      "en": "Update stats for an existing system"
+    },
+    "typeEvent": {
+      "th": "กิจกรรม",
+      "en": "Event"
+    },
+    "typeTimeline": {
+      "th": "เหตุการณ์ในไทม์ไลน์",
+      "en": "Timeline entry"
+    },
+    "typeCorrection": {
+      "th": "แจ้งแก้ไขข้อมูล",
+      "en": "Report a correction"
+    },
+    "fieldName": {
+      "th": "ชื่อระบบ / หัวข้อ",
+      "en": "System name / title"
+    },
+    "fieldOrg": {
+      "th": "หน่วยงาน",
+      "en": "Organisation"
+    },
+    "fieldContactName": {
+      "th": "ชื่อผู้ส่ง",
+      "en": "Your name"
+    },
+    "fieldContactEmail": {
+      "th": "อีเมลติดต่อ (ไม่บังคับ)",
+      "en": "Contact email (optional)"
+    },
+    "fieldDetails": {
+      "th": "รายละเอียด",
+      "en": "Details"
+    },
+    "fieldDetailsHint": {
+      "th": "สเปก CPU / GPU / สตอเรจ / เครือข่าย ที่ตั้ง การใช้งาน และลิงก์อ้างอิง",
+      "en": "CPU / GPU / storage / interconnect specs, location, applications and reference links."
+    },
+    "privacyNote": {
+      "th": "ข้อมูลที่ส่งจะกลายเป็น GitHub issue สาธารณะ กรุณาอย่ากรอกข้อมูลส่วนบุคคล รหัสผ่าน คีย์ หรือข้อมูลภายในที่ไม่ต้องการเปิดเผย",
+      "en": "Your submission becomes a public GitHub issue. Do not include personal data, passwords, keys or anything internal you would not want published."
+    },
+    "generate": {
+      "th": "สร้าง GitHub issue",
+      "en": "Create GitHub issue"
+    },
+    "preview": {
+      "th": "ตัวอย่างข้อมูลที่จะส่ง",
+      "en": "Preview of what will be sent"
+    },
+    "copy": {
+      "th": "คัดลอก",
+      "en": "Copy"
+    },
+    "copied": {
+      "th": "คัดลอกแล้ว",
+      "en": "Copied"
+    },
+    "schemaTitle": {
+      "th": "โครงสร้างข้อมูล",
+      "en": "Data schema"
+    },
+    "required": {
+      "th": "จำเป็น",
+      "en": "required"
+    },
+    "step1": {
+      "th": "Fork repository HPC-Thailand/hpc-th.github.io",
+      "en": "Fork the HPC-Thailand/hpc-th.github.io repository"
+    },
+    "step2": {
+      "th": "แก้ไขไฟล์ {file} — เพิ่ม object ตามโครงสร้างด้านล่าง",
+      "en": "Edit {file} — add an object following the structure below"
+    },
+    "step3": {
+      "th": "เปิด Pull Request พร้อมลิงก์อ้างอิงหรือเอกสารยืนยันสเปก",
+      "en": "Open a pull request with a reference link or document confirming the specs"
+    },
+    "step4": {
+      "th": "ทีมดูแลตรวจสอบและ merge — เว็บไซต์อัปเดตทันทีเมื่อ deploy",
+      "en": "Maintainers review and merge — the site updates on the next deploy"
+    },
+    "noBuild": {
+      "th": "ทุกไฟล์ข้อมูลเป็น JSON ล้วน ไม่มี build step — แก้แล้ว merge ได้เลย",
+      "en": "All data files are plain JSON with no build step — edit, merge, done."
+    }
+  },
+  "footer": {
+    "about": {
+      "th": "เกี่ยวกับโครงการ",
+      "en": "About this project"
+    },
+    "aboutText": {
+      "th": "โครงการเปิดเพื่อรวบรวมและเผยแพร่ข้อมูลโครงสร้างพื้นฐาน HPC ของประเทศไทย ดูแลโดยชุมชนวิศวกรและศูนย์ HPC",
+      "en": "An open project documenting Thailand's HPC infrastructure, maintained by the community of engineers and HPC centres."
+    },
+    "sections": {
+      "th": "ส่วนต่างๆ",
+      "en": "Sections"
+    },
+    "contribute": {
+      "th": "ร่วมพัฒนา",
+      "en": "Contribute"
+    },
+    "sourceCode": {
+      "th": "ซอร์สโค้ดบน GitHub",
+      "en": "Source on GitHub"
+    },
+    "reportIssue": {
+      "th": "แจ้งข้อมูลผิดพลาด",
+      "en": "Report an error"
+    },
+    "license": {
+      "th": "เนื้อหาเผยแพร่ภายใต้สัญญาอนุญาต CC BY 4.0",
+      "en": "Content licensed under CC BY 4.0"
+    },
+    "lastUpdated": {
+      "th": "อัปเดตล่าสุด",
+      "en": "Last updated"
+    }
+  },
+  "common": {
+    "language": {
+      "th": "ภาษา",
+      "en": "Language"
+    },
+    "theme": {
+      "th": "ธีม",
+      "en": "Theme"
+    },
+    "loading": {
+      "th": "กำลังโหลด…",
+      "en": "Loading…"
+    },
+    "error": {
+      "th": "โหลดข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง",
+      "en": "Could not load data. Please try again."
+    },
+    "backHome": {
+      "th": "กลับหน้าแรก",
+      "en": "Back to home"
+    },
+    "notFound": {
+      "th": "ไม่พบหน้าที่คุณค้นหา",
+      "en": "We could not find that page."
+    }
+  }
+}

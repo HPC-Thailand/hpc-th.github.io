@@ -1,0 +1,551 @@
+{
+  "$schema": "./schema/systems.schema.json",
+  "updated": "2026-09-14",
+  "note": {
+    "th": "ข้อมูลสเปกเป็นค่าที่ประกาศโดยแต่ละศูนย์ ระบบที่ยังไม่มีวันยืนยันจะแสดงป้าย \"รอการยืนยัน\" — ศูนย์ HPC สามารถส่งข้อมูลล่าสุดได้ที่หน้า ส่งข้อมูล",
+    "en": "Specifications are as declared by each centre. Systems without a verification date are shown as \"awaiting verification\" — centres can send updated figures via the Submit page."
+  },
+  "systems": [
+    {
+      "id": "crust-25",
+      "name": "The Crust 2.5",
+      "organization": "PTT Exploration and Production Public Company Limited",
+      "yearCommissioned": 2024,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon",
+          "cores": 47360,
+          "nodes": 1480
+        },
+        "gpu": {
+          "type": "NVIDIA H100",
+          "memory": "94GB",
+          "count": 512,
+          "nodes": 128
+        },
+        "storage": {
+          "nvme": "1PB NVMe SSD",
+          "disk": "10PB HDD",
+          "filesystem": "Lustre"
+        },
+        "network": {
+          "frontend": "25GbE Ethernet",
+          "compute": "InfiniBand HDR200",
+          "backend": "100GbE"
+        },
+        "cooling": "Liquid cooling"
+      },
+      "applications": "Private sector (Exploration and Production), AI",
+      "consortium": [
+        "Private Sector"
+      ],
+      "location": {
+        "address": "555/1 Energy Complex Building A, Floors 19–36 Vibhavadi Rangsit Rd., Chatuchak, Bangkok, Thailand",
+        "city": {
+          "th": "กรุงเทพมหานคร",
+          "en": "Bangkok"
+        },
+        "coordinates": [
+          100.5619,
+          13.8125
+        ]
+      },
+      "contact": "+66 (0) 2537 4000",
+      "website": "https://www.pttep.com/en/home",
+      "verifiedOn": null
+    },
+    {
+      "id": "lanta",
+      "name": "LANTA",
+      "organization": "ThaiSC, NSTDA",
+      "yearCommissioned": 2022,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "AMD EPYC 7763",
+          "cores": 31744,
+          "nodes": 496
+        },
+        "gpu": {
+          "type": "NVIDIA A100",
+          "memory": "40GB",
+          "count": 704,
+          "nodes": 88
+        },
+        "storage": {
+          "nvme": "500TB NVMe SSD",
+          "disk": "5PB HDD",
+          "filesystem": "Lustre"
+        },
+        "network": {
+          "frontend": "25GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "100GbE"
+        },
+        "cooling": "Air cooling with liquid assist"
+      },
+      "applications": "Bioinformatics, Simulations, Weather Forecasting, AI",
+      "consortium": [
+        "ThaiSC",
+        "e-Science"
+      ],
+      "location": {
+        "address": "ThaiSC, Room INC2A 301,144 Innovation Cluster 2 Building (INC2) Thailand Science Park (TSP), Phahonyothin Road, Khlong Nueng, Khlong Luang, Pathum Thani 12120, Thailand",
+        "city": {
+          "th": "ปทุมธานี",
+          "en": "Pathum Thani"
+        },
+        "coordinates": [
+          100.6035,
+          14.0674
+        ]
+      },
+      "contact": "thaisc@nstda.or.th",
+      "website": "https://thaisc.io/thaisc-resorces/lanta",
+      "verifiedOn": null
+    },
+    {
+      "id": "vistec-ist",
+      "name": "VISTEC",
+      "organization": "School of Information Science and Technology (IST), VISTEC",
+      "yearCommissioned": 2018,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6240R",
+          "cores": 2464,
+          "nodes": 77
+        },
+        "gpu": {
+          "type": "NVIDIA V100 | NVIDIA A100",
+          "memory": "32GB | 80GB",
+          "count": 84,
+          "nodes": 11
+        },
+        "storage": {
+          "nvme": "200TB NVMe SSD",
+          "disk": "1PB HDD",
+          "filesystem": "BeeGFS"
+        },
+        "network": {
+          "frontend": "25GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "50GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "AI",
+      "consortium": [
+        "AIEI"
+      ],
+      "location": {
+        "address": "IST, VISTEC 555 Moo 1 Payupnai, Wangchan, Rayong 21210 Thailand",
+        "city": {
+          "th": "ระยอง",
+          "en": "Rayong"
+        },
+        "coordinates": [
+          101.1789,
+          12.8755
+        ]
+      },
+      "contact": "+66 (86)-5335-899",
+      "website": "https://vistec.ist/",
+      "verifiedOn": null
+    },
+    {
+      "id": "apex",
+      "name": "APEX",
+      "organization": "CMKL University",
+      "yearCommissioned": 2020,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6248R",
+          "cores": 768,
+          "nodes": 24
+        },
+        "gpu": {
+          "type": "NVIDIA A100",
+          "memory": "40GB",
+          "count": 48,
+          "nodes": 6
+        },
+        "storage": {
+          "nvme": "100TB NVMe SSD",
+          "disk": "500TB HDD",
+          "filesystem": "GPFS"
+        },
+        "network": {
+          "frontend": "10GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "25GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "AI",
+      "consortium": [
+        "AIEI"
+      ],
+      "location": {
+        "address": "CMKL University 1 Soi Chalongkrung 1 Ladkrabang Bangkok 10520",
+        "city": {
+          "th": "กรุงเทพมหานคร",
+          "en": "Bangkok"
+        },
+        "coordinates": [
+          100.7782,
+          13.7299
+        ]
+      },
+      "contact": "apex@cmkl.ac.th",
+      "website": "https://www.cmkl.ac.th/research/apex",
+      "verifiedOn": null
+    },
+    {
+      "id": "mu-ai",
+      "name": "MU-AI Center",
+      "organization": "MUICT, Mahidol University",
+      "yearCommissioned": 2021,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6248R",
+          "cores": 624,
+          "nodes": 20
+        },
+        "gpu": {
+          "type": "NVIDIA A100 | NVIDIA H100",
+          "memory": "40GB | 80GB",
+          "count": 24,
+          "nodes": 3
+        },
+        "storage": {
+          "nvme": "60TB NVMe SSD",
+          "disk": "250TB HDD",
+          "filesystem": "BeeGFS"
+        },
+        "network": {
+          "frontend": "10GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "25GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "AI",
+      "consortium": [
+        "AIEI"
+      ],
+      "location": {
+        "address": "Faculty of ICT, Mahidol University 999 Phuttamonthon 4 Road, Salaya, Nakhon Pathom 73170 THAILAND",
+        "city": {
+          "th": "นครปฐม",
+          "en": "Nakhon Pathom"
+        },
+        "coordinates": [
+          100.3258,
+          13.7923
+        ]
+      },
+      "contact": "+66 (02) 441-0909",
+      "website": "https://www.ict.mahidol.ac.th/",
+      "verifiedOn": null
+    },
+    {
+      "id": "ku-nontri-ai",
+      "name": "KU Nontri AI",
+      "organization": "OCS, Kasetsart University",
+      "yearCommissioned": 2024,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6240R",
+          "cores": 512,
+          "nodes": 16
+        },
+        "gpu": {
+          "type": "NVIDIA A100",
+          "memory": "80GB",
+          "count": 32,
+          "nodes": 4
+        },
+        "storage": {
+          "nvme": "80TB NVMe SSD",
+          "disk": "300TB HDD",
+          "filesystem": "BeeGFS"
+        },
+        "network": {
+          "frontend": "10GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "25GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "AI",
+      "consortium": [
+        "AIEI"
+      ],
+      "location": {
+        "address": "Kasetsart University 50 Ngamwongwan Rd, Chatuchak Bangkok 10900 Thailand",
+        "city": {
+          "th": "กรุงเทพมหานคร",
+          "en": "Bangkok"
+        },
+        "coordinates": [
+          100.5653,
+          13.8463
+        ]
+      },
+      "contact": "0-2562-0951-6",
+      "website": "https://nontriai.ku.ac.th/",
+      "verifiedOn": null
+    },
+    {
+      "id": "cu-ai",
+      "name": "CU AI Research Center",
+      "organization": "Chulalongkorn University",
+      "yearCommissioned": null,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6248R",
+          "cores": 480,
+          "nodes": 15
+        },
+        "gpu": {
+          "type": "NVIDIA A100",
+          "memory": "80GB",
+          "count": 24,
+          "nodes": 3
+        },
+        "storage": {
+          "nvme": "50TB NVMe SSD",
+          "disk": "200TB HDD",
+          "filesystem": "BeeGFS"
+        },
+        "network": {
+          "frontend": "10GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "25GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "AI, Research",
+      "consortium": [
+        "AIEI"
+      ],
+      "location": {
+        "address": "Chulalongkorn University, Phayathai Rd., Pathumwan, Bangkok 10330, Thailand",
+        "city": {
+          "th": "กรุงเทพมหานคร",
+          "en": "Bangkok"
+        },
+        "coordinates": [
+          100.5312,
+          13.737
+        ]
+      },
+      "contact": "+66 (0) 2215-3000",
+      "website": "https://www.chula.ac.th/",
+      "verifiedOn": null
+    },
+    {
+      "id": "erawan",
+      "name": "ERAWAN",
+      "organization": "ITSC, Chiang Mai University",
+      "yearCommissioned": 2021,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6338",
+          "cores": 384,
+          "nodes": 12
+        },
+        "gpu": {
+          "type": "NVIDIA A100",
+          "memory": "80GB",
+          "count": 24,
+          "nodes": 3
+        },
+        "storage": {
+          "nvme": "50TB NVMe SSD",
+          "disk": "200TB HDD",
+          "filesystem": "BeeGFS"
+        },
+        "network": {
+          "frontend": "10GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "25GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "Simulations, AI",
+      "consortium": [
+        "AIEI",
+        "ThaiSC"
+      ],
+      "location": {
+        "address": "Information Technology Service Center, Chiang Mai University 239, Huay Kaew Road, Muang District, Chiang Mai, Thailand, 50200",
+        "city": {
+          "th": "เชียงใหม่",
+          "en": "Chiang Mai"
+        },
+        "coordinates": [
+          98.9513,
+          18.7967
+        ]
+      },
+      "contact": "053-943800 กด 1",
+      "website": "https://hpc.cmu.ac.th/",
+      "verifiedOn": null
+    },
+    {
+      "id": "kmutt-ai",
+      "name": "KMUTT AI Center",
+      "organization": "King Mongkut's University of Technology Thonburi",
+      "yearCommissioned": null,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6240R",
+          "cores": 320,
+          "nodes": 10
+        },
+        "gpu": {
+          "type": "NVIDIA A100",
+          "memory": "40GB",
+          "count": 20,
+          "nodes": 3
+        },
+        "storage": {
+          "nvme": "40TB NVMe SSD",
+          "disk": "150TB HDD",
+          "filesystem": "BeeGFS"
+        },
+        "network": {
+          "frontend": "10GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "25GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "AI, Engineering Simulations",
+      "consortium": [
+        "AIEI"
+      ],
+      "location": {
+        "address": "King Mongkut's University of Technology Thonburi, 126 Pracha Uthit Rd., Bang Mod, Thung Khru, Bangkok 10140, Thailand",
+        "city": {
+          "th": "กรุงเทพมหานคร",
+          "en": "Bangkok"
+        },
+        "coordinates": [
+          100.4947,
+          13.6511
+        ]
+      },
+      "contact": "+66 (0) 2470-8000",
+      "website": "https://www.kmutt.ac.th/",
+      "verifiedOn": null
+    },
+    {
+      "id": "psu-singkhorn",
+      "name": "PSU-Singkhorn",
+      "organization": "Digital Research and Innovation Institute - DRii, Prince of Songkla University",
+      "yearCommissioned": 2021,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6240R",
+          "cores": 256,
+          "nodes": 8
+        },
+        "gpu": {
+          "type": "NVIDIA A100",
+          "memory": "40GB",
+          "count": 16,
+          "nodes": 2
+        },
+        "storage": {
+          "nvme": "30TB NVMe SSD",
+          "disk": "100TB HDD",
+          "filesystem": "BeeGFS"
+        },
+        "network": {
+          "frontend": "10GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "25GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "AI",
+      "consortium": [
+        "AIEI"
+      ],
+      "location": {
+        "address": "Prince of Songkla University, LRC, 15 Karnchanavanich Road, Hat Yai, Songkhla 90110 Thailand",
+        "city": {
+          "th": "สงขลา",
+          "en": "Songkhla"
+        },
+        "coordinates": [
+          100.4974,
+          7.0086
+        ]
+      },
+      "contact": "0-7428-6940",
+      "website": "https://www.facebook.com/drii.psu",
+      "verifiedOn": null
+    },
+    {
+      "id": "kku-hpc",
+      "name": "KKU",
+      "organization": "Office of Digital Technology - ODT, Khon Kaen University",
+      "yearCommissioned": 2021,
+      "status": "operational",
+      "specs": {
+        "cpu": {
+          "type": "Intel Xeon Gold 6240R",
+          "cores": 256,
+          "nodes": 8
+        },
+        "gpu": {
+          "type": "NVIDIA A100",
+          "memory": "40GB",
+          "count": 16,
+          "nodes": 2
+        },
+        "storage": {
+          "nvme": "30TB NVMe SSD",
+          "disk": "100TB HDD",
+          "filesystem": "BeeGFS"
+        },
+        "network": {
+          "frontend": "10GbE Ethernet",
+          "compute": "InfiniBand HDR100",
+          "backend": "25GbE"
+        },
+        "cooling": "Air cooling"
+      },
+      "applications": "AI",
+      "consortium": [
+        "AIEI"
+      ],
+      "location": {
+        "address": "Khon Kaen University 123 Moo 16 Mittraphap Rd., Nai-Muang, Muang District, Khon Kaen 40002",
+        "city": {
+          "th": "ขอนแก่น",
+          "en": "Khon Kaen"
+        },
+        "coordinates": [
+          102.8255,
+          16.4754
+        ]
+      },
+      "contact": "043-009700",
+      "website": "https://digital.kku.ac.th/",
+      "verifiedOn": null
+    }
+  ]
+}

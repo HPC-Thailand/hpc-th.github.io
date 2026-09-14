@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — HPC Thailand</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  try { document.documentElement.dataset.theme =
+    localStorage.getItem('hpcth.theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+</script>
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+<main id="main">
+  <section class="hero" style="min-height:56vh;display:grid;align-items:center">
+    <div class="container" style="text-align:center">
+      <p class="mono" style="font-size:clamp(3rem,10vw,6rem);color:var(--brand-200);margin:0;line-height:1">404</p>
+      <h1 data-i18n="common.notFound"></h1>
+      <p class="lead" style="margin-inline:auto">
+        ไม่พบหน้าที่คุณค้นหา · We could not find that page.
+      </p>
+      <p><a class="btn btn-primary" href="/" data-i18n="common.backHome"></a></p>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script type="module">
+  import { boot, observeReveal } from '/assets/js/core.js';
+  await boot(null);
+  observeReveal();
+</script>
+</body>
+</html>

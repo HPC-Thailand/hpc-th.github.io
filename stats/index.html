@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="stats.title">สถิติโครงสร้างพื้นฐาน HPC</title>
+<meta name="description" content="สถิติรวมของโครงสร้างพื้นฐาน HPC ในประเทศไทย — CPU cores, GPU, การกระจายตามภูมิภาคและคอนซอร์เทียม.">
+<link rel="canonical" href="https://hpc.in.th/stats/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HPC Thailand">
+<meta property="og:title" content="สถิติโครงสร้างพื้นฐาน HPC — HPC Thailand">
+<meta property="og:url" content="https://hpc.in.th/stats/">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  try { document.documentElement.dataset.theme =
+    localStorage.getItem('hpcth.theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-i18n="nav.skip">ข้ามไปยังเนื้อหาหลัก</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <section class="hero" style="padding-block:clamp(36px,4vw,60px)">
+    <div class="container">
+      <span class="eyebrow" data-i18n="nav.stats"></span>
+      <h1 data-i18n="stats.title"></h1>
+      <p class="lead" data-i18n="stats.lead"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="kpi-grid" id="kpi-grid"></div>
+
+      <div class="chart-grid">
+        <div class="chart-card reveal" style="grid-column:1/-1">
+          <h3 data-i18n="stats.byOrg"></h3>
+          <div class="chart-box" style="height:380px"><canvas id="chart-cores"></canvas></div>
+        </div>
+        <div class="chart-card reveal">
+          <h3 data-i18n="stats.byGpu"></h3>
+          <div class="chart-box"><canvas id="chart-gpu"></canvas></div>
+        </div>
+        <div class="chart-card reveal">
+          <h3 data-i18n="stats.byRegion"></h3>
+          <div class="chart-box"><canvas id="chart-region"></canvas></div>
+        </div>
+        <div class="chart-card reveal">
+          <h3 data-i18n="stats.byConsortium"></h3>
+          <div class="chart-box"><canvas id="chart-consortium"></canvas></div>
+        </div>
+        <div class="chart-card reveal">
+          <h3 data-i18n="stats.byVendor"></h3>
+          <div class="chart-box"><canvas id="chart-vendor"></canvas></div>
+        </div>
+      </div>
+
+      <p class="result-count" style="margin-top:22px" id="stats-note"></p>
+      <p class="result-count" data-i18n="stats.note"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script type="module" src="/assets/js/stats.js"></script>
+</body>
+</html>

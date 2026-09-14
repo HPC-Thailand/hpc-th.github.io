@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="systems.title">ระบบ HPC ในประเทศไทย</title>
+<meta name="description" content="ไดเรกทอรีระบบคอมพิวเตอร์สมรรถนะสูงในประเทศไทย พร้อมสเปก CPU, GPU, สตอเรจ, เครือข่าย และแผนที่ที่ตั้ง — Directory of HPC systems in Thailand.">
+<link rel="canonical" href="https://hpc.in.th/systems/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HPC Thailand">
+<meta property="og:title" content="ระบบ HPC ในประเทศไทย — HPC Thailand">
+<meta property="og:url" content="https://hpc.in.th/systems/">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  try { document.documentElement.dataset.theme =
+    localStorage.getItem('hpcth.theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-i18n="nav.skip">ข้ามไปยังเนื้อหาหลัก</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <section class="hero" style="padding-block:clamp(36px,4vw,60px)">
+    <div class="container">
+      <span class="eyebrow" data-i18n="nav.systems"></span>
+      <h1 data-i18n="systems.title"></h1>
+      <p class="lead" data-i18n="systems.lead"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="tl-controls-inner" style="margin-bottom:18px">
+        <div class="chips" id="consortium-chips" role="group" aria-label="Consortium filter"></div>
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+          </svg>
+          <label class="visually-hidden" for="sys-search" data-i18n="systems.searchPlaceholder"></label>
+          <input type="search" id="sys-search" autocomplete="off"
+                 data-i18n-attr="placeholder:systems.searchPlaceholder">
+        </div>
+        <div class="field" style="flex:none">
+          <label class="visually-hidden" for="sys-sort" data-i18n="systems.sortBy"></label>
+          <select id="sys-sort" style="padding:8px 13px;border-radius:999px"></select>
+        </div>
+      </div>
+
+      <p class="result-count" id="sys-count"></p>
+      <div class="card-grid" id="sys-grid"></div>
+      <p class="result-count" style="margin-top:18px" id="sys-note"></p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal"><h2 data-i18n="systems.mapTitle"></h2></div>
+      <div id="map" class="reveal"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script type="module" src="/assets/js/systems.js"></script>
+</body>
+</html>

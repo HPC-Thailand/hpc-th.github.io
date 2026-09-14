@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: แจ้งแก้ไขข้อมูล / Report a correction
+    url: https://github.com/HPC-Thailand/hpc-th.github.io/issues/new
+    about: พบข้อมูลผิดพลาดในเว็บไซต์ แจ้งได้ที่นี่

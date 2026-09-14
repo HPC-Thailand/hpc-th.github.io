@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="events.title">กิจกรรมและงานประชุม</title>
+<meta name="description" content="งานสัมมนา เวิร์กช็อป และการอบรมด้าน HPC / AI-HPC ในประเทศไทย — HPC events and conferences in Thailand.">
+<link rel="canonical" href="https://hpc.in.th/events/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HPC Thailand">
+<meta property="og:title" content="กิจกรรมและงานประชุม — HPC Thailand">
+<meta property="og:url" content="https://hpc.in.th/events/">
+
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  try { document.documentElement.dataset.theme =
+    localStorage.getItem('hpcth.theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-i18n="nav.skip">ข้ามไปยังเนื้อหาหลัก</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <section class="hero" style="padding-block:clamp(36px,4vw,60px)">
+    <div class="container">
+      <span class="eyebrow" data-i18n="nav.events"></span>
+      <h1 data-i18n="events.title"></h1>
+      <p class="lead" data-i18n="events.lead"></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><h2 data-i18n="events.upcoming"></h2></div>
+      <div class="event-list" id="events-upcoming"></div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="past-section" hidden>
+    <div class="container">
+      <div class="section-head"><h2 data-i18n="events.past"></h2></div>
+      <div class="event-list" id="events-past"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script type="module" src="/assets/js/events.js"></script>
+</body>
+</html>

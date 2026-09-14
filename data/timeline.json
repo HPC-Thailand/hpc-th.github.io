@@ -1,0 +1,956 @@
+{
+  "$schema": "./schema/timeline.schema.json",
+  "updated": "2026-09-14",
+  "sourceNote": {
+    "th": "เรียบเรียงจากสไลด์ \"ประวัติศาสตร์ HPC ในประเทศไทย\" (10 หน้า) ปี พ.ศ. ในต้นฉบับบางจุดคลาดเคลื่อน เว็บไซต์นี้คำนวณ พ.ศ. = ค.ศ. + 543",
+    "en": "Compiled from the 10-page \"History of HPC in Thailand\" slide deck. A few Buddhist-era years in the original are typos; this site computes BE = CE + 543."
+  },
+  "eras": [
+    {
+      "id": "origins",
+      "from": 1963,
+      "to": 1979,
+      "label": { "th": "ยุคบุกเบิก", "en": "Origins" },
+      "tagline": { "th": "คอมพิวเตอร์เครื่องแรกของประเทศไทย", "en": "Thailand's first computer" }
+    },
+    {
+      "id": "gen1",
+      "from": 1980,
+      "to": 1999,
+      "label": { "th": "ยุคที่ 1", "en": "1st Generation" },
+      "tagline": { "th": "กำเนิดยุคแห่งงานวิจัยด้าน Computer Science", "en": "The dawn of HPC" }
+    },
+    {
+      "id": "gen2",
+      "from": 2000,
+      "to": 2010,
+      "label": { "th": "ยุคที่ 2", "en": "2nd Generation" },
+      "tagline": { "th": "ระบบกริดถือกำเนิดขึ้น", "en": "Grid Computing" }
+    },
+    {
+      "id": "gen3",
+      "from": 2011,
+      "to": 2018,
+      "label": { "th": "ยุคที่ 3", "en": "3rd Generation" },
+      "tagline": { "th": "UniNet2 และ National e-Science Infrastructure Consortium", "en": "UniNet2 and the National e-Science Infrastructure Consortium" }
+    },
+    {
+      "id": "gen4",
+      "from": 2019,
+      "to": 2030,
+      "label": { "th": "ยุคที่ 4", "en": "4th Generation" },
+      "tagline": { "th": "ยุคแห่ง Supercomputer และ AI-HPC", "en": "Supercomputers and AI-HPC" }
+    }
+  ],
+  "entries": [
+    {
+      "id": "1963-ibm-1620",
+      "year": 1963,
+      "era": "origins",
+      "kind": "milestone",
+      "category": "system",
+      "title": {
+        "th": "คอมพิวเตอร์เครื่องแรกในประเทศไทย",
+        "en": "The first computer in Thailand"
+      },
+      "subtitle": { "th": "IBM 1620", "en": "IBM 1620" },
+      "org": {
+        "th": "อาคารศูนย์คำนวณสถิติ (ตึก 9) ภาควิชาสถิติ คณะพาณิชยศาสตร์และการบัญชี จุฬาลงกรณ์มหาวิทยาลัย",
+        "en": "Statistical Computing Centre (Building 9), Department of Statistics, Faculty of Commerce and Accountancy, Chulalongkorn University"
+      },
+      "tags": ["IBM", "CU"],
+      "source": "p1"
+    },
+    {
+      "id": "1980-gen1",
+      "year": 1980,
+      "era": "gen1",
+      "kind": "era",
+      "category": "era",
+      "title": {
+        "th": "กำเนิดยุคแห่งงานวิจัยด้าน Computer Science",
+        "en": "The birth of computer science research in Thailand"
+      },
+      "subtitle": {
+        "th": "First Generation: The dawn of HPC",
+        "en": "First Generation: The dawn of HPC"
+      },
+      "source": "p1"
+    },
+    {
+      "id": "1986-thai-internet",
+      "year": 1986,
+      "era": "gen1",
+      "kind": "milestone",
+      "category": "network",
+      "title": { "th": "กำเนิดอินเทอร์เน็ตไทย", "en": "The birth of the Thai Internet" },
+      "org": {
+        "th": "intERLab, AIT",
+        "en": "intERLab, AIT"
+      },
+      "body": {
+        "th": "ถือกำเนิดโดย ศ.ดร.กาญจนา กาญจนสุต — โครงข่ายเชื่อมต่อจาก AIT ไปยัง Melbourne",
+        "en": "Pioneered by Prof. Dr. Kanchana Kanchanasut — the first link from AIT to Melbourne."
+      },
+      "tags": ["AIT", "Network"],
+      "source": "p1"
+    },
+    {
+      "id": "1991-hpcc-nectec",
+      "year": 1991,
+      "era": "gen1",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "ศูนย์ High Performance Computing Center (HPCC)",
+        "en": "High Performance Computing Center (HPCC)"
+      },
+      "org": {
+        "th": "โดย National Electronics and Computer Technology Center (NECTEC), NSTDA",
+        "en": "By the National Electronics and Computer Technology Center (NECTEC), NSTDA"
+      },
+      "tags": ["NECTEC", "NSTDA"],
+      "link": "https://www.nectec.or.th/",
+      "source": "p1"
+    },
+    {
+      "id": "1992-thaisarn",
+      "year": 1992,
+      "era": "gen1",
+      "kind": "milestone",
+      "category": "network",
+      "title": { "th": "ประเทศไทยออกสู่อินเทอร์เน็ต", "en": "Thailand connects to the global Internet" },
+      "body": {
+        "th": "กำเนิดเครือข่ายวิจัยของสถาบัน ไทยสาร-1 (ThaiSarn 1) — AIT, CU, PSU, KU, NECTEC",
+        "en": "ThaiSarn 1, the first inter-institutional research network — AIT, CU, PSU, KU, NECTEC."
+      },
+      "tags": ["ThaiSarn", "NECTEC", "Network"],
+      "source": "p1"
+    },
+    {
+      "id": "1994-cray-el98",
+      "year": 1994,
+      "era": "gen1",
+      "kind": "highlight",
+      "category": "system",
+      "title": {
+        "th": "Supercomputer เครื่องแรกของประเทศไทย",
+        "en": "Thailand's first supercomputer"
+      },
+      "subtitle": { "th": "CRAY EL98", "en": "CRAY EL98" },
+      "org": { "th": "HPCC, NECTEC, NSTDA", "en": "HPCC, NECTEC, NSTDA" },
+      "stats": [
+        { "label": { "th": "โปรเซสเซอร์", "en": "Processors" }, "value": "8" },
+        { "label": { "th": "หน่วยความจำ", "en": "Memory" }, "value": "2 GB DRAM" }
+      ],
+      "tags": ["CRAY", "NECTEC", "NSTDA"],
+      "source": "p1"
+    },
+    {
+      "id": "1995-beowulf",
+      "year": 1995,
+      "era": "gen1",
+      "kind": "milestone",
+      "category": "system",
+      "title": {
+        "th": "สถาบันวิจัยและมหาวิทยาลัยเริ่มจัดซื้อและติดตั้งระบบคอมพิวเตอร์สมรรถนะสูง",
+        "en": "Research institutes and universities begin procuring HPC systems"
+      },
+      "subtitle": {
+        "th": "แนวคิดของ BEOWULF cluster กำเนิดขึ้น",
+        "en": "The BEOWULF cluster concept emerges"
+      },
+      "org": { "th": "KU | KMUTT | KMITL | TMD", "en": "KU | KMUTT | KMITL | TMD" },
+      "body": {
+        "th": "มีระบบที่หลากหลาย IBM SP2 / IBM RS600 / SUN SPARC / HP (Convex) / DEC Alpha",
+        "en": "A diverse mix of systems: IBM SP2 / IBM RS600 / SUN SPARC / HP (Convex) / DEC Alpha."
+      },
+      "tags": ["Beowulf", "KU", "KMUTT", "KMITL", "TMD"],
+      "source": "p2"
+    },
+    {
+      "id": "1997-csea-unofficial",
+      "year": 1997,
+      "era": "gen1",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "Computational Science and Engineering Association (CSEA) — ไม่เป็นทางการ",
+        "en": "Computational Science and Engineering Association (CSEA) — unofficial"
+      },
+      "body": {
+        "th": "นักวิจัย นักวิทยาศาสตร์ วิศวกรและนักวิทยาการคอมพิวเตอร์ รวมตัวกันเป็นสมาคมวิทยาการและวิศวกรรมเชิงคอมพิวเตอร์",
+        "en": "Researchers, scientists, engineers and computer scientists come together as an informal computational science and engineering community."
+      },
+      "tags": ["CSEA", "Community"],
+      "source": "p2"
+    },
+    {
+      "id": "1997-smile",
+      "year": 1997,
+      "era": "gen1",
+      "kind": "milestone",
+      "category": "software",
+      "title": { "th": "เริ่มโครงการ SMILE", "en": "SMILE project started" },
+      "body": {
+        "th": "โดย อ.ปุจฉง อุทัยโยภาส (Aj. Putchong Uthayopas) และ อ.สุรศักดิ์ สงวนพงษ์ (Aj. Surasak Sanguanpong)",
+        "en": "By Aj. Putchong Uthayopas and Aj. Surasak Sanguanpong."
+      },
+      "tags": ["SMILE", "KU", "Open Source"],
+      "source": "p2"
+    },
+    {
+      "id": "1999-pirun",
+      "year": 1999,
+      "era": "gen1",
+      "kind": "highlight",
+      "category": "system",
+      "title": { "th": "The PIRUN Cluster", "en": "The PIRUN Cluster" },
+      "subtitle": {
+        "th": "PIRUN — Pile of Inexpensive and Redundant Universal Nodes",
+        "en": "PIRUN — Pile of Inexpensive and Redundant Universal Nodes"
+      },
+      "org": { "th": "มหาวิทยาลัยเกษตรศาสตร์ (KU)", "en": "Kasetsart University (KU)" },
+      "body": {
+        "th": "ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทยในขณะนั้น พร้อมชุดเครื่องมือ SMILE Cluster Management System (SCMS) และ SQMS toolkit",
+        "en": "The fastest supercomputer in Thailand at the time, together with the SMILE Cluster Management System (SCMS) and SQMS toolkits."
+      },
+      "badges": [{ "th": "เร็วที่สุดในไทย", "en": "Fastest in Thailand" }],
+      "tags": ["PIRUN", "KU", "Beowulf"],
+      "source": "p2"
+    },
+    {
+      "id": "2000-gen2",
+      "year": 2000,
+      "era": "gen2",
+      "kind": "era",
+      "category": "era",
+      "title": { "th": "ระบบกริดถือกำเนิดขึ้น", "en": "The grid arrives" },
+      "subtitle": {
+        "th": "Second Generation: Grid Computing",
+        "en": "Second Generation: Grid Computing"
+      },
+      "source": "p2"
+    },
+    {
+      "id": "2001-thaigrid",
+      "year": 2001,
+      "era": "gen2",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "จุดเริ่มต้นของ ThaiGrid project (TNGP)",
+        "en": "The ThaiGrid project (TNGP) begins"
+      },
+      "body": {
+        "th": "ระบบกริดแรกที่เชื่อมต่อระหว่าง KU กับ KMUTNB ต่อมามีสมาชิกเพิ่มเติมคือ AIT, CU, KU, KMUTNB, KMUTT, KMITL, SUT, TMD, CMU, KKU, WU และ PSU",
+        "en": "The first grid linking KU and KMUTNB, later joined by AIT, CU, KU, KMUTNB, KMUTT, KMITL, SUT, TMD, CMU, KKU, WU and PSU."
+      },
+      "tags": ["ThaiGrid", "TNGP", "Grid"],
+      "source": "p2"
+    },
+    {
+      "id": "2003-thai-escience",
+      "year": 2003,
+      "era": "gen2",
+      "kind": "milestone",
+      "category": "org",
+      "title": { "th": "เริ่มต้น Thai e-Science Project", "en": "The Thai e-Science Project begins" },
+      "bullets": [
+        {
+          "th": "Computational Chemistry, Department of Chemistry, CU",
+          "en": "Computational Chemistry, Department of Chemistry, CU"
+        },
+        {
+          "th": "Department of Computer Engineering, CU",
+          "en": "Department of Computer Engineering, CU"
+        },
+        { "th": "HPCNC, KU", "en": "HPCNC, KU" }
+      ],
+      "tags": ["e-Science", "CU", "KU"],
+      "source": "p3"
+    },
+    {
+      "id": "2006-tngc",
+      "year": 2006,
+      "era": "gen2",
+      "kind": "highlight",
+      "category": "org",
+      "title": { "th": "Thai National Grid Center (TNGC)", "en": "Thai National Grid Center (TNGC)" },
+      "body": {
+        "th": "จัดตั้งศูนย์ไทยกริดแห่งชาติ โดย Software Industry Promotion Agency (Public Organization) — SIPA ร่วมกับ IBM",
+        "en": "The national grid centre is established by the Software Industry Promotion Agency (Public Organization) — SIPA, together with IBM."
+      },
+      "tags": ["TNGC", "SIPA", "IBM", "Grid"],
+      "source": "p3"
+    },
+    {
+      "id": "2007-tera-cluster",
+      "year": 2007,
+      "era": "gen2",
+      "kind": "highlight",
+      "category": "system",
+      "title": { "th": "Tera Cluster — TNGC", "en": "Tera Cluster — TNGC" },
+      "body": {
+        "th": "เป็นระบบคอมพิวเตอร์คลัสเตอร์ที่เร็วที่สุดในประเทศไทย 2.5 TeraFlops",
+        "en": "The fastest computing cluster in Thailand at 2.5 TeraFlops."
+      },
+      "stats": [
+        { "label": { "th": "สมรรถนะ", "en": "Performance" }, "value": "2.5 TFlops" },
+        { "label": { "th": "โหนด", "en": "Nodes" }, "value": "200 (800 cores)" },
+        { "label": { "th": "ระบบไฟล์", "en": "Filesystem" }, "value": "Lustre 5 TB" }
+      ],
+      "badges": [{ "th": "เร็วที่สุดในไทย", "en": "Fastest in Thailand" }],
+      "tags": ["TNGC", "Grid"],
+      "source": "p3"
+    },
+    {
+      "id": "2007-csea-official",
+      "year": 2007,
+      "era": "gen2",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "Computational Science and Engineering Association (CSEA) — เป็นทางการ",
+        "en": "Computational Science and Engineering Association (CSEA) — official"
+      },
+      "body": {
+        "th": "จัดตั้งสมาคมวิทยาการและวิศวกรรมเชิงคอมพิวเตอร์อย่างเป็นทางการ",
+        "en": "The computational science and engineering association is formally established."
+      },
+      "tags": ["CSEA", "Community"],
+      "source": "p3"
+    },
+    {
+      "id": "2008-tngp-outcome",
+      "year": 2008,
+      "era": "gen2",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "ThaiGrid project (TNGP) — ดำเนินการสำเร็จ",
+        "en": "ThaiGrid project (TNGP) — outcomes"
+      },
+      "bullets": [
+        {
+          "tone": "plus",
+          "th": "เครือข่ายมหาวิทยาลัย 22 แห่ง",
+          "en": "A network of 22 universities"
+        },
+        {
+          "tone": "plus",
+          "th": "ฝึกทักษะให้กับบุคลากรมากกว่า 2,000 คน",
+          "en": "Over 2,000 people trained"
+        },
+        {
+          "tone": "plus",
+          "th": "กระบวนการถ่ายทอดเทคโนโลยีผ่านการจัดกิจกรรม สัมมนาวิชาการ และงานวิจัยต่างๆ",
+          "en": "Technology transfer through events, academic seminars and research"
+        },
+        {
+          "tone": "minus",
+          "th": "ปัญหาด้านงบประมาณทำให้โครงการดำเนินต่อไปได้อีกไม่นาน",
+          "en": "Budget constraints meant the project could not continue much longer"
+        }
+      ],
+      "tags": ["ThaiGrid", "TNGP"],
+      "source": "p3"
+    },
+    {
+      "id": "2008-sila",
+      "year": 2008,
+      "era": "gen2",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "ยุค 1 TeraFlops", "en": "The 1 TeraFlops era" },
+      "subtitle": { "th": "SILA Cluster", "en": "SILA Cluster" },
+      "org": {
+        "th": "ศูนย์คอมพิวเตอร์ประมวลผลสมรรถนะสูงเพื่อการวิจัย สถาบันวิจัยและพัฒนา มหาวิทยาลัยรามคำแหง (RU)",
+        "en": "HPC Research Centre, Research and Development Institute, Ramkhamhaeng University (RU)"
+      },
+      "stats": [{ "label": { "th": "สมรรถนะ", "en": "Performance" }, "value": "1 TFlops" }],
+      "tags": ["SILA", "RU"],
+      "source": "p3"
+    },
+    {
+      "id": "2009-eclipse",
+      "year": 2009,
+      "era": "gen2",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "ยุค 10 TeraFlops", "en": "The 10 TeraFlops era" },
+      "subtitle": { "th": "Eclipse Cluster", "en": "Eclipse Cluster" },
+      "org": { "th": "BIOTEC, NSTDA", "en": "BIOTEC, NSTDA" },
+      "stats": [{ "label": { "th": "สมรรถนะ", "en": "Performance" }, "value": "10 TFlops" }],
+      "tags": ["BIOTEC", "NSTDA"],
+      "source": "p4"
+    },
+    {
+      "id": "2010-tngc-end",
+      "year": 2010,
+      "era": "gen2",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "Thai National Grid Center (TNGC) — ยุติการดำเนินงาน",
+        "en": "Thai National Grid Center (TNGC) — discontinued"
+      },
+      "body": {
+        "th": "ศูนย์ไทยกริดแห่งชาติปิดตัวลง และสิ้นสุดการดำเนินโครงการ ThaiGrid project (TNGP)",
+        "en": "The national grid centre closes and the ThaiGrid project (TNGP) comes to an end."
+      },
+      "tags": ["TNGC", "TNGP"],
+      "source": "p4"
+    },
+    {
+      "id": "2011-gen3",
+      "year": 2011,
+      "era": "gen3",
+      "kind": "era",
+      "category": "era",
+      "title": {
+        "th": "ยุคโครงข่ายการเชื่อมต่อและการประมวลผลบนเครือข่ายขนาดใหญ่",
+        "en": "The era of large-scale networks and networked computing"
+      },
+      "subtitle": {
+        "th": "Third Generation: UniNet2 and National e-Science Infrastructure Consortium",
+        "en": "Third Generation: UniNet2 and National e-Science Infrastructure Consortium"
+      },
+      "source": "p4"
+    },
+    {
+      "id": "2011-escience-consortium",
+      "year": 2011,
+      "era": "gen3",
+      "kind": "highlight",
+      "category": "org",
+      "title": {
+        "th": "กำเนิด National e-Science Infrastructure Consortium",
+        "en": "The National e-Science Infrastructure Consortium is founded"
+      },
+      "body": {
+        "th": "ตามพระราชดำริของสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ สยามบรมราชกุมารี ภายใต้โครงการไทย-เซิร์น ก่อตั้งขึ้นเมื่อวันที่ 27 กันยายน พ.ศ. 2554 โดย MoU จาก 5 หน่วยงาน",
+        "en": "Initiated under the royal patronage of HRH Princess Maha Chakri Sirindhorn as part of the Thailand–CERN programme, and founded on 27 September 2011 through an MoU between five organisations."
+      },
+      "bullets": [
+        {
+          "th": "สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (NSTDA)",
+          "en": "National Science and Technology Development Agency (NSTDA)"
+        },
+        { "th": "จุฬาลงกรณ์มหาวิทยาลัย (CU)", "en": "Chulalongkorn University (CU)" },
+        { "th": "มหาวิทยาลัยเทคโนโลยีสุรนารี (SUT)", "en": "Suranaree University of Technology (SUT)" },
+        {
+          "th": "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (KMUTT)",
+          "en": "King Mongkut's University of Technology Thonburi (KMUTT)"
+        },
+        {
+          "th": "สถาบันสารสนเทศทรัพยากรน้ำและการเกษตร (องค์การมหาชน) (HAII)",
+          "en": "Hydro and Agro Informatics Institute (HAII)"
+        }
+      ],
+      "stats": [
+        { "label": { "th": "CPU cores", "en": "CPU cores" }, "value": "360" },
+        { "label": { "th": "สตอเรจ", "en": "Storage" }, "value": "350 TB" }
+      ],
+      "tags": ["e-Science", "CERN", "NSTDA"],
+      "source": "p4"
+    },
+    {
+      "id": "2012-uninet2",
+      "year": 2012,
+      "era": "gen3",
+      "kind": "milestone",
+      "category": "network",
+      "title": {
+        "th": "ยุคของ UniNet2 — NEdNet P1, MOENet, VECNet",
+        "en": "The UniNet2 era — NEdNet P1, MOENet, VECNet"
+      },
+      "body": {
+        "th": "Backbone ของระบบที่ความเร็ว 50 Gbps โดยมีกระทรวงศึกษาธิการเป็นผู้ดูแล",
+        "en": "A 50 Gbps national backbone operated by the Ministry of Education."
+      },
+      "stats": [{ "label": { "th": "แบนด์วิดท์", "en": "Backbone" }, "value": "50 Gbps" }],
+      "tags": ["UniNet", "Network"],
+      "source": "p4"
+    },
+    {
+      "id": "2013-escience-research",
+      "year": 2013,
+      "era": "gen3",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "National e-Science Infrastructure Consortium",
+        "en": "National e-Science Infrastructure Consortium"
+      },
+      "subtitle": {
+        "th": "ดำเนินการวิจัยพัฒนาโครงสร้างพื้นฐานด้านการคำนวณ",
+        "en": "Research and development of computational infrastructure"
+      },
+      "bullets": [
+        {
+          "th": "ฟิสิกส์อนุภาคพลังงานสูง (High Energy Particle Physics)",
+          "en": "High Energy Particle Physics"
+        },
+        {
+          "th": "วิทยาการและวิศวกรรมเชิงคำนวณ (Computational Science and Engineering)",
+          "en": "Computational Science and Engineering"
+        },
+        {
+          "th": "วิทยาการและวิศวกรรมคอมพิวเตอร์ (Computer Science and Engineering)",
+          "en": "Computer Science and Engineering"
+        }
+      ],
+      "tags": ["e-Science"],
+      "source": "p4"
+    },
+    {
+      "id": "2014-cern-lhc",
+      "year": 2014,
+      "era": "gen3",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "เชื่อมต่อกับเครื่องเร่งอนุภาค LHC ที่ CERN สำเร็จ",
+        "en": "Successful connection to the LHC at CERN"
+      },
+      "body": {
+        "th": "ดำเนินการประมวลผลข้อมูลส่งต่อในระดับ Tier 2 และ Tier 3 ของ WLCG",
+        "en": "Thailand begins processing WLCG data at Tier 2 and Tier 3 level."
+      },
+      "stats": [
+        { "label": { "th": "CPU cores", "en": "CPU cores" }, "value": "1,960" },
+        { "label": { "th": "สตอเรจ", "en": "Storage" }, "value": "675 TB" }
+      ],
+      "tags": ["CERN", "WLCG", "e-Science"],
+      "source": "p5"
+    },
+    {
+      "id": "2015-ega-narit",
+      "year": 2015,
+      "era": "gen3",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "มีหน่วยงานเข้าร่วมอีก 2 หน่วยงาน",
+        "en": "Two more organisations join the consortium"
+      },
+      "bullets": [
+        {
+          "th": "สำนักงานพัฒนารัฐบาลดิจิทัล (องค์การมหาชน) — EGA / DGA",
+          "en": "Electronic Government Agency — EGA (now DGA)"
+        },
+        {
+          "th": "สถาบันวิจัยดาราศาสตร์แห่งชาติ (องค์การมหาชน) — NARIT",
+          "en": "National Astronomical Research Institute of Thailand — NARIT"
+        }
+      ],
+      "stats": [
+        { "label": { "th": "CPU cores", "en": "CPU cores" }, "value": "2,672" },
+        { "label": { "th": "สตอเรจ", "en": "Storage" }, "value": "597 TB" }
+      ],
+      "tags": ["DGA", "NARIT", "e-Science"],
+      "source": "p5"
+    },
+    {
+      "id": "2016-chalawan",
+      "year": 2016,
+      "era": "gen3",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "Chalawan HPC Cluster (Castor)", "en": "Chalawan HPC Cluster (Castor)" },
+      "org": {
+        "th": "สถาบันวิจัยดาราศาสตร์แห่งชาติ (องค์การมหาชน) — NARIT",
+        "en": "National Astronomical Research Institute of Thailand (NARIT)"
+      },
+      "tags": ["NARIT", "Chalawan"],
+      "link": "https://www.narit.or.th/",
+      "source": "p6"
+    },
+    {
+      "id": "2017-tint-slri",
+      "year": 2017,
+      "era": "gen3",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "มีสมาชิกเป็นหน่วยงานสามัญเพิ่มอีก 2 หน่วยงาน",
+        "en": "Two more full members join the consortium"
+      },
+      "bullets": [
+        {
+          "th": "สถาบันเทคโนโลยีนิวเคลียร์แห่งชาติ (องค์การมหาชน) — TINT",
+          "en": "Thailand Institute of Nuclear Technology — TINT"
+        },
+        {
+          "th": "สถาบันวิจัยแสงซินโครตรอน (องค์การมหาชน) — SLRI",
+          "en": "Synchrotron Light Research Institute — SLRI"
+        }
+      ],
+      "stats": [
+        { "label": { "th": "CPU cores", "en": "CPU cores" }, "value": "3,424" },
+        { "label": { "th": "สตอเรจ", "en": "Storage" }, "value": "1,171 TB" }
+      ],
+      "tags": ["TINT", "SLRI", "e-Science"],
+      "source": "p6"
+    },
+    {
+      "id": "2018-escience-9",
+      "year": 2018,
+      "era": "gen3",
+      "kind": "highlight",
+      "category": "org",
+      "title": {
+        "th": "National e-Science Infrastructure Consortium — สมาชิกรวม 9 หน่วยงาน",
+        "en": "National e-Science Infrastructure Consortium — nine member organisations"
+      },
+      "body": {
+        "th": "ทรัพยากรรวมของคอนซอร์เทียม กระจายอยู่ที่ CU, EGA, HAII, KMUTT, NARIT, NSTDA, SLRI, SUT และ TINT",
+        "en": "Pooled resources across CU, EGA, HAII, KMUTT, NARIT, NSTDA, SLRI, SUT and TINT."
+      },
+      "stats": [
+        { "label": { "th": "CPU cores", "en": "CPU cores" }, "value": "4,100" },
+        { "label": { "th": "สตอเรจ", "en": "Storage" }, "value": "1,254.6 TB" }
+      ],
+      "tags": ["e-Science"],
+      "source": "p6"
+    },
+    {
+      "id": "2018-ist-vistec",
+      "year": 2018,
+      "era": "gen3",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "IST HPC Cluster", "en": "IST HPC Cluster" },
+      "org": {
+        "th": "School of Information and Science Technology (IST), VISTEC",
+        "en": "School of Information Science and Technology (IST), VISTEC"
+      },
+      "tags": ["VISTEC"],
+      "source": "p6"
+    },
+    {
+      "id": "2018-hpc-wrf-tmd",
+      "year": 2018,
+      "era": "gen3",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "HPC-WRF", "en": "HPC-WRF" },
+      "org": { "th": "กรมอุตุนิยมวิทยา (TMD)", "en": "Thai Meteorological Department (TMD)" },
+      "tags": ["TMD", "Weather"],
+      "source": "p6"
+    },
+    {
+      "id": "2019-gen4",
+      "year": 2019,
+      "era": "gen4",
+      "kind": "era",
+      "category": "era",
+      "title": { "th": "ยุคแห่ง Supercomputer และ AI-HPC", "en": "The age of supercomputers and AI-HPC" },
+      "subtitle": { "th": "The Fourth Generation?", "en": "The Fourth Generation?" },
+      "source": "p7"
+    },
+    {
+      "id": "2019-thaisc",
+      "year": 2019,
+      "era": "gen4",
+      "kind": "highlight",
+      "category": "org",
+      "title": {
+        "th": "กำเนิด NSTDA Supercomputer Center (ThaiSC)",
+        "en": "NSTDA Supercomputer Center (ThaiSC) is founded"
+      },
+      "org": {
+        "th": "ก่อตั้งโดย National S&T Infrastructure (NSTI), NSTDA",
+        "en": "Established by National S&T Infrastructure (NSTI), NSTDA"
+      },
+      "tags": ["ThaiSC", "NSTDA"],
+      "link": "https://thaisc.io/",
+      "source": "p7"
+    },
+    {
+      "id": "2019-tara",
+      "year": 2019,
+      "era": "gen4",
+      "kind": "highlight",
+      "category": "system",
+      "title": { "th": "TARA HPC Cluster", "en": "TARA HPC Cluster" },
+      "org": { "th": "NSTDA Supercomputer Center (ThaiSC), NSTDA", "en": "NSTDA Supercomputer Center (ThaiSC), NSTDA" },
+      "body": {
+        "th": "ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทยในขณะนั้น ประกอบด้วย compute node, high-memory node, GPU node (NVIDIA Tesla V100) และ DGX node",
+        "en": "The fastest supercomputer in Thailand at the time, combining compute, high-memory, GPU (NVIDIA Tesla V100) and DGX nodes."
+      },
+      "stats": [
+        { "label": { "th": "CPU cores", "en": "CPU cores" }, "value": "4,320" },
+        { "label": { "th": "สตอเรจ", "en": "Storage" }, "value": "800 TB" }
+      ],
+      "badges": [{ "th": "เร็วที่สุดในไทย", "en": "Fastest in Thailand" }],
+      "tags": ["TARA", "ThaiSC", "NSTDA", "NVIDIA"],
+      "source": "p7"
+    },
+    {
+      "id": "2020-year-of-change",
+      "year": 2020,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "org",
+      "title": { "th": "ปีแห่งการเปลี่ยนแปลง", "en": "A year of change" },
+      "body": {
+        "th": "TARA Cluster เข้ามาเป็นทรัพยากรสำคัญในระบบของ National e-Science Infrastructure Consortium",
+        "en": "TARA becomes a key resource within the National e-Science Infrastructure Consortium."
+      },
+      "tags": ["e-Science", "TARA"],
+      "source": "p7"
+    },
+    {
+      "id": "2020-ai-university-consortium",
+      "year": 2020,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "org",
+      "title": {
+        "th": "Thailand A.I. University Consortium",
+        "en": "Thailand A.I. University Consortium"
+      },
+      "body": {
+        "th": "MoU ระหว่าง 6 มหาวิทยาลัย 2 หน่วยทุน และ 1 บริษัท ได้แก่ NVIDIA, MHESI, PMU-C, CMKL, KMITL, CU, MU, KKU และ PSU",
+        "en": "An MoU between six universities, two funding agencies and one company: NVIDIA, MHESI, PMU-C, CMKL, KMITL, CU, MU, KKU and PSU."
+      },
+      "tags": ["NVIDIA", "CMKL", "MHESI", "AI"],
+      "source": "p8"
+    },
+    {
+      "id": "2020-apex-cmkl",
+      "year": 2020,
+      "era": "gen4",
+      "kind": "highlight",
+      "category": "system",
+      "title": {
+        "th": "มหาวิทยาลัยซีเอ็มเคแอลติดตั้งระบบ NVIDIA DGX POD (APEX)",
+        "en": "CMKL University deploys an NVIDIA DGX POD (APEX)"
+      },
+      "org": { "th": "CMKL University", "en": "CMKL University" },
+      "body": {
+        "th": "ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทย กำลังประมวลผล 30 Petaflops AI นับเป็นระบบขนาดใหญ่ในเอเชียตะวันออกเฉียงใต้",
+        "en": "The fastest supercomputer in Thailand at 30 Petaflops of AI performance, and one of the largest systems in Southeast Asia."
+      },
+      "stats": [{ "label": { "th": "สมรรถนะ AI", "en": "AI performance" }, "value": "30 PFlops" }],
+      "badges": [{ "th": "เร็วที่สุดในไทย", "en": "Fastest in Thailand" }],
+      "tags": ["APEX", "CMKL", "NVIDIA", "AI"],
+      "source": "p8"
+    },
+    {
+      "id": "2021-regional-ai-hpc",
+      "year": 2021,
+      "era": "gen4",
+      "kind": "era",
+      "category": "era",
+      "title": { "th": "Regional AI-HPC", "en": "Regional AI-HPC" },
+      "subtitle": {
+        "th": "มหาวิทยาลัยภูมิภาคเริ่มมีระบบ HPC ของตัวเอง",
+        "en": "Regional universities build their own HPC systems"
+      },
+      "source": "p9"
+    },
+    {
+      "id": "2021-erawan",
+      "year": 2021,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "ERAWAN HPC", "en": "ERAWAN HPC" },
+      "org": { "th": "สำนักบริการเทคโนโลยีสารสนเทศ (ITSC), มหาวิทยาลัยเชียงใหม่", "en": "Information Technology Service Center (ITSC), Chiang Mai University" },
+      "tags": ["CMU", "ERAWAN"],
+      "source": "p9"
+    },
+    {
+      "id": "2021-psu-hpc",
+      "year": 2021,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "PSU HPC", "en": "PSU HPC" },
+      "org": { "th": "มหาวิทยาลัยสงขลานครินทร์ (PSU)", "en": "Prince of Songkla University (PSU)" },
+      "body": {
+        "th": "ระบบ Hybrid Cluster ที่รวม Kubernetes และ Slurm ไว้ด้วยกัน พร้อมสตอเรจ IBM Spectrum Scale",
+        "en": "A hybrid cluster combining Kubernetes and Slurm, backed by IBM Spectrum Scale storage."
+      },
+      "tags": ["PSU", "Kubernetes", "Slurm"],
+      "source": "p9"
+    },
+    {
+      "id": "2021-kku-hpc",
+      "year": 2021,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "KKU HPC", "en": "KKU HPC" },
+      "org": {
+        "th": "สำนักเทคโนโลยีดิจิทัล (ODT), มหาวิทยาลัยขอนแก่น",
+        "en": "Office of Digital Technology (ODT), Khon Kaen University"
+      },
+      "tags": ["KKU"],
+      "source": "p9"
+    },
+    {
+      "id": "2021-mu-hpc",
+      "year": 2021,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "MU HPC", "en": "MU HPC" },
+      "org": { "th": "MU-AI Center, มหาวิทยาลัยมหิดล", "en": "MU-AI Center, Mahidol University" },
+      "tags": ["MU", "AI"],
+      "source": "p9"
+    },
+    {
+      "id": "2022-lanta",
+      "year": 2022,
+      "era": "gen4",
+      "kind": "highlight",
+      "category": "system",
+      "title": { "th": "LANTA Supercomputer", "en": "LANTA Supercomputer" },
+      "org": { "th": "NSTDA Supercomputer Center (ThaiSC), NSTDA", "en": "NSTDA Supercomputer Center (ThaiSC), NSTDA" },
+      "body": {
+        "th": "ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทยและในอาเซียน ติดอันดับที่ 70 ของ TOP500 (HPE Cray EX235n, AMD EPYC 7713 64C 2GHz, NVIDIA A100 40GB, Slingshot-11)",
+        "en": "The fastest supercomputer in Thailand and ASEAN, ranked No. 70 on the TOP500 (HPE Cray EX235n, AMD EPYC 7713 64C 2GHz, NVIDIA A100 40GB, Slingshot-11)."
+      },
+      "stats": [
+        { "label": { "th": "อันดับ TOP500", "en": "TOP500 rank" }, "value": "#70" },
+        { "label": { "th": "Linpack", "en": "Linpack" }, "value": "8.15 PFlop/s" },
+        { "label": { "th": "CPU cores", "en": "CPU cores" }, "value": "31,744" },
+        { "label": { "th": "GPU", "en": "GPUs" }, "value": "704 × A100" }
+      ],
+      "badges": [
+        { "th": "เร็วที่สุดในไทย", "en": "Fastest in Thailand" },
+        { "th": "TOP500 #70", "en": "TOP500 #70" }
+      ],
+      "tags": ["LANTA", "ThaiSC", "NSTDA", "TOP500"],
+      "link": "https://thaisc.io/thaisc-resorces/lanta",
+      "source": "p9"
+    },
+    {
+      "id": "2022-chatgpt",
+      "year": 2022,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "global",
+      "title": { "th": "ChatGPT เปิดตัว", "en": "ChatGPT released" },
+      "body": { "th": "30 พฤศจิกายน 2565 — OpenAI", "en": "30 November 2022 — OpenAI" },
+      "tags": ["Global", "AI"],
+      "source": "p10"
+    },
+    {
+      "id": "2023-ai-everywhere",
+      "year": 2023,
+      "era": "gen4",
+      "kind": "highlight",
+      "category": "global",
+      "title": { "th": "AI is everywhere", "en": "AI is everywhere" },
+      "bullets": [
+        {
+          "tone": "plus",
+          "th": "นักวิจัย นักพัฒนา และหน่วยงานทั่วโลกให้ความสนใจ AI",
+          "en": "Researchers, developers and organisations worldwide turn their attention to AI"
+        },
+        {
+          "tone": "plus",
+          "th": "วงการ GPGPU / HPC มีความก้าวกระโดดในการพัฒนา chip เร่งการประมวลผล",
+          "en": "GPGPU and HPC see a leap forward in accelerator chip development"
+        },
+        {
+          "tone": "plus",
+          "th": "ความต้องการ HPC / AI-HPC สูงเป็นประวัติการณ์",
+          "en": "Demand for HPC and AI-HPC reaches an all-time high"
+        },
+        {
+          "tone": "plus",
+          "th": "ความต้องการกำลังคนในสายงาน AI Engineer / Data Engineer / DevOps สูงขึ้นมาก",
+          "en": "Demand for AI engineers, data engineers and DevOps grows sharply"
+        },
+        {
+          "tone": "minus",
+          "th": "ในทางกลับกัน กำลังคนด้าน Operation เช่น System Engineer / Network Engineer ขาดแคลนอย่างมาก",
+          "en": "Meanwhile operations talent — system and network engineers — is in severe shortage"
+        },
+        {
+          "tone": "minus",
+          "th": "การลงทุนด้านโครงสร้างพื้นฐาน AI / HPC ในไทยขาดความต่อเนื่อง",
+          "en": "Investment in AI and HPC infrastructure in Thailand lacks continuity"
+        }
+      ],
+      "tags": ["AI", "Workforce"],
+      "source": "p10"
+    },
+    {
+      "id": "2024-crust-25",
+      "year": 2024,
+      "era": "gen4",
+      "kind": "highlight",
+      "category": "system",
+      "title": { "th": "THE CRUST 2.5", "en": "THE CRUST 2.5" },
+      "org": {
+        "th": "บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) — PTTEP",
+        "en": "PTT Exploration and Production Public Company Limited (PTTEP)"
+      },
+      "body": {
+        "th": "ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทย ระบบระบายความร้อนด้วยของเหลว",
+        "en": "The fastest supercomputer in Thailand, using liquid cooling."
+      },
+      "stats": [
+        { "label": { "th": "CPU cores", "en": "CPU cores" }, "value": "47,360" },
+        { "label": { "th": "GPU", "en": "GPUs" }, "value": "512 × H100" }
+      ],
+      "badges": [{ "th": "เร็วที่สุดในไทย", "en": "Fastest in Thailand" }],
+      "tags": ["PTTEP", "CRUST", "NVIDIA"],
+      "source": "p10"
+    },
+    {
+      "id": "2024-ku-nontri",
+      "year": 2024,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "system",
+      "title": { "th": "KU Nontri AI HPC", "en": "KU Nontri AI HPC" },
+      "org": {
+        "th": "สำนักบริการคอมพิวเตอร์ (OSC), มหาวิทยาลัยเกษตรศาสตร์",
+        "en": "Office of Computer Services (OCS), Kasetsart University"
+      },
+      "tags": ["KU", "AI"],
+      "source": "p10"
+    },
+    {
+      "id": "2024-siam-ai",
+      "year": 2024,
+      "era": "gen4",
+      "kind": "milestone",
+      "category": "industry",
+      "title": { "th": "ก่อตั้งบริษัท SIAM.AI", "en": "SIAM.AI is established" },
+      "body": {
+        "th": "Exascale Computing — บริษัทแรกในประเทศไทย มีคลัสเตอร์ประสิทธิภาพสูงหลายระบบที่ติดอันดับต้นๆ ในอาเซียน (DC SuperNAP: Hopper H100 1K, DC OneAsia: Hopper H200 1K, DC STT: Grace Blackwell GB200 3.5K)",
+        "en": "Exascale computing — the first such company in Thailand, operating several clusters that rank among the top in ASEAN (DC SuperNAP: Hopper H100 1K, DC OneAsia: Hopper H200 1K, DC STT: Grace Blackwell GB200 3.5K)."
+      },
+      "stats": [
+        { "label": { "th": "GB200 (DC STT)", "en": "GB200 (DC STT)" }, "value": "155.52 PFlops" }
+      ],
+      "tags": ["SIAM.AI", "Industry", "NVIDIA"],
+      "source": "p10"
+    },
+    {
+      "id": "next",
+      "year": null,
+      "era": "gen4",
+      "kind": "open",
+      "category": "era",
+      "title": {
+        "th": "แล้ว HPC / AI-HPC ยุคถัดไปจะเป็นอย่างไร?",
+        "en": "What is the next HPC / AI-HPC evolution?"
+      },
+      "body": {
+        "th": "หน้านี้เปิดให้ศูนย์ HPC และวิศวกรทั่วประเทศร่วมกันเติมประวัติศาสตร์บทต่อไป",
+        "en": "This page is open for HPC centres and engineers across Thailand to write the next chapter together."
+      },
+      "source": "p10"
+    }
+  ]
+}

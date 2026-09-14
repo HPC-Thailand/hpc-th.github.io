@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hpc.in.th/data/schema/timeline.schema.json",
+  "title": "History of HPC in Thailand",
+  "type": "object",
+  "required": ["updated", "eras", "entries"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "sourceNote": { "$ref": "i18n-string.json" },
+    "eras": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "from", "label"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "from": { "type": "integer" },
+          "to": { "type": "integer" },
+          "label": { "$ref": "i18n-string.json" },
+          "tagline": { "$ref": "i18n-string.json" }
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "era", "kind", "title"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "year": { "type": ["integer", "null"], "minimum": 1900 },
+          "era": { "type": "string" },
+          "kind": {
+            "enum": ["era", "highlight", "milestone", "open"],
+            "description": "era = full-width generation banner, highlight = accented card, milestone = plain card, open = dashed 'what next' card"
+          },
+          "category": { "enum": ["system", "network", "org", "software", "industry", "global", "era"] },
+          "title": { "$ref": "i18n-string.json" },
+          "subtitle": { "$ref": "i18n-string.json" },
+          "org": { "$ref": "i18n-string.json" },
+          "body": { "$ref": "i18n-string.json" },
+          "bullets": { "type": "array", "items": { "$ref": "i18n-string.json" } },
+          "badges": { "type": "array", "items": { "$ref": "i18n-string.json" } },
+          "stats": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["label", "value"],
+              "properties": {
+                "label": { "$ref": "i18n-string.json" },
+                "value": { "type": "string" }
+              }
+            }
+          },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "link": { "type": "string" },
+          "source": { "type": "string", "description": "Source slide id, e.g. p1..p10" }
+        }
+      }
+    }
+  }
+}

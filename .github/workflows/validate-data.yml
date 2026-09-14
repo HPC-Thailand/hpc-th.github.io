@@ -1,0 +1,20 @@
+name: Validate data
+
+on:
+  push:
+    branches: [main]
+    paths: ['data/**', 'tools/**', '.github/workflows/validate-data.yml']
+  pull_request:
+    paths: ['data/**', 'tools/**', '.github/workflows/validate-data.yml']
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate JSON data files
+        run: node tools/validate-data.mjs

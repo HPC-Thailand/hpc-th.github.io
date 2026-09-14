@@ -1,0 +1,50 @@
+name: Submit or update an HPC system
+description: ส่งข้อมูลระบบ HPC ใหม่ หรืออัปเดตสเปกของระบบเดิม / Add or update an HPC system
+title: "[system] "
+labels: ["data", "system"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ข้อมูลที่ส่งจะเป็นสาธารณะ — กรุณาอย่าใส่ข้อมูลส่วนบุคคล รหัสผ่าน API key
+        หรือข้อมูลภายในที่ไม่ต้องการเปิดเผย ใช้อีเมลกลางของหน่วยงานแทนอีเมลส่วนตัว
+
+        This submission is public — do not include personal data, passwords, API keys
+        or anything internal. Use a team mailbox rather than a personal address.
+  - type: input
+    id: name
+    attributes:
+      label: ชื่อระบบ / System name
+    validations: { required: true }
+  - type: input
+    id: org
+    attributes:
+      label: หน่วยงาน / Organisation
+    validations: { required: true }
+  - type: textarea
+    id: specs
+    attributes:
+      label: สเปก / Specifications
+      description: CPU (รุ่น, cores, nodes), GPU, storage, interconnect, cooling
+      placeholder: |
+        CPU: AMD EPYC 9654 — 12,288 cores / 96 nodes
+        GPU: 64 × NVIDIA H100 80GB / 8 nodes
+        Storage: 500TB NVMe + 3PB HDD (Lustre)
+        Interconnect: InfiniBand NDR200
+        Cooling: Direct liquid cooling
+    validations: { required: true }
+  - type: input
+    id: location
+    attributes:
+      label: ที่ตั้ง / Location
+      description: จังหวัด และพิกัด longitude, latitude ถ้ามี
+    validations: { required: true }
+  - type: input
+    id: website
+    attributes:
+      label: เว็บไซต์อ้างอิง / Reference URL
+  - type: input
+    id: applications
+    attributes:
+      label: การใช้งาน / Applications
+      placeholder: AI, CFD, Bioinformatics, Weather

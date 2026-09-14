@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hpc.in.th/data/schema/systems.schema.json",
+  "title": "HPC systems in Thailand",
+  "type": "object",
+  "required": ["updated", "systems"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "note": { "$ref": "i18n-string.json" },
+    "systems": { "type": "array", "items": { "$ref": "#/definitions/system" } }
+  },
+  "definitions": {
+    "system": {
+      "type": "object",
+      "required": ["id", "name", "organization", "specs", "location"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "name": { "type": "string" },
+        "organization": { "type": "string" },
+        "yearCommissioned": { "type": ["integer", "null"], "minimum": 1960 },
+        "status": { "enum": ["operational", "planned", "decommissioned"] },
+        "specs": {
+          "type": "object",
+          "required": ["cpu"],
+          "properties": {
+            "cpu": {
+              "type": "object",
+              "required": ["type", "cores"],
+              "properties": {
+                "type": { "type": "string" },
+                "cores": { "type": "integer", "minimum": 0 },
+                "nodes": { "type": "integer", "minimum": 0 }
+              }
+            },
+            "gpu": {
+              "type": "object",
+              "properties": {
+                "type": { "type": "string" },
+                "memory": { "type": "string" },
+                "count": { "type": "integer", "minimum": 0 },
+                "nodes": { "type": "integer", "minimum": 0 }
+              }
+            },
+            "storage": {
+              "type": "object",
+              "properties": {
+                "nvme": { "type": "string" },
+                "disk": { "type": "string" },
+                "filesystem": { "type": "string" }
+              }
+            },
+            "network": {
+              "type": "object",
+              "properties": {
+                "frontend": { "type": "string" },
+                "compute": { "type": "string" },
+                "backend": { "type": "string" }
+              }
+            },
+            "cooling": { "type": "string" }
+          }
+        },
+        "applications": { "type": "string" },
+        "consortium": { "type": "array", "items": { "type": "string" } },
+        "location": {
+          "type": "object",
+          "required": ["coordinates"],
+          "properties": {
+            "address": { "type": "string" },
+            "city": { "$ref": "i18n-string.json" },
+            "coordinates": {
+              "type": "array",
+              "description": "[longitude, latitude] — GeoJSON order",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "number" }
+            }
+          }
+        },
+        "contact": { "type": "string" },
+        "website": { "type": "string" },
+        "verifiedOn": { "type": ["string", "null"], "format": "date" }
+      }
+    }
+  }
+}

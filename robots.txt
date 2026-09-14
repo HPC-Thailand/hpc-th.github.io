@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hpc.in.th/sitemap.xml
