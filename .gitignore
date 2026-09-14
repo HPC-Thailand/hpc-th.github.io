@@ -1,3 +1,9 @@
 .DS_Store
 **/.DS_Store
 node_modules/
+
+# e-Science annual reports: 100–615 MB scans, far over GitHub's 100 MB file
+# limit. The site links to the originals on e-science.in.th instead.
+# See data/reference.json → category "escience".
+reference/docs/e-Science/e-Science_*.pdf
+reference/docs/e-Science/e-science_*.pdf

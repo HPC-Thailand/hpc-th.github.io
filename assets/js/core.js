@@ -181,6 +181,7 @@ const ICON = {
 const NAV = [
   { key: 'timeline', href: '' },
   { key: 'systems', href: 'systems/' },
+  { key: 'reference', href: 'reference/' },
   { key: 'stats', href: 'stats/' },
   { key: 'events', href: 'events/' },
   { key: 'submit', href: 'submit/' },

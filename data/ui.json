@@ -37,6 +37,10 @@
     "skip": {
       "th": "ข้ามไปยังเนื้อหาหลัก",
       "en": "Skip to main content"
+    },
+    "reference": {
+      "th": "เอกสารอ้างอิง",
+      "en": "Reference"
     }
   },
   "home": {
@@ -173,6 +177,40 @@
     "next": {
       "th": "ถัดไป",
       "en": "Next"
+    }
+  },
+  "reference": {
+    "title": {
+      "th": "เอกสารอ้างอิง",
+      "en": "Reference documents"
+    },
+    "lead": {
+      "th": "คลังเอกสารนำเสนอ รายงาน คู่มือ และงานวิจัยด้าน HPC ของประเทศไทย ตั้งแต่ยุค ThaiGrid จนถึงปัจจุบัน เปิดให้ดาวน์โหลดเพื่อการศึกษาและอ้างอิง",
+      "en": "An archive of Thai HPC presentations, reports, manuals and papers — from the ThaiGrid era to today, open for study and citation."
+    },
+    "searchPlaceholder": {
+      "th": "ค้นหาชื่อเอกสาร ผู้เขียน หรือหัวข้อ…",
+      "en": "Search title, author or topic…"
+    },
+    "resultCount": {
+      "th": "แสดง {n} รายการ",
+      "en": "Showing {n} documents"
+    },
+    "empty": {
+      "th": "ไม่พบเอกสารที่ตรงกับเงื่อนไข",
+      "en": "No documents match your filters."
+    },
+    "download": {
+      "th": "ดาวน์โหลด",
+      "en": "Download"
+    },
+    "openSource": {
+      "th": "เปิดต้นฉบับ",
+      "en": "Open source"
+    },
+    "pages": {
+      "th": "หน้า",
+      "en": "pages"
     }
   },
   "systems": {

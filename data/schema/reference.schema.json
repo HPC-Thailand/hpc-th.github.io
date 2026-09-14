@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hpc.in.th/data/schema/reference.schema.json",
+  "title": "HPC Thailand reference document archive",
+  "type": "object",
+  "required": ["updated", "categories", "documents"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "note": { "$ref": "i18n-string.json" },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "label": { "$ref": "i18n-string.json" },
+          "blurb": { "$ref": "i18n-string.json" }
+        }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "title", "format"],
+        "additionalProperties": false,
+        "oneOf": [
+          { "required": ["file"] },
+          { "required": ["url"] }
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "category": { "type": "string" },
+          "year": { "type": "integer", "minimum": 1960 },
+          "title": { "$ref": "i18n-string.json" },
+          "description": { "$ref": "i18n-string.json" },
+          "author": { "type": "string" },
+          "file": {
+            "type": "string",
+            "description": "Path relative to the site root, e.g. reference/docs/name.pdf"
+          },
+          "url": {
+            "type": "string",
+            "description": "Use instead of `file` when the document is hosted elsewhere"
+          },
+          "format": { "enum": ["pdf", "image", "html", "link"] },
+          "pages": { "type": "integer", "minimum": 1 },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "featured": { "type": "boolean" },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
