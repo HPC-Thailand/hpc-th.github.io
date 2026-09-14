@@ -171,6 +171,13 @@ function checkEvents() {
     if (Number.isNaN(Date.parse(e.start))) fail(file, `${at}: start is not a date`);
     if (e.end && Number.isNaN(Date.parse(e.end))) fail(file, `${at}: end is not a date`);
     if (e.end && Date.parse(e.end) < Date.parse(e.start)) fail(file, `${at}: end is before start`);
+    if (e.url) {
+      try { new URL(e.url); } catch { fail(file, `${at}: url is not a URL`); }
+    }
+    if (e.image) {
+      if (e.image.startsWith('/')) fail(file, `${at}: image must be relative to the site root`);
+      else if (!existsSync(join(root, e.image))) fail(file, `${at}: image not found — ${e.image}`);
+    }
   }
 }
 

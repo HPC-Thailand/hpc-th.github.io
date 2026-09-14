@@ -59,7 +59,7 @@ _The history and landscape of high performance computing in Thailand._
 | `/systems/` | ไดเรกทอรีระบบ HPC ที่เปิดให้บริการ + แผนที่ |
 | `/reference/` | คลังเอกสารนำเสนอ รายงาน และงานวิจัยเก่า — คลิกอ่านได้ในหน้าเลย |
 | `/stats/` | สถิติรวม CPU cores / GPU / การกระจายตัว |
-| `/events/` | กิจกรรมและงานประชุม |
+| `/events/` | กิจกรรมและงานประชุม พร้อมแบนเนอร์และลิงก์ลงทะเบียน |
 | `/submit/` | ฟอร์มส่งข้อมูล และคู่มือส่ง Pull Request |
 
 เว็บไซต์แบบ static ล้วน ไม่มี build step — แก้ JSON แล้ว merge ได้เลย
@@ -78,7 +78,8 @@ _The history and landscape of high performance computing in Thailand._
 │   ├── css/site.css      design tokens + ทุกคอมโพเนนต์
 │   ├── js/core.js        i18n, ธีม, header/footer, data loader
 │   ├── js/*.js           ตัวควบคุมรายหน้า
-│   └── img/slides/       สไลด์ต้นฉบับที่ย่อขนาดแล้ว (p1–p10)
+│   ├── img/slides/       สไลด์ต้นฉบับที่ย่อขนาดแล้ว (p1–p10)
+│   └── img/events/       แบนเนอร์กิจกรรม
 ├── data/
 │   ├── timeline.json     เหตุการณ์ในไทม์ไลน์ (สองภาษา)
 │   ├── systems.json      ระบบ HPC

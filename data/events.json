@@ -1,5 +1,36 @@
 {
   "$schema": "./schema/events.schema.json",
   "updated": "2026-09-14",
-  "events": []
+  "events": [
+    {
+      "id": "thailand-hpc-ai-infrastructure-2026",
+      "title": {
+        "th": "Thailand HPC & AI Infrastructure — Powering the Future",
+        "en": "Thailand HPC & AI Infrastructure — Powering the Future"
+      },
+      "subtitle": {
+        "th": "Building Thailand's Compute Ecosystem",
+        "en": "Building Thailand's Compute Ecosystem"
+      },
+      "description": {
+        "th": "เวทีระดับประเทศในการแลกเปลี่ยนวิสัยทัศน์ นโยบาย แนวโน้มเทคโนโลยี และทิศทางการพัฒนาโครงสร้างพื้นฐานด้านการประมวลผลสมรรถนะสูง (HPC) โครงสร้างพื้นฐานด้านปัญญาประดิษฐ์ (AI Infrastructure) โครงสร้างพื้นฐานข้อมูล และเทคโนโลยีการประมวลผลแห่งอนาคต",
+        "en": "A national forum on the vision, policy, technology trends and direction for Thailand's high performance computing, AI and data infrastructure — and the compute technologies that come next."
+      },
+      "organizer": {
+        "th": "สวทช. (NSTDA), NECTEC และ ThaiSC — ร่วมกับ ปตท.สผ. (PTTEP) เป็นเจ้าภาพร่วม",
+        "en": "NSTDA, NECTEC and ThaiSC — with PTTEP as co-host"
+      },
+      "location": {
+        "th": "ห้องประชุมจูปิเตอร์ (Jupiter) 4–13 อาคารชาเลนเจอร์ อิมแพ็ค เมืองทองธานี",
+        "en": "Jupiter 4–13, Challenger Hall, IMPACT Muang Thong Thani"
+      },
+      "format": "onsite",
+      "start": "2026-09-17",
+      "time": "08:00–17:30",
+      "url": "https://events.ai.in.th/e/thailand-hpc-ai-infrastructure",
+      "image": "assets/img/events/thailand-hpc-ai-infrastructure-2026.jpg",
+      "featured": true,
+      "tags": ["NSTDA", "NECTEC", "ThaiSC", "PTTEP", "AI Infrastructure"]
+    }
+  ]
 }

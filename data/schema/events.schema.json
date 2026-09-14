@@ -3,25 +3,83 @@
   "$id": "https://hpc.in.th/data/schema/events.schema.json",
   "title": "HPC events in Thailand",
   "type": "object",
-  "required": ["updated", "events"],
+  "required": [
+    "updated",
+    "events"
+  ],
   "properties": {
-    "$schema": { "type": "string" },
-    "updated": { "type": "string", "format": "date" },
+    "$schema": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    },
     "events": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "title", "start"],
+        "required": [
+          "id",
+          "title",
+          "start"
+        ],
         "additionalProperties": false,
         "properties": {
-          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-          "title": { "$ref": "i18n-string.json" },
-          "organizer": { "$ref": "i18n-string.json" },
-          "location": { "$ref": "i18n-string.json" },
-          "format": { "enum": ["onsite", "online", "hybrid"] },
-          "start": { "type": "string", "format": "date" },
-          "end": { "type": "string", "format": "date" },
-          "url": { "type": "string" }
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "title": {
+            "$ref": "i18n-string.json"
+          },
+          "organizer": {
+            "$ref": "i18n-string.json"
+          },
+          "location": {
+            "$ref": "i18n-string.json"
+          },
+          "format": {
+            "enum": [
+              "onsite",
+              "online",
+              "hybrid"
+            ]
+          },
+          "start": {
+            "type": "string",
+            "format": "date"
+          },
+          "end": {
+            "type": "string",
+            "format": "date"
+          },
+          "url": {
+            "type": "string"
+          },
+          "subtitle": {
+            "$ref": "i18n-string.json"
+          },
+          "description": {
+            "$ref": "i18n-string.json"
+          },
+          "time": {
+            "type": "string",
+            "description": "Local time range, e.g. 08:00–17:30"
+          },
+          "image": {
+            "type": "string",
+            "description": "Banner path relative to the site root"
+          },
+          "featured": {
+            "type": "boolean"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     }

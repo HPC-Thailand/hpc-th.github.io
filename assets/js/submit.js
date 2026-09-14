@@ -40,13 +40,18 @@ const TEMPLATES = {
 }`,
   event: `{
   "id": "event-slug-2026",
-  "title": { "th": "ชื่องาน", "en": "Event title" },
-  "organizer": { "th": "ผู้จัด", "en": "Organiser" },
-  "location": { "th": "สถานที่", "en": "Venue" },
+  "title":       { "th": "ชื่องาน", "en": "Event title" },
+  "subtitle":    { "th": "คำโปรย", "en": "Strapline" },
+  "description": { "th": "รายละเอียด", "en": "Details" },
+  "organizer":   { "th": "ผู้จัด", "en": "Organiser" },
+  "location":    { "th": "สถานที่", "en": "Venue" },
   "format": "onsite",
   "start": "2026-03-12",
   "end": "2026-03-14",
-  "url": "https://example.ac.th/event"
+  "time": "09:00–16:30",
+  "url": "https://example.ac.th/event",
+  "image": "assets/img/events/event-slug-2026.jpg",
+  "tags": ["NSTDA"]
 }`,
   timeline: `{
   "id": "2026-something",
