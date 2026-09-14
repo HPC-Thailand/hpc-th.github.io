@@ -230,6 +230,8 @@ ul { margin: 0 0 1em; padding-inline-start: 1.2em; }
 }
 .site-nav a:hover { background: var(--brand-50); color: var(--brand-600); text-decoration: none; }
 .site-nav a[aria-current="page"] { background: var(--brand-50); color: var(--brand-600); font-weight: 500; }
+/* Shown only in the mobile menu — on desktop the header icon covers it. */
+.nav-repo { display: none; }
 
 .header-tools { display: flex; align-items: center; gap: 8px; }
 
@@ -270,13 +272,16 @@ ul { margin: 0 0 1em; padding-inline-start: 1.2em; }
   cursor: pointer;
   transition: background .18s var(--ease), color .18s var(--ease);
 }
-.icon-btn:hover { background: var(--brand-50); color: var(--brand-600); }
+.icon-btn:hover { background: var(--brand-50); color: var(--brand-600); text-decoration: none; }
 .icon-btn svg { width: 17px; height: 17px; }
+.icon-btn-repo svg { width: 16px; height: 16px; }
 
 .nav-toggle { display: none; }
 
 @media (max-width: 900px) {
   .nav-toggle { display: grid; }
+  .icon-btn-repo { display: none; }
+  .nav-repo { display: block; border-top: 1px solid var(--line); margin-top: 6px; padding-top: 6px; }
   .site-nav {
     position: fixed;
     inset: var(--header-h) 0 auto 0;
