@@ -13,75 +13,164 @@
   "definitions": {
     "system": {
       "type": "object",
-      "required": ["id", "name", "organization", "specs", "location"],
+      "required": [
+        "system_id",
+        "org_id",
+        "name",
+        "status",
+        "commissioned_date",
+        "decommissioned_date",
+        "vendor",
+        "compute",
+        "cooling",
+        "network",
+        "storage",
+        "performance",
+        "software_stack",
+        "access"
+      ],
       "additionalProperties": false,
       "properties": {
-        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-        "name": { "type": "string" },
-        "organization": { "type": "string" },
-        "yearCommissioned": { "type": ["integer", "null"], "minimum": 1960 },
-        "status": { "enum": ["operational", "planned", "decommissioned"] },
-        "specs": {
-          "type": "object",
-          "required": ["cpu"],
-          "properties": {
-            "cpu": {
-              "type": "object",
-              "required": ["type", "cores"],
-              "properties": {
-                "type": { "type": "string" },
-                "cores": { "type": "integer", "minimum": 0 },
-                "nodes": { "type": "integer", "minimum": 0 }
-              }
-            },
-            "gpu": {
-              "type": "object",
-              "properties": {
-                "type": { "type": "string" },
-                "memory": { "type": "string" },
-                "count": { "type": "integer", "minimum": 0 },
-                "nodes": { "type": "integer", "minimum": 0 }
-              }
-            },
-            "storage": {
-              "type": "object",
-              "properties": {
-                "nvme": { "type": "string" },
-                "disk": { "type": "string" },
-                "filesystem": { "type": "string" }
-              }
-            },
-            "network": {
-              "type": "object",
-              "properties": {
-                "frontend": { "type": "string" },
-                "compute": { "type": "string" },
-                "backend": { "type": "string" }
-              }
-            },
-            "cooling": { "type": "string" }
-          }
+        "system_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Unique id, e.g. 'thaisc-lanta'"
         },
-        "applications": { "type": "string" },
-        "consortium": { "type": "array", "items": { "type": "string" } },
-        "location": {
+        "org_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "FK -> organizations.json org_id"
+        },
+        "name": { "type": "string" },
+        "status": { "enum": ["operational", "planned", "maintenance", "decommissioned"] },
+        "commissioned_date": { "type": ["string", "null"], "format": "date" },
+        "decommissioned_date": { "type": ["string", "null"], "format": "date" },
+        "vendor": { "type": "string" },
+        "compute": {
           "type": "object",
-          "required": ["coordinates"],
+          "required": ["num_cpu_type", "cpu_types", "num_gpu_type", "gpu_types", "total"],
+          "additionalProperties": false,
           "properties": {
-            "address": { "type": "string" },
-            "city": { "$ref": "i18n-string.json" },
-            "coordinates": {
+            "num_cpu_type": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "จำนวนชนิด CPU ที่แตกต่างกันในระบบนี้"
+            },
+            "cpu_types": {
               "type": "array",
-              "description": "[longitude, latitude] — GeoJSON order",
-              "minItems": 2,
-              "maxItems": 2,
-              "items": { "type": "number" }
+              "minItems": 1,
+              "items": { "$ref": "#/definitions/cpu_type" }
+            },
+            "num_gpu_type": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "จำนวนชนิด GPU ที่แตกต่างกันในระบบนี้ (0 ถ้าเป็น CPU-only)"
+            },
+            "gpu_types": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/gpu_type" }
+            },
+            "total": {
+              "type": "object",
+              "required": ["total_nodes", "total_cpu_cores", "total_gpu_count", "total_memory_tb"],
+              "additionalProperties": false,
+              "properties": {
+                "total_nodes": { "type": "integer", "minimum": 0 },
+                "total_cpu_cores": { "type": "integer", "minimum": 0 },
+                "total_gpu_count": { "type": "integer", "minimum": 0 },
+                "total_memory_tb": { "type": "number", "minimum": 0 }
+              }
             }
           }
         },
-        "contact": { "type": "string" },
-        "website": { "type": "string" },
-        "verifiedOn": { "type": ["string", "null"], "format": "date" }
+        "cooling": {
+          "type": ["string", "null"],
+          "description": "e.g. 'air-cooled', 'direct liquid cooling', 'immersion cooling'"
+        },
+        "network": {
+          "type": "object",
+          "required": ["interconnect_type", "bandwidth_gbps"],
+          "additionalProperties": false,
+          "properties": {
+            "interconnect_type": {
+              "type": "string",
+              "description": "e.g. InfiniBand HDR200, Slingshot"
+            },
+            "bandwidth_gbps": { "type": "number", "minimum": 0 }
+          }
+        },
+        "storage": {
+          "type": "object",
+          "required": ["type", "filesystem", "capacity_pb"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "enum": ["parallel_fs", "object", "hybrid"] },
+            "filesystem": { "type": "string", "description": "e.g. Lustre, WekaFS" },
+            "capacity_pb": { "type": "number", "minimum": 0, "description": "Usable total, all tiers" },
+            "nvme_pb": { "type": ["number", "null"], "minimum": 0, "description": "NVMe/flash tier" },
+            "disk_pb": { "type": ["number", "null"], "minimum": 0, "description": "HDD/cold tier" }
+          }
+        },
+        "performance": {
+          "type": "object",
+          "required": ["peak_pflops", "sustained_pflops", "power_consumption_kw"],
+          "additionalProperties": false,
+          "properties": {
+            "peak_pflops": { "type": ["number", "null"], "minimum": 0, "description": "Rpeak" },
+            "sustained_pflops": { "type": ["number", "null"], "minimum": 0, "description": "Rmax (HPL)" },
+            "power_consumption_kw": { "type": ["number", "null"], "minimum": 0 }
+          }
+        },
+        "software_stack": {
+          "type": "object",
+          "required": ["os", "scheduler", "frameworks"],
+          "additionalProperties": false,
+          "properties": {
+            "os": { "type": "string" },
+            "scheduler": { "enum": ["slurm", "pbs", "lsf", "other"] },
+            "frameworks": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "access": {
+          "type": "object",
+          "required": ["model", "user_base"],
+          "additionalProperties": false,
+          "properties": {
+            "model": { "enum": ["open_academic", "restricted", "commercial", "hybrid"] },
+            "user_base": {
+              "type": "array",
+              "items": { "enum": ["academic", "government", "industry", "sea_region"] }
+            }
+          }
+        },
+        "verifiedOn": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the system owner last verified this record; null shows an 'awaiting verification' badge"
+        }
+      }
+    },
+    "cpu_type": {
+      "type": "object",
+      "required": ["model", "nodes", "sockets_per_node", "cores_per_node", "memory_per_node_gb"],
+      "additionalProperties": false,
+      "properties": {
+        "model": { "type": "string" },
+        "nodes": { "type": "integer", "minimum": 0 },
+        "sockets_per_node": { "type": ["integer", "null"], "minimum": 1 },
+        "cores_per_node": { "type": "integer", "minimum": 0 },
+        "memory_per_node_gb": { "type": ["number", "null"], "minimum": 0 }
+      }
+    },
+    "gpu_type": {
+      "type": "object",
+      "required": ["model", "nodes", "gpu_per_node", "memory_per_unit_gb"],
+      "additionalProperties": false,
+      "properties": {
+        "model": { "type": "string" },
+        "nodes": { "type": "integer", "minimum": 0 },
+        "gpu_per_node": { "type": "integer", "minimum": 1 },
+        "memory_per_unit_gb": { "type": "number", "minimum": 0 }
       }
     }
   }

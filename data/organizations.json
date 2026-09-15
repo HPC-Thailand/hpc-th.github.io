@@ -1,0 +1,230 @@
+{
+  "$schema": "./schema/organizations.schema.json",
+  "updated": "2026-09-15",
+  "organizations": [
+    {
+      "org_id": "nstda",
+      "name_th": "สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ",
+      "name_en": "National Science and Technology Development Agency (NSTDA)",
+      "org_type": "government_research",
+      "parent": null,
+      "province": "Pathum Thani",
+      "coordinates": {
+        "lat": 14.0674,
+        "lng": 100.6035
+      },
+      "website": "https://www.nstda.or.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "thaisc",
+      "name_th": "ThaiSC, NSTDA",
+      "name_en": "ThaiSC, NSTDA",
+      "org_type": "government_research",
+      "parent": "nstda",
+      "province": "Pathum Thani",
+      "coordinates": {
+        "lat": 14.0674,
+        "lng": 100.6035
+      },
+      "website": "https://thaisc.io/",
+      "contact_email": "thaisc@nstda.or.th"
+    },
+    {
+      "org_id": "pttep",
+      "name_th": "ปตท.สำรวจและผลิตปิโตรเลียม",
+      "name_en": "PTT Exploration and Production Public Company Limited",
+      "org_type": "private",
+      "parent": null,
+      "province": "Bangkok",
+      "coordinates": {
+        "lat": 13.8125,
+        "lng": 100.5619
+      },
+      "website": "https://www.pttep.com/en/home",
+      "contact_email": null
+    },
+    {
+      "org_id": "vistec",
+      "name_th": "สถาบันวิทยสิริเมธี",
+      "name_en": "Vidyasirimedhi Institute of Science and Technology (VISTEC)",
+      "org_type": "university",
+      "parent": null,
+      "province": "Rayong",
+      "coordinates": {
+        "lat": 12.8755,
+        "lng": 101.1789
+      },
+      "website": "https://vistec.ist/",
+      "contact_email": null
+    },
+    {
+      "org_id": "cmkl",
+      "name_th": "มหาวิทยาลัยซีเอ็มเคแอล",
+      "name_en": "CMKL University",
+      "org_type": "university",
+      "parent": null,
+      "province": "Bangkok",
+      "coordinates": {
+        "lat": 13.7299,
+        "lng": 100.7782
+      },
+      "website": "https://www.cmkl.ac.th/research/apex",
+      "contact_email": "apex@cmkl.ac.th"
+    },
+    {
+      "org_id": "mahidol",
+      "name_th": "มหาวิทยาลัยมหิดล",
+      "name_en": "Mahidol University",
+      "org_type": "university",
+      "parent": null,
+      "province": "Nakhon Pathom",
+      "coordinates": {
+        "lat": 13.7923,
+        "lng": 100.3258
+      },
+      "website": "https://www.mahidol.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "muict",
+      "name_th": "Faculty of Information and Communication Technology Mahidol University",
+      "name_en": "MUICT, Mahidol University",
+      "org_type": "university",
+      "parent": "mahidol",
+      "province": "Nakhon Pathom",
+      "coordinates": {
+        "lat": 13.7923,
+        "lng": 100.3258
+      },
+      "website": "https://www.ict.mahidol.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "kasetsart",
+      "name_th": "มหาวิทยาลัยเกษตรศาสตร์",
+      "name_en": "Kasetsart University",
+      "org_type": "university",
+      "parent": null,
+      "province": "Bangkok",
+      "coordinates": {
+        "lat": 13.8463,
+        "lng": 100.5653
+      },
+      "website": "https://www.ku.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "chulalongkorn",
+      "name_th": "จุฬาลงกรณ์มหาวิทยาลัย",
+      "name_en": "Chulalongkorn University",
+      "org_type": "university",
+      "parent": null,
+      "province": "Bangkok",
+      "coordinates": {
+        "lat": 13.737,
+        "lng": 100.5312
+      },
+      "website": "https://www.chula.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "cmu",
+      "name_th": "มหาวิทยาลัยเชียงใหม่",
+      "name_en": "Chiang Mai University",
+      "org_type": "university",
+      "parent": null,
+      "province": "Chiang Mai",
+      "coordinates": {
+        "lat": 18.7967,
+        "lng": 98.9513
+      },
+      "website": "https://www.cmu.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "cmu-itsc",
+      "name_th": "ITSC, Chiang Mai University",
+      "name_en": "Information Technology Service Center (ITSC), Chiang Mai University",
+      "org_type": "university",
+      "parent": "cmu",
+      "province": "Chiang Mai",
+      "coordinates": {
+        "lat": 18.7967,
+        "lng": 98.9513
+      },
+      "website": "https://hpc.cmu.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "kmutt",
+      "name_th": "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี",
+      "name_en": "King Mongkut's University of Technology Thonburi",
+      "org_type": "university",
+      "parent": null,
+      "province": "Bangkok",
+      "coordinates": {
+        "lat": 13.6511,
+        "lng": 100.4947
+      },
+      "website": "https://www.kmutt.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "psu",
+      "name_th": "มหาวิทยาลัยสงขลานครินทร์",
+      "name_en": "Prince of Songkla University",
+      "org_type": "university",
+      "parent": null,
+      "province": "Songkhla",
+      "coordinates": {
+        "lat": 7.0086,
+        "lng": 100.4974
+      },
+      "website": "https://www.psu.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "psu-drii",
+      "name_th": "DRii, Prince of Songkla University",
+      "name_en": "Digital Research and Innovation Institute (DRii), Prince of Songkla University",
+      "org_type": "university",
+      "parent": "psu",
+      "province": "Songkhla",
+      "coordinates": {
+        "lat": 7.0086,
+        "lng": 100.4974
+      },
+      "website": "https://www.facebook.com/drii.psu",
+      "contact_email": null
+    },
+    {
+      "org_id": "kku",
+      "name_th": "มหาวิทยาลัยขอนแก่น",
+      "name_en": "Khon Kaen University",
+      "org_type": "university",
+      "parent": null,
+      "province": "Khon Kaen",
+      "coordinates": {
+        "lat": 16.4754,
+        "lng": 102.8255
+      },
+      "website": "https://www.kku.ac.th/",
+      "contact_email": null
+    },
+    {
+      "org_id": "kku-odt",
+      "name_th": "ODT, Khon Kaen University",
+      "name_en": "Office of Digital Technology (ODT), Khon Kaen University",
+      "org_type": "university",
+      "parent": "kku",
+      "province": "Khon Kaen",
+      "coordinates": {
+        "lat": 16.4754,
+        "lng": 102.8255
+      },
+      "website": "https://digital.kku.ac.th/",
+      "contact_email": null
+    }
+  ]
+}

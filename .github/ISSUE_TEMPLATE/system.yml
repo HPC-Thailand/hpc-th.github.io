@@ -25,26 +25,26 @@ body:
     id: specs
     attributes:
       label: สเปก / Specifications
-      description: CPU (รุ่น, cores, nodes), GPU, storage, interconnect, cooling
+      description: CPU/GPU per model plus totals — see schema/systems.schema.json
       placeholder: |
-        CPU: AMD EPYC 9654 — 12,288 cores / 96 nodes
-        GPU: 64 × NVIDIA H100 80GB / 8 nodes
-        Storage: 500TB NVMe + 3PB HDD (Lustre)
-        Interconnect: InfiniBand NDR200
-        Cooling: Direct liquid cooling
+        CPU types: model, nodes, sockets_per_node, cores_per_node, memory_per_node_gb
+        GPU types: model, nodes, gpu_per_node, memory_per_unit_gb
+        Totals: total_nodes, total_cpu_cores, total_gpu_count, total_memory_tb
+        Interconnect: InfiniBand NDR + 400 Gb/s, Storage: Lustre + 5 PB
+        Optional: scheduler, peak/sustained PFLOPS, power kW, access model
     validations: { required: true }
   - type: input
     id: location
     attributes:
       label: ที่ตั้ง / Location
-      description: จังหวัด และพิกัด longitude, latitude ถ้ามี
+      description: Province and lat,lng — stored on the organisation (add org_id if it already exists)
     validations: { required: true }
   - type: input
     id: website
     attributes:
       label: เว็บไซต์อ้างอิง / Reference URL
   - type: input
-    id: applications
+    id: access
     attributes:
-      label: การใช้งาน / Applications
-      placeholder: AI, CFD, Bioinformatics, Weather
+      label: Vendor / scheduler / access
+      placeholder: Dell | Slurm | open_academic — who can use it

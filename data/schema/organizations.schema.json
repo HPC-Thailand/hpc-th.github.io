@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://hpc.in.th/data/schema/organizations.schema.json",
+  "title": "Organisations operating HPC systems in Thailand",
+  "type": "object",
+  "required": ["updated", "organizations"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "note": { "$ref": "i18n-string.json" },
+    "organizations": { "type": "array", "items": { "$ref": "#/definitions/organization" } }
+  },
+  "definitions": {
+    "organization": {
+      "type": "object",
+      "required": [
+        "org_id",
+        "name_th",
+        "name_en",
+        "org_type",
+        "parent",
+        "province",
+        "coordinates",
+        "website",
+        "contact_email"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "org_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Unique id, e.g. 'thaisc'"
+        },
+        "name_th": { "type": "string" },
+        "name_en": { "type": "string" },
+        "org_type": { "enum": ["government_research", "university", "private", "state_enterprise"] },
+        "parent": {
+          "type": ["string", "null"],
+          "pattern": "^[a-z0-9-]+$",
+          "description": "FK -> parent organisation org_id, e.g. 'nstda' for ThaiSC"
+        },
+        "province": { "type": "string" },
+        "coordinates": {
+          "type": "object",
+          "required": ["lat", "lng"],
+          "additionalProperties": false,
+          "properties": {
+            "lat": { "type": "number", "minimum": 5, "maximum": 21 },
+            "lng": { "type": "number", "minimum": 96, "maximum": 106 }
+          }
+        },
+        "website": { "type": "string", "format": "uri" },
+        "contact_email": { "type": ["string", "null"], "format": "email" }
+      }
+    }
+  }
+}
