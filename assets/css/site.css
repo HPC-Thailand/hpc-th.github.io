@@ -896,6 +896,18 @@ ul { margin: 0 0 1em; padding-inline-start: 1.2em; }
   margin-bottom: 5px;
 }
 .field label .req { color: var(--danger); font-size: .78rem; font-weight: 400; margin-inline-start: 4px; }
+.field label .field-key { color: var(--muted); font-size: .78rem; font-weight: 400; margin-inline-start: 6px; }
+.field-section {
+  margin: 22px 0 2px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.field-section:first-child { margin-top: 0; padding-top: 0; border-top: none; }
 .field input, .field select, .field textarea {
   width: 100%;
   font: inherit;

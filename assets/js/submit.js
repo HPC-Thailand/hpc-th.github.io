@@ -25,94 +25,106 @@ const FILE_FOR = {
   correction: '—',
 };
 
-/* Field spec: { id, label, key?, type?, options?, placeholder?, required?, hint? }
-   'key' resolves a label from data/ui.json; plain labels are technical/schema terms. */
+/* Field spec: { id, label, schema?, type?, options?, placeholder?, hint?, section? }
+   'label' is the plain-language question shown to the contributor; 'schema' is the
+   underlying JSON path, shown as a small reference tag so Option 2 (raw JSON/PR) stays
+   mappable. A field entry with only `section` set renders as a group heading instead
+   of an input — labels ending in " *" are treated as required. */
 
 const SYSTEM_FIELDS = [
-  { id: 'sys_id', label: 'system_id *', placeholder: 'thaisc-example' },
-  { id: 'sys_org', label: 'org_id *', placeholder: 'thaisc — must exist in organizations.json' },
-  { id: 'sys_name', label: 'name *', placeholder: 'System name' },
-  { id: 'sys_status', label: 'status', type: 'select', options: ['operational', 'planned', 'maintenance', 'decommissioned'] },
-  { id: 'sys_comm', label: 'commissioned_date', type: 'date' },
-  { id: 'sys_decomm', label: 'decommissioned_date', type: 'date' },
-  { id: 'sys_vendor', label: 'vendor', placeholder: 'e.g. Dell Technologies' },
-  { id: 'cpu_lines', label: 'cpu_types — one model per line', type: 'textarea',
-    placeholder: 'model | nodes | sockets_per_node | cores_per_node | memory_gb\nAMD EPYC 9654 | 100 | 2 | 192 | 1536', hint: 'model | nodes | sockets | cores/node | GB/node — leave blanks for unknowns' },
-  { id: 'gpu_lines', label: 'gpu_types — one model per line', type: 'textarea',
-    placeholder: 'model | nodes | gpu_per_node | memory_gb\nNVIDIA H100 | 20 | 8 | 80', hint: 'model | nodes | GPUs/node | GB/unit — omit for CPU-only systems' },
-  { id: 'tot_nodes', label: 'total_nodes', type: 'number' },
-  { id: 'tot_cores', label: 'total_cpu_cores', type: 'number' },
-  { id: 'tot_gpus', label: 'total_gpu_count', type: 'number' },
-  { id: 'tot_mem', label: 'total_memory_tb', type: 'number' },
-  { id: 'cooling', label: 'cooling', placeholder: 'e.g. direct liquid cooling' },
-  { id: 'ic_type', label: 'network.interconnect_type', placeholder: 'e.g. InfiniBand NDR' },
-  { id: 'bw_gbps', label: 'network.bandwidth_gbps', type: 'number' },
-  { id: 'st_type', label: 'storage.type', type: 'select', options: ['parallel_fs', 'object', 'hybrid'] },
-  { id: 'fs', label: 'storage.filesystem', placeholder: 'e.g. Lustre' },
-  { id: 'cap_pb', label: 'storage.capacity_pb', type: 'number' },
-  { id: 'nvme_pb', label: 'storage.nvme_pb', type: 'number' },
-  { id: 'disk_pb', label: 'storage.disk_pb', type: 'number' },
-  { id: 'peak_pflops', label: 'performance.peak_pflops (Rpeak)', type: 'number' },
-  { id: 'sust_pflops', label: 'performance.sustained_pflops (Rmax)', type: 'number' },
-  { id: 'power_kw', label: 'performance.power_consumption_kw', type: 'number' },
-  { id: 'os', label: 'software_stack.os', placeholder: 'e.g. Rocky Linux 9' },
-  { id: 'sched', label: 'software_stack.scheduler', type: 'select', options: ['slurm', 'pbs', 'lsf', 'other'] },
-  { id: 'frameworks', label: 'software_stack.frameworks', placeholder: 'MPI, PyTorch, TensorFlow' },
-  { id: 'acc_model', label: 'access.model', type: 'select', options: ['open_academic', 'restricted', 'commercial', 'hybrid'] },
-  { id: 'acc_users', label: 'access.user_base', placeholder: 'academic, government, industry, sea_region' },
+  { section: 'Identity & status' },
+  { id: 'sys_id', label: 'System ID *', schema: 'system_id', placeholder: 'thaisc-example', hint: 'Lowercase letters, numbers and hyphens only' },
+  { id: 'sys_org', label: 'Organisation ID *', schema: 'org_id', placeholder: 'thaisc', hint: 'Must already exist in organizations.json — submit an "organization" first if it isn’t listed yet' },
+  { id: 'sys_name', label: 'System name *', schema: 'name', placeholder: 'e.g. LANTA' },
+  { id: 'sys_status', label: 'Status', schema: 'status', type: 'select', options: ['operational', 'planned', 'maintenance', 'decommissioned'] },
+  { id: 'sys_comm', label: 'Commissioned date', schema: 'commissioned_date', type: 'date' },
+  { id: 'sys_decomm', label: 'Decommissioned date', schema: 'decommissioned_date', type: 'date' },
+  { id: 'sys_vendor', label: 'Vendor', schema: 'vendor', placeholder: 'e.g. Dell Technologies' },
+
+  { section: 'Compute' },
+  { id: 'cpu_lines', label: 'CPU models — one per line', schema: 'compute.cpu_types', type: 'textarea',
+    placeholder: 'model | nodes | sockets_per_node | cores_per_node | memory_gb\nAMD EPYC 9654 | 100 | 2 | 192 | 1536', hint: 'model | nodes | sockets/node | cores/node | GB/node — leave a slot blank if unknown' },
+  { id: 'gpu_lines', label: 'GPU models — one per line', schema: 'compute.gpu_types', type: 'textarea',
+    placeholder: 'model | nodes | gpu_per_node | memory_gb\nNVIDIA H100 | 20 | 8 | 80', hint: 'model | nodes | GPUs/node | GB/unit — leave empty entirely for CPU-only systems' },
+  { id: 'tot_nodes', label: 'Total nodes', schema: 'compute.total.total_nodes', type: 'number' },
+  { id: 'tot_cores', label: 'Total CPU cores', schema: 'compute.total.total_cpu_cores', type: 'number' },
+  { id: 'tot_gpus', label: 'Total GPU count', schema: 'compute.total.total_gpu_count', type: 'number' },
+  { id: 'tot_mem', label: 'Total memory (TB)', schema: 'compute.total.total_memory_tb', type: 'number' },
+  { id: 'cooling', label: 'Cooling', schema: 'cooling', placeholder: 'e.g. direct liquid cooling' },
+
+  { section: 'Network & storage' },
+  { id: 'ic_type', label: 'Interconnect type', schema: 'network.interconnect_type', placeholder: 'e.g. InfiniBand NDR' },
+  { id: 'bw_gbps', label: 'Interconnect bandwidth (Gb/s)', schema: 'network.bandwidth_gbps', type: 'number' },
+  { id: 'st_type', label: 'Storage type', schema: 'storage.type', type: 'select', options: ['parallel_fs', 'object', 'hybrid'] },
+  { id: 'fs', label: 'Filesystem', schema: 'storage.filesystem', placeholder: 'e.g. Lustre' },
+  { id: 'cap_pb', label: 'Storage capacity (PB)', schema: 'storage.capacity_pb', type: 'number', hint: 'Usable total, across all tiers' },
+  { id: 'nvme_pb', label: 'NVMe / flash tier (PB)', schema: 'storage.nvme_pb', type: 'number' },
+  { id: 'disk_pb', label: 'Disk / cold tier (PB)', schema: 'storage.disk_pb', type: 'number' },
+
+  { section: 'Performance' },
+  { id: 'peak_pflops', label: 'Peak performance — Rpeak (PFLOPS)', schema: 'performance.peak_pflops', type: 'number' },
+  { id: 'sust_pflops', label: 'Sustained performance — Rmax (PFLOPS)', schema: 'performance.sustained_pflops', type: 'number' },
+  { id: 'power_kw', label: 'Power consumption (kW)', schema: 'performance.power_consumption_kw', type: 'number' },
+
+  { section: 'Software & access' },
+  { id: 'os', label: 'Operating system', schema: 'software_stack.os', placeholder: 'e.g. Rocky Linux 9' },
+  { id: 'sched', label: 'Scheduler', schema: 'software_stack.scheduler', type: 'select', options: ['slurm', 'pbs', 'lsf', 'other'] },
+  { id: 'frameworks', label: 'Frameworks & libraries', schema: 'software_stack.frameworks', placeholder: 'MPI, PyTorch, TensorFlow', hint: 'Comma-separated' },
+  { id: 'acc_model', label: 'Access model', schema: 'access.model', type: 'select', options: ['open_academic', 'restricted', 'commercial', 'hybrid'] },
+  { id: 'acc_users', label: 'User base', schema: 'access.user_base', placeholder: 'academic, government, industry, sea_region', hint: 'Comma-separated, from: academic, government, industry, sea_region' },
 ];
 
 const ORG_FIELDS = [
-  { id: 'org_id', label: 'org_id *', placeholder: 'example-uni' },
-  { id: 'org_name_th', label: 'name_th *', placeholder: 'ชื้อภาษาไทย' },
-  { id: 'org_name_en', label: 'name_en *', placeholder: 'Example University' },
-  { id: 'org_type', label: 'org_type *', type: 'select', options: ['government_research', 'university', 'private', 'state_enterprise'] },
-  { id: 'org_parent', label: 'parent', placeholder: 'parent org_id, e.g. nstda — blank for none' },
-  { id: 'org_province', label: 'province *', placeholder: 'Bangkok' },
-  { id: 'org_lat', label: 'coordinates.lat *', type: 'number' },
-  { id: 'org_lng', label: 'coordinates.lng *', type: 'number' },
-  { id: 'org_site', label: 'website', type: 'url', placeholder: 'https://example.ac.th' },
-  { id: 'org_email', label: 'contact_email', type: 'email', placeholder: 'hpc@example.ac.th' },
+  { id: 'org_id', label: 'Organisation ID *', schema: 'org_id', placeholder: 'example-uni', hint: 'Lowercase letters, numbers and hyphens only' },
+  { id: 'org_name_th', label: 'Name (Thai) *', schema: 'name_th', placeholder: 'เช่น มหาวิทยาลัยตัวอย่าง' },
+  { id: 'org_name_en', label: 'Name (English) *', schema: 'name_en', placeholder: 'Example University' },
+  { id: 'org_type', label: 'Organisation type *', schema: 'org_type', type: 'select', options: ['government_research', 'university', 'private', 'state_enterprise'] },
+  { id: 'org_parent', label: 'Parent organisation ID', schema: 'parent', placeholder: 'e.g. nstda — leave blank if none' },
+  { id: 'org_province', label: 'Province *', schema: 'province', placeholder: 'e.g. Bangkok' },
+  { id: 'org_lat', label: 'Latitude *', schema: 'coordinates.lat', type: 'number', placeholder: '13.7563' },
+  { id: 'org_lng', label: 'Longitude *', schema: 'coordinates.lng', type: 'number', placeholder: '100.5018' },
+  { id: 'org_site', label: 'Website', schema: 'website', type: 'url', placeholder: 'https://example.ac.th' },
+  { id: 'org_email', label: 'Contact email', schema: 'contact_email', type: 'email', placeholder: 'hpc@example.ac.th', hint: 'A team mailbox, not a personal address' },
 ];
 
 const EVENT_FIELDS = [
-  { id: 'ev_title_th', label: 'title (th) *', placeholder: 'ชื้อกิจกรรม' },
-  { id: 'ev_title_en', label: 'title (en) *', placeholder: 'Event title' },
-  { id: 'ev_sub_th', label: 'subtitle (th)', placeholder: 'คำโปรย' },
-  { id: 'ev_sub_en', label: 'subtitle (en)', placeholder: 'Strapline' },
-  { id: 'ev_desc_th', label: 'description (th)', type: 'textarea', placeholder: 'รายเลิ่ยด' },
-  { id: 'ev_desc_en', label: 'description (en)', type: 'textarea', placeholder: 'Details' },
-  { id: 'ev_org_th', label: 'organizer (th)', placeholder: 'ผู้จัด' },
-  { id: 'ev_org_en', label: 'organizer (en)', placeholder: 'Organiser' },
-  { id: 'ev_loc_th', label: 'location (th)', placeholder: 'สถานีทิ่' },
-  { id: 'ev_loc_en', label: 'location (en)', placeholder: 'Venue' },
-  { id: 'ev_format', label: 'format', type: 'select', options: ['onsite', 'online', 'hybrid'] },
-  { id: 'ev_start', label: 'start *', type: 'date' },
-  { id: 'ev_end', label: 'end', type: 'date' },
-  { id: 'ev_time', label: 'time', placeholder: '09:00–16:30' },
-  { id: 'ev_url', label: 'url', type: 'url', placeholder: 'https://example.ac.th/event' },
-  { id: 'ev_tags', label: 'tags', placeholder: 'NSTDA, Workshop' },
-  { id: 'ev_image', label: 'image', placeholder: 'assets/img/events/event-slug-2026.jpg' },
+  { id: 'ev_title_th', label: 'Title (Thai) *', schema: 'title.th', placeholder: 'เช่น งานสัมมนา HPC และ AI ประจำปี 2569' },
+  { id: 'ev_title_en', label: 'Title (English) *', schema: 'title.en', placeholder: 'e.g. Thailand HPC & AI Summit 2026' },
+  { id: 'ev_sub_th', label: 'Subtitle (Thai)', schema: 'subtitle.th', placeholder: 'คำโปรยสั้น ๆ เกี่ยวกับกิจกรรม' },
+  { id: 'ev_sub_en', label: 'Subtitle (English)', schema: 'subtitle.en', placeholder: 'A short one-line strapline' },
+  { id: 'ev_desc_th', label: 'Description (Thai)', schema: 'description.th', type: 'textarea', placeholder: 'รายละเอียดกิจกรรม เช่น กำหนดการ ผู้บรรยาย' },
+  { id: 'ev_desc_en', label: 'Description (English)', schema: 'description.en', type: 'textarea', placeholder: 'Event details — agenda, speakers, etc.' },
+  { id: 'ev_org_th', label: 'Organiser (Thai)', schema: 'organizer.th', placeholder: 'เช่น เนคเทค สวทช.' },
+  { id: 'ev_org_en', label: 'Organiser (English)', schema: 'organizer.en', placeholder: 'e.g. NECTEC, NSTDA' },
+  { id: 'ev_loc_th', label: 'Location (Thai)', schema: 'location.th', placeholder: 'สถานที่จัดงาน' },
+  { id: 'ev_loc_en', label: 'Location (English)', schema: 'location.en', placeholder: 'Venue name, city' },
+  { id: 'ev_format', label: 'Format', schema: 'format', type: 'select', options: ['onsite', 'online', 'hybrid'] },
+  { id: 'ev_start', label: 'Start date *', schema: 'start', type: 'date' },
+  { id: 'ev_end', label: 'End date', schema: 'end', type: 'date' },
+  { id: 'ev_time', label: 'Time', schema: 'time', placeholder: '09:00–16:30' },
+  { id: 'ev_url', label: 'Event URL', schema: 'url', type: 'url', placeholder: 'https://example.ac.th/event' },
+  { id: 'ev_tags', label: 'Tags', schema: 'tags', placeholder: 'NSTDA, Workshop', hint: 'Comma-separated' },
+  { id: 'ev_image', label: 'Banner image path', schema: 'image', placeholder: 'assets/img/events/event-slug-2026.jpg' },
 ];
 
 const TIMELINE_FIELDS = [
-  { id: 'tl_year', label: 'year *', type: 'number' },
-  { id: 'tl_era', label: 'era *', placeholder: 'gen4' },
-  { id: 'tl_kind', label: 'kind *', type: 'select', options: ['era', 'highlight', 'milestone', 'open'] },
-  { id: 'tl_category', label: 'category', placeholder: 'system' },
-  { id: 'tl_title_th', label: 'title (th) *', placeholder: 'หวัข้อ' },
-  { id: 'tl_title_en', label: 'title (en) *', placeholder: 'Title' },
-  { id: 'tl_org_th', label: 'org (th)', placeholder: 'หน่วยงาน' },
-  { id: 'tl_org_en', label: 'org (en)', placeholder: 'Organisation' },
-  { id: 'tl_body_th', label: 'body (th)', type: 'textarea', placeholder: 'รายเลิ่ยด' },
-  { id: 'tl_body_en', label: 'body (en)', type: 'textarea', placeholder: 'Details' },
-  { id: 'tl_tags', label: 'tags', placeholder: 'Tag1, Tag2' },
-  { id: 'tl_link', label: 'link', type: 'url', placeholder: 'https://example.ac.th' },
+  { id: 'tl_year', label: 'Year *', schema: 'year', type: 'number', placeholder: '2026' },
+  { id: 'tl_era', label: 'Era *', schema: 'era', placeholder: 'e.g. gen4' },
+  { id: 'tl_kind', label: 'Kind *', schema: 'kind', type: 'select', options: ['era', 'highlight', 'milestone', 'open'] },
+  { id: 'tl_category', label: 'Category', schema: 'category', placeholder: 'e.g. system' },
+  { id: 'tl_title_th', label: 'Title (Thai) *', schema: 'title.th', placeholder: 'เช่น เปิดใช้งานระบบ LANTA' },
+  { id: 'tl_title_en', label: 'Title (English) *', schema: 'title.en', placeholder: 'e.g. LANTA goes live' },
+  { id: 'tl_org_th', label: 'Organisation (Thai)', schema: 'org.th', placeholder: 'หน่วยงานที่เกี่ยวข้อง' },
+  { id: 'tl_org_en', label: 'Organisation (English)', schema: 'org.en', placeholder: 'Organisation name' },
+  { id: 'tl_body_th', label: 'Body text (Thai)', schema: 'body.th', type: 'textarea', placeholder: 'รายละเอียดเพิ่มเติมของเหตุการณ์นี้' },
+  { id: 'tl_body_en', label: 'Body text (English)', schema: 'body.en', type: 'textarea', placeholder: 'More detail about this milestone' },
+  { id: 'tl_tags', label: 'Tags', schema: 'tags', placeholder: 'Tag1, Tag2', hint: 'Comma-separated' },
+  { id: 'tl_link', label: 'Link', schema: 'link', type: 'url', placeholder: 'https://example.ac.th' },
 ];
 
 const CORRECTION_FIELDS = [
-  { id: 'corr_where', label: 'record to correct *', placeholder: 'e.g. systems — LANTA, or event id' },
-  { id: 'corr_desc', label: 'what is wrong and what is correct *', type: 'textarea', key: null },
+  { id: 'corr_where', label: 'Which record is wrong? *', placeholder: 'e.g. systems → LANTA, or an event/timeline id' },
+  { id: 'corr_desc', label: 'What’s wrong, and what should it say instead? *', type: 'textarea' },
 ];
 
 const FIELDSETS = {
@@ -168,7 +180,7 @@ function buildSystem() {
     clean({ model, nodes: intv(nodes), sockets_per_node: intv(sockets), cores_per_node: intv(cores), memory_per_node_gb: floatv(mem) }));
   const gpu_types = modelRows('gpu_lines', ([model, nodes, perNode, mem]) =>
     clean({ model, nodes: intv(nodes), gpu_per_node: intv(perNode), memory_per_unit_gb: floatv(mem) }));
-  return clean({
+  const out = clean({
     system_id: val('sys_id'),
     org_id: val('sys_org'),
     name: val('sys_name'),
@@ -178,7 +190,6 @@ function buildSystem() {
     vendor: val('sys_vendor'),
     compute: clean({
       cpu_types: cpu_types.length ? cpu_types : null,
-      gpu_types: gpu_types.length ? gpu_types : null,
       total: clean({
         total_nodes: numv('tot_nodes'), total_cpu_cores: numv('tot_cores'),
         total_gpu_count: numv('tot_gpus'), total_memory_tb: numv('tot_mem'),
@@ -197,6 +208,13 @@ function buildSystem() {
     software_stack: clean({ os: val('os'), scheduler: val('sched') || undefined, frameworks: list('frameworks') }),
     access: clean({ model: val('acc_model') || undefined, user_base: list('acc_users') }),
   });
+  if (out.compute) {
+    out.compute.num_cpu_type = cpu_types.length;
+    out.compute.cpu_types = cpu_types;
+    out.compute.num_gpu_type = gpu_types.length;
+    out.compute.gpu_types = gpu_types;
+  }
+  return out;
 }
 
 function buildOrganization() {
@@ -301,9 +319,9 @@ const store = {};
 let builtFor = null;
 
 function fieldMarkup(f) {
-  const label = f.key ? t(f.key) : f.label;
   const req = /\*$/.test(f.label) ? ` <span class="req">${esc(t('submit.required'))}</span>` : '';
   const name = f.label.replace(/ \*$/, '');
+  const schemaTag = f.schema ? ` <span class="field-key mono">${esc(f.schema)}</span>` : '';
   let input;
   if (f.type === 'select') {
     input = `<select id="${f.id}"><option value="">—</option>${f.options.map((o) => `<option${store[f.id] === o ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
@@ -314,7 +332,7 @@ function fieldMarkup(f) {
   }
   const reqAttr = /\*$/.test(f.label) ? ' required' : '';
   return `<div class="field">
-      <label for="${f.id}">${esc(name)}${req}</label>
+      <label for="${f.id}">${esc(name)}${schemaTag}${req}</label>
       ${input.replace(/<input|<select|<textarea/, (m) => m + reqAttr)}
       ${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ''}
     </div>`;
@@ -324,7 +342,9 @@ function buildTypeFields() {
   const type = currentType();
   if (builtFor === type) return;
   builtFor = type;
-  document.getElementById('type-fields').innerHTML = FIELDSETS[type].map(fieldMarkup).join('');
+  document.getElementById('type-fields').innerHTML = FIELDSETS[type]
+    .map((f) => (f.section ? `<h3 class="field-section">${esc(f.section)}</h3>` : fieldMarkup(f)))
+    .join('');
 }
 
 function buildTypeOptions() {
@@ -337,7 +357,7 @@ function buildTypeOptions() {
 
 function refreshPreview() {
   const type = currentType();
-  for (const f of FIELDSETS[type]) store[f.id] = (document.getElementById(f.id)?.value ?? '').trim();
+  for (const f of FIELDSETS[type]) { if (f.id) store[f.id] = (document.getElementById(f.id)?.value ?? '').trim(); }
   document.getElementById('preview').textContent = buildBody();
   document.getElementById('step-2').innerHTML =
     esc(t('submit.step2', { file: '\u0000' })).replace('\u0000', `<code class="mono">${esc(FILE_FOR[type])}</code>`);
