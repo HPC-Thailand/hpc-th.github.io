@@ -11,12 +11,34 @@
     "systems": { "type": "array", "items": { "$ref": "#/definitions/system" } }
   },
   "definitions": {
+    "organization": {
+      "type": "object",
+      "required": ["name_th", "name_en", "org_type", "province", "coordinates", "website", "contact_email"],
+      "additionalProperties": false,
+      "properties": {
+        "name_th": { "type": "string" },
+        "name_en": { "type": "string" },
+        "org_type": { "enum": ["government_research", "university", "private", "state_enterprise"] },
+        "province": { "type": "string" },
+        "coordinates": {
+          "type": "object",
+          "required": ["lat", "lng"],
+          "additionalProperties": false,
+          "properties": {
+            "lat": { "type": "number", "minimum": 5, "maximum": 21 },
+            "lng": { "type": "number", "minimum": 96, "maximum": 106 }
+          }
+        },
+        "website": { "type": "string", "format": "uri" },
+        "contact_email": { "type": ["string", "null"], "format": "email" }
+      }
+    },
     "system": {
       "type": "object",
       "required": [
         "system_id",
-        "org_id",
         "name",
+        "organization",
         "status",
         "commissioned_date",
         "decommissioned_date",
@@ -36,12 +58,8 @@
           "pattern": "^[a-z0-9-]+$",
           "description": "Unique id, e.g. 'thaisc-lanta'"
         },
-        "org_id": {
-          "type": "string",
-          "pattern": "^[a-z0-9-]+$",
-          "description": "FK -> organizations.json org_id"
-        },
         "name": { "type": "string" },
+        "organization": { "$ref": "#/definitions/organization" },
         "status": { "enum": ["operational", "planned", "maintenance", "decommissioned"] },
         "commissioned_date": { "type": ["string", "null"], "format": "date" },
         "decommissioned_date": { "type": ["string", "null"], "format": "date" },

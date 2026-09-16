@@ -25,8 +25,7 @@
 
 | ต้องการเพิ่ม | ไฟล์ |
 | --- | --- |
-| ระบบ HPC / อัปเดตสเปก | `data/systems.json` |
-| หน่วยงาน (องค์กร) | `data/organizations.json` |
+| ระบบ HPC / อัปเดตสเปก / หน่วยงาน (องค์กร) | `data/systems.json` (ข้อมูลหน่วยงานฝังอยู่ในแต่ละระบบที่ `organization`) |
 | เหตุการณ์ในไทม์ไลน์ | `data/timeline.json` |
 | กิจกรรม สัมมนา | `data/events.json` (+ แบนเนอร์ใน `assets/img/events/`) |
 | เอกสารอ้างอิง (PDF เก่า) | `reference/docs/` + `data/reference.json` |

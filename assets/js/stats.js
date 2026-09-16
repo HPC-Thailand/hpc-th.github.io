@@ -7,7 +7,6 @@ import {
 } from './core.js';
 
 let DATA = null;
-let ORGS = {};
 const charts = [];
 
 const PALETTE = ['#2e7bc4', '#15427a', '#d97a1a', '#3f9f83', '#7a5cc4', '#c4566f',
@@ -26,7 +25,7 @@ function kpis() {
     ['stats.totalCores', sum((x) => x.compute.total.total_cpu_cores)],
     ['stats.totalGpus', sum((x) => x.compute.total.total_gpu_count)],
     ['stats.totalSystems', s.length],
-    ['stats.totalOrgs', new Set(s.map((x) => x.org_id)).size],
+    ['stats.totalOrgs', new Set(s.map((x) => x.organization?.name_en)).size],
   ];
 }
 
@@ -131,11 +130,11 @@ function paintCharts() {
     .sort((a, b) => gpus(b) - gpus(a));
   makeBar('chart-gpu', byGpu.map((s) => s.name), byGpu.map(gpus));
 
-  const region = tally((s) => ORGS[s.org_id]?.province || '—');
+  const region = tally((s) => s.organization?.province || '—');
   makeDoughnut('chart-region', region.map(([k]) => k), region.map(([, v]) => v));
 
   const orgType = tally((s) => {
-    const ty = ORGS[s.org_id]?.org_type;
+    const ty = s.organization?.org_type;
     return ty ? t(`systems.orgTypeLabels.${ty}`) : '—';
   });
   makeDoughnut('chart-orgtype', orgType.map(([k]) => k), orgType.map(([, v]) => v));
@@ -148,9 +147,7 @@ function paintCharts() {
 
 (async function main() {
   await boot('stats');
-  const orgDoc = await loadJSON('data/organizations.json');
   DATA = await loadJSON('data/systems.json');
-  ORGS = Object.fromEntries((orgDoc.organizations ?? []).map((o) => [o.org_id, o]));
   setUpdated(DATA.updated);
 
   onLangChange(() => {

@@ -1,6 +1,6 @@
 {
   "$schema": "./schema/systems.schema.json",
-  "updated": "2026-09-14",
+  "updated": "2026-09-16",
   "note": {
     "th": "ข้อมูลสเปกเป็นค่าที่ประกาศโดยแต่ละศูนย์ ระบบที่ยังไม่มีวันยืนยันจะแสดงป้าย \"รอการยืนยัน\" — ศูนย์ HPC สามารถส่งข้อมูลล่าสุดได้ที่หน้า ส่งข้อมูล",
     "en": "Specifications are as declared by each centre. Systems without a verification date are shown as \"awaiting verification\" — centres can send updated figures via the Submit page."
@@ -8,8 +8,19 @@
   "systems": [
     {
       "system_id": "crust-25",
-      "org_id": "pttep",
       "name": "The Crust 2.5",
+      "organization": {
+        "name_th": "ปตท.สำรวจและผลิตปิโตรเลียม",
+        "name_en": "PTT Exploration and Production Public Company Limited",
+        "org_type": "private",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.8125,
+          "lng": 100.5619
+        },
+        "website": "https://www.pttep.com/en/home",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": "2024-01-01",
       "decommissioned_date": null,
@@ -31,7 +42,7 @@
             "model": "NVIDIA H100",
             "nodes": 128,
             "gpu_per_node": 4,
-            "memory_per_unit_gb": 94.0
+            "memory_per_unit_gb": 94
           }
         ],
         "total": {
@@ -44,14 +55,14 @@
       "cooling": "Liquid cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR200",
-        "bandwidth_gbps": 200.0
+        "bandwidth_gbps": 200
       },
       "storage": {
         "type": "parallel_fs",
         "filesystem": "Lustre",
-        "capacity_pb": 11.0,
-        "nvme_pb": 1.0,
-        "disk_pb": 10.0
+        "capacity_pb": 11,
+        "nvme_pb": 1,
+        "disk_pb": 10
       },
       "performance": {
         "peak_pflops": null,
@@ -73,8 +84,19 @@
     },
     {
       "system_id": "lanta",
-      "org_id": "thaisc",
       "name": "LANTA",
+      "organization": {
+        "name_th": "ThaiSC, NSTDA",
+        "name_en": "ThaiSC, NSTDA",
+        "org_type": "government_research",
+        "province": "Pathum Thani",
+        "coordinates": {
+          "lat": 14.0674,
+          "lng": 100.6035
+        },
+        "website": "https://thaisc.io/",
+        "contact_email": "thaisc@nstda.or.th"
+      },
       "status": "operational",
       "commissioned_date": "2022-01-01",
       "decommissioned_date": null,
@@ -96,7 +118,7 @@
             "model": "NVIDIA A100",
             "nodes": 88,
             "gpu_per_node": 8,
-            "memory_per_unit_gb": 40.0
+            "memory_per_unit_gb": 40
           }
         ],
         "total": {
@@ -109,14 +131,14 @@
       "cooling": "Air cooling with liquid assist",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
         "filesystem": "Lustre",
         "capacity_pb": 5.5,
         "nvme_pb": 0.5,
-        "disk_pb": 5.0
+        "disk_pb": 5
       },
       "performance": {
         "peak_pflops": null,
@@ -139,8 +161,19 @@
     },
     {
       "system_id": "vistec-ist",
-      "org_id": "vistec",
       "name": "VISTEC",
+      "organization": {
+        "name_th": "สถาบันวิทยสิริเมธี",
+        "name_en": "Vidyasirimedhi Institute of Science and Technology (VISTEC)",
+        "org_type": "university",
+        "province": "Rayong",
+        "coordinates": {
+          "lat": 12.8755,
+          "lng": 101.1789
+        },
+        "website": "https://vistec.ist/",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": "2018-01-01",
       "decommissioned_date": null,
@@ -181,14 +214,14 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
         "filesystem": "BeeGFS",
         "capacity_pb": 1.2,
         "nvme_pb": 0.2,
-        "disk_pb": 1.0
+        "disk_pb": 1
       },
       "performance": {
         "peak_pflops": null,
@@ -210,8 +243,19 @@
     },
     {
       "system_id": "apex",
-      "org_id": "cmkl",
       "name": "APEX",
+      "organization": {
+        "name_th": "มหาวิทยาลัยซีเอ็มเคแอล",
+        "name_en": "CMKL University",
+        "org_type": "university",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.7299,
+          "lng": 100.7782
+        },
+        "website": "https://www.cmkl.ac.th/research/apex",
+        "contact_email": "apex@cmkl.ac.th"
+      },
       "status": "operational",
       "commissioned_date": "2020-01-01",
       "decommissioned_date": null,
@@ -233,7 +277,7 @@
             "model": "NVIDIA A100",
             "nodes": 6,
             "gpu_per_node": 8,
-            "memory_per_unit_gb": 40.0
+            "memory_per_unit_gb": 40
           }
         ],
         "total": {
@@ -246,7 +290,7 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
@@ -275,8 +319,19 @@
     },
     {
       "system_id": "mu-ai",
-      "org_id": "muict",
       "name": "MU-AI Center",
+      "organization": {
+        "name_th": "Faculty of Information and Communication Technology Mahidol University",
+        "name_en": "MUICT, Mahidol University",
+        "org_type": "university",
+        "province": "Nakhon Pathom",
+        "coordinates": {
+          "lat": 13.7923,
+          "lng": 100.3258
+        },
+        "website": "https://www.ict.mahidol.ac.th/",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": "2021-01-01",
       "decommissioned_date": null,
@@ -317,7 +372,7 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
@@ -346,8 +401,19 @@
     },
     {
       "system_id": "ku-nontri-ai",
-      "org_id": "kasetsart",
       "name": "KU Nontri AI",
+      "organization": {
+        "name_th": "มหาวิทยาลัยเกษตรศาสตร์",
+        "name_en": "Kasetsart University",
+        "org_type": "university",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.8463,
+          "lng": 100.5653
+        },
+        "website": "https://www.ku.ac.th/",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": "2024-01-01",
       "decommissioned_date": null,
@@ -369,7 +435,7 @@
             "model": "NVIDIA A100",
             "nodes": 4,
             "gpu_per_node": 8,
-            "memory_per_unit_gb": 80.0
+            "memory_per_unit_gb": 80
           }
         ],
         "total": {
@@ -382,7 +448,7 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
@@ -411,8 +477,19 @@
     },
     {
       "system_id": "cu-ai",
-      "org_id": "chulalongkorn",
       "name": "CU AI Research Center",
+      "organization": {
+        "name_th": "จุฬาลงกรณ์มหาวิทยาลัย",
+        "name_en": "Chulalongkorn University",
+        "org_type": "university",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.737,
+          "lng": 100.5312
+        },
+        "website": "https://www.chula.ac.th/",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": null,
       "decommissioned_date": null,
@@ -434,7 +511,7 @@
             "model": "NVIDIA A100",
             "nodes": 3,
             "gpu_per_node": 8,
-            "memory_per_unit_gb": 80.0
+            "memory_per_unit_gb": 80
           }
         ],
         "total": {
@@ -447,7 +524,7 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
@@ -476,8 +553,19 @@
     },
     {
       "system_id": "erawan",
-      "org_id": "cmu-itsc",
       "name": "ERAWAN",
+      "organization": {
+        "name_th": "ITSC, Chiang Mai University",
+        "name_en": "Information Technology Service Center (ITSC), Chiang Mai University",
+        "org_type": "university",
+        "province": "Chiang Mai",
+        "coordinates": {
+          "lat": 18.7967,
+          "lng": 98.9513
+        },
+        "website": "https://hpc.cmu.ac.th/",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": "2021-01-01",
       "decommissioned_date": null,
@@ -499,7 +587,7 @@
             "model": "NVIDIA A100",
             "nodes": 3,
             "gpu_per_node": 8,
-            "memory_per_unit_gb": 80.0
+            "memory_per_unit_gb": 80
           }
         ],
         "total": {
@@ -512,7 +600,7 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
@@ -541,8 +629,19 @@
     },
     {
       "system_id": "kmutt-ai",
-      "org_id": "kmutt",
       "name": "KMUTT AI Center",
+      "organization": {
+        "name_th": "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี",
+        "name_en": "King Mongkut's University of Technology Thonburi",
+        "org_type": "university",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.6511,
+          "lng": 100.4947
+        },
+        "website": "https://www.kmutt.ac.th/",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": null,
       "decommissioned_date": null,
@@ -564,7 +663,7 @@
             "model": "NVIDIA A100",
             "nodes": 3,
             "gpu_per_node": 7,
-            "memory_per_unit_gb": 40.0
+            "memory_per_unit_gb": 40
           }
         ],
         "total": {
@@ -577,7 +676,7 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
@@ -606,8 +705,19 @@
     },
     {
       "system_id": "psu-singkhorn",
-      "org_id": "psu-drii",
       "name": "PSU-Singkhorn",
+      "organization": {
+        "name_th": "DRii, Prince of Songkla University",
+        "name_en": "Digital Research and Innovation Institute (DRii), Prince of Songkla University",
+        "org_type": "university",
+        "province": "Songkhla",
+        "coordinates": {
+          "lat": 7.0086,
+          "lng": 100.4974
+        },
+        "website": "https://www.facebook.com/drii.psu",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": "2021-01-01",
       "decommissioned_date": null,
@@ -629,7 +739,7 @@
             "model": "NVIDIA A100",
             "nodes": 2,
             "gpu_per_node": 8,
-            "memory_per_unit_gb": 40.0
+            "memory_per_unit_gb": 40
           }
         ],
         "total": {
@@ -642,7 +752,7 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",
@@ -671,8 +781,19 @@
     },
     {
       "system_id": "kku-hpc",
-      "org_id": "kku-odt",
       "name": "KKU",
+      "organization": {
+        "name_th": "ODT, Khon Kaen University",
+        "name_en": "Office of Digital Technology (ODT), Khon Kaen University",
+        "org_type": "university",
+        "province": "Khon Kaen",
+        "coordinates": {
+          "lat": 16.4754,
+          "lng": 102.8255
+        },
+        "website": "https://digital.kku.ac.th/",
+        "contact_email": null
+      },
       "status": "operational",
       "commissioned_date": "2021-01-01",
       "decommissioned_date": null,
@@ -694,7 +815,7 @@
             "model": "NVIDIA A100",
             "nodes": 2,
             "gpu_per_node": 8,
-            "memory_per_unit_gb": 40.0
+            "memory_per_unit_gb": 40
           }
         ],
         "total": {
@@ -707,7 +828,7 @@
       "cooling": "Air cooling",
       "network": {
         "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100.0
+        "bandwidth_gbps": 100
       },
       "storage": {
         "type": "parallel_fs",

@@ -7,7 +7,6 @@ import {
 } from './core.js';
 
 let DATA = null;
-let ORGS = {};
 let map = null;
 let markerLayer = null;
 
@@ -15,10 +14,10 @@ const state = { q: '', orgType: 'all', sort: 'cores' };
 
 const cpuModels = (s) => s.compute.cpu_types.map((c) => c.model);
 const gpuModels = (s) => s.compute.gpu_types.map((g) => g.model);
-const orgOf = (s) => ORGS[s.org_id] || null;
+const orgOf = (s) => s.organization || null;
 const orgName = (s) => {
   const o = orgOf(s);
-  if (!o) return s.org_id;
+  if (!o) return '';
   return pick({ th: o.name_th, en: o.name_en });
 };
 
@@ -219,11 +218,7 @@ function buildControls() {
 
 (async function main() {
   await boot('systems');
-  const [orgDoc] = await Promise.all([
-    loadJSON('data/organizations.json'),
-  ]);
   DATA = await loadJSON('data/systems.json');
-  ORGS = Object.fromEntries((orgDoc.organizations ?? []).map((o) => [o.org_id, o]));
   setUpdated(DATA.updated);
 
   initMap();

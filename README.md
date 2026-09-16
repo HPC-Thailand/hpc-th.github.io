@@ -82,8 +82,7 @@ _The history and landscape of high performance computing in Thailand._
 │   └── img/events/       แบนเนอร์กิจกรรม
 ├── data/
 │   ├── timeline.json     เหตุการณ์ในไทม์ไลน์ (สองภาษา)
-│   ├── systems.json      ระบบ HPC
-│   ├── organizations.json  operator registry (org_id FK for systems)
+│   ├── systems.json      ระบบ HPC (แต่ละระบบฝัง organization ของตัวเอง)
 │   ├── events.json       กิจกรรม
 │   ├── reference.json    รายการเอกสารในคลัง
 │   ├── ui.json           ข้อความ UI ทั้งหมด (สองภาษา)

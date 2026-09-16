@@ -567,10 +567,6 @@
     "noBuild": {
       "th": "ทุกไฟล์ข้อมูลเป็น JSON ล้วน ไม่มี build step — แก้แล้ว merge ได้เลย",
       "en": "All data files are plain JSON with no build step — edit, merge, done."
-    },
-    "typeOrganization": {
-      "th": "หน่วยงาน (องค์กร)",
-      "en": "Organisation (new)"
     }
   },
   "footer": {

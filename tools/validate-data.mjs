@@ -117,55 +117,36 @@ function checkTimeline() {
   }
 }
 
-/* --------------------------------------------------------- organizations */
+/* -------------------------------------------------------------- systems */
 
 const ORG_TYPES = new Set(['government_research', 'university', 'private', 'state_enterprise']);
-let ORG_IDS = null;
 
-function checkOrganizations() {
-  const file = 'data/organizations.json';
-  const doc = read(file);
-  if (!doc) return;
-
-  ORG_IDS = new Set();
-  const parents = [];
-  for (const o of doc.organizations ?? []) {
-    const at = `organisation ${o.org_id}`;
-    if (!SLUG.test(o.org_id ?? '')) fail(file, `${at}: org_id is not a slug`);
-    if (ORG_IDS.has(o.org_id)) fail(file, `${at}: duplicate org_id`);
-    ORG_IDS.add(o.org_id);
-
-    for (const key of ['name_th', 'name_en', 'province']) {
-      if (typeof o[key] !== 'string' || !o[key].trim()) fail(file, `${at}: ${key} is missing or empty`);
-    }
-    if (!ORG_TYPES.has(o.org_type)) fail(file, `${at}: unknown org_type "${o.org_type}"`);
-    if (o.parent != null) {
-      if (!SLUG.test(o.parent)) fail(file, `${at}: parent "${o.parent}" is not a slug`);
-      parents.push([o.org_id, o.parent]);
-    }
-
-    const { lat, lng } = o.coordinates ?? {};
-    if (typeof lat !== 'number' || typeof lng !== 'number') {
-      fail(file, `${at}: coordinates must have numeric lat and lng`);
-    } else {
-      // Thailand's bounding box, give or take.
-      if (lng < 96 || lng > 106) fail(file, `${at}: lng ${lng} is outside Thailand — are lat/lng swapped?`);
-      if (lat < 5 || lat > 21) fail(file, `${at}: lat ${lat} is outside Thailand — are lat/lng swapped?`);
-    }
-
-    if (o.website) {
-      try { new URL(o.website); } catch { fail(file, `${at}: website is not a URL`); }
-    }
-    if (o.contact_email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(o.contact_email)) {
-      fail(file, `${at}: contact_email "${o.contact_email}" is not an email`);
-    }
+function checkOrganization(file, at, o) {
+  if (!o) {
+    fail(file, `${at}: organization is missing`);
+    return;
   }
-  for (const [oid, parent] of parents) {
-    if (!ORG_IDS.has(parent)) fail(file, `organisation ${oid}: parent "${parent}" is not defined`);
+  for (const key of ['name_th', 'name_en', 'province']) {
+    if (typeof o[key] !== 'string' || !o[key].trim()) fail(file, `${at}: organization.${key} is missing or empty`);
+  }
+  if (!ORG_TYPES.has(o.org_type)) fail(file, `${at}: unknown organization.org_type "${o.org_type}"`);
+
+  const { lat, lng } = o.coordinates ?? {};
+  if (typeof lat !== 'number' || typeof lng !== 'number') {
+    fail(file, `${at}: organization.coordinates must have numeric lat and lng`);
+  } else {
+    // Thailand's bounding box, give or take.
+    if (lng < 96 || lng > 106) fail(file, `${at}: organization.coordinates.lng ${lng} is outside Thailand — are lat/lng swapped?`);
+    if (lat < 5 || lat > 21) fail(file, `${at}: organization.coordinates.lat ${lat} is outside Thailand — are lat/lng swapped?`);
+  }
+
+  if (o.website) {
+    try { new URL(o.website); } catch { fail(file, `${at}: organization.website is not a URL`); }
+  }
+  if (o.contact_email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(o.contact_email)) {
+    fail(file, `${at}: organization.contact_email "${o.contact_email}" is not an email`);
   }
 }
-
-/* -------------------------------------------------------------- systems */
 
 const STATUSES = new Set(['operational', 'planned', 'maintenance', 'decommissioned']);
 const STORAGE_TYPES = new Set(['parallel_fs', 'object', 'hybrid']);
@@ -186,8 +167,7 @@ function checkSystems() {
     seen.add(s.system_id);
 
     if (!s.name) fail(file, `${at}: name is missing`);
-    if (!ORG_IDS) fail(file, `${at}: cannot check org_id — organizations.json is unreadable`);
-    else if (!s.org_id || !ORG_IDS.has(s.org_id)) fail(file, `${at}: org_id "${s.org_id}" is not defined in organizations.json`);
+    checkOrganization(file, at, s.organization);
     if (!STATUSES.has(s.status)) fail(file, `${at}: unknown status "${s.status}"`);
 
     for (const key of ['commissioned_date', 'decommissioned_date']) {
@@ -352,7 +332,6 @@ function checkReference() {
 
 checkUI();
 checkTimeline();
-checkOrganizations();
 checkSystems();
 checkEvents();
 checkReference();

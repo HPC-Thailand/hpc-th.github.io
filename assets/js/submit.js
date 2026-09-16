@@ -10,7 +10,6 @@ import { boot, t, pick, esc, onLangChange, observeReveal, SITE } from './core.js
 const TYPES = [
   { value: 'system', key: 'submit.typeSystem', label: 'system' },
   { value: 'stats', key: 'submit.typeStats', label: 'stats' },
-  { value: 'organization', key: 'submit.typeOrganization', label: 'organization' },
   { value: 'event', key: 'submit.typeEvent', label: 'event' },
   { value: 'timeline', key: 'submit.typeTimeline', label: 'timeline' },
   { value: 'correction', key: 'submit.typeCorrection', label: 'correction' },
@@ -19,7 +18,6 @@ const TYPES = [
 const FILE_FOR = {
   system: 'data/systems.json',
   stats: 'data/systems.json',
-  organization: 'data/organizations.json',
   event: 'data/events.json',
   timeline: 'data/timeline.json',
   correction: '—',
@@ -34,12 +32,21 @@ const FILE_FOR = {
 const SYSTEM_FIELDS = [
   { section: 'Identity & status' },
   { id: 'sys_id', label: 'System ID *', schema: 'system_id', placeholder: 'thaisc-example', hint: 'Lowercase letters, numbers and hyphens only' },
-  { id: 'sys_org', label: 'Organisation ID *', schema: 'org_id', placeholder: 'thaisc', hint: 'Must already exist in organizations.json — submit an "organization" first if it isn’t listed yet' },
   { id: 'sys_name', label: 'System name *', schema: 'name', placeholder: 'e.g. LANTA' },
   { id: 'sys_status', label: 'Status', schema: 'status', type: 'select', options: ['operational', 'planned', 'maintenance', 'decommissioned'] },
   { id: 'sys_comm', label: 'Commissioned date', schema: 'commissioned_date', type: 'date' },
   { id: 'sys_decomm', label: 'Decommissioned date', schema: 'decommissioned_date', type: 'date' },
   { id: 'sys_vendor', label: 'Vendor', schema: 'vendor', placeholder: 'e.g. Dell Technologies' },
+
+  { section: 'Organisation' },
+  { id: 'org_name_th', label: 'Organisation name (Thai) *', schema: 'organization.name_th', placeholder: 'เช่น มหาวิทยาลัยตัวอย่าง' },
+  { id: 'org_name_en', label: 'Organisation name (English) *', schema: 'organization.name_en', placeholder: 'Example University' },
+  { id: 'org_type', label: 'Organisation type *', schema: 'organization.org_type', type: 'select', options: ['government_research', 'university', 'private', 'state_enterprise'] },
+  { id: 'org_province', label: 'Province *', schema: 'organization.province', placeholder: 'e.g. Bangkok' },
+  { id: 'org_lat', label: 'Latitude *', schema: 'organization.coordinates.lat', type: 'number', placeholder: '13.7563' },
+  { id: 'org_lng', label: 'Longitude *', schema: 'organization.coordinates.lng', type: 'number', placeholder: '100.5018' },
+  { id: 'org_site', label: 'Organisation website', schema: 'organization.website', type: 'url', placeholder: 'https://example.ac.th' },
+  { id: 'org_email', label: 'Organisation contact email', schema: 'organization.contact_email', type: 'email', placeholder: 'hpc@example.ac.th', hint: 'A team mailbox, not a personal address' },
 
   { section: 'Compute' },
   { id: 'cpu_lines', label: 'CPU models — one per line', schema: 'compute.cpu_types', type: 'textarea',
@@ -72,19 +79,6 @@ const SYSTEM_FIELDS = [
   { id: 'frameworks', label: 'Frameworks & libraries', schema: 'software_stack.frameworks', placeholder: 'MPI, PyTorch, TensorFlow', hint: 'Comma-separated' },
   { id: 'acc_model', label: 'Access model', schema: 'access.model', type: 'select', options: ['open_academic', 'restricted', 'commercial', 'hybrid'] },
   { id: 'acc_users', label: 'User base', schema: 'access.user_base', placeholder: 'academic, government, industry, sea_region', hint: 'Comma-separated, from: academic, government, industry, sea_region' },
-];
-
-const ORG_FIELDS = [
-  { id: 'org_id', label: 'Organisation ID *', schema: 'org_id', placeholder: 'example-uni', hint: 'Lowercase letters, numbers and hyphens only' },
-  { id: 'org_name_th', label: 'Name (Thai) *', schema: 'name_th', placeholder: 'เช่น มหาวิทยาลัยตัวอย่าง' },
-  { id: 'org_name_en', label: 'Name (English) *', schema: 'name_en', placeholder: 'Example University' },
-  { id: 'org_type', label: 'Organisation type *', schema: 'org_type', type: 'select', options: ['government_research', 'university', 'private', 'state_enterprise'] },
-  { id: 'org_parent', label: 'Parent organisation ID', schema: 'parent', placeholder: 'e.g. nstda — leave blank if none' },
-  { id: 'org_province', label: 'Province *', schema: 'province', placeholder: 'e.g. Bangkok' },
-  { id: 'org_lat', label: 'Latitude *', schema: 'coordinates.lat', type: 'number', placeholder: '13.7563' },
-  { id: 'org_lng', label: 'Longitude *', schema: 'coordinates.lng', type: 'number', placeholder: '100.5018' },
-  { id: 'org_site', label: 'Website', schema: 'website', type: 'url', placeholder: 'https://example.ac.th' },
-  { id: 'org_email', label: 'Contact email', schema: 'contact_email', type: 'email', placeholder: 'hpc@example.ac.th', hint: 'A team mailbox, not a personal address' },
 ];
 
 const EVENT_FIELDS = [
@@ -130,7 +124,6 @@ const CORRECTION_FIELDS = [
 const FIELDSETS = {
   system: SYSTEM_FIELDS,
   stats: SYSTEM_FIELDS,
-  organization: ORG_FIELDS,
   event: EVENT_FIELDS,
   timeline: TIMELINE_FIELDS,
   correction: CORRECTION_FIELDS,
@@ -182,8 +175,16 @@ function buildSystem() {
     clean({ model, nodes: intv(nodes), gpu_per_node: intv(perNode), memory_per_unit_gb: floatv(mem) }));
   const out = clean({
     system_id: val('sys_id'),
-    org_id: val('sys_org'),
     name: val('sys_name'),
+    organization: clean({
+      name_th: val('org_name_th'),
+      name_en: val('org_name_en'),
+      org_type: val('org_type') || undefined,
+      province: val('org_province'),
+      coordinates: clean({ lat: numv('org_lat'), lng: numv('org_lng') }),
+      website: val('org_site'),
+      contact_email: val('org_email'),
+    }),
     status: val('sys_status') || undefined,
     commissioned_date: val('sys_comm') || null,
     decommissioned_date: val('sys_decomm') || null,
@@ -215,20 +216,6 @@ function buildSystem() {
     out.compute.gpu_types = gpu_types;
   }
   return out;
-}
-
-function buildOrganization() {
-  return clean({
-    org_id: val('org_id'),
-    name_th: val('org_name_th'),
-    name_en: val('org_name_en'),
-    org_type: val('org_type') || undefined,
-    parent: val('org_parent') || null,
-    province: val('org_province'),
-    coordinates: clean({ lat: numv('org_lat'), lng: numv('org_lng') }),
-    website: val('org_site'),
-    contact_email: val('org_email'),
-  });
 }
 
 function buildEvent() {
@@ -264,7 +251,6 @@ function buildTimeline() {
 
 function buildData(type) {
   if (type === 'system' || type === 'stats') return buildSystem();
-  if (type === 'organization') return buildOrganization();
   if (type === 'event') return buildEvent();
   if (type === 'timeline') return buildTimeline();
   return null;
@@ -273,7 +259,6 @@ function buildData(type) {
 function subject(type) {
   switch (type) {
     case 'system': case 'stats': return val('sys_name') || val('sys_id');
-    case 'organization': return val('org_name_en') || val('org_name_th') || val('org_id');
     case 'event': return val('ev_title_en') || val('ev_title_th');
     case 'timeline': return val('tl_title_en') || val('tl_title_th');
     default: return val('corr_where');
@@ -371,7 +356,6 @@ function refreshPreview() {
 const TEMPLATES = {
   system: SYSTEM_TEMPLATE(),
   stats: SYSTEM_TEMPLATE(),
-  organization: null,
   event: null,
   timeline: null,
   correction: null,
@@ -381,8 +365,16 @@ function SYSTEM_TEMPLATE() {
   return `// data/systems.json — items array (see data/schema/systems.schema.json)
 {
   "system_id": "thaisc-example",
-  "org_id": "thaisc",
   "name": "Example",
+  "organization": {
+    "name_th": "ตัวอย่าง",
+    "name_en": "Example Organisation",
+    "org_type": "government_research",
+    "province": "Bangkok",
+    "coordinates": { "lat": 13.7563, "lng": 100.5018 },
+    "website": "https://example.ac.th",
+    "contact_email": null
+  },
   "status": "planned",
   "commissioned_date": "2027-01-01",
   "decommissioned_date": null,

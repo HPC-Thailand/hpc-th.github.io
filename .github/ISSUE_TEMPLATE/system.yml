@@ -19,8 +19,31 @@ body:
   - type: input
     id: org
     attributes:
-      label: หน่วยงาน / Organisation
+      label: หน่วยงาน / Organisation name (Thai and English)
+      placeholder: Thai name / English name
     validations: { required: true }
+  - type: dropdown
+    id: org_type
+    attributes:
+      label: ประเภทหน่วยงาน / Organisation type
+      options:
+        - government_research
+        - university
+        - private
+        - state_enterprise
+    validations: { required: true }
+  - type: input
+    id: location
+    attributes:
+      label: ที่ตั้งหน่วยงาน / Organisation location
+      description: Province and lat,lng
+      placeholder: "Pathum Thani, lat 14.0674 lng 100.6035"
+    validations: { required: true }
+  - type: input
+    id: org_email
+    attributes:
+      label: อีเมลติดต่อหน่วยงาน / Organisation contact email
+      description: A team mailbox, not a personal address
   - type: textarea
     id: specs
     attributes:
@@ -32,12 +55,6 @@ body:
         Totals: total_nodes, total_cpu_cores, total_gpu_count, total_memory_tb
         Interconnect: InfiniBand NDR + 400 Gb/s, Storage: Lustre + 5 PB
         Optional: scheduler, peak/sustained PFLOPS, power kW, access model
-    validations: { required: true }
-  - type: input
-    id: location
-    attributes:
-      label: ที่ตั้ง / Location
-      description: Province and lat,lng — stored on the organisation (add org_id if it already exists)
     validations: { required: true }
   - type: input
     id: website
