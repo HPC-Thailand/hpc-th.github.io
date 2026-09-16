@@ -63,7 +63,7 @@ _The history and landscape of high performance computing in Thailand._
 | `/submit/` | ฟอร์มส่งข้อมูล และคู่มือส่ง Pull Request |
 
 เว็บไซต์แบบ static ล้วน ไม่มี build step — แก้ JSON แล้ว merge ได้เลย
-รองรับสองภาษา (ไทย / อังกฤษ) ด้วยฟอนต์ **Prompt** และ deploy บน GitHub Pages
+รองรับสองภาษา (ไทย / อังกฤษ) ด้วยฟอนต์ **IBM Plex Sans / Sans Thai / Mono** และ deploy บน GitHub Pages
 
 ## โครงสร้าง / Layout
 
@@ -74,10 +74,14 @@ _The history and landscape of high performance computing in Thailand._
 ├── reference/
 │   ├── index.html        หน้าคลังเอกสาร
 │   └── docs/             ไฟล์ PDF / HTML ต้นฉบับที่เสิร์ฟให้ดาวน์โหลด
+├── favicon/              favicon ทุกขนาด (.ico .svg 16–512 apple-touch)
+├── site.webmanifest      ชื่อ ไอคอน และสีธีมสำหรับ PWA / หน้าจอโฮม
 ├── assets/
 │   ├── css/site.css      design tokens + ทุกคอมโพเนนต์
 │   ├── js/core.js        i18n, ธีม, header/footer, data loader
 │   ├── js/*.js           ตัวควบคุมรายหน้า
+│   ├── img/brand/        โลโก้ hpc.in.th (SVG + PNG @1x @2x)
+│   ├── img/og-image.png  การ์ดโซเชียล 1200×630
 │   ├── img/slides/       สไลด์ต้นฉบับที่ย่อขนาดแล้ว (p1–p10)
 │   └── img/events/       แบนเนอร์กิจกรรม
 ├── data/
@@ -91,6 +95,27 @@ _The history and landscape of high performance computing in Thailand._
 ├── tools/validate-data.mjs
 └── docs/                 คู่มือ deploy และการเพิ่ม subdomain
 ```
+
+## แบรนด์ / Brand
+
+โลโก้คือ **ชื่อโดเมนเอง** เรียงด้วย IBM Plex Mono พร้อมเคอร์เซอร์สี่เหลี่ยม
+ไม่มีสัญลักษณ์แยกต่างหาก และไม่มีบรรทัดคำอธิบายใต้โลโก้ — ชื่อ `hpc.in.th`
+อ่านเป็นประโยค "HPC ใน ไทย" อยู่แล้ว
+
+ในเว็บ โลโก้ถูกเรียงเป็น HTML (`.wordmark` ใน `assets/css/site.css`)
+ไม่ใช่รูป เพื่อให้คมทุกความละเอียดและเปลี่ยนสีตามธีมได้
+ไฟล์ SVG/PNG ใน `assets/img/brand/` มีไว้ใช้นอกเว็บ เช่น สไลด์หรือเอกสาร
+
+| Token | Hex | ใช้กับ |
+|---|---|---|
+| Ink | `#14161A` | ตัวอักษรหลัก · `.in.th` · เคอร์เซอร์ |
+| Amber | `#FF8A1F` | `hpc` ในโลโก้ · พื้นปุ่ม · จุดเน้นในกราฟิก |
+| Amber light | `#FFA94D` | `hpc` และลิงก์บนพื้นเข้ม |
+| Action | `#9E4E00` | ลิงก์และตัวอักษรสีบนพื้นสว่าง (5.9:1) |
+
+ข้อห้ามที่พังง่ายที่สุด: ห้ามพิมพ์เป็นตัวใหญ่ · ห้ามย้ายสีเน้นไปที่ `.th`
+· ห้ามใช้ Amber เป็นสีตัวอักษรบนพื้นขาว (ใช้ `--accent-ink` แทน)
+· ห้ามเติมบรรทัด "HPC in Thailand" ใต้โลโก้
 
 ## ข้อมูลทุกอย่างอยู่ใน `data/`
 

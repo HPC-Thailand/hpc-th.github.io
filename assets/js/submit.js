@@ -1,5 +1,5 @@
 /* ============================================================
-   HPC Thailand — submission helper
+   hpc.in.th — submission helper
    Builds a pre-filled GitHub issue; nothing is sent from the browser.
    Each submission type gets its own schema-shaped fields; the JSON
    block is assembled for you — no need to write JSON by hand.
