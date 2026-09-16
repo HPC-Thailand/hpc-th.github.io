@@ -45,7 +45,7 @@
   </section>
 
   <section class="section">
-    <div class="container" style="display:grid;gap:22px;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:start">
+    <div class="container" style="display:grid;gap:22px;grid-template-columns:1fr">
 
       <div class="panel reveal">
         <h2 data-i18n="submit.optionIssue" style="font-size:1.2rem"></h2>
@@ -63,16 +63,7 @@
             <label for="f-type" data-i18n="submit.formType"></label>
             <select id="f-type"></select>
           </div>
-          <div class="form-row-2">
-            <div class="field">
-              <label for="f-name"><span data-i18n="submit.fieldName"></span><span class="req" data-i18n="submit.required"></span></label>
-              <input id="f-name" required autocomplete="off">
-            </div>
-            <div class="field">
-              <label for="f-org" data-i18n="submit.fieldOrg"></label>
-              <input id="f-org" autocomplete="organization">
-            </div>
-          </div>
+          <div id="type-fields" class="form-grid"></div>
           <div class="form-row-2">
             <div class="field">
               <label for="f-contact" data-i18n="submit.fieldContactName"></label>
@@ -82,11 +73,6 @@
               <label for="f-email" data-i18n="submit.fieldContactEmail"></label>
               <input id="f-email" type="email" autocomplete="off">
             </div>
-          </div>
-          <div class="field">
-            <label for="f-details"><span data-i18n="submit.fieldDetails"></span><span class="req" data-i18n="submit.required"></span></label>
-            <textarea id="f-details" required></textarea>
-            <p class="hint" data-i18n="submit.fieldDetailsHint"></p>
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <button type="submit" class="btn btn-primary" data-i18n="submit.generate"></button>
@@ -128,10 +114,5 @@
 
 <footer class="site-footer" id="site-footer"></footer>
 <script type="module" src="/assets/js/submit.js"></script>
-<style>
-  @media (max-width: 900px) {
-    #main .section > .container { grid-template-columns: 1fr !important; }
-  }
-</style>
 </body>
 </html>

@@ -119,6 +119,41 @@ function checkTimeline() {
 
 /* -------------------------------------------------------------- systems */
 
+const ORG_TYPES = new Set(['government_research', 'university', 'private', 'state_enterprise']);
+
+function checkOrganization(file, at, o) {
+  if (!o) {
+    fail(file, `${at}: organization is missing`);
+    return;
+  }
+  for (const key of ['name_th', 'name_en', 'province']) {
+    if (typeof o[key] !== 'string' || !o[key].trim()) fail(file, `${at}: organization.${key} is missing or empty`);
+  }
+  if (!ORG_TYPES.has(o.org_type)) fail(file, `${at}: unknown organization.org_type "${o.org_type}"`);
+
+  const { lat, lng } = o.coordinates ?? {};
+  if (typeof lat !== 'number' || typeof lng !== 'number') {
+    fail(file, `${at}: organization.coordinates must have numeric lat and lng`);
+  } else {
+    // Thailand's bounding box, give or take.
+    if (lng < 96 || lng > 106) fail(file, `${at}: organization.coordinates.lng ${lng} is outside Thailand — are lat/lng swapped?`);
+    if (lat < 5 || lat > 21) fail(file, `${at}: organization.coordinates.lat ${lat} is outside Thailand — are lat/lng swapped?`);
+  }
+
+  if (o.website) {
+    try { new URL(o.website); } catch { fail(file, `${at}: organization.website is not a URL`); }
+  }
+  if (o.contact_email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(o.contact_email)) {
+    fail(file, `${at}: organization.contact_email "${o.contact_email}" is not an email`);
+  }
+}
+
+const STATUSES = new Set(['operational', 'planned', 'maintenance', 'decommissioned']);
+const STORAGE_TYPES = new Set(['parallel_fs', 'object', 'hybrid']);
+const SCHEDULERS = new Set(['slurm', 'pbs', 'lsf', 'other']);
+const ACCESS_MODELS = new Set(['open_academic', 'restricted', 'commercial', 'hybrid']);
+const USER_BASES = new Set(['academic', 'government', 'industry', 'sea_region']);
+
 function checkSystems() {
   const file = 'data/systems.json';
   const doc = read(file);
@@ -126,27 +161,81 @@ function checkSystems() {
 
   const seen = new Set();
   for (const s of doc.systems ?? []) {
-    const at = `system ${s.id}`;
-    if (!SLUG.test(s.id ?? '')) fail(file, `${at}: id is not a slug`);
-    if (seen.has(s.id)) fail(file, `${at}: duplicate id`);
-    seen.add(s.id);
+    const at = `system ${s.system_id}`;
+    if (!SLUG.test(s.system_id ?? '')) fail(file, `${at}: system_id is not a slug`);
+    if (seen.has(s.system_id)) fail(file, `${at}: duplicate system_id`);
+    seen.add(s.system_id);
 
     if (!s.name) fail(file, `${at}: name is missing`);
-    if (!s.organization) fail(file, `${at}: organization is missing`);
+    checkOrganization(file, at, s.organization);
+    if (!STATUSES.has(s.status)) fail(file, `${at}: unknown status "${s.status}"`);
 
-    const cores = s.specs?.cpu?.cores;
-    if (!Number.isInteger(cores) || cores < 0) fail(file, `${at}: specs.cpu.cores must be a non-negative integer`);
-    if (!s.specs?.cpu?.type) fail(file, `${at}: specs.cpu.type is missing`);
+    for (const key of ['commissioned_date', 'decommissioned_date']) {
+      const v = s[key];
+      if (v != null && Number.isNaN(Date.parse(v))) fail(file, `${at}: ${key} is not a date`);
+    }
+    if (s.commissioned_date && s.decommissioned_date
+      && Date.parse(s.decommissioned_date) < Date.parse(s.commissioned_date)) {
+      fail(file, `${at}: decommissioned_date is before commissioned_date`);
+    }
 
-    checkI18n(file, `${at}.location.city`, s.location?.city);
-    const coords = s.location?.coordinates;
-    if (!Array.isArray(coords) || coords.length !== 2) {
-      fail(file, `${at}: location.coordinates must be [longitude, latitude]`);
-    } else {
-      const [lon, lat] = coords;
-      // Thailand's bounding box, give or take.
-      if (lon < 96 || lon > 106) fail(file, `${at}: longitude ${lon} is outside Thailand — are lat/lon swapped?`);
-      if (lat < 5 || lat > 21) fail(file, `${at}: latitude ${lat} is outside Thailand — are lat/lon swapped?`);
+    const c = s.compute;
+    if (!c) {
+      fail(file, `${at}: compute is missing`);
+      continue;
+    }
+    if (!Array.isArray(c.cpu_types) || !c.cpu_types.length) fail(file, `${at}: compute.cpu_types must be a non-empty array`);
+    if (!Array.isArray(c.gpu_types)) fail(file, `${at}: compute.gpu_types must be an array`);
+    if (c.num_cpu_type !== (c.cpu_types?.length || 0)) fail(file, `${at}: num_cpu_type ${c.num_cpu_type} != ${c.cpu_types?.length || 0} cpu_types`);
+    if (c.num_gpu_type !== (c.gpu_types?.length || 0)) fail(file, `${at}: num_gpu_type ${c.num_gpu_type} != ${c.gpu_types?.length || 0} gpu_types`);
+    if (c.num_gpu_type > 0 && !c.gpu_types?.length) fail(file, `${at}: num_gpu_type > 0 but gpu_types is empty`);
+
+    let coreSum = 0;
+    (c.cpu_types ?? []).forEach((t2, i) => {
+      if (!t2.model) fail(file, `${at}: cpu_types[${i}].model is missing`);
+      if (!Number.isInteger(t2.nodes) || t2.nodes < 0) fail(file, `${at}: cpu_types[${i}].nodes must be a non-negative integer`);
+      if (!Number.isInteger(t2.cores_per_node) || t2.cores_per_node < 0) fail(file, `${at}: cpu_types[${i}].cores_per_node must be a non-negative integer`);
+      coreSum += (t2.nodes || 0) * (t2.cores_per_node || 0);
+    });
+    (c.gpu_types ?? []).forEach((g, i) => {
+      if (!g.model) fail(file, `${at}: gpu_types[${i}].model is missing`);
+      if (!Number.isInteger(g.nodes) || g.nodes < 0) fail(file, `${at}: gpu_types[${i}].nodes must be a non-negative integer`);
+      if (!Number.isInteger(g.gpu_per_node) || g.gpu_per_node < 1) fail(file, `${at}: gpu_types[${i}].gpu_per_node must be a positive integer`);
+      if (typeof g.memory_per_unit_gb !== 'number') fail(file, `${at}: gpu_types[${i}].memory_per_unit_gb must be a number`);
+    });
+
+    const total = c.total ?? {};
+    if (!Number.isInteger(total.total_cpu_cores) || total.total_cpu_cores < 0) fail(file, `${at}: total.total_cpu_cores must be a non-negative integer`);
+    if (!Number.isInteger(total.total_gpu_count) || total.total_gpu_count < 0) fail(file, `${at}: total.total_gpu_count must be a non-negative integer`);
+    if (!Number.isInteger(total.total_nodes) || total.total_nodes < 0) fail(file, `${at}: total.total_nodes must be a non-negative integer`);
+    if (typeof total.total_memory_tb !== 'number') fail(file, `${at}: total.total_memory_tb must be a number`);
+    // Old/derived records round per-node figures, so only flag gross mismatches.
+    if (coreSum && total.total_cpu_cores && Math.abs(coreSum - total.total_cpu_cores) / total.total_cpu_cores > 0.05) {
+      warn(file, `${at}: total_cpu_cores ${total.total_cpu_cores} differs >5% from cpu_types sum ${coreSum}`);
+    }
+    const gpuSum = (c.gpu_types ?? []).reduce((a, g) => a + (g.nodes || 0) * (g.gpu_per_node || 0), 0);
+    if (gpuSum && total.total_gpu_count && Math.abs(gpuSum - total.total_gpu_count) / total.total_gpu_count > 0.05) {
+      warn(file, `${at}: total_gpu_count ${total.total_gpu_count} differs >5% from gpu_types sum ${gpuSum}`);
+    }
+
+    if (!s.storage || !STORAGE_TYPES.has(s.storage.type)) fail(file, `${at}: storage.type "${s.storage?.type}" is not valid`);
+    if (!s.storage?.filesystem) fail(file, `${at}: storage.filesystem is missing`);
+    if (typeof s.storage?.capacity_pb !== 'number' || s.storage.capacity_pb < 0) fail(file, `${at}: storage.capacity_pb must be a non-negative number`);
+    for (const k of ['nvme_pb', 'disk_pb']) {
+      if (s.storage?.[k] != null && (typeof s.storage[k] !== 'number' || s.storage[k] < 0)) {
+        fail(file, `${at}: storage.${k} must be a non-negative number or null`);
+      }
+    }
+
+    if (!s.network?.interconnect_type) fail(file, `${at}: network.interconnect_type is missing`);
+    if (typeof s.network?.bandwidth_gbps !== 'number' || s.network.bandwidth_gbps < 0) fail(file, `${at}: network.bandwidth_gbps must be a non-negative number`);
+
+    if (!SCHEDULERS.has(s.software_stack?.scheduler)) fail(file, `${at}: software_stack.scheduler "${s.software_stack?.scheduler}" is not valid`);
+    if (!s.software_stack?.os) fail(file, `${at}: software_stack.os is missing`);
+
+    if (!ACCESS_MODELS.has(s.access?.model)) fail(file, `${at}: access.model "${s.access?.model}" is not valid`);
+    for (const u of s.access?.user_base ?? []) {
+      if (!USER_BASES.has(u)) fail(file, `${at}: access.user_base contains unknown value "${u}"`);
     }
 
     if (!s.verifiedOn) warn(file, `${at}: no verifiedOn date — shown as "awaiting verification"`);

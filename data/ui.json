@@ -246,10 +246,6 @@
       "th": "ค้นหาระบบ หน่วยงาน หรือจังหวัด…",
       "en": "Search system, organisation or province…"
     },
-    "filterConsortium": {
-      "th": "คอนซอร์เทียม",
-      "en": "Consortium"
-    },
     "sortBy": {
       "th": "เรียงตาม",
       "en": "Sort by"
@@ -286,10 +282,6 @@
       "th": "ระบบระบายความร้อน",
       "en": "Cooling"
     },
-    "applications": {
-      "th": "การใช้งาน",
-      "en": "Applications"
-    },
     "location": {
       "th": "ที่ตั้ง",
       "en": "Location"
@@ -321,6 +313,58 @@
     "resultCount": {
       "th": "แสดง {n} ระบบ",
       "en": "Showing {n} systems"
+    },
+    "filterOrgType": {
+      "th": "พระเทศณบหน่วยงาน",
+      "en": "Organisation type"
+    },
+    "orgTypeLabels": {
+      "government_research": {
+        "th": "หน่วยงาน/รัฐวิจัย",
+        "en": "Government research"
+      },
+      "university": {
+        "th": "มหาวิทยาไลย",
+        "en": "University"
+      },
+      "private": {
+        "th": "เกขน",
+        "en": "Private"
+      },
+      "state_enterprise": {
+        "th": "รัฐวิสาหกิจ",
+        "en": "State enterprise"
+      }
+    },
+    "statusLabels": {
+      "operational": {
+        "th": "เปิดใช้บริกร",
+        "en": "operational"
+      },
+      "planned": {
+        "th": "วางแผะน",
+        "en": "planned"
+      },
+      "maintenance": {
+        "th": "บำรุงรักษ",
+        "en": "maintenance"
+      },
+      "decommissioned": {
+        "th": "ปลดระวาง",
+        "en": "decommissioned"
+      }
+    },
+    "software": {
+      "th": "ซอฟต์แวร์",
+      "en": "Software"
+    },
+    "performance": {
+      "th": "ประสทิธิพาล",
+      "en": "Performance"
+    },
+    "access": {
+      "th": "การ หเข้ ถึง",
+      "en": "Access"
     }
   },
   "stats": {
@@ -360,10 +404,6 @@
       "th": "ระบบแยกตามจังหวัด",
       "en": "Systems by province"
     },
-    "byConsortium": {
-      "th": "ระบบแยกตามคอนซอร์เทียม",
-      "en": "Systems by consortium"
-    },
     "byVendor": {
       "th": "สถาปัตยกรรม GPU",
       "en": "GPU architecture"
@@ -371,6 +411,10 @@
     "note": {
       "th": "ตัวเลขเป็นค่าที่ประกาศโดยแต่ละศูนย์ ไม่ใช่ผลการวัด benchmark",
       "en": "Figures are as declared by each centre, not benchmarked results."
+    },
+    "byOrgType": {
+      "th": "ระบบแยกตามหน่วยงาน",
+      "en": "Systems by organisation type"
     }
   },
   "events": {

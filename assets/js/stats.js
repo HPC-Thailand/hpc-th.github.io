@@ -22,11 +22,12 @@ function css(name) {
 
 function kpis() {
   const s = DATA.systems;
+  const sum = (fn) => s.reduce((a, x) => a + (fn(x) || 0), 0);
   return [
-    ['stats.totalCores', s.reduce((a, x) => a + (x.specs.cpu.cores || 0), 0)],
-    ['stats.totalGpus', s.reduce((a, x) => a + (x.specs.gpu?.count || 0), 0)],
+    ['stats.totalCores', sum((x) => x.compute.total.total_cpu_cores)],
+    ['stats.totalGpus', sum((x) => x.compute.total.total_gpu_count)],
     ['stats.totalSystems', s.length],
-    ['stats.totalOrgs', new Set(s.map((x) => x.organization)).size],
+    ['stats.totalOrgs', new Set(s.map((x) => x.organization?.name_en)).size],
   ];
 }
 
@@ -121,21 +122,26 @@ function makeDoughnut(id, labels, values) {
 function paintCharts() {
   charts.splice(0).forEach((c) => c.destroy());
 
-  const byCores = [...DATA.systems].sort((a, b) => b.specs.cpu.cores - a.specs.cpu.cores);
-  makeBar('chart-cores', byCores.map((s) => s.name), byCores.map((s) => s.specs.cpu.cores));
+  const cores = (s) => s.compute.total.total_cpu_cores;
+  const gpus = (s) => s.compute.total.total_gpu_count;
+  const byCores = [...DATA.systems].sort((a, b) => cores(b) - cores(a));
+  makeBar('chart-cores', byCores.map((s) => s.name), byCores.map(cores));
 
   const byGpu = [...DATA.systems]
-    .filter((s) => s.specs.gpu?.count)
-    .sort((a, b) => b.specs.gpu.count - a.specs.gpu.count);
-  makeBar('chart-gpu', byGpu.map((s) => s.name), byGpu.map((s) => s.specs.gpu.count));
+    .filter((s) => gpus(s))
+    .sort((a, b) => gpus(b) - gpus(a));
+  makeBar('chart-gpu', byGpu.map((s) => s.name), byGpu.map(gpus));
 
-  const region = tally((s) => pick(s.location.city));
+  const region = tally((s) => s.organization?.province || '—');
   makeDoughnut('chart-region', region.map(([k]) => k), region.map(([, v]) => v));
 
-  const cons = tally((s) => s.consortium);
-  makeDoughnut('chart-consortium', cons.map(([k]) => k), cons.map(([, v]) => v));
+  const orgType = tally((s) => {
+    const ty = s.organization?.org_type;
+    return ty ? t(`systems.orgTypeLabels.${ty}`) : '—';
+  });
+  makeDoughnut('chart-orgtype', orgType.map(([k]) => k), orgType.map(([, v]) => v));
 
-  const vendor = tally((s) => s.specs.gpu?.type || '—');
+  const vendor = tally((s) => s.compute.gpu_types.map((g) => g.model));
   makeDoughnut('chart-vendor', vendor.map(([k]) => k), vendor.map(([, v]) => v));
 }
 

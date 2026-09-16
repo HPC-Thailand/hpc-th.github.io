@@ -1,550 +1,883 @@
 {
   "$schema": "./schema/systems.schema.json",
-  "updated": "2026-09-14",
+  "updated": "2026-09-16",
   "note": {
     "th": "ข้อมูลสเปกเป็นค่าที่ประกาศโดยแต่ละศูนย์ ระบบที่ยังไม่มีวันยืนยันจะแสดงป้าย \"รอการยืนยัน\" — ศูนย์ HPC สามารถส่งข้อมูลล่าสุดได้ที่หน้า ส่งข้อมูล",
     "en": "Specifications are as declared by each centre. Systems without a verification date are shown as \"awaiting verification\" — centres can send updated figures via the Submit page."
   },
   "systems": [
     {
-      "id": "crust-25",
+      "system_id": "crust-25",
       "name": "The Crust 2.5",
-      "organization": "PTT Exploration and Production Public Company Limited",
-      "yearCommissioned": 2024,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon",
-          "cores": 47360,
-          "nodes": 1480
+      "organization": {
+        "name_th": "ปตท.สำรวจและผลิตปิโตรเลียม",
+        "name_en": "PTT Exploration and Production Public Company Limited",
+        "org_type": "private",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.8125,
+          "lng": 100.5619
         },
-        "gpu": {
-          "type": "NVIDIA H100",
-          "memory": "94GB",
-          "count": 512,
-          "nodes": 128
-        },
-        "storage": {
-          "nvme": "1PB NVMe SSD",
-          "disk": "10PB HDD",
-          "filesystem": "Lustre"
-        },
-        "network": {
-          "frontend": "25GbE Ethernet",
-          "compute": "InfiniBand HDR200",
-          "backend": "100GbE"
-        },
-        "cooling": "Liquid cooling"
+        "website": "https://www.pttep.com/en/home",
+        "contact_email": null
       },
-      "applications": "Private sector (Exploration and Production), AI",
-      "consortium": [
-        "Private Sector"
-      ],
-      "location": {
-        "address": "555/1 Energy Complex Building A, Floors 19–36 Vibhavadi Rangsit Rd., Chatuchak, Bangkok, Thailand",
-        "city": {
-          "th": "กรุงเทพมหานคร",
-          "en": "Bangkok"
-        },
-        "coordinates": [
-          100.5619,
-          13.8125
+      "status": "operational",
+      "commissioned_date": "2024-01-01",
+      "decommissioned_date": null,
+      "vendor": "HPE",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "AMD EPYC 9354",
+            "nodes": 1480,
+            "sockets_per_node": null,
+            "cores_per_node": 32,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 1,
+        "gpu_types": [
+          {
+            "model": "NVIDIA H100",
+            "nodes": 128,
+            "gpu_per_node": 4,
+            "memory_per_unit_gb": 94
+          }
+        ],
+        "total": {
+          "total_nodes": 1480,
+          "total_cpu_cores": 47360,
+          "total_gpu_count": 512,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Liquid cooling",
+      "network": {
+        "interconnect_type": "InfiniBand NDR400",
+        "bandwidth_gbps": 400
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "Lustre",
+        "capacity_pb": 11,
+        "nvme_pb": 1,
+        "disk_pb": 10
+      },
+      "performance": {
+        "peak_pflops": 21.68,
+        "sustained_pflops": 13.85,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "RHEL 8.9",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "industry"
         ]
       },
-      "contact": "+66 (0) 2537 4000",
-      "website": "https://www.pttep.com/en/home",
       "verifiedOn": null
     },
     {
-      "id": "lanta",
+      "system_id": "lanta",
       "name": "LANTA",
-      "organization": "ThaiSC, NSTDA",
-      "yearCommissioned": 2022,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "AMD EPYC 7763",
-          "cores": 31744,
-          "nodes": 496
+      "organization": {
+        "name_th": "ThaiSC, NSTDA",
+        "name_en": "ThaiSC, NSTDA",
+        "org_type": "government_research",
+        "province": "Pathum Thani",
+        "coordinates": {
+          "lat": 14.0674,
+          "lng": 100.6035
         },
-        "gpu": {
-          "type": "NVIDIA A100",
-          "memory": "40GB",
-          "count": 704,
-          "nodes": 88
-        },
-        "storage": {
-          "nvme": "500TB NVMe SSD",
-          "disk": "5PB HDD",
-          "filesystem": "Lustre"
-        },
-        "network": {
-          "frontend": "25GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "100GbE"
-        },
-        "cooling": "Air cooling with liquid assist"
+        "website": "https://thaisc.io/thaisc-resorces/lanta",
+        "contact_email": "thaisc@nstda.or.th"
       },
-      "applications": "Bioinformatics, Simulations, Weather Forecasting, AI",
-      "consortium": [
-        "ThaiSC",
-        "e-Science"
-      ],
-      "location": {
-        "address": "ThaiSC, Room INC2A 301,144 Innovation Cluster 2 Building (INC2) Thailand Science Park (TSP), Phahonyothin Road, Khlong Nueng, Khlong Luang, Pathum Thani 12120, Thailand",
-        "city": {
-          "th": "ปทุมธานี",
-          "en": "Pathum Thani"
-        },
-        "coordinates": [
-          100.6035,
-          14.0674
+      "status": "operational",
+      "commissioned_date": "2022-01-01",
+      "decommissioned_date": null,
+      "vendor": "HPE",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "AMD EPYC 7713",
+            "nodes": 496,
+            "sockets_per_node": null,
+            "cores_per_node": 64,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 1,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 176,
+            "gpu_per_node": 4,
+            "memory_per_unit_gb": 40
+          }
+        ],
+        "total": {
+          "total_nodes": 496,
+          "total_cpu_cores": 31744,
+          "total_gpu_count": 704,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Direct liquid cooling",
+      "network": {
+        "interconnect_type": "HPE Slingshot-11",
+        "bandwidth_gbps": 200
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "Lustre",
+        "capacity_pb": 10.9,
+        "nvme_pb": 0.945,
+        "disk_pb": 10
+      },
+      "performance": {
+        "peak_pflops": 13.77,
+        "sustained_pflops": 8.15,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "slurm",
+        "frameworks": []
+      },
+      "access": {
+        "model": "open_academic",
+        "user_base": [
+          "academic",
+          "government"
         ]
       },
-      "contact": "thaisc@nstda.or.th",
-      "website": "https://thaisc.io/thaisc-resorces/lanta",
       "verifiedOn": null
     },
     {
-      "id": "vistec-ist",
+      "system_id": "vistec-ist",
       "name": "VISTEC",
-      "organization": "School of Information Science and Technology (IST), VISTEC",
-      "yearCommissioned": 2018,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6240R",
-          "cores": 2464,
-          "nodes": 77
+      "organization": {
+        "name_th": "สถาบันวิทยสิริเมธี",
+        "name_en": "School of Information Science and Technology (IST), VISTEC",
+        "org_type": "university",
+        "province": "Rayong",
+        "coordinates": {
+          "lat": 12.8755,
+          "lng": 101.1789
         },
-        "gpu": {
-          "type": "NVIDIA V100 | NVIDIA A100",
-          "memory": "32GB | 80GB",
-          "count": 84,
-          "nodes": 11
-        },
-        "storage": {
-          "nvme": "200TB NVMe SSD",
-          "disk": "1PB HDD",
-          "filesystem": "BeeGFS"
-        },
-        "network": {
-          "frontend": "25GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "50GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://vistec.ist/",
+        "contact_email": null
       },
-      "applications": "AI",
-      "consortium": [
-        "AIEI"
-      ],
-      "location": {
-        "address": "IST, VISTEC 555 Moo 1 Payupnai, Wangchan, Rayong 21210 Thailand",
-        "city": {
-          "th": "ระยอง",
-          "en": "Rayong"
-        },
-        "coordinates": [
-          101.1789,
-          12.8755
+      "status": "operational",
+      "commissioned_date": "2018-01-01",
+      "decommissioned_date": null,
+      "vendor": "Unknown",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "Intel Xeon Gold 6240R",
+            "nodes": 77,
+            "sockets_per_node": null,
+            "cores_per_node": 32,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 3,
+        "gpu_types": [
+          {
+            "model": "NVIDIA V100",
+            "nodes": 4,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 32
+          },
+          {
+            "model": "NVIDIA V100",
+            "nodes": 15,
+            "gpu_per_node": 4,
+            "memory_per_unit_gb": 32
+          },
+          {
+            "model": "NVIDIA A100",
+            "nodes": 2,
+            "gpu_per_node": 4,
+            "memory_per_unit_gb": 80
+          }
+        ],
+        "total": {
+          "total_nodes": 77,
+          "total_cpu_cores": 2464,
+          "total_gpu_count": 100,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR100",
+        "bandwidth_gbps": 100
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "BeeGFS",
+        "capacity_pb": 1.2,
+        "nvme_pb": 0.2,
+        "disk_pb": 1
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "+66 (86)-5335-899",
-      "website": "https://vistec.ist/",
       "verifiedOn": null
     },
     {
-      "id": "apex",
+      "system_id": "apex",
       "name": "APEX",
-      "organization": "CMKL University",
-      "yearCommissioned": 2020,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6248R",
-          "cores": 768,
-          "nodes": 24
+      "organization": {
+        "name_th": "มหาวิทยาลัยซีเอ็มเคแอล",
+        "name_en": "CMKL University",
+        "org_type": "university",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.7299,
+          "lng": 100.7782
         },
-        "gpu": {
-          "type": "NVIDIA A100",
-          "memory": "40GB",
-          "count": 48,
-          "nodes": 6
-        },
-        "storage": {
-          "nvme": "100TB NVMe SSD",
-          "disk": "500TB HDD",
-          "filesystem": "GPFS"
-        },
-        "network": {
-          "frontend": "10GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "25GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://www.cmkl.ac.th/research/apex",
+        "contact_email": "apex@cmkl.ac.th"
       },
-      "applications": "AI",
-      "consortium": [
-        "AIEI"
-      ],
-      "location": {
-        "address": "CMKL University 1 Soi Chalongkrung 1 Ladkrabang Bangkok 10520",
-        "city": {
-          "th": "กรุงเทพมหานคร",
-          "en": "Bangkok"
-        },
-        "coordinates": [
-          100.7782,
-          13.7299
+      "status": "operational",
+      "commissioned_date": "2020-01-01",
+      "decommissioned_date": null,
+      "vendor": "NVIDIA",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "AMD EPYC 7742",
+            "nodes": 6,
+            "sockets_per_node": 2,
+            "cores_per_node": 128,
+            "memory_per_node_gb": 1024
+          }
+        ],
+        "num_gpu_type": 1,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 6,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 40
+          }
+        ],
+        "total": {
+          "total_nodes": 6,
+          "total_cpu_cores": 768,
+          "total_gpu_count": 48,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR200",
+        "bandwidth_gbps": 200
+      },
+      "storage": {
+        "type": "hybrid",
+        "filesystem": "Lustre (DDN EXAScaler)",
+        "capacity_pb": 3,
+        "nvme_pb": 0.55,
+        "disk_pb": 2.2
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "apex@cmkl.ac.th",
-      "website": "https://www.cmkl.ac.th/research/apex",
       "verifiedOn": null
     },
     {
-      "id": "mu-ai",
+      "system_id": "mu-ai",
       "name": "MU-AI Center",
-      "organization": "MUICT, Mahidol University",
-      "yearCommissioned": 2021,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6248R",
-          "cores": 624,
-          "nodes": 20
+      "organization": {
+        "name_th": "Faculty of Information and Communication Technology Mahidol University",
+        "name_en": "MUICT, Mahidol University",
+        "org_type": "university",
+        "province": "Nakhon Pathom",
+        "coordinates": {
+          "lat": 13.7923,
+          "lng": 100.3258
         },
-        "gpu": {
-          "type": "NVIDIA A100 | NVIDIA H100",
-          "memory": "40GB | 80GB",
-          "count": 24,
-          "nodes": 3
-        },
-        "storage": {
-          "nvme": "60TB NVMe SSD",
-          "disk": "250TB HDD",
-          "filesystem": "BeeGFS"
-        },
-        "network": {
-          "frontend": "10GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "25GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://www.ict.mahidol.ac.th/",
+        "contact_email": null
       },
-      "applications": "AI",
-      "consortium": [
-        "AIEI"
-      ],
-      "location": {
-        "address": "Faculty of ICT, Mahidol University 999 Phuttamonthon 4 Road, Salaya, Nakhon Pathom 73170 THAILAND",
-        "city": {
-          "th": "นครปฐม",
-          "en": "Nakhon Pathom"
-        },
-        "coordinates": [
-          100.3258,
-          13.7923
+      "status": "operational",
+      "commissioned_date": "2021-01-01",
+      "decommissioned_date": null,
+      "vendor": "Unknown",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "Intel Xeon Gold 6248R",
+            "nodes": 20,
+            "sockets_per_node": null,
+            "cores_per_node": 31,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 2,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 2,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 40
+          },
+          {
+            "model": "NVIDIA H100",
+            "nodes": 1,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 80
+          }
+        ],
+        "total": {
+          "total_nodes": 20,
+          "total_cpu_cores": 624,
+          "total_gpu_count": 24,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR100",
+        "bandwidth_gbps": 100
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "BeeGFS",
+        "capacity_pb": 0.31,
+        "nvme_pb": 0.06,
+        "disk_pb": 0.25
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "+66 (02) 441-0909",
-      "website": "https://www.ict.mahidol.ac.th/",
       "verifiedOn": null
     },
     {
-      "id": "ku-nontri-ai",
+      "system_id": "ku-nontri-ai",
       "name": "KU Nontri AI",
-      "organization": "OCS, Kasetsart University",
-      "yearCommissioned": 2024,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6240R",
-          "cores": 512,
-          "nodes": 16
+      "organization": {
+        "name_th": "มหาวิทยาลัยเกษตรศาสตร์",
+        "name_en": "OCS, Kasetsart University",
+        "org_type": "university",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.8463,
+          "lng": 100.5653
         },
-        "gpu": {
-          "type": "NVIDIA A100",
-          "memory": "80GB",
-          "count": 32,
-          "nodes": 4
-        },
-        "storage": {
-          "nvme": "80TB NVMe SSD",
-          "disk": "300TB HDD",
-          "filesystem": "BeeGFS"
-        },
-        "network": {
-          "frontend": "10GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "25GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://nontriai.ku.ac.th/",
+        "contact_email": null
       },
-      "applications": "AI",
-      "consortium": [
-        "AIEI"
-      ],
-      "location": {
-        "address": "Kasetsart University 50 Ngamwongwan Rd, Chatuchak Bangkok 10900 Thailand",
-        "city": {
-          "th": "กรุงเทพมหานคร",
-          "en": "Bangkok"
-        },
-        "coordinates": [
-          100.5653,
-          13.8463
+      "status": "operational",
+      "commissioned_date": "2024-01-01",
+      "decommissioned_date": null,
+      "vendor": "Unknown",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "AMD EPYC 7742",
+            "nodes": 4,
+            "sockets_per_node": 2,
+            "cores_per_node": 128,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 1,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 4,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 80
+          }
+        ],
+        "total": {
+          "total_nodes": 4,
+          "total_cpu_cores": 512,
+          "total_gpu_count": 32,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR200",
+        "bandwidth_gbps": 200
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "BeeGFS",
+        "capacity_pb": 0.76,
+        "nvme_pb": 0.09,
+        "disk_pb": 0.67
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "0-2562-0951-6",
-      "website": "https://nontriai.ku.ac.th/",
       "verifiedOn": null
     },
     {
-      "id": "cu-ai",
+      "system_id": "cu-ai",
       "name": "CU AI Research Center",
-      "organization": "Chulalongkorn University",
-      "yearCommissioned": null,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6248R",
-          "cores": 480,
-          "nodes": 15
+      "organization": {
+        "name_th": "จุฬาลงกรณ์มหาวิทยาลัย",
+        "name_en": "Chulalongkorn University",
+        "org_type": "university",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.737,
+          "lng": 100.5312
         },
-        "gpu": {
-          "type": "NVIDIA A100",
-          "memory": "80GB",
-          "count": 24,
-          "nodes": 3
-        },
-        "storage": {
-          "nvme": "50TB NVMe SSD",
-          "disk": "200TB HDD",
-          "filesystem": "BeeGFS"
-        },
-        "network": {
-          "frontend": "10GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "25GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://www.chula.ac.th/",
+        "contact_email": null
       },
-      "applications": "AI, Research",
-      "consortium": [
-        "AIEI"
-      ],
-      "location": {
-        "address": "Chulalongkorn University, Phayathai Rd., Pathumwan, Bangkok 10330, Thailand",
-        "city": {
-          "th": "กรุงเทพมหานคร",
-          "en": "Bangkok"
-        },
-        "coordinates": [
-          100.5312,
-          13.737
+      "status": "operational",
+      "commissioned_date": null,
+      "decommissioned_date": null,
+      "vendor": "Unknown",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "Intel Xeon Gold 6248R",
+            "nodes": 15,
+            "sockets_per_node": null,
+            "cores_per_node": 32,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 1,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 3,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 80
+          }
+        ],
+        "total": {
+          "total_nodes": 15,
+          "total_cpu_cores": 480,
+          "total_gpu_count": 24,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR100",
+        "bandwidth_gbps": 100
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "BeeGFS",
+        "capacity_pb": 0.25,
+        "nvme_pb": 0.05,
+        "disk_pb": 0.2
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "+66 (0) 2215-3000",
-      "website": "https://www.chula.ac.th/",
       "verifiedOn": null
     },
     {
-      "id": "erawan",
+      "system_id": "erawan",
       "name": "ERAWAN",
-      "organization": "ITSC, Chiang Mai University",
-      "yearCommissioned": 2021,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6338",
-          "cores": 384,
-          "nodes": 12
+      "organization": {
+        "name_th": "ITSC, Chiang Mai University",
+        "name_en": "Information Technology Service Center (ITSC), Chiang Mai University",
+        "org_type": "university",
+        "province": "Chiang Mai",
+        "coordinates": {
+          "lat": 18.7967,
+          "lng": 98.9513
         },
-        "gpu": {
-          "type": "NVIDIA A100",
-          "memory": "80GB",
-          "count": 24,
-          "nodes": 3
-        },
-        "storage": {
-          "nvme": "50TB NVMe SSD",
-          "disk": "200TB HDD",
-          "filesystem": "BeeGFS"
-        },
-        "network": {
-          "frontend": "10GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "25GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://hpc.cmu.ac.th/",
+        "contact_email": null
       },
-      "applications": "Simulations, AI",
-      "consortium": [
-        "AIEI",
-        "ThaiSC"
-      ],
-      "location": {
-        "address": "Information Technology Service Center, Chiang Mai University 239, Huay Kaew Road, Muang District, Chiang Mai, Thailand, 50200",
-        "city": {
-          "th": "เชียงใหม่",
-          "en": "Chiang Mai"
-        },
-        "coordinates": [
-          98.9513,
-          18.7967
+      "status": "operational",
+      "commissioned_date": "2021-01-01",
+      "decommissioned_date": null,
+      "vendor": "Unknown",
+      "compute": {
+        "num_cpu_type": 2,
+        "cpu_types": [
+          {
+            "model": "AMD EPYC 7742",
+            "nodes": 3,
+            "sockets_per_node": 2,
+            "cores_per_node": 128,
+            "memory_per_node_gb": 2048
+          },
+          {
+            "model": "AMD EPYC 9534",
+            "nodes": 1,
+            "sockets_per_node": 2,
+            "cores_per_node": 128,
+            "memory_per_node_gb": 1536
+          }
+        ],
+        "num_gpu_type": 2,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 3,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 80
+          },
+          {
+            "model": "NVIDIA H100",
+            "nodes": 1,
+            "gpu_per_node": 4,
+            "memory_per_unit_gb": 80
+          }
+        ],
+        "total": {
+          "total_nodes": 4,
+          "total_cpu_cores": 512,
+          "total_gpu_count": 28,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR200",
+        "bandwidth_gbps": 200
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "BeeGFS",
+        "capacity_pb": 0.438,
+        "nvme_pb": 0.15,
+        "disk_pb": 0.288
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "053-943800 กด 1",
-      "website": "https://hpc.cmu.ac.th/",
       "verifiedOn": null
     },
     {
-      "id": "kmutt-ai",
+      "system_id": "kmutt-ai",
       "name": "KMUTT AI Center",
-      "organization": "King Mongkut's University of Technology Thonburi",
-      "yearCommissioned": null,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6240R",
-          "cores": 320,
-          "nodes": 10
+      "organization": {
+        "name_th": "มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี",
+        "name_en": "King Mongkut's University of Technology Thonburi",
+        "org_type": "university",
+        "province": "Bangkok",
+        "coordinates": {
+          "lat": 13.6511,
+          "lng": 100.4947
         },
-        "gpu": {
-          "type": "NVIDIA A100",
-          "memory": "40GB",
-          "count": 20,
-          "nodes": 3
-        },
-        "storage": {
-          "nvme": "40TB NVMe SSD",
-          "disk": "150TB HDD",
-          "filesystem": "BeeGFS"
-        },
-        "network": {
-          "frontend": "10GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "25GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://www.kmutt.ac.th/",
+        "contact_email": null
       },
-      "applications": "AI, Engineering Simulations",
-      "consortium": [
-        "AIEI"
-      ],
-      "location": {
-        "address": "King Mongkut's University of Technology Thonburi, 126 Pracha Uthit Rd., Bang Mod, Thung Khru, Bangkok 10140, Thailand",
-        "city": {
-          "th": "กรุงเทพมหานคร",
-          "en": "Bangkok"
-        },
-        "coordinates": [
-          100.4947,
-          13.6511
+      "status": "operational",
+      "commissioned_date": null,
+      "decommissioned_date": null,
+      "vendor": "Unknown",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "Intel Xeon Gold 6240R",
+            "nodes": 10,
+            "sockets_per_node": null,
+            "cores_per_node": 32,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 2,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 2,
+            "gpu_per_node": 7,
+            "memory_per_unit_gb": 40
+          },
+          {
+            "model": "NVIDIA A100",
+            "nodes": 1,
+            "gpu_per_node": 6,
+            "memory_per_unit_gb": 40
+          }
+        ],
+        "total": {
+          "total_nodes": 10,
+          "total_cpu_cores": 320,
+          "total_gpu_count": 20,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR100",
+        "bandwidth_gbps": 100
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "BeeGFS",
+        "capacity_pb": 0.19,
+        "nvme_pb": 0.04,
+        "disk_pb": 0.15
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "+66 (0) 2470-8000",
-      "website": "https://www.kmutt.ac.th/",
       "verifiedOn": null
     },
     {
-      "id": "psu-singkhorn",
+      "system_id": "psu-singkhorn",
       "name": "PSU-Singkhorn",
-      "organization": "Digital Research and Innovation Institute - DRii, Prince of Songkla University",
-      "yearCommissioned": 2021,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6240R",
-          "cores": 256,
-          "nodes": 8
+      "organization": {
+        "name_th": "DRii, Prince of Songkla University",
+        "name_en": "Digital Research and Innovation Institute (DRii), Prince of Songkla University",
+        "org_type": "university",
+        "province": "Songkhla",
+        "coordinates": {
+          "lat": 7.0086,
+          "lng": 100.4974
         },
-        "gpu": {
-          "type": "NVIDIA A100",
-          "memory": "40GB",
-          "count": 16,
-          "nodes": 2
-        },
-        "storage": {
-          "nvme": "30TB NVMe SSD",
-          "disk": "100TB HDD",
-          "filesystem": "BeeGFS"
-        },
-        "network": {
-          "frontend": "10GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "25GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://www.facebook.com/drii.psu",
+        "contact_email": null
       },
-      "applications": "AI",
-      "consortium": [
-        "AIEI"
-      ],
-      "location": {
-        "address": "Prince of Songkla University, LRC, 15 Karnchanavanich Road, Hat Yai, Songkhla 90110 Thailand",
-        "city": {
-          "th": "สงขลา",
-          "en": "Songkhla"
-        },
-        "coordinates": [
-          100.4974,
-          7.0086
+      "status": "operational",
+      "commissioned_date": "2021-01-01",
+      "decommissioned_date": null,
+      "vendor": "Unknown",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "Intel Xeon Gold 6240R",
+            "nodes": 8,
+            "sockets_per_node": null,
+            "cores_per_node": 32,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 1,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 2,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 40
+          }
+        ],
+        "total": {
+          "total_nodes": 8,
+          "total_cpu_cores": 256,
+          "total_gpu_count": 16,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR100",
+        "bandwidth_gbps": 100
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "BeeGFS",
+        "capacity_pb": 0.13,
+        "nvme_pb": 0.03,
+        "disk_pb": 0.1
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "0-7428-6940",
-      "website": "https://www.facebook.com/drii.psu",
       "verifiedOn": null
     },
     {
-      "id": "kku-hpc",
+      "system_id": "kku-hpc",
       "name": "KKU",
-      "organization": "Office of Digital Technology - ODT, Khon Kaen University",
-      "yearCommissioned": 2021,
-      "status": "operational",
-      "specs": {
-        "cpu": {
-          "type": "Intel Xeon Gold 6240R",
-          "cores": 256,
-          "nodes": 8
+      "organization": {
+        "name_th": "ODT, Khon Kaen University",
+        "name_en": "Office of Digital Technology (ODT), Khon Kaen University",
+        "org_type": "university",
+        "province": "Khon Kaen",
+        "coordinates": {
+          "lat": 16.4754,
+          "lng": 102.8255
         },
-        "gpu": {
-          "type": "NVIDIA A100",
-          "memory": "40GB",
-          "count": 16,
-          "nodes": 2
-        },
-        "storage": {
-          "nvme": "30TB NVMe SSD",
-          "disk": "100TB HDD",
-          "filesystem": "BeeGFS"
-        },
-        "network": {
-          "frontend": "10GbE Ethernet",
-          "compute": "InfiniBand HDR100",
-          "backend": "25GbE"
-        },
-        "cooling": "Air cooling"
+        "website": "https://digital.kku.ac.th/",
+        "contact_email": null
       },
-      "applications": "AI",
-      "consortium": [
-        "AIEI"
-      ],
-      "location": {
-        "address": "Khon Kaen University 123 Moo 16 Mittraphap Rd., Nai-Muang, Muang District, Khon Kaen 40002",
-        "city": {
-          "th": "ขอนแก่น",
-          "en": "Khon Kaen"
-        },
-        "coordinates": [
-          102.8255,
-          16.4754
+      "status": "operational",
+      "commissioned_date": "2021-01-01",
+      "decommissioned_date": null,
+      "vendor": "Unknown",
+      "compute": {
+        "num_cpu_type": 1,
+        "cpu_types": [
+          {
+            "model": "Intel Xeon Gold 6240R",
+            "nodes": 8,
+            "sockets_per_node": null,
+            "cores_per_node": 32,
+            "memory_per_node_gb": null
+          }
+        ],
+        "num_gpu_type": 1,
+        "gpu_types": [
+          {
+            "model": "NVIDIA A100",
+            "nodes": 2,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 40
+          }
+        ],
+        "total": {
+          "total_nodes": 8,
+          "total_cpu_cores": 256,
+          "total_gpu_count": 16,
+          "total_memory_tb": 0
+        }
+      },
+      "cooling": "Air cooling",
+      "network": {
+        "interconnect_type": "InfiniBand HDR100",
+        "bandwidth_gbps": 100
+      },
+      "storage": {
+        "type": "parallel_fs",
+        "filesystem": "BeeGFS",
+        "capacity_pb": 0.13,
+        "nvme_pb": 0.03,
+        "disk_pb": 0.1
+      },
+      "performance": {
+        "peak_pflops": null,
+        "sustained_pflops": null,
+        "power_consumption_kw": null
+      },
+      "software_stack": {
+        "os": "Linux",
+        "scheduler": "other",
+        "frameworks": []
+      },
+      "access": {
+        "model": "restricted",
+        "user_base": [
+          "academic"
         ]
       },
-      "contact": "043-009700",
-      "website": "https://digital.kku.ac.th/",
       "verifiedOn": null
     }
   ]
