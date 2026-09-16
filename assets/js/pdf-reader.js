@@ -1,5 +1,5 @@
 /* ============================================================
-   HPC Thailand — in-page PDF reader
+   hpc.in.th — in-page PDF reader
 
    Renders PDFs with PDF.js rather than an <iframe>. Embedded PDF
    plugins are unreliable — Electron shells abort the request outright

@@ -1,5 +1,5 @@
 /* ============================================================
-   HPC Thailand — reference document archive
+   hpc.in.th — reference document archive
    ============================================================ */
 
 import {
