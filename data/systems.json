@@ -94,7 +94,7 @@
           "lat": 14.0674,
           "lng": 100.6035
         },
-        "website": "https://thaisc.io/",
+        "website": "https://thaisc.io/thaisc-resorces/lanta",
         "contact_email": "thaisc@nstda.or.th"
       },
       "status": "operational",
@@ -164,7 +164,7 @@
       "name": "VISTEC",
       "organization": {
         "name_th": "สถาบันวิทยสิริเมธี",
-        "name_en": "Vidyasirimedhi Institute of Science and Technology (VISTEC)",
+        "name_en": "School of Information Science and Technology (IST), VISTEC",
         "org_type": "university",
         "province": "Rayong",
         "coordinates": {
@@ -431,14 +431,14 @@
       "name": "KU Nontri AI",
       "organization": {
         "name_th": "มหาวิทยาลัยเกษตรศาสตร์",
-        "name_en": "Kasetsart University",
+        "name_en": "OCS, Kasetsart University",
         "org_type": "university",
         "province": "Bangkok",
         "coordinates": {
           "lat": 13.8463,
           "lng": 100.5653
         },
-        "website": "https://www.ku.ac.th/",
+        "website": "https://nontriai.ku.ac.th/",
         "contact_email": null
       },
       "status": "operational",
@@ -684,12 +684,18 @@
             "memory_per_node_gb": null
           }
         ],
-        "num_gpu_type": 1,
+        "num_gpu_type": 2,
         "gpu_types": [
           {
             "model": "NVIDIA A100",
-            "nodes": 3,
+            "nodes": 2,
             "gpu_per_node": 7,
+            "memory_per_unit_gb": 40
+          },
+          {
+            "model": "NVIDIA A100",
+            "nodes": 1,
+            "gpu_per_node": 6,
             "memory_per_unit_gb": 40
           }
         ],
