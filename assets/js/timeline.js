@@ -1,5 +1,5 @@
 /* ============================================================
-   HPC Thailand — historical timeline (home page)
+   hpc.in.th — historical timeline (home page)
    ============================================================ */
 
 import {

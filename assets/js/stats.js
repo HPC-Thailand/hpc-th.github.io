@@ -1,5 +1,5 @@
 /* ============================================================
-   HPC Thailand — aggregate statistics
+   hpc.in.th — aggregate statistics
    ============================================================ */
 
 import {
@@ -9,8 +9,10 @@ import {
 let DATA = null;
 const charts = [];
 
-const PALETTE = ['#2e7bc4', '#15427a', '#d97a1a', '#3f9f83', '#7a5cc4', '#c4566f',
-  '#5b8fbd', '#8a9db2', '#e0a94f', '#5cb0a0', '#9b7fd4'];
+/* Categorical series, led by the brand Amber and kept distinguishable in both
+   themes. Amber carries the first (largest) series; the rest step away in hue. */
+const PALETTE = ['#ff8a1f', '#4a4f58', '#1f7a6b', '#9e4e00', '#5a4fcf', '#b23a6b',
+  '#ffb870', '#8a929e', '#3fa08e', '#8c84e0', '#d97aa0'];
 
 function css(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -57,15 +59,15 @@ function baseOptions(horizontal) {
       legend: { display: false },
       tooltip: {
         backgroundColor: css('--ink'),
-        titleFont: { family: 'Prompt' },
-        bodyFont: { family: 'Prompt' },
+        titleFont: { family: 'IBM Plex Sans' },
+        bodyFont: { family: 'IBM Plex Sans' },
         padding: 10,
         cornerRadius: 8,
       },
     },
     scales: {
-      x: { grid: { color: grid, drawBorder: false }, ticks: { color: tick, font: { family: 'Prompt', size: 11 } } },
-      y: { grid: { color: grid, drawBorder: false }, ticks: { color: tick, font: { family: 'Prompt', size: 11 } } },
+      x: { grid: { color: grid, drawBorder: false }, ticks: { color: tick, font: { family: 'IBM Plex Sans', size: 11 } } },
+      y: { grid: { color: grid, drawBorder: false }, ticks: { color: tick, font: { family: 'IBM Plex Sans', size: 11 } } },
     },
   };
 }
@@ -109,7 +111,7 @@ function makeDoughnut(id, labels, values) {
       plugins: {
         legend: {
           position: 'right',
-          labels: { color: css('--ink-2'), font: { family: 'Prompt', size: 11 }, boxWidth: 12, padding: 10 },
+          labels: { color: css('--ink-2'), font: { family: 'IBM Plex Sans', size: 11 }, boxWidth: 12, padding: 10 },
         },
       },
     },

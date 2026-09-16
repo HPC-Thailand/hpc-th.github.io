@@ -1,5 +1,5 @@
 /* ============================================================
-   HPC Thailand — systems directory + map
+   hpc.in.th — systems directory + map
    ============================================================ */
 
 import {
@@ -113,9 +113,9 @@ function drawMarkers(items) {
     const radius = 7 + Math.min(13, Math.sqrt(s.specs.cpu.cores) / 28);
     L.circleMarker([lat, lon], {
       radius,
-      color: '#15427a',
+      color: '#9e4e00',
       weight: 2,
-      fillColor: '#2e7bc4',
+      fillColor: '#ff8a1f',
       fillOpacity: 0.6,
     })
       .bindPopup(`<h4>${esc(s.name)}</h4>

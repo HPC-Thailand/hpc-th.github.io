@@ -1,5 +1,5 @@
 /* ============================================================
-   HPC Thailand — shared core
+   hpc.in.th — shared core
    i18n, theme, site chrome, data loading
    ============================================================ */
 
@@ -91,7 +91,7 @@ export function applyI18n(scope = document) {
     });
   });
   const title = document.querySelector('title[data-i18n]');
-  if (title) document.title = `${t(title.dataset.i18n)} — HPC Thailand`;
+  if (title) document.title = `${t(title.dataset.i18n)} — ${SITE.domain}`;
 }
 
 /* ---------------------------------------------------------------- data */
@@ -203,8 +203,7 @@ export function renderChrome(active) {
   document.getElementById('site-header')?.replaceChildren(h(`
     <div class="container">
       <a class="brand" href="${home}">
-        <span class="brand-mark" aria-hidden="true">HPC</span>
-        <span class="brand-text">Thailand<small>${SITE.domain}</small></span>
+        <span class="wordmark"><span class="wm-accent">hpc</span>.in.th<span class="caret" aria-hidden="true"></span></span>
       </a>
       <nav class="site-nav" id="site-nav" aria-label="Main"><ul>${navMarkup(active)}
         <li class="nav-repo">
@@ -245,7 +244,7 @@ export function renderChrome(active) {
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© ${new Date().getFullYear()} HPC Thailand</span>
+        <span>© ${new Date().getFullYear()} ${SITE.domain}</span>
         <span data-i18n="footer.license"></span>
         <span class="spacer" id="footer-updated"></span>
       </div>
