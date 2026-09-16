@@ -179,34 +179,13 @@
       "decommissioned_date": null,
       "vendor": "Unknown",
       "compute": {
-        "num_cpu_type": 4,
+        "num_cpu_type": 1,
         "cpu_types": [
           {
-            "model": "Unknown",
-            "nodes": 4,
+            "model": "Intel Xeon Gold 6240R",
+            "nodes": 77,
             "sockets_per_node": null,
-            "cores_per_node": 80,
-            "memory_per_node_gb": null
-          },
-          {
-            "model": "Unknown",
-            "nodes": 4,
-            "sockets_per_node": null,
-            "cores_per_node": 40,
-            "memory_per_node_gb": null
-          },
-          {
-            "model": "Unknown",
-            "nodes": 15,
-            "sockets_per_node": null,
-            "cores_per_node": 36,
-            "memory_per_node_gb": null
-          },
-          {
-            "model": "Unknown",
-            "nodes": 2,
-            "sockets_per_node": null,
-            "cores_per_node": 128,
+            "cores_per_node": 32,
             "memory_per_node_gb": null
           }
         ],
@@ -232,8 +211,8 @@
           }
         ],
         "total": {
-          "total_nodes": 25,
-          "total_cpu_cores": 1276,
+          "total_nodes": 77,
+          "total_cpu_cores": 2464,
           "total_gpu_count": 100,
           "total_memory_tb": 0
         }
@@ -286,16 +265,16 @@
       "status": "operational",
       "commissioned_date": "2020-01-01",
       "decommissioned_date": null,
-      "vendor": "Unknown",
+      "vendor": "NVIDIA",
       "compute": {
         "num_cpu_type": 1,
         "cpu_types": [
           {
-            "model": "Intel Xeon Gold 6248R",
-            "nodes": 24,
-            "sockets_per_node": null,
-            "cores_per_node": 32,
-            "memory_per_node_gb": null
+            "model": "AMD EPYC 7742",
+            "nodes": 6,
+            "sockets_per_node": 2,
+            "cores_per_node": 128,
+            "memory_per_node_gb": 1024
           }
         ],
         "num_gpu_type": 1,
@@ -308,7 +287,7 @@
           }
         ],
         "total": {
-          "total_nodes": 24,
+          "total_nodes": 6,
           "total_cpu_cores": 768,
           "total_gpu_count": 48,
           "total_memory_tb": 0
@@ -323,8 +302,8 @@
         "type": "hybrid",
         "filesystem": "Lustre (DDN EXAScaler)",
         "capacity_pb": 3,
-        "nvme_pb": 0.645,
-        "disk_pb": null
+        "nvme_pb": 0.55,
+        "disk_pb": 2.2
       },
       "performance": {
         "peak_pflops": null,
@@ -598,29 +577,42 @@
       "decommissioned_date": null,
       "vendor": "Unknown",
       "compute": {
-        "num_cpu_type": 1,
+        "num_cpu_type": 2,
         "cpu_types": [
           {
             "model": "AMD EPYC 7742",
             "nodes": 3,
             "sockets_per_node": 2,
             "cores_per_node": 128,
-            "memory_per_node_gb": null
+            "memory_per_node_gb": 2048
+          },
+          {
+            "model": "AMD EPYC 9534",
+            "nodes": 1,
+            "sockets_per_node": 2,
+            "cores_per_node": 128,
+            "memory_per_node_gb": 1536
           }
         ],
-        "num_gpu_type": 1,
+        "num_gpu_type": 2,
         "gpu_types": [
           {
             "model": "NVIDIA A100",
             "nodes": 3,
             "gpu_per_node": 8,
             "memory_per_unit_gb": 80
+          },
+          {
+            "model": "NVIDIA H100",
+            "nodes": 1,
+            "gpu_per_node": 4,
+            "memory_per_unit_gb": 80
           }
         ],
         "total": {
-          "total_nodes": 3,
-          "total_cpu_cores": 384,
-          "total_gpu_count": 24,
+          "total_nodes": 4,
+          "total_cpu_cores": 512,
+          "total_gpu_count": 28,
           "total_memory_tb": 0
         }
       },

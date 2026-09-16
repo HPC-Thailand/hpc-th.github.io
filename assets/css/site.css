@@ -960,6 +960,29 @@ ul { margin: 0 0 1em; padding-inline-start: 1.2em; }
 }
 .field textarea { min-height: 170px; resize: vertical; line-height: 1.6; }
 .field .hint { font-size: .8rem; color: var(--muted); margin: 5px 0 0; }
+.field input[readonly] { color: var(--muted); background: color-mix(in srgb, var(--surface-2) 70%, transparent); }
+
+.field-table .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.input-table { width: 100%; border-collapse: collapse; min-width: 480px; }
+.input-table th {
+  font-size: .74rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase;
+  color: var(--muted); text-align: left; padding: 8px 8px; border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.input-table td { padding: 6px; border-bottom: 1px solid var(--line); }
+.input-table tr:last-child td { border-bottom: none; }
+.input-table input {
+  width: 100%; min-width: 88px; font: inherit; font-size: .88rem;
+  padding: 7px 9px; border-radius: 6px; border: 1px solid var(--line-strong);
+  background: var(--surface-2); color: var(--ink);
+}
+.btn-row-remove {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line-strong);
+  background: var(--surface-2); color: var(--muted); cursor: pointer; font-size: .95rem; line-height: 1;
+}
+.btn-row-remove:hover { background: var(--danger); color: #fff; border-color: var(--danger); }
+.btn-sm { padding: 7px 14px; font-size: .82rem; margin-top: 10px; }
 
 .notice {
   display: flex;

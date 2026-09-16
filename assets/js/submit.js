@@ -5,7 +5,7 @@
    block is assembled for you — no need to write JSON by hand.
    ============================================================ */
 
-import { boot, t, pick, esc, onLangChange, observeReveal, SITE } from './core.js';
+import { boot, t, pick, esc, onLangChange, observeReveal, loadJSON, SITE } from './core.js';
 
 const TYPES = [
   { value: 'system', key: 'submit.typeSystem', label: 'system' },
@@ -49,14 +49,26 @@ const SYSTEM_FIELDS = [
   { id: 'org_email', label: 'Organisation contact email', schema: 'organization.contact_email', type: 'email', placeholder: 'hpc@example.ac.th', hint: 'A team mailbox, not a personal address' },
 
   { section: 'Compute' },
-  { id: 'cpu_lines', label: 'CPU models — one per line', schema: 'compute.cpu_types', type: 'textarea',
-    placeholder: 'model | nodes | sockets_per_node | cores_per_node | memory_gb\nAMD EPYC 9654 | 100 | 2 | 192 | 1536', hint: 'model | nodes | sockets/node | cores/node | GB/node — leave a slot blank if unknown' },
-  { id: 'gpu_lines', label: 'GPU models — one per line', schema: 'compute.gpu_types', type: 'textarea',
-    placeholder: 'model | nodes | gpu_per_node | memory_gb\nNVIDIA H100 | 20 | 8 | 80', hint: 'model | nodes | GPUs/node | GB/unit — leave empty entirely for CPU-only systems' },
-  { id: 'tot_nodes', label: 'Total nodes', schema: 'compute.total.total_nodes', type: 'number' },
-  { id: 'tot_cores', label: 'Total CPU cores', schema: 'compute.total.total_cpu_cores', type: 'number' },
-  { id: 'tot_gpus', label: 'Total GPU count', schema: 'compute.total.total_gpu_count', type: 'number' },
-  { id: 'tot_mem', label: 'Total memory (TB)', schema: 'compute.total.total_memory_tb', type: 'number' },
+  { id: 'cpu_table', label: 'CPU types', schema: 'compute.cpu_types', type: 'table',
+    cols: [
+      { key: 'model', label: 'Model', placeholder: 'AMD EPYC 9654' },
+      { key: 'nodes', label: 'Nodes', type: 'number' },
+      { key: 'sockets_per_node', label: 'Sockets/node', type: 'number' },
+      { key: 'cores_per_node', label: 'Cores/node', type: 'number' },
+      { key: 'memory_per_node_gb', label: 'GB/node', type: 'number' },
+    ] },
+  { id: 'gpu_table', label: 'GPU types', schema: 'compute.gpu_types', type: 'table',
+    hint: 'Leave every row empty for CPU-only systems',
+    cols: [
+      { key: 'model', label: 'Model', placeholder: 'NVIDIA H100' },
+      { key: 'nodes', label: 'Nodes', type: 'number' },
+      { key: 'gpu_per_node', label: 'GPUs/node', type: 'number' },
+      { key: 'memory_per_unit_gb', label: 'GB/unit', type: 'number' },
+    ] },
+  { id: 'tot_nodes', label: 'Total nodes', schema: 'compute.total.total_nodes', type: 'number', readonly: true, hint: 'Auto-calculated from the rows above' },
+  { id: 'tot_cores', label: 'Total CPU cores', schema: 'compute.total.total_cpu_cores', type: 'number', readonly: true, hint: 'Auto-calculated from the rows above' },
+  { id: 'tot_gpus', label: 'Total GPU count', schema: 'compute.total.total_gpu_count', type: 'number', readonly: true, hint: 'Auto-calculated from the rows above' },
+  { id: 'tot_mem', label: 'Total memory (TB)', schema: 'compute.total.total_memory_tb', type: 'number', readonly: true, hint: 'Estimated from CPU-node memory only' },
   { id: 'cooling', label: 'Cooling', schema: 'cooling', placeholder: 'e.g. direct liquid cooling' },
 
   { section: 'Network & storage' },
@@ -121,13 +133,27 @@ const CORRECTION_FIELDS = [
   { id: 'corr_desc', label: 'What’s wrong, and what should it say instead? *', type: 'textarea' },
 ];
 
+const STATS_PICK_FIELD = { id: 'stats_pick', label: 'System to update *', type: 'system-select',
+  hint: 'Pick an existing system to load its current data below — edit only what changed.' };
+const STATS_FIELDS = [STATS_PICK_FIELD, ...SYSTEM_FIELDS];
+
 const FIELDSETS = {
   system: SYSTEM_FIELDS,
-  stats: SYSTEM_FIELDS,
+  stats: STATS_FIELDS,
   event: EVENT_FIELDS,
   timeline: TIMELINE_FIELDS,
   correction: CORRECTION_FIELDS,
 };
+
+/** All systems, loaded once at boot for the "update existing system" picker. */
+let SYSTEMS = [];
+
+/** Per-table row state, keyed by field id (`cpu_table` / `gpu_table`). */
+const tableState = { cpu_table: [{}], gpu_table: [{}] };
+
+function getPath(obj, path) {
+  return path.split('.').reduce((o, k) => (o == null ? o : o[k]), obj);
+}
 
 /* ---------------------------------------------------------------- values */
 
@@ -155,24 +181,87 @@ function clean(o) {
 
 const i18n = (th, en) => ((th || en) ? { th: th || '', en: en || '' } : null);
 
-function modelRows(id, build) {
-  return val(id).split('\n')
-    .map((l) => l.trim())
-    .filter((l) => l && !l.startsWith('#') && l.includes('|') && !/^model\s*\|/i.test(l))
-    .map((l) => build(l.split('|').map((s) => s.trim())))
-    .filter((o) => Object.keys(o).length > 1);
-}
-
 const intv = (s) => (s === '' || s == null ? null : parseInt(s, 10));
 const floatv = (s) => (s === '' || s == null ? null : parseFloat(s));
+
+/* ---------------------------------------------------------------- CPU/GPU tables */
+
+function tableMarkup(f) {
+  const rows = tableState[f.id] || (tableState[f.id] = [{}]);
+  const head = f.cols.map((c) => `<th>${esc(c.label)}</th>`).join('') + '<th></th>';
+  const body = rows.map((row, i) => `<tr data-row="${i}">${
+    f.cols.map((c) => `<td><input data-col="${c.key}" type="${c.type || 'text'}" placeholder="${esc(c.placeholder || '')}" value="${esc(row[c.key] ?? '')}"></td>`).join('')
+  }<td><button type="button" class="btn-row-remove" title="Remove row" aria-label="Remove row">×</button></td></tr>`).join('');
+  return `<div class="field field-table" data-table-id="${f.id}">
+      <label>${esc(f.label)} <span class="field-key mono">${esc(f.schema)}</span></label>
+      <div class="table-scroll"><table class="input-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
+      <button type="button" class="btn btn-ghost btn-sm btn-row-add">+ Add row</button>
+      ${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ''}
+    </div>`;
+}
+
+function findTableField(id) {
+  return SYSTEM_FIELDS.find((f) => f.id === id);
+}
+
+function rerenderTable(tableId) {
+  const f = findTableField(tableId);
+  const wrap = document.querySelector(`.field-table[data-table-id="${tableId}"]`);
+  if (f && wrap) wrap.outerHTML = tableMarkup(f);
+}
+
+function addTableRow(tableId) {
+  tableState[tableId] = [...(tableState[tableId] || []), {}];
+  rerenderTable(tableId);
+}
+
+function removeTableRow(tableId, idx) {
+  const rows = tableState[tableId] || [];
+  rows.splice(idx, 1);
+  tableState[tableId] = rows.length ? rows : [{}];
+  rerenderTable(tableId);
+  recalcTotals();
+  refreshPreview();
+}
+
+function updateTableCell(input) {
+  const wrap = input.closest('.field-table');
+  const tr = input.closest('tr');
+  if (!wrap || !tr) return;
+  const tableId = wrap.dataset.tableId;
+  const row = tableState[tableId]?.[+tr.dataset.row];
+  if (row) row[input.dataset.col] = input.value;
+}
+
+function setVal(id, v) {
+  const el = document.getElementById(id);
+  if (el) el.value = v === '' || v == null ? '' : v;
+}
+
+/** Sum the CPU/GPU tables into the read-only total fields. */
+function recalcTotals() {
+  const cpuRows = (tableState.cpu_table || []).map((r) => ({ nodes: intv(r.nodes), cores: intv(r.cores_per_node), mem: floatv(r.memory_per_node_gb) }));
+  const gpuRows = (tableState.gpu_table || []).map((r) => ({ nodes: intv(r.nodes), perNode: intv(r.gpu_per_node) }));
+  const cpuNodes = cpuRows.reduce((a, r) => a + (r.nodes || 0), 0);
+  const gpuNodes = gpuRows.reduce((a, r) => a + (r.nodes || 0), 0);
+  const totalCores = cpuRows.reduce((a, r) => a + (r.nodes || 0) * (r.cores || 0), 0);
+  const totalGpus = gpuRows.reduce((a, r) => a + (r.nodes || 0) * (r.perNode || 0), 0);
+  const totalMemGb = cpuRows.reduce((a, r) => a + (r.nodes || 0) * (r.mem || 0), 0);
+  setVal('tot_nodes', Math.max(cpuNodes, gpuNodes) || '');
+  setVal('tot_cores', totalCores || '');
+  setVal('tot_gpus', totalGpus || '');
+  setVal('tot_mem', totalMemGb ? +(totalMemGb / 1024).toFixed(2) : '');
+}
 
 /* ---------------------------------------------------------------- data builders */
 
 function buildSystem() {
-  const cpu_types = modelRows('cpu_lines', ([model, nodes, sockets, cores, mem]) =>
-    clean({ model, nodes: intv(nodes), sockets_per_node: intv(sockets), cores_per_node: intv(cores), memory_per_node_gb: floatv(mem) }));
-  const gpu_types = modelRows('gpu_lines', ([model, nodes, perNode, mem]) =>
-    clean({ model, nodes: intv(nodes), gpu_per_node: intv(perNode), memory_per_unit_gb: floatv(mem) }));
+  const cpu_types = (tableState.cpu_table || [])
+    .filter((r) => (r.model || '').trim())
+    .map((r) => clean({ model: r.model.trim(), nodes: intv(r.nodes), sockets_per_node: intv(r.sockets_per_node), cores_per_node: intv(r.cores_per_node), memory_per_node_gb: floatv(r.memory_per_node_gb) }));
+  const gpu_types = (tableState.gpu_table || [])
+    .filter((r) => (r.model || '').trim())
+    .map((r) => clean({ model: r.model.trim(), nodes: intv(r.nodes), gpu_per_node: intv(r.gpu_per_node), memory_per_unit_gb: floatv(r.memory_per_unit_gb) }));
   const out = clean({
     system_id: val('sys_id'),
     name: val('sys_name'),
@@ -276,6 +365,7 @@ function buildBody() {
 
   const sections = [
     `**${t('submit.formType')}:** ${typeLabel} (\`${type}\`)`,
+    type === 'stats' && val('stats_pick') ? `**Updating existing system:** \`${val('stats_pick')}\` — please replace that entry rather than adding a new one.` : null,
     '',
     `### Submission`,
     '',
@@ -313,7 +403,7 @@ function fieldMarkup(f) {
   } else if (f.type === 'textarea') {
     input = `<textarea id="${f.id}" placeholder="${esc(f.placeholder || '')}">${esc(store[f.id] || '')}</textarea>`;
   } else {
-    input = `<input id="${f.id}" type="${f.type || 'text'}" autocomplete="off" placeholder="${esc(f.placeholder || '')}" value="${esc(store[f.id] || '')}">`;
+    input = `<input id="${f.id}" type="${f.type || 'text'}" autocomplete="off" placeholder="${esc(f.placeholder || '')}" value="${esc(store[f.id] || '')}"${f.readonly ? ' readonly' : ''}>`;
   }
   const reqAttr = /\*$/.test(f.label) ? ' required' : '';
   return `<div class="field">
@@ -323,13 +413,47 @@ function fieldMarkup(f) {
     </div>`;
 }
 
+function systemSelectMarkup(f) {
+  const opts = SYSTEMS.map((s) => `<option value="${esc(s.system_id)}"${store.stats_pick === s.system_id ? ' selected' : ''}>${esc(s.name)} (${esc(s.system_id)})</option>`).join('');
+  return `<div class="field">
+      <label for="${f.id}">${esc(f.label.replace(/ \*$/, ''))} <span class="req">${esc(t('submit.required'))}</span></label>
+      <select id="${f.id}" required><option value="">—</option>${opts}</select>
+      ${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ''}
+    </div>`;
+}
+
+/** Copy an existing system record's values into `store` / the CPU-GPU table state. */
+function applySystemToForm(sys) {
+  for (const f of SYSTEM_FIELDS) {
+    if (!f.id || f.type === 'table') continue;
+    const v = getPath(sys, f.schema);
+    store[f.id] = v == null ? '' : Array.isArray(v) ? v.join(', ') : String(v);
+  }
+  tableState.cpu_table = (sys.compute?.cpu_types || []).map((r) => ({ ...r }));
+  tableState.gpu_table = (sys.compute?.gpu_types || []).map((r) => ({ ...r }));
+  if (!tableState.cpu_table.length) tableState.cpu_table = [{}];
+  if (!tableState.gpu_table.length) tableState.gpu_table = [{}];
+}
+
+function resetSystemForm() {
+  for (const f of SYSTEM_FIELDS) { if (f.id && f.type !== 'table') store[f.id] = ''; }
+  tableState.cpu_table = [{}];
+  tableState.gpu_table = [{}];
+}
+
 function buildTypeFields() {
   const type = currentType();
   if (builtFor === type) return;
   builtFor = type;
   document.getElementById('type-fields').innerHTML = FIELDSETS[type]
-    .map((f) => (f.section ? `<h3 class="field-section">${esc(f.section)}</h3>` : fieldMarkup(f)))
+    .map((f) => {
+      if (f.section) return `<h3 class="field-section">${esc(f.section)}</h3>`;
+      if (f.type === 'table') return tableMarkup(f);
+      if (f.type === 'system-select') return systemSelectMarkup(f);
+      return fieldMarkup(f);
+    })
     .join('');
+  if (FIELDSETS[type].some((f) => f.type === 'table')) recalcTotals();
 }
 
 function buildTypeOptions() {
@@ -342,7 +466,7 @@ function buildTypeOptions() {
 
 function refreshPreview() {
   const type = currentType();
-  for (const f of FIELDSETS[type]) { if (f.id) store[f.id] = (document.getElementById(f.id)?.value ?? '').trim(); }
+  for (const f of FIELDSETS[type]) { if (f.id && f.type !== 'table') store[f.id] = (document.getElementById(f.id)?.value ?? '').trim(); }
   document.getElementById('preview').textContent = buildBody();
   document.getElementById('step-2').innerHTML =
     esc(t('submit.step2', { file: '\u0000' })).replace('\u0000', `<code class="mono">${esc(FILE_FOR[type])}</code>`);
@@ -409,6 +533,7 @@ function submitIssue() {
 
 (async function main() {
   await boot('submit');
+  try { SYSTEMS = (await loadJSON('data/systems.json')).systems; } catch { SYSTEMS = []; }
 
   onLangChange(() => {
     buildTypeOptions();
@@ -418,12 +543,32 @@ function submitIssue() {
   });
 
   const form = document.getElementById('submit-form');
+  const typeFields = document.getElementById('type-fields');
+
   form.addEventListener('input', refreshPreview);
   form.addEventListener('change', refreshPreview);
   document.getElementById('f-type').addEventListener('change', () => { buildTypeFields(); refreshPreview(); });
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     submitIssue();
+  });
+
+  typeFields.addEventListener('input', (e) => {
+    if (e.target.closest('.input-table')) { updateTableCell(e.target); recalcTotals(); }
+  });
+  typeFields.addEventListener('click', (e) => {
+    const addBtn = e.target.closest('.btn-row-add');
+    if (addBtn) { addTableRow(addBtn.closest('.field-table').dataset.tableId); return; }
+    const rmBtn = e.target.closest('.btn-row-remove');
+    if (rmBtn) removeTableRow(rmBtn.closest('.field-table').dataset.tableId, +rmBtn.closest('tr').dataset.row);
+  });
+  typeFields.addEventListener('change', (e) => {
+    if (e.target.id !== 'stats_pick') return;
+    store.stats_pick = e.target.value;
+    const sys = SYSTEMS.find((s) => s.system_id === e.target.value);
+    if (sys) applySystemToForm(sys); else resetSystemForm();
+    builtFor = null;
+    buildTypeFields();
   });
 
   document.getElementById('copy-preview').addEventListener('click', async (e) => {
