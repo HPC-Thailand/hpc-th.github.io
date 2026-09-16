@@ -24,12 +24,12 @@
       "status": "operational",
       "commissioned_date": "2024-01-01",
       "decommissioned_date": null,
-      "vendor": "Unknown",
+      "vendor": "HPE",
       "compute": {
         "num_cpu_type": 1,
         "cpu_types": [
           {
-            "model": "Intel Xeon",
+            "model": "AMD EPYC 9354",
             "nodes": 1480,
             "sockets_per_node": null,
             "cores_per_node": 32,
@@ -54,8 +54,8 @@
       },
       "cooling": "Liquid cooling",
       "network": {
-        "interconnect_type": "InfiniBand HDR200",
-        "bandwidth_gbps": 200
+        "interconnect_type": "InfiniBand NDR400",
+        "bandwidth_gbps": 400
       },
       "storage": {
         "type": "parallel_fs",
@@ -65,12 +65,12 @@
         "disk_pb": 10
       },
       "performance": {
-        "peak_pflops": null,
-        "sustained_pflops": null,
+        "peak_pflops": 21.68,
+        "sustained_pflops": 13.85,
         "power_consumption_kw": null
       },
       "software_stack": {
-        "os": "Linux",
+        "os": "RHEL 8.9",
         "scheduler": "other",
         "frameworks": []
       },
@@ -100,12 +100,12 @@
       "status": "operational",
       "commissioned_date": "2022-01-01",
       "decommissioned_date": null,
-      "vendor": "Unknown",
+      "vendor": "HPE",
       "compute": {
         "num_cpu_type": 1,
         "cpu_types": [
           {
-            "model": "AMD EPYC 7763",
+            "model": "AMD EPYC 7713",
             "nodes": 496,
             "sockets_per_node": null,
             "cores_per_node": 64,
@@ -116,8 +116,8 @@
         "gpu_types": [
           {
             "model": "NVIDIA A100",
-            "nodes": 88,
-            "gpu_per_node": 8,
+            "nodes": 176,
+            "gpu_per_node": 4,
             "memory_per_unit_gb": 40
           }
         ],
@@ -128,21 +128,21 @@
           "total_memory_tb": 0
         }
       },
-      "cooling": "Air cooling with liquid assist",
+      "cooling": "Direct liquid cooling",
       "network": {
-        "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100
+        "interconnect_type": "HPE Slingshot-11",
+        "bandwidth_gbps": 200
       },
       "storage": {
         "type": "parallel_fs",
         "filesystem": "Lustre",
-        "capacity_pb": 5.5,
-        "nvme_pb": 0.5,
-        "disk_pb": 5
+        "capacity_pb": 10.9,
+        "nvme_pb": 0.945,
+        "disk_pb": 10
       },
       "performance": {
-        "peak_pflops": null,
-        "sustained_pflops": null,
+        "peak_pflops": 13.77,
+        "sustained_pflops": 8.15,
         "power_consumption_kw": null
       },
       "software_stack": {
@@ -179,35 +179,62 @@
       "decommissioned_date": null,
       "vendor": "Unknown",
       "compute": {
-        "num_cpu_type": 1,
+        "num_cpu_type": 4,
         "cpu_types": [
           {
-            "model": "Intel Xeon Gold 6240R",
-            "nodes": 77,
+            "model": "Unknown",
+            "nodes": 4,
             "sockets_per_node": null,
-            "cores_per_node": 32,
+            "cores_per_node": 80,
+            "memory_per_node_gb": null
+          },
+          {
+            "model": "Unknown",
+            "nodes": 4,
+            "sockets_per_node": null,
+            "cores_per_node": 40,
+            "memory_per_node_gb": null
+          },
+          {
+            "model": "Unknown",
+            "nodes": 15,
+            "sockets_per_node": null,
+            "cores_per_node": 36,
+            "memory_per_node_gb": null
+          },
+          {
+            "model": "Unknown",
+            "nodes": 2,
+            "sockets_per_node": null,
+            "cores_per_node": 128,
             "memory_per_node_gb": null
           }
         ],
-        "num_gpu_type": 2,
+        "num_gpu_type": 3,
         "gpu_types": [
           {
             "model": "NVIDIA V100",
-            "nodes": 6,
-            "gpu_per_node": 7,
+            "nodes": 4,
+            "gpu_per_node": 8,
+            "memory_per_unit_gb": 32
+          },
+          {
+            "model": "NVIDIA V100",
+            "nodes": 15,
+            "gpu_per_node": 4,
             "memory_per_unit_gb": 32
           },
           {
             "model": "NVIDIA A100",
-            "nodes": 5,
-            "gpu_per_node": 8,
+            "nodes": 2,
+            "gpu_per_node": 4,
             "memory_per_unit_gb": 80
           }
         ],
         "total": {
-          "total_nodes": 77,
-          "total_cpu_cores": 2464,
-          "total_gpu_count": 84,
+          "total_nodes": 25,
+          "total_cpu_cores": 1276,
+          "total_gpu_count": 100,
           "total_memory_tb": 0
         }
       },
@@ -289,15 +316,15 @@
       },
       "cooling": "Air cooling",
       "network": {
-        "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100
+        "interconnect_type": "InfiniBand HDR200",
+        "bandwidth_gbps": 200
       },
       "storage": {
-        "type": "parallel_fs",
-        "filesystem": "GPFS",
-        "capacity_pb": 0.6,
-        "nvme_pb": 0.1,
-        "disk_pb": 0.5
+        "type": "hybrid",
+        "filesystem": "Lustre (DDN EXAScaler)",
+        "capacity_pb": 3,
+        "nvme_pb": 0.645,
+        "disk_pb": null
       },
       "performance": {
         "peak_pflops": null,
@@ -422,10 +449,10 @@
         "num_cpu_type": 1,
         "cpu_types": [
           {
-            "model": "Intel Xeon Gold 6240R",
-            "nodes": 16,
-            "sockets_per_node": null,
-            "cores_per_node": 32,
+            "model": "AMD EPYC 7742",
+            "nodes": 4,
+            "sockets_per_node": 2,
+            "cores_per_node": 128,
             "memory_per_node_gb": null
           }
         ],
@@ -439,7 +466,7 @@
           }
         ],
         "total": {
-          "total_nodes": 16,
+          "total_nodes": 4,
           "total_cpu_cores": 512,
           "total_gpu_count": 32,
           "total_memory_tb": 0
@@ -447,15 +474,15 @@
       },
       "cooling": "Air cooling",
       "network": {
-        "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100
+        "interconnect_type": "InfiniBand HDR200",
+        "bandwidth_gbps": 200
       },
       "storage": {
         "type": "parallel_fs",
         "filesystem": "BeeGFS",
-        "capacity_pb": 0.38,
-        "nvme_pb": 0.08,
-        "disk_pb": 0.3
+        "capacity_pb": 0.76,
+        "nvme_pb": 0.09,
+        "disk_pb": 0.67
       },
       "performance": {
         "peak_pflops": null,
@@ -574,10 +601,10 @@
         "num_cpu_type": 1,
         "cpu_types": [
           {
-            "model": "Intel Xeon Gold 6338",
-            "nodes": 12,
-            "sockets_per_node": null,
-            "cores_per_node": 32,
+            "model": "AMD EPYC 7742",
+            "nodes": 3,
+            "sockets_per_node": 2,
+            "cores_per_node": 128,
             "memory_per_node_gb": null
           }
         ],
@@ -591,7 +618,7 @@
           }
         ],
         "total": {
-          "total_nodes": 12,
+          "total_nodes": 3,
           "total_cpu_cores": 384,
           "total_gpu_count": 24,
           "total_memory_tb": 0
@@ -599,15 +626,15 @@
       },
       "cooling": "Air cooling",
       "network": {
-        "interconnect_type": "InfiniBand HDR100",
-        "bandwidth_gbps": 100
+        "interconnect_type": "InfiniBand HDR200",
+        "bandwidth_gbps": 200
       },
       "storage": {
         "type": "parallel_fs",
         "filesystem": "BeeGFS",
-        "capacity_pb": 0.25,
-        "nvme_pb": 0.05,
-        "disk_pb": 0.2
+        "capacity_pb": 0.438,
+        "nvme_pb": 0.15,
+        "disk_pb": 0.288
       },
       "performance": {
         "peak_pflops": null,
