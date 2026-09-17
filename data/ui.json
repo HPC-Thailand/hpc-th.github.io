@@ -315,20 +315,20 @@
       "en": "Showing {n} systems"
     },
     "filterOrgType": {
-      "th": "พระเทศณบหน่วยงาน",
+      "th": "ประเภทหน่วยงาน",
       "en": "Organisation type"
     },
     "orgTypeLabels": {
       "government_research": {
-        "th": "หน่วยงาน/รัฐวิจัย",
+        "th": "หน่วยงานวิจัยภาครัฐ",
         "en": "Government research"
       },
       "university": {
-        "th": "มหาวิทยาไลย",
+        "th": "มหาวิทยาลัย",
         "en": "University"
       },
       "private": {
-        "th": "เกขน",
+        "th": "ภาคเอกชน",
         "en": "Private"
       },
       "state_enterprise": {
@@ -338,15 +338,15 @@
     },
     "statusLabels": {
       "operational": {
-        "th": "เปิดใช้บริกร",
+        "th": "เปิดให้บริการ",
         "en": "operational"
       },
       "planned": {
-        "th": "วางแผะน",
+        "th": "วางแผน",
         "en": "planned"
       },
       "maintenance": {
-        "th": "บำรุงรักษ",
+        "th": "บำรุงรักษา",
         "en": "maintenance"
       },
       "decommissioned": {
@@ -354,16 +354,49 @@
         "en": "decommissioned"
       }
     },
+    "provinceLabels": {
+      "Bangkok": { "th": "กรุงเทพมหานคร", "en": "Bangkok" },
+      "Chiang Mai": { "th": "เชียงใหม่", "en": "Chiang Mai" },
+      "Khon Kaen": { "th": "ขอนแก่น", "en": "Khon Kaen" },
+      "Nakhon Pathom": { "th": "นครปฐม", "en": "Nakhon Pathom" },
+      "Pathum Thani": { "th": "ปทุมธานี", "en": "Pathum Thani" },
+      "Rayong": { "th": "ระยอง", "en": "Rayong" },
+      "Songkhla": { "th": "สงขลา", "en": "Songkhla" }
+    },
+    "coolingLabels": {
+      "Air cooling": { "th": "ระบายความร้อนด้วยอากาศ", "en": "Air cooling" },
+      "Liquid cooling": { "th": "ระบายความร้อนด้วยของเหลว", "en": "Liquid cooling" },
+      "Direct liquid cooling": { "th": "ระบายความร้อนด้วยของเหลวโดยตรง", "en": "Direct liquid cooling" },
+      "Immersion cooling": { "th": "ระบายความร้อนแบบจุ่มของเหลว", "en": "Immersion cooling" }
+    },
+    "accessLabels": {
+      "open_academic": { "th": "เปิดให้ภาควิชาการ", "en": "Open academic" },
+      "restricted": { "th": "จำกัดสิทธิ์", "en": "Restricted" },
+      "commercial": { "th": "เชิงพาณิชย์", "en": "Commercial" },
+      "hybrid": { "th": "ไฮบริด", "en": "Hybrid" }
+    },
+    "userBaseLabels": {
+      "academic": { "th": "ภาควิชาการ", "en": "Academic" },
+      "government": { "th": "ภาครัฐ", "en": "Government" },
+      "industry": { "th": "ภาคเอกชน", "en": "Industry" },
+      "sea_region": { "th": "ภูมิภาคอาเซียน", "en": "SEA region" }
+    },
+    "schedulerLabels": {
+      "slurm": { "th": "Slurm", "en": "Slurm" },
+      "pbs": { "th": "PBS", "en": "PBS" },
+      "lsf": { "th": "LSF", "en": "LSF" },
+      "other": { "th": "อื่น ๆ", "en": "Other" }
+    },
     "software": {
       "th": "ซอฟต์แวร์",
       "en": "Software"
     },
     "performance": {
-      "th": "ประสทิธิพาล",
+      "th": "สมรรถนะ",
       "en": "Performance"
     },
     "access": {
-      "th": "การ หเข้ ถึง",
+      "th": "การเข้าถึง",
       "en": "Access"
     }
   },
@@ -413,7 +446,7 @@
       "en": "Figures are as declared by each centre, not benchmarked results."
     },
     "byOrgType": {
-      "th": "ระบบแยกตามหน่วยงาน",
+      "th": "ระบบแยกตามประเภทหน่วยงาน",
       "en": "Systems by organisation type"
     }
   },

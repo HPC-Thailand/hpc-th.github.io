@@ -86,7 +86,7 @@
       "system_id": "lanta",
       "name": "LANTA",
       "organization": {
-        "name_th": "ThaiSC, NSTDA",
+        "name_th": "ศูนย์ทรัพยากรคอมพิวเตอร์เพื่อการคำนวณขั้นสูง (ThaiSC), สวทช.",
         "name_en": "ThaiSC, NSTDA",
         "org_type": "government_research",
         "province": "Pathum Thani",
@@ -327,7 +327,7 @@
       "system_id": "mu-ai",
       "name": "MU-AI Center",
       "organization": {
-        "name_th": "Faculty of Information and Communication Technology Mahidol University",
+        "name_th": "คณะเทคโนโลยีสารสนเทศและการสื่อสาร (MUICT), มหาวิทยาลัยมหิดล",
         "name_en": "MUICT, Mahidol University",
         "org_type": "university",
         "province": "Nakhon Pathom",
@@ -561,7 +561,7 @@
       "system_id": "erawan",
       "name": "ERAWAN",
       "organization": {
-        "name_th": "ITSC, Chiang Mai University",
+        "name_th": "สำนักบริการเทคโนโลยีสารสนเทศ (ITSC), มหาวิทยาลัยเชียงใหม่",
         "name_en": "Information Technology Service Center (ITSC), Chiang Mai University",
         "org_type": "university",
         "province": "Chiang Mai",
@@ -732,7 +732,7 @@
       "system_id": "psu-singkhorn",
       "name": "PSU-Singkhorn",
       "organization": {
-        "name_th": "DRii, Prince of Songkla University",
+        "name_th": "สถาบันวิจัยและนวัตกรรมดิจิทัล (DRii), มหาวิทยาลัยสงขลานครินทร์",
         "name_en": "Digital Research and Innovation Institute (DRii), Prince of Songkla University",
         "org_type": "university",
         "province": "Songkhla",
@@ -808,7 +808,7 @@
       "system_id": "kku-hpc",
       "name": "KKU",
       "organization": {
-        "name_th": "ODT, Khon Kaen University",
+        "name_th": "สำนักเทคโนโลยีดิจิทัล (ODT), มหาวิทยาลัยขอนแก่น",
         "name_en": "Office of Digital Technology (ODT), Khon Kaen University",
         "org_type": "university",
         "province": "Khon Kaen",

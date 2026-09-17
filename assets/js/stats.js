@@ -3,7 +3,7 @@
    ============================================================ */
 
 import {
-  boot, loadJSON, pick, t, num, onLangChange, observeReveal, setUpdated,
+  boot, loadJSON, pick, t, tData, num, onLangChange, observeReveal, setUpdated,
 } from './core.js';
 
 let DATA = null;
@@ -132,7 +132,7 @@ function paintCharts() {
     .sort((a, b) => gpus(b) - gpus(a));
   makeBar('chart-gpu', byGpu.map((s) => s.name), byGpu.map(gpus));
 
-  const region = tally((s) => s.organization?.province || '—');
+  const region = tally((s) => tData('systems.provinceLabels', s.organization?.province) || '—');
   makeDoughnut('chart-region', region.map(([k]) => k), region.map(([, v]) => v));
 
   const orgType = tally((s) => {
