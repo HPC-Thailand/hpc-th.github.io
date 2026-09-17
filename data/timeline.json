@@ -179,7 +179,7 @@
         "en": "Computational Science and Engineering Association (CSEA) — unofficial"
       },
       "body": {
-        "th": "นักวิจัย นักวิทยาศาสตร์ วิศวกรและนักวิทยาการคอมพิวเตอร์ รวมตัวกันเป็นสมาคมวิทยาการและวิศวกรรมเชิงคอมพิวเตอร์",
+        "th": "นักวิจัย นักวิทยาศาสตร์ วิศวกรและนักวิทยาการคอมพิวเตอร์ รวมตัวกันเป็นสมาคมวิทยาการและวิศวกรรมเชิงคำนวณ",
         "en": "Researchers, scientists, engineers and computer scientists come together as an informal computational science and engineering community."
       },
       "tags": ["CSEA", "Community"],
@@ -193,7 +193,7 @@
       "category": "software",
       "title": { "th": "เริ่มโครงการ SMILE", "en": "SMILE project started" },
       "body": {
-        "th": "โดย อ.ปุจฉง อุทัยโยภาส (Aj. Putchong Uthayopas) และ อ.สุรศักดิ์ สงวนพงษ์ (Aj. Surasak Sanguanpong)",
+        "th": "โดย อ.ภุชงค์ อุทโยภาศ (Aj. Putchong Uthayopas) และ อ.สุรศักดิ์ สงวนพงษ์ (Aj. Surasak Sanguanpong)",
         "en": "By Aj. Putchong Uthayopas and Aj. Surasak Sanguanpong."
       },
       "tags": ["SMILE", "KU", "Open Source"],
@@ -315,7 +315,7 @@
         "en": "Computational Science and Engineering Association (CSEA) — official"
       },
       "body": {
-        "th": "จัดตั้งสมาคมวิทยาการและวิศวกรรมเชิงคอมพิวเตอร์อย่างเป็นทางการ",
+        "th": "จัดตั้งสมาคมวิทยาการและวิศวกรรมเชิงคำนวณอย่างเป็นทางการ",
         "en": "The computational science and engineering association is formally established."
       },
       "tags": ["CSEA", "Community"],

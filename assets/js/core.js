@@ -76,6 +76,17 @@ export function t(path, vars) {
 }
 
 /**
+ * Localise a value that comes from a data file (province, enum…).
+ * `dict` is the ui.json path of a `{ value: {th, en} }` map; anything the map
+ * does not cover falls back to the raw value with underscores as spaces.
+ */
+export function tData(dict, value) {
+  if (value == null || value === '') return '';
+  const map = dict.split('.').reduce((o, k) => (o == null ? o : o[k]), UI);
+  return pick(map?.[value]) || String(value).replace(/_/g, ' ');
+}
+
+/**
  * Localise static markup.
  *   <span data-i18n="nav.timeline"></span>
  *   <input data-i18n-attr="placeholder:timeline.searchPlaceholder">

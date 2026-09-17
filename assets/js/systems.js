@@ -3,7 +3,7 @@
    ============================================================ */
 
 import {
-  boot, loadJSON, pick, t, esc, num, onLangChange, observeReveal, setUpdated,
+  boot, loadJSON, pick, t, tData, esc, num, onLangChange, observeReveal, setUpdated,
 } from './core.js';
 
 let DATA = null;
@@ -28,8 +28,6 @@ function specRow(label, value) {
   return `<div class="sys-spec"><dt>${label}</dt><dd>${value}</dd></div>`;
 }
 
-const enumLabel = (v) => String(v).replace(/_/g, ' ');
-
 function typeLines(items, fmt) {
   return items.map((x, i) => (i ? '<br>' : '') + fmt(x)).join('');
 }
@@ -45,7 +43,8 @@ function storageLine(s) {
 
 function softwareLine(s) {
   const sw = s.software_stack;
-  return [esc(sw.os), enumLabel(sw.scheduler), ...sw.frameworks.map(esc)].filter(Boolean).join(' · ');
+  return [esc(sw.os), esc(tData('systems.schedulerLabels', sw.scheduler)), ...sw.frameworks.map(esc)]
+    .filter(Boolean).join(' · ');
 }
 
 function performanceLine(s) {
@@ -58,7 +57,10 @@ function performanceLine(s) {
 }
 
 function accessLine(s) {
-  return [enumLabel(s.access.model), ...s.access.user_base.map(enumLabel)].join(' · ');
+  return [
+    tData('systems.accessLabels', s.access.model),
+    ...s.access.user_base.map((u) => tData('systems.userBaseLabels', u)),
+  ].map(esc).join(' · ');
 }
 
 function cardMarkup(s) {
@@ -79,11 +81,11 @@ function cardMarkup(s) {
       : '',
     specRow(t('systems.storage'), storageLine(s)),
     specRow(t('systems.network'), `${esc(s.network.interconnect_type)} <span class="text-muted">${num(s.network.bandwidth_gbps)} Gb/s</span>`),
-    specRow(t('systems.cooling'), esc(s.cooling)),
+    specRow(t('systems.cooling'), esc(tData('systems.coolingLabels', s.cooling))),
     specRow(t('systems.software'), softwareLine(s)),
     specRow(t('systems.performance'), performanceLine(s)),
     specRow(t('systems.access'), accessLine(s)),
-    org ? specRow(t('systems.location'), esc(org.province)) : '',
+    org ? specRow(t('systems.location'), esc(tData('systems.provinceLabels', org.province))) : '',
   ].join('');
 
   const foot = [
@@ -123,7 +125,7 @@ function filtered() {
     if (!q) return true;
     return [
       s.name, org?.name_th, org?.name_en, s.vendor, s.storage.filesystem,
-      s.network.interconnect_type, org?.province,
+      s.network.interconnect_type, org?.province, tData('systems.provinceLabels', org?.province),
       ...cpuModels(s), ...gpuModels(s),
     ].filter(Boolean).join(' ').toLowerCase().includes(q);
   });
