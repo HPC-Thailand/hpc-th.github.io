@@ -24,11 +24,10 @@
 <link rel="apple-touch-icon" href="/favicon/apple-touch-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#16181C">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-thai-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-thai-400-thai.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/vendor/leaflet-1.9.4/leaflet.css">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>
   try { document.documentElement.dataset.theme =
@@ -231,8 +230,7 @@
 </main>
 
 <footer class="site-footer" id="site-footer"></footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="/assets/vendor/leaflet-1.9.4/leaflet.js"></script>
 <script type="module" src="/assets/js/systems.js"></script>
 </body>
 </html>

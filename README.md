@@ -94,7 +94,9 @@ _The history and landscape of high performance computing in Thailand._
 ├── historical/page png/  สไลด์ต้นฉบับความละเอียดเต็ม (4K)
 ├── tools/
 │   ├── validate-data.mjs  ตรวจความถูกต้องของ JSON
-│   └── prerender.mjs      อบข้อมูลลง HTML + สร้าง /en/, sitemap, llms.txt
+│   ├── prerender.mjs      อบข้อมูลลง HTML + สร้าง /en/, sitemap, llms.txt
+│   ├── fetch-fonts.mjs    ดึงฟอนต์มาเก็บเอง
+│   └── fetch-vendor.mjs   ดึงไลบรารี JS มาเก็บเอง
 └── docs/                 คู่มือ deploy และการเพิ่ม subdomain
 ```
 
@@ -137,6 +139,35 @@ node tools/validate-data.mjs
 ```
 
 GitHub Actions รันคำสั่งนี้อัตโนมัติกับทุก PR ที่แตะ `data/`
+
+## ทุกอย่างเสิร์ฟจากโดเมนตัวเอง
+
+เว็บนี้ไม่มี request ออกนอก `hpc.in.th` เลย ยกเว้นแผนที่ (tile ของ OpenStreetMap)
+
+| เดิม | ตอนนี้ |
+| --- | --- |
+| Google Fonts (2 origin, บล็อกการ render) | `assets/fonts/` — 13 ไฟล์ 111 KB |
+| unpkg (Leaflet) | `assets/vendor/leaflet-1.9.4/` |
+| jsDelivr (Chart.js) | `assets/vendor/chart.js-4.4.1/` |
+| cdnjs (PDF.js) | `assets/vendor/pdf.js-4.10.38/` |
+
+เหตุผล: CDN แต่ละเจ้าคือ DNS + TLS เพิ่มหนึ่งรอบ, rate-limit ได้, ล่มได้ และเวอร์ชัน
+ถูกถอดออกได้ การเสิร์ฟเองแลกด้วยพื้นที่ ~2 MB ในรีโป แล้วได้ความแน่นอนว่าเว็บจะอยู่ได้
+นานเท่าที่รีโปยังอยู่ — ไม่มีค่าใช้จ่าย ไม่มีบริการภายนอกให้ต้องดูแล
+
+สคริปต์ทั้งสองปักเวอร์ชันไว้ตายตัว รันใหม่เฉพาะตอนจะอัปเกรด:
+
+```bash
+node tools/fetch-fonts.mjs    # ดึงฟอนต์จาก Google มาเก็บเอง (เฉพาะ subset latin + thai)
+node tools/fetch-vendor.mjs   # ดึง Leaflet / Chart.js / PDF.js มาเก็บเอง
+```
+
+หมายเหตุฟอนต์: ใช้ **IBM Plex Sans Thai** ตัวเดียว ไม่ได้โหลด IBM Plex Sans ด้วย
+เพราะวัดความกว้างข้อความละตินแล้วได้เท่ากันทุกทศนิยม — เดิมโหลดสองตระกูลเพื่อวาด
+ตัวอักษรชุดเดียว ตัดออกแล้วฟอนต์ต่อหน้าเหลือ 21 KB จาก 47 KB
+
+น้ำหนักหน้าแรก (gzip ตามที่ Pages เสิร์ฟจริง): HTML 8.7 + CSS 9.8 + JS 8.1 +
+ข้อมูล 14.8 + ฟอนต์ 21 ≈ **62 KB** ต่อการเข้าครั้งแรก
 
 ## Prerender — ทำไมต้องมีขั้นตอนนี้
 

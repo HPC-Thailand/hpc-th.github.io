@@ -7,8 +7,10 @@
    ourselves and get the same result in every browser.
    ============================================================ */
 
+// Vendored under assets/vendor/ by tools/fetch-vendor.mjs — see the note
+// there on why this is not loaded from a CDN.
 const PDFJS_VERSION = '4.10.38';
-const CDN = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS_VERSION}`;
+const CDN = `/assets/vendor/pdf.js-${PDFJS_VERSION}`;
 
 let pdfjsPromise = null;
 
