@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th" data-theme="light">
+<html lang="th" data-lang="th" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,12 +7,16 @@
 <meta name="description" content="ไทม์ไลน์ประวัติศาสตร์คอมพิวเตอร์สมรรถนะสูง (HPC) ในประเทศไทย ตั้งแต่ IBM 1620 เครื่องแรกในปี 2506 จนถึงยุค AI-HPC — History of high performance computing in Thailand.">
 <meta name="keywords" content="HPC Thailand, ซูเปอร์คอมพิวเตอร์, high performance computing, LANTA, TARA, ThaiSC, NECTEC, NSTDA, AI-HPC, ประวัติศาสตร์ HPC">
 <link rel="canonical" href="https://hpc.in.th/">
+<link rel="alternate" hreflang="th" href="https://hpc.in.th/">
+<link rel="alternate" hreflang="en" href="https://hpc.in.th/en/">
+<link rel="alternate" hreflang="x-default" href="https://hpc.in.th/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hpc.in.th">
 <meta property="og:title" content="ประวัติศาสตร์ HPC ในประเทศไทย">
 <meta property="og:description" content="หกทศวรรษของการประมวลผลสมรรถนะสูงในประเทศไทย — จาก IBM 1620 สู่ยุค AI-HPC">
 <meta property="og:url" content="https://hpc.in.th/">
+<meta property="og:locale" content="th_TH">
 <meta property="og:image" content="https://hpc.in.th/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,9 +27,9 @@
 <link rel="apple-touch-icon" href="/favicon/apple-touch-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#16181C">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-thai-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-thai-400-thai.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>
   // Apply the stored theme before first paint to avoid a flash.
@@ -33,10 +37,312 @@
     localStorage.getItem('hpcth.theme') ||
     (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hpc.in.th/#organization",
+      "name": "HPC Thailand",
+      "url": "https://hpc.in.th",
+      "description": "The history and landscape of high performance computing in Thailand"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hpc.in.th/#website",
+      "url": "https://hpc.in.th",
+      "name": "HPC Thailand",
+      "description": "ประวัติศาสตร์และภูมิทัศน์ของคอมพิวเตอร์สมรรถนะสูงในประเทศไทย",
+      "inLanguage": "th-TH",
+      "publisher": {
+        "@id": "https://hpc.in.th/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hpc.in.th/#webpage",
+      "url": "https://hpc.in.th/",
+      "name": "หกทศวรรษของการประมวลผลสมรรถนะสูงในประเทศไทย",
+      "description": "จาก IBM 1620 เครื่องแรกในปี พ.ศ. 2506 สู่ยุค AI-HPC ระดับเพตาฟลอป — เส้นทางของเครื่อง เครือข่าย และผู้คนที่สร้างโครงสร้างพื้นฐานการคำนวณของประเทศ",
+      "inLanguage": "th-TH",
+      "isPartOf": {
+        "@id": "https://hpc.in.th/#website"
+      },
+      "dateModified": "2026-09-14"
+    },
+    {
+      "@type": "ItemList",
+      "name": "หกทศวรรษของการประมวลผลสมรรถนะสูงในประเทศไทย",
+      "numberOfItems": 44,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "1963 — คอมพิวเตอร์เครื่องแรกในประเทศไทย",
+          "url": "https://hpc.in.th/#e-1963-ibm-1620"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "1986 — กำเนิดอินเทอร์เน็ตไทย",
+          "url": "https://hpc.in.th/#e-1986-thai-internet"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "1991 — ศูนย์ High Performance Computing Center (HPCC)",
+          "url": "https://hpc.in.th/#e-1991-hpcc-nectec"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "1992 — ประเทศไทยออกสู่อินเทอร์เน็ต",
+          "url": "https://hpc.in.th/#e-1992-thaisarn"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "1994 — Supercomputer เครื่องแรกของประเทศไทย",
+          "url": "https://hpc.in.th/#e-1994-cray-el98"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "1995 — สถาบันวิจัยและมหาวิทยาลัยเริ่มจัดซื้อและติดตั้งระบบคอมพิวเตอร์สมรรถนะสูง",
+          "url": "https://hpc.in.th/#e-1995-beowulf"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "1997 — Computational Science and Engineering Association (CSEA) — ไม่เป็นทางการ",
+          "url": "https://hpc.in.th/#e-1997-csea-unofficial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "1997 — เริ่มโครงการ SMILE",
+          "url": "https://hpc.in.th/#e-1997-smile"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "1999 — The PIRUN Cluster",
+          "url": "https://hpc.in.th/#e-1999-pirun"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "2001 — จุดเริ่มต้นของ ThaiGrid project (TNGP)",
+          "url": "https://hpc.in.th/#e-2001-thaigrid"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "2003 — เริ่มต้น Thai e-Science Project",
+          "url": "https://hpc.in.th/#e-2003-thai-escience"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "2006 — Thai National Grid Center (TNGC)",
+          "url": "https://hpc.in.th/#e-2006-tngc"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "2007 — Tera Cluster — TNGC",
+          "url": "https://hpc.in.th/#e-2007-tera-cluster"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "2007 — Computational Science and Engineering Association (CSEA) — เป็นทางการ",
+          "url": "https://hpc.in.th/#e-2007-csea-official"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "2008 — ThaiGrid project (TNGP) — ดำเนินการสำเร็จ",
+          "url": "https://hpc.in.th/#e-2008-tngp-outcome"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "name": "2008 — ยุค 1 TeraFlops",
+          "url": "https://hpc.in.th/#e-2008-sila"
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "name": "2009 — ยุค 10 TeraFlops",
+          "url": "https://hpc.in.th/#e-2009-eclipse"
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "name": "2010 — Thai National Grid Center (TNGC) — ยุติการดำเนินงาน",
+          "url": "https://hpc.in.th/#e-2010-tngc-end"
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "name": "2011 — กำเนิด National e-Science Infrastructure Consortium",
+          "url": "https://hpc.in.th/#e-2011-escience-consortium"
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "name": "2012 — ยุคของ UniNet2 — NEdNet P1, MOENet, VECNet",
+          "url": "https://hpc.in.th/#e-2012-uninet2"
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "name": "2013 — National e-Science Infrastructure Consortium",
+          "url": "https://hpc.in.th/#e-2013-escience-research"
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "name": "2014 — เชื่อมต่อกับเครื่องเร่งอนุภาค LHC ที่ CERN สำเร็จ",
+          "url": "https://hpc.in.th/#e-2014-cern-lhc"
+        },
+        {
+          "@type": "ListItem",
+          "position": 23,
+          "name": "2015 — มีหน่วยงานเข้าร่วมอีก 2 หน่วยงาน",
+          "url": "https://hpc.in.th/#e-2015-ega-narit"
+        },
+        {
+          "@type": "ListItem",
+          "position": 24,
+          "name": "2016 — Chalawan HPC Cluster (Castor)",
+          "url": "https://hpc.in.th/#e-2016-chalawan"
+        },
+        {
+          "@type": "ListItem",
+          "position": 25,
+          "name": "2017 — มีสมาชิกเป็นหน่วยงานสามัญเพิ่มอีก 2 หน่วยงาน",
+          "url": "https://hpc.in.th/#e-2017-tint-slri"
+        },
+        {
+          "@type": "ListItem",
+          "position": 26,
+          "name": "2018 — National e-Science Infrastructure Consortium — สมาชิกรวม 9 หน่วยงาน",
+          "url": "https://hpc.in.th/#e-2018-escience-9"
+        },
+        {
+          "@type": "ListItem",
+          "position": 27,
+          "name": "2018 — IST HPC Cluster",
+          "url": "https://hpc.in.th/#e-2018-ist-vistec"
+        },
+        {
+          "@type": "ListItem",
+          "position": 28,
+          "name": "2018 — HPC-WRF",
+          "url": "https://hpc.in.th/#e-2018-hpc-wrf-tmd"
+        },
+        {
+          "@type": "ListItem",
+          "position": 29,
+          "name": "2019 — กำเนิด NSTDA Supercomputer Center (ThaiSC)",
+          "url": "https://hpc.in.th/#e-2019-thaisc"
+        },
+        {
+          "@type": "ListItem",
+          "position": 30,
+          "name": "2019 — TARA HPC Cluster",
+          "url": "https://hpc.in.th/#e-2019-tara"
+        },
+        {
+          "@type": "ListItem",
+          "position": 31,
+          "name": "2020 — ปีแห่งการเปลี่ยนแปลง",
+          "url": "https://hpc.in.th/#e-2020-year-of-change"
+        },
+        {
+          "@type": "ListItem",
+          "position": 32,
+          "name": "2020 — Thailand A.I. University Consortium",
+          "url": "https://hpc.in.th/#e-2020-ai-university-consortium"
+        },
+        {
+          "@type": "ListItem",
+          "position": 33,
+          "name": "2020 — มหาวิทยาลัยซีเอ็มเคแอลติดตั้งระบบ NVIDIA DGX POD (APEX)",
+          "url": "https://hpc.in.th/#e-2020-apex-cmkl"
+        },
+        {
+          "@type": "ListItem",
+          "position": 34,
+          "name": "2021 — ERAWAN HPC",
+          "url": "https://hpc.in.th/#e-2021-erawan"
+        },
+        {
+          "@type": "ListItem",
+          "position": 35,
+          "name": "2021 — PSU HPC",
+          "url": "https://hpc.in.th/#e-2021-psu-hpc"
+        },
+        {
+          "@type": "ListItem",
+          "position": 36,
+          "name": "2021 — KKU HPC",
+          "url": "https://hpc.in.th/#e-2021-kku-hpc"
+        },
+        {
+          "@type": "ListItem",
+          "position": 37,
+          "name": "2021 — MU HPC",
+          "url": "https://hpc.in.th/#e-2021-mu-hpc"
+        },
+        {
+          "@type": "ListItem",
+          "position": 38,
+          "name": "2022 — LANTA Supercomputer",
+          "url": "https://hpc.in.th/#e-2022-lanta"
+        },
+        {
+          "@type": "ListItem",
+          "position": 39,
+          "name": "2022 — ChatGPT เปิดตัว",
+          "url": "https://hpc.in.th/#e-2022-chatgpt"
+        },
+        {
+          "@type": "ListItem",
+          "position": 40,
+          "name": "2023 — AI is everywhere",
+          "url": "https://hpc.in.th/#e-2023-ai-everywhere"
+        },
+        {
+          "@type": "ListItem",
+          "position": 41,
+          "name": "2024 — THE CRUST 2.5",
+          "url": "https://hpc.in.th/#e-2024-crust-25"
+        },
+        {
+          "@type": "ListItem",
+          "position": 42,
+          "name": "2024 — KU Nontri AI HPC",
+          "url": "https://hpc.in.th/#e-2024-ku-nontri"
+        },
+        {
+          "@type": "ListItem",
+          "position": 43,
+          "name": "2024 — ก่อตั้งบริษัท SIAM.AI",
+          "url": "https://hpc.in.th/#e-2024-siam-ai"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
-<a class="skip-link" href="#main" data-i18n="nav.skip">ข้ามไปยังเนื้อหาหลัก</a>
+<a class="skip-link" href="#main" data-i18n="nav.skip"><!--prerender-->ข้ามไปยังเนื้อหาหลัก<!--/prerender--></a>
 <header class="site-header" id="site-header"></header>
 
 <main id="main">
@@ -44,27 +350,39 @@
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow" data-i18n="home.eyebrow"></span>
-        <h1 data-i18n="home.title"></h1>
-        <p class="lead" data-i18n="home.lead"></p>
+        <span class="eyebrow" data-i18n="home.eyebrow"><!--prerender-->ประวัติศาสตร์ HPC ประเทศไทย<!--/prerender--></span>
+        <h1 data-i18n="home.title"><!--prerender-->หกทศวรรษของการประมวลผลสมรรถนะสูงในประเทศไทย<!--/prerender--></h1>
+        <p class="lead" data-i18n="home.lead"><!--prerender-->จาก IBM 1620 เครื่องแรกในปี พ.ศ. 2506 สู่ยุค AI-HPC ระดับเพตาฟลอป — เส้นทางของเครื่อง เครือข่าย และผู้คนที่สร้างโครงสร้างพื้นฐานการคำนวณของประเทศ<!--/prerender--></p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#timeline-section" data-i18n="home.ctaTimeline"></a>
-          <a class="btn btn-ghost" href="/submit/" data-i18n="home.ctaSubmit"></a>
+          <a class="btn btn-primary" href="#timeline-section" data-i18n="home.ctaTimeline"><!--prerender-->ดูไทม์ไลน์<!--/prerender--></a>
+          <a class="btn btn-ghost" href="/submit/" data-i18n="home.ctaSubmit"><!--prerender-->ส่งข้อมูลระบบของคุณ<!--/prerender--></a>
         </div>
       </div>
-      <div class="hero-stats" id="hero-stats"></div>
+      <div class="hero-stats" id="hero-stats"><!--prerender-->
+<div class="stat-card"><b>63</b><span>ปีของประวัติศาสตร์</span></div>
+<div class="stat-card"><b>43</b><span>เหตุการณ์สำคัญ</span></div>
+<div class="stat-card"><b>4</b><span>ยุคของ HPC</span></div>
+<div class="stat-card"><b>11</b><span>ระบบที่เปิดให้บริการ</span></div>
+<!--/prerender--></div>
     </div>
   </section>
 
   <section class="section" id="timeline-section">
     <div class="tl-controls">
       <div class="container tl-controls-inner">
-        <div class="chips" id="era-chips" role="group" aria-label="Era filter"></div>
+        <div class="chips" id="era-chips" role="group" aria-label="Era filter"><!--prerender-->
+<span class="chip">ทั้งหมด</span>
+<span class="chip">ยุคบุกเบิก</span>
+<span class="chip">ยุคที่ 1</span>
+<span class="chip">ยุคที่ 2</span>
+<span class="chip">ยุคที่ 3</span>
+<span class="chip">ยุคที่ 4</span>
+<!--/prerender--></div>
         <div class="search-field">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
           </svg>
-          <label class="visually-hidden" for="tl-search" data-i18n="timeline.searchLabel"></label>
+          <label class="visually-hidden" for="tl-search" data-i18n="timeline.searchLabel"><!--prerender-->ค้นหาในไทม์ไลน์<!--/prerender--></label>
           <input type="search" id="tl-search" autocomplete="off"
                  data-i18n-attr="placeholder:timeline.searchPlaceholder">
         </div>
@@ -82,15 +400,252 @@
             <a href="/data/timeline.json">data/timeline.json</a>.</p>
         </div>
       </noscript>
-      <div class="timeline" id="timeline"></div>
+      <div class="timeline" id="timeline"><!--prerender-->
+<article class="tl-item" data-kind="milestone" id="e-1963-ibm-1620">
+  <h3>1963 (พ.ศ. 2506) — คอมพิวเตอร์เครื่องแรกในประเทศไทย</h3>
+  <p>IBM 1620</p>
+  <p>อาคารศูนย์คำนวณสถิติ (ตึก 9) ภาควิชาสถิติ คณะพาณิชยศาสตร์และการบัญชี จุฬาลงกรณ์มหาวิทยาลัย</p>
+</article>
+<section class="tl-item" data-kind="era" id="e-1980-gen1">
+  <h2>1980 · กำเนิดยุคแห่งงานวิจัยด้าน Computer Science</h2>
+  <p><strong>ยุคที่ 1</strong> — กำเนิดยุคแห่งงานวิจัยด้าน Computer Science</p>
+  <p>First Generation: The dawn of HPC</p>
+</section>
+<article class="tl-item" data-kind="milestone" id="e-1986-thai-internet">
+  <h3>1986 (พ.ศ. 2529) — กำเนิดอินเทอร์เน็ตไทย</h3>
+  <p>intERLab, AIT</p>
+  <p>ถือกำเนิดโดย ศ.ดร.กาญจนา กาญจนสุต — โครงข่ายเชื่อมต่อจาก AIT ไปยัง Melbourne</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-1991-hpcc-nectec">
+  <h3>1991 (พ.ศ. 2534) — ศูนย์ High Performance Computing Center (HPCC)</h3>
+  <p>โดย National Electronics and Computer Technology Center (NECTEC), NSTDA</p>
+  <p><a href="https://www.nectec.or.th/" rel="noopener">https://www.nectec.or.th/</a></p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-1992-thaisarn">
+  <h3>1992 (พ.ศ. 2535) — ประเทศไทยออกสู่อินเทอร์เน็ต</h3>
+  <p>กำเนิดเครือข่ายวิจัยของสถาบัน ไทยสาร-1 (ThaiSarn 1) — AIT, CU, PSU, KU, NECTEC</p>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-1994-cray-el98">
+  <h3>1994 (พ.ศ. 2537) — Supercomputer เครื่องแรกของประเทศไทย</h3>
+  <p>CRAY EL98</p>
+  <p>HPCC, NECTEC, NSTDA</p>
+  <ul><li>โปรเซสเซอร์: 8</li><li>หน่วยความจำ: 2 GB DRAM</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-1995-beowulf">
+  <h3>1995 (พ.ศ. 2538) — สถาบันวิจัยและมหาวิทยาลัยเริ่มจัดซื้อและติดตั้งระบบคอมพิวเตอร์สมรรถนะสูง</h3>
+  <p>แนวคิดของ BEOWULF cluster กำเนิดขึ้น</p>
+  <p>KU | KMUTT | KMITL | TMD</p>
+  <p>มีระบบที่หลากหลาย IBM SP2 / IBM RS600 / SUN SPARC / HP (Convex) / DEC Alpha</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-1997-csea-unofficial">
+  <h3>1997 (พ.ศ. 2540) — Computational Science and Engineering Association (CSEA) — ไม่เป็นทางการ</h3>
+  <p>นักวิจัย นักวิทยาศาสตร์ วิศวกรและนักวิทยาการคอมพิวเตอร์ รวมตัวกันเป็นสมาคมวิทยาการและวิศวกรรมเชิงคำนวณ</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-1997-smile">
+  <h3>1997 (พ.ศ. 2540) — เริ่มโครงการ SMILE</h3>
+  <p>โดย อ.ภุชงค์ อุทโยภาศ (Aj. Putchong Uthayopas) และ อ.สุรศักดิ์ สงวนพงษ์ (Aj. Surasak Sanguanpong)</p>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-1999-pirun">
+  <h3>1999 (พ.ศ. 2542) — The PIRUN Cluster</h3>
+  <p>PIRUN — Pile of Inexpensive and Redundant Universal Nodes</p>
+  <p>มหาวิทยาลัยเกษตรศาสตร์ (KU)</p>
+  <p>ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทยในขณะนั้น พร้อมชุดเครื่องมือ SMILE Cluster Management System (SCMS) และ SQMS toolkit</p>
+</article>
+<section class="tl-item" data-kind="era" id="e-2000-gen2">
+  <h2>2000 · ระบบกริดถือกำเนิดขึ้น</h2>
+  <p><strong>ยุคที่ 2</strong> — ระบบกริดถือกำเนิดขึ้น</p>
+  <p>Second Generation: Grid Computing</p>
+</section>
+<article class="tl-item" data-kind="milestone" id="e-2001-thaigrid">
+  <h3>2001 (พ.ศ. 2544) — จุดเริ่มต้นของ ThaiGrid project (TNGP)</h3>
+  <p>ระบบกริดแรกที่เชื่อมต่อระหว่าง KU กับ KMUTNB ต่อมามีสมาชิกเพิ่มเติมคือ AIT, CU, KU, KMUTNB, KMUTT, KMITL, SUT, TMD, CMU, KKU, WU และ PSU</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2003-thai-escience">
+  <h3>2003 (พ.ศ. 2546) — เริ่มต้น Thai e-Science Project</h3>
+  <ul><li>Computational Chemistry, Department of Chemistry, CU</li><li>Department of Computer Engineering, CU</li><li>HPCNC, KU</li></ul>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-2006-tngc">
+  <h3>2006 (พ.ศ. 2549) — Thai National Grid Center (TNGC)</h3>
+  <p>จัดตั้งศูนย์ไทยกริดแห่งชาติ โดย Software Industry Promotion Agency (Public Organization) — SIPA ร่วมกับ IBM</p>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-2007-tera-cluster">
+  <h3>2007 (พ.ศ. 2550) — Tera Cluster — TNGC</h3>
+  <p>เป็นระบบคอมพิวเตอร์คลัสเตอร์ที่เร็วที่สุดในประเทศไทย 2.5 TeraFlops</p>
+  <ul><li>สมรรถนะ: 2.5 TFlops</li><li>โหนด: 200 (800 cores)</li><li>ระบบไฟล์: Lustre 5 TB</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2007-csea-official">
+  <h3>2007 (พ.ศ. 2550) — Computational Science and Engineering Association (CSEA) — เป็นทางการ</h3>
+  <p>จัดตั้งสมาคมวิทยาการและวิศวกรรมเชิงคำนวณอย่างเป็นทางการ</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2008-tngp-outcome">
+  <h3>2008 (พ.ศ. 2551) — ThaiGrid project (TNGP) — ดำเนินการสำเร็จ</h3>
+  <ul><li>เครือข่ายมหาวิทยาลัย 22 แห่ง</li><li>ฝึกทักษะให้กับบุคลากรมากกว่า 2,000 คน</li><li>กระบวนการถ่ายทอดเทคโนโลยีผ่านการจัดกิจกรรม สัมมนาวิชาการ และงานวิจัยต่างๆ</li><li>ปัญหาด้านงบประมาณทำให้โครงการดำเนินต่อไปได้อีกไม่นาน</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2008-sila">
+  <h3>2008 (พ.ศ. 2551) — ยุค 1 TeraFlops</h3>
+  <p>SILA Cluster</p>
+  <p>ศูนย์คอมพิวเตอร์ประมวลผลสมรรถนะสูงเพื่อการวิจัย สถาบันวิจัยและพัฒนา มหาวิทยาลัยรามคำแหง (RU)</p>
+  <ul><li>สมรรถนะ: 1 TFlops</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2009-eclipse">
+  <h3>2009 (พ.ศ. 2552) — ยุค 10 TeraFlops</h3>
+  <p>Eclipse Cluster</p>
+  <p>BIOTEC, NSTDA</p>
+  <ul><li>สมรรถนะ: 10 TFlops</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2010-tngc-end">
+  <h3>2010 (พ.ศ. 2553) — Thai National Grid Center (TNGC) — ยุติการดำเนินงาน</h3>
+  <p>ศูนย์ไทยกริดแห่งชาติปิดตัวลง และสิ้นสุดการดำเนินโครงการ ThaiGrid project (TNGP)</p>
+</article>
+<section class="tl-item" data-kind="era" id="e-2011-gen3">
+  <h2>2011 · ยุคโครงข่ายการเชื่อมต่อและการประมวลผลบนเครือข่ายขนาดใหญ่</h2>
+  <p><strong>ยุคที่ 3</strong> — UniNet2 และ National e-Science Infrastructure Consortium</p>
+  <p>Third Generation: UniNet2 and National e-Science Infrastructure Consortium</p>
+</section>
+<article class="tl-item" data-kind="highlight" id="e-2011-escience-consortium">
+  <h3>2011 (พ.ศ. 2554) — กำเนิด National e-Science Infrastructure Consortium</h3>
+  <p>ตามพระราชดำริของสมเด็จพระกนิษฐาธิราชเจ้า กรมสมเด็จพระเทพรัตนราชสุดาฯ สยามบรมราชกุมารี ภายใต้โครงการไทย-เซิร์น ก่อตั้งขึ้นเมื่อวันที่ 27 กันยายน พ.ศ. 2554 โดย MoU จาก 5 หน่วยงาน</p>
+  <ul><li>สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ (NSTDA)</li><li>จุฬาลงกรณ์มหาวิทยาลัย (CU)</li><li>มหาวิทยาลัยเทคโนโลยีสุรนารี (SUT)</li><li>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี (KMUTT)</li><li>สถาบันสารสนเทศทรัพยากรน้ำและการเกษตร (องค์การมหาชน) (HAII)</li></ul>
+  <ul><li>CPU cores: 360</li><li>สตอเรจ: 350 TB</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2012-uninet2">
+  <h3>2012 (พ.ศ. 2555) — ยุคของ UniNet2 — NEdNet P1, MOENet, VECNet</h3>
+  <p>Backbone ของระบบที่ความเร็ว 50 Gbps โดยมีกระทรวงศึกษาธิการเป็นผู้ดูแล</p>
+  <ul><li>แบนด์วิดท์: 50 Gbps</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2013-escience-research">
+  <h3>2013 (พ.ศ. 2556) — National e-Science Infrastructure Consortium</h3>
+  <p>ดำเนินการวิจัยพัฒนาโครงสร้างพื้นฐานด้านการคำนวณ</p>
+  <ul><li>ฟิสิกส์อนุภาคพลังงานสูง (High Energy Particle Physics)</li><li>วิทยาการและวิศวกรรมเชิงคำนวณ (Computational Science and Engineering)</li><li>วิทยาการและวิศวกรรมคอมพิวเตอร์ (Computer Science and Engineering)</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2014-cern-lhc">
+  <h3>2014 (พ.ศ. 2557) — เชื่อมต่อกับเครื่องเร่งอนุภาค LHC ที่ CERN สำเร็จ</h3>
+  <p>ดำเนินการประมวลผลข้อมูลส่งต่อในระดับ Tier 2 และ Tier 3 ของ WLCG</p>
+  <ul><li>CPU cores: 1,960</li><li>สตอเรจ: 675 TB</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2015-ega-narit">
+  <h3>2015 (พ.ศ. 2558) — มีหน่วยงานเข้าร่วมอีก 2 หน่วยงาน</h3>
+  <ul><li>สำนักงานพัฒนารัฐบาลดิจิทัล (องค์การมหาชน) — EGA / DGA</li><li>สถาบันวิจัยดาราศาสตร์แห่งชาติ (องค์การมหาชน) — NARIT</li></ul>
+  <ul><li>CPU cores: 2,672</li><li>สตอเรจ: 597 TB</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2016-chalawan">
+  <h3>2016 (พ.ศ. 2559) — Chalawan HPC Cluster (Castor)</h3>
+  <p>สถาบันวิจัยดาราศาสตร์แห่งชาติ (องค์การมหาชน) — NARIT</p>
+  <p><a href="https://www.narit.or.th/" rel="noopener">https://www.narit.or.th/</a></p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2017-tint-slri">
+  <h3>2017 (พ.ศ. 2560) — มีสมาชิกเป็นหน่วยงานสามัญเพิ่มอีก 2 หน่วยงาน</h3>
+  <ul><li>สถาบันเทคโนโลยีนิวเคลียร์แห่งชาติ (องค์การมหาชน) — TINT</li><li>สถาบันวิจัยแสงซินโครตรอน (องค์การมหาชน) — SLRI</li></ul>
+  <ul><li>CPU cores: 3,424</li><li>สตอเรจ: 1,171 TB</li></ul>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-2018-escience-9">
+  <h3>2018 (พ.ศ. 2561) — National e-Science Infrastructure Consortium — สมาชิกรวม 9 หน่วยงาน</h3>
+  <p>ทรัพยากรรวมของคอนซอร์เทียม กระจายอยู่ที่ CU, EGA, HAII, KMUTT, NARIT, NSTDA, SLRI, SUT และ TINT</p>
+  <ul><li>CPU cores: 4,100</li><li>สตอเรจ: 1,254.6 TB</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2018-ist-vistec">
+  <h3>2018 (พ.ศ. 2561) — IST HPC Cluster</h3>
+  <p>School of Information and Science Technology (IST), VISTEC</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2018-hpc-wrf-tmd">
+  <h3>2018 (พ.ศ. 2561) — HPC-WRF</h3>
+  <p>กรมอุตุนิยมวิทยา (TMD)</p>
+</article>
+<section class="tl-item" data-kind="era" id="e-2019-gen4">
+  <h2>2019 · ยุคแห่ง Supercomputer และ AI-HPC</h2>
+  <p><strong>ยุคที่ 4</strong> — ยุคแห่ง Supercomputer และ AI-HPC</p>
+  <p>The Fourth Generation?</p>
+</section>
+<article class="tl-item" data-kind="highlight" id="e-2019-thaisc">
+  <h3>2019 (พ.ศ. 2562) — กำเนิด NSTDA Supercomputer Center (ThaiSC)</h3>
+  <p>ก่อตั้งโดย National S&amp;T Infrastructure (NSTI), NSTDA</p>
+  <p><a href="https://thaisc.io/" rel="noopener">https://thaisc.io/</a></p>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-2019-tara">
+  <h3>2019 (พ.ศ. 2562) — TARA HPC Cluster</h3>
+  <p>NSTDA Supercomputer Center (ThaiSC), NSTDA</p>
+  <p>ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทยในขณะนั้น ประกอบด้วย compute node, high-memory node, GPU node (NVIDIA Tesla V100) และ DGX node</p>
+  <ul><li>CPU cores: 4,320</li><li>สตอเรจ: 800 TB</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2020-year-of-change">
+  <h3>2020 (พ.ศ. 2563) — ปีแห่งการเปลี่ยนแปลง</h3>
+  <p>TARA Cluster เข้ามาเป็นทรัพยากรสำคัญในระบบของ National e-Science Infrastructure Consortium</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2020-ai-university-consortium">
+  <h3>2020 (พ.ศ. 2563) — Thailand A.I. University Consortium</h3>
+  <p>MoU ระหว่าง 6 มหาวิทยาลัย 2 หน่วยทุน และ 1 บริษัท ได้แก่ NVIDIA, MHESI, PMU-C, CMKL, KMITL, CU, MU, KKU และ PSU</p>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-2020-apex-cmkl">
+  <h3>2020 (พ.ศ. 2563) — มหาวิทยาลัยซีเอ็มเคแอลติดตั้งระบบ NVIDIA DGX POD (APEX)</h3>
+  <p>CMKL University</p>
+  <p>ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทย กำลังประมวลผล 30 Petaflops AI นับเป็นระบบขนาดใหญ่ในเอเชียตะวันออกเฉียงใต้</p>
+  <ul><li>สมรรถนะ AI: 30 PFlops</li></ul>
+</article>
+<section class="tl-item" data-kind="era" id="e-2021-regional-ai-hpc">
+  <h2>2021 · Regional AI-HPC</h2>
+  <p><strong>ยุคที่ 4</strong> — ยุคแห่ง Supercomputer และ AI-HPC</p>
+  <p>มหาวิทยาลัยภูมิภาคเริ่มมีระบบ HPC ของตัวเอง</p>
+</section>
+<article class="tl-item" data-kind="milestone" id="e-2021-erawan">
+  <h3>2021 (พ.ศ. 2564) — ERAWAN HPC</h3>
+  <p>สำนักบริการเทคโนโลยีสารสนเทศ (ITSC), มหาวิทยาลัยเชียงใหม่</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2021-psu-hpc">
+  <h3>2021 (พ.ศ. 2564) — PSU HPC</h3>
+  <p>มหาวิทยาลัยสงขลานครินทร์ (PSU)</p>
+  <p>ระบบ Hybrid Cluster ที่รวม Kubernetes และ Slurm ไว้ด้วยกัน พร้อมสตอเรจ IBM Spectrum Scale</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2021-kku-hpc">
+  <h3>2021 (พ.ศ. 2564) — KKU HPC</h3>
+  <p>สำนักเทคโนโลยีดิจิทัล (ODT), มหาวิทยาลัยขอนแก่น</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2021-mu-hpc">
+  <h3>2021 (พ.ศ. 2564) — MU HPC</h3>
+  <p>MU-AI Center, มหาวิทยาลัยมหิดล</p>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-2022-lanta">
+  <h3>2022 (พ.ศ. 2565) — LANTA Supercomputer</h3>
+  <p>NSTDA Supercomputer Center (ThaiSC), NSTDA</p>
+  <p>ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทยและในอาเซียน ติดอันดับที่ 70 ของ TOP500 (HPE Cray EX235n, AMD EPYC 7713 64C 2GHz, NVIDIA A100 40GB, Slingshot-11)</p>
+  <ul><li>อันดับ TOP500: #70</li><li>Linpack: 8.15 PFlop/s</li><li>CPU cores: 31,744</li><li>GPU: 704 × A100</li></ul>
+  <p><a href="https://thaisc.io/thaisc-resorces/lanta" rel="noopener">https://thaisc.io/thaisc-resorces/lanta</a></p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2022-chatgpt">
+  <h3>2022 (พ.ศ. 2565) — ChatGPT เปิดตัว</h3>
+  <p>30 พฤศจิกายน 2565 — OpenAI</p>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-2023-ai-everywhere">
+  <h3>2023 (พ.ศ. 2566) — AI is everywhere</h3>
+  <ul><li>นักวิจัย นักพัฒนา และหน่วยงานทั่วโลกให้ความสนใจ AI</li><li>วงการ GPGPU / HPC มีความก้าวกระโดดในการพัฒนา chip เร่งการประมวลผล</li><li>ความต้องการ HPC / AI-HPC สูงเป็นประวัติการณ์</li><li>ความต้องการกำลังคนในสายงาน AI Engineer / Data Engineer / DevOps สูงขึ้นมาก</li><li>ในทางกลับกัน กำลังคนด้าน Operation เช่น System Engineer / Network Engineer ขาดแคลนอย่างมาก</li><li>การลงทุนด้านโครงสร้างพื้นฐาน AI / HPC ในไทยขาดความต่อเนื่อง</li></ul>
+</article>
+<article class="tl-item" data-kind="highlight" id="e-2024-crust-25">
+  <h3>2024 (พ.ศ. 2567) — THE CRUST 2.5</h3>
+  <p>บริษัท ปตท.สำรวจและผลิตปิโตรเลียม จำกัด (มหาชน) — PTTEP</p>
+  <p>ซูเปอร์คอมพิวเตอร์ที่เร็วที่สุดในประเทศไทย ระบบระบายความร้อนด้วยของเหลว</p>
+  <ul><li>CPU cores: 47,360</li><li>GPU: 512 × H100</li></ul>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2024-ku-nontri">
+  <h3>2024 (พ.ศ. 2567) — KU Nontri AI HPC</h3>
+  <p>สำนักบริการคอมพิวเตอร์ (OSC), มหาวิทยาลัยเกษตรศาสตร์</p>
+</article>
+<article class="tl-item" data-kind="milestone" id="e-2024-siam-ai">
+  <h3>2024 (พ.ศ. 2567) — ก่อตั้งบริษัท SIAM.AI</h3>
+  <p>Exascale Computing — บริษัทแรกในประเทศไทย มีคลัสเตอร์ประสิทธิภาพสูงหลายระบบที่ติดอันดับต้นๆ ในอาเซียน (DC SuperNAP: Hopper H100 1K, DC OneAsia: Hopper H200 1K, DC STT: Grace Blackwell GB200 3.5K)</p>
+  <ul><li>GB200 (DC STT): 155.52 PFlops</li></ul>
+</article>
+<article class="tl-item" data-kind="open" id="e-next">
+  <h3>แล้ว HPC / AI-HPC ยุคถัดไปจะเป็นอย่างไร?</h3>
+  <p>หน้านี้เปิดให้ศูนย์ HPC และวิศวกรทั่วประเทศร่วมกันเติมประวัติศาสตร์บทต่อไป</p>
+</article>
+<!--/prerender--></div>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
       <div class="section-head reveal">
-        <h2 data-i18n="slides.title"></h2>
-        <p data-i18n="slides.lead"></p>
+        <h2 data-i18n="slides.title"><!--prerender-->สไลด์ต้นฉบับ<!--/prerender--></h2>
+        <p data-i18n="slides.lead"><!--prerender-->เนื้อหาในไทม์ไลน์นี้เรียบเรียงจากสไลด์ 10 หน้า ซึ่งยังมีภาพถ่ายและแผนผังระบบที่น่าสนใจ<!--/prerender--></p>
       </div>
       <div class="slide-grid reveal" id="slide-grid"></div>
       <p class="result-count" style="margin-top:18px" id="source-note"></p>
@@ -102,10 +657,10 @@
 <dialog class="lightbox" id="lightbox" aria-label="Slide viewer">
   <img src="" alt="">
   <div class="lightbox-bar">
-    <button type="button" id="lb-prev" data-i18n="slides.prev"></button>
+    <button type="button" id="lb-prev" data-i18n="slides.prev"><!--prerender-->ก่อนหน้า<!--/prerender--></button>
     <span id="lb-label"></span>
-    <button type="button" id="lb-next" data-i18n="slides.next"></button>
-    <button type="button" id="lb-close" data-i18n="slides.close"></button>
+    <button type="button" id="lb-next" data-i18n="slides.next"><!--prerender-->ถัดไป<!--/prerender--></button>
+    <button type="button" id="lb-close" data-i18n="slides.close"><!--prerender-->ปิด<!--/prerender--></button>
   </div>
 </dialog>
 

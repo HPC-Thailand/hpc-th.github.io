@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="th" data-theme="light">
+<html lang="th" data-lang="th" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="systems.title">ระบบ HPC ในประเทศไทย</title>
 <meta name="description" content="ไดเรกทอรีระบบคอมพิวเตอร์สมรรถนะสูงในประเทศไทย พร้อมสเปก CPU, GPU, สตอเรจ, เครือข่าย และแผนที่ที่ตั้ง — Directory of HPC systems in Thailand.">
 <link rel="canonical" href="https://hpc.in.th/systems/">
+<link rel="alternate" hreflang="th" href="https://hpc.in.th/systems/">
+<link rel="alternate" hreflang="en" href="https://hpc.in.th/en/systems/">
+<link rel="alternate" hreflang="x-default" href="https://hpc.in.th/systems/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hpc.in.th">
 <meta property="og:title" content="ระบบ HPC ในประเทศไทย — hpc.in.th">
 <meta property="og:url" content="https://hpc.in.th/systems/">
+<meta property="og:locale" content="th_TH">
 <meta property="og:image" content="https://hpc.in.th/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -20,29 +24,109 @@
 <link rel="apple-touch-icon" href="/favicon/apple-touch-icon-180.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#16181C">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-thai-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/ibm-plex-sans-thai-400-thai.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/vendor/leaflet-1.9.4/leaflet.css">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script>
   try { document.documentElement.dataset.theme =
     localStorage.getItem('hpcth.theme') ||
     (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hpc.in.th/#organization",
+      "name": "HPC Thailand",
+      "url": "https://hpc.in.th",
+      "description": "The history and landscape of high performance computing in Thailand"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hpc.in.th/#website",
+      "url": "https://hpc.in.th",
+      "name": "HPC Thailand",
+      "description": "ประวัติศาสตร์และภูมิทัศน์ของคอมพิวเตอร์สมรรถนะสูงในประเทศไทย",
+      "inLanguage": "th-TH",
+      "publisher": {
+        "@id": "https://hpc.in.th/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hpc.in.th/systems/#webpage",
+      "url": "https://hpc.in.th/systems/",
+      "name": "ระบบ HPC ในประเทศไทย",
+      "description": "ภาพรวมของระบบคอมพิวเตอร์สมรรถนะสูงที่เปิดให้บริการอยู่ในปัจจุบัน ข้อมูลมาจากศูนย์ HPC และทีมวิศวกรโดยตรง",
+      "inLanguage": "th-TH",
+      "isPartOf": {
+        "@id": "https://hpc.in.th/#website"
+      },
+      "dateModified": "2026-09-16"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "HPC Thailand",
+          "item": "https://hpc.in.th/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ระบบ HPC ในประเทศไทย",
+          "item": "https://hpc.in.th/systems/"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "ระบบ HPC ในประเทศไทย",
+      "description": "ภาพรวมของระบบคอมพิวเตอร์สมรรถนะสูงที่เปิดให้บริการอยู่ในปัจจุบัน ข้อมูลมาจากศูนย์ HPC และทีมวิศวกรโดยตรง",
+      "url": "https://hpc.in.th/systems/",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://hpc.in.th/#organization"
+      },
+      "dateModified": "2026-09-16",
+      "keywords": [
+        "high performance computing",
+        "supercomputer",
+        "Thailand",
+        "HPC",
+        "GPU",
+        "AI infrastructure"
+      ],
+      "isAccessibleForFree": true,
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://hpc.in.th/data/systems.json"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
-<a class="skip-link" href="#main" data-i18n="nav.skip">ข้ามไปยังเนื้อหาหลัก</a>
+<a class="skip-link" href="#main" data-i18n="nav.skip"><!--prerender-->ข้ามไปยังเนื้อหาหลัก<!--/prerender--></a>
 <header class="site-header" id="site-header"></header>
 
 <main id="main">
   <section class="hero" style="padding-block:clamp(36px,4vw,60px)">
     <div class="container">
-      <span class="eyebrow" data-i18n="nav.systems"></span>
-      <h1 data-i18n="systems.title"></h1>
-      <p class="lead" data-i18n="systems.lead"></p>
+      <span class="eyebrow" data-i18n="nav.systems"><!--prerender-->ระบบ HPC<!--/prerender--></span>
+      <h1 data-i18n="systems.title"><!--prerender-->ระบบ HPC ในประเทศไทย<!--/prerender--></h1>
+      <p class="lead" data-i18n="systems.lead"><!--prerender-->ภาพรวมของระบบคอมพิวเตอร์สมรรถนะสูงที่เปิดให้บริการอยู่ในปัจจุบัน ข้อมูลมาจากศูนย์ HPC และทีมวิศวกรโดยตรง<!--/prerender--></p>
     </div>
   </section>
 
@@ -54,33 +138,99 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
           </svg>
-          <label class="visually-hidden" for="sys-search" data-i18n="systems.searchPlaceholder"></label>
+          <label class="visually-hidden" for="sys-search" data-i18n="systems.searchPlaceholder"><!--prerender-->ค้นหาระบบ หน่วยงาน หรือจังหวัด…<!--/prerender--></label>
           <input type="search" id="sys-search" autocomplete="off"
                  data-i18n-attr="placeholder:systems.searchPlaceholder">
         </div>
         <div class="field" style="flex:none">
-          <label class="visually-hidden" for="sys-sort" data-i18n="systems.sortBy"></label>
+          <label class="visually-hidden" for="sys-sort" data-i18n="systems.sortBy"><!--prerender-->เรียงตาม<!--/prerender--></label>
           <select id="sys-sort" style="padding:8px 13px;border-radius:999px"></select>
         </div>
       </div>
 
       <p class="result-count" id="sys-count"></p>
-      <div class="card-grid" id="sys-grid"></div>
+      <div class="card-grid" id="sys-grid"><!--prerender-->
+<article class="sys-card" id="s-crust-25">
+  <h3>The Crust 2.5 (2024)</h3>
+  <p>ปตท.สำรวจและผลิตปิโตรเลียม — ภาคเอกชน</p>
+  <dl><dt>ซีพียู</dt><dd>47,360 คอร์ · AMD EPYC 9354</dd><dt>จีพียู</dt><dd>512 × NVIDIA H100</dd><dt>สตอเรจ</dt><dd>11 PB · Lustre</dd><dt>เครือข่าย</dt><dd>InfiniBand NDR400 · 400 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยของเหลว</dd><dt>สมรรถนะ</dt><dd>21.68 PFLOPS (13.85 PFLOPS sustained)</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาคเอกชน</dd><dt>ที่ตั้ง</dt><dd>กรุงเทพมหานคร</dd></dl>
+  <p><a href="https://www.pttep.com/en/home" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-lanta">
+  <h3>LANTA (2022)</h3>
+  <p>ศูนย์ทรัพยากรคอมพิวเตอร์เพื่อการคำนวณขั้นสูง (ThaiSC), สวทช. — หน่วยงานวิจัยภาครัฐ</p>
+  <dl><dt>ซีพียู</dt><dd>31,744 คอร์ · AMD EPYC 7713</dd><dt>จีพียู</dt><dd>704 × NVIDIA A100</dd><dt>สตอเรจ</dt><dd>10.9 PB · Lustre</dd><dt>เครือข่าย</dt><dd>HPE Slingshot-11 · 200 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยของเหลวโดยตรง</dd><dt>สมรรถนะ</dt><dd>13.77 PFLOPS (8.15 PFLOPS sustained)</dd><dt>การเข้าถึง</dt><dd>เปิดให้ภาควิชาการ · ภาควิชาการ · ภาครัฐ</dd><dt>ที่ตั้ง</dt><dd>ปทุมธานี</dd></dl>
+  <p><a href="https://thaisc.io/thaisc-resorces/lanta" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-vistec-ist">
+  <h3>VISTEC (2018)</h3>
+  <p>สถาบันวิทยสิริเมธี — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>2,464 คอร์ · Intel Xeon Gold 6240R</dd><dt>จีพียู</dt><dd>100 × NVIDIA V100, NVIDIA V100, NVIDIA A100</dd><dt>สตอเรจ</dt><dd>1.2 PB · BeeGFS</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>ระยอง</dd></dl>
+  <p><a href="https://vistec.ist/" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-apex">
+  <h3>APEX (2020)</h3>
+  <p>มหาวิทยาลัยซีเอ็มเคแอล — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>768 คอร์ · AMD EPYC 7742</dd><dt>จีพียู</dt><dd>48 × NVIDIA A100</dd><dt>สตอเรจ</dt><dd>3 PB · Lustre (DDN EXAScaler)</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR200 · 200 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>กรุงเทพมหานคร</dd></dl>
+  <p><a href="https://www.cmkl.ac.th/research/apex" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-mu-ai">
+  <h3>MU-AI Center (2021)</h3>
+  <p>คณะเทคโนโลยีสารสนเทศและการสื่อสาร (MUICT), มหาวิทยาลัยมหิดล — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>624 คอร์ · Intel Xeon Gold 6248R</dd><dt>จีพียู</dt><dd>24 × NVIDIA A100, NVIDIA H100</dd><dt>สตอเรจ</dt><dd>0.31 PB · BeeGFS</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>นครปฐม</dd></dl>
+  <p><a href="https://www.ict.mahidol.ac.th/" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-ku-nontri-ai">
+  <h3>KU Nontri AI (2024)</h3>
+  <p>มหาวิทยาลัยเกษตรศาสตร์ — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>512 คอร์ · AMD EPYC 7742</dd><dt>จีพียู</dt><dd>32 × NVIDIA A100</dd><dt>สตอเรจ</dt><dd>0.76 PB · BeeGFS</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR200 · 200 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>กรุงเทพมหานคร</dd></dl>
+  <p><a href="https://nontriai.ku.ac.th/" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-cu-ai">
+  <h3>CU AI Research Center</h3>
+  <p>จุฬาลงกรณ์มหาวิทยาลัย — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>480 คอร์ · Intel Xeon Gold 6248R</dd><dt>จีพียู</dt><dd>24 × NVIDIA A100</dd><dt>สตอเรจ</dt><dd>0.25 PB · BeeGFS</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>กรุงเทพมหานคร</dd></dl>
+  <p><a href="https://www.chula.ac.th/" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-erawan">
+  <h3>ERAWAN (2021)</h3>
+  <p>สำนักบริการเทคโนโลยีสารสนเทศ (ITSC), มหาวิทยาลัยเชียงใหม่ — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>512 คอร์ · AMD EPYC 7742, AMD EPYC 9534</dd><dt>จีพียู</dt><dd>28 × NVIDIA A100, NVIDIA H100</dd><dt>สตอเรจ</dt><dd>0.438 PB · BeeGFS</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR200 · 200 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>เชียงใหม่</dd></dl>
+  <p><a href="https://hpc.cmu.ac.th/" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-kmutt-ai">
+  <h3>KMUTT AI Center</h3>
+  <p>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>320 คอร์ · Intel Xeon Gold 6240R</dd><dt>จีพียู</dt><dd>20 × NVIDIA A100, NVIDIA A100</dd><dt>สตอเรจ</dt><dd>0.19 PB · BeeGFS</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>กรุงเทพมหานคร</dd></dl>
+  <p><a href="https://www.kmutt.ac.th/" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-psu-singkhorn">
+  <h3>PSU-Singkhorn (2021)</h3>
+  <p>สถาบันวิจัยและนวัตกรรมดิจิทัล (DRii), มหาวิทยาลัยสงขลานครินทร์ — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>256 คอร์ · Intel Xeon Gold 6240R</dd><dt>จีพียู</dt><dd>16 × NVIDIA A100</dd><dt>สตอเรจ</dt><dd>0.13 PB · BeeGFS</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>สงขลา</dd></dl>
+  <p><a href="https://www.facebook.com/drii.psu" rel="noopener">เว็บไซต์</a></p>
+</article>
+<article class="sys-card" id="s-kku-hpc">
+  <h3>KKU (2021)</h3>
+  <p>สำนักเทคโนโลยีดิจิทัล (ODT), มหาวิทยาลัยขอนแก่น — มหาวิทยาลัย</p>
+  <dl><dt>ซีพียู</dt><dd>256 คอร์ · Intel Xeon Gold 6240R</dd><dt>จีพียู</dt><dd>16 × NVIDIA A100</dd><dt>สตอเรจ</dt><dd>0.13 PB · BeeGFS</dd><dt>เครือข่าย</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>ระบบระบายความร้อน</dt><dd>ระบายความร้อนด้วยอากาศ</dd><dt>การเข้าถึง</dt><dd>จำกัดสิทธิ์ · ภาควิชาการ</dd><dt>ที่ตั้ง</dt><dd>ขอนแก่น</dd></dl>
+  <p><a href="https://digital.kku.ac.th/" rel="noopener">เว็บไซต์</a></p>
+</article>
+<!--/prerender--></div>
       <p class="result-count" style="margin-top:18px" id="sys-note"></p>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
-      <div class="section-head reveal"><h2 data-i18n="systems.mapTitle"></h2></div>
+      <div class="section-head reveal"><h2 data-i18n="systems.mapTitle"><!--prerender-->แผนที่ระบบ HPC<!--/prerender--></h2></div>
       <div id="map" class="reveal"></div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer" id="site-footer"></footer>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="/assets/vendor/leaflet-1.9.4/leaflet.js"></script>
 <script type="module" src="/assets/js/systems.js"></script>
 </body>
 </html>

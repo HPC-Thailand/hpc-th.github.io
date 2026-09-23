@@ -1,0 +1,42 @@
+# HPC Thailand — hpc.in.th
+
+> An open, bilingual (Thai/English) record of high performance computing in
+> Thailand: a timeline from the first IBM 1620 in 1963 to the present AI-HPC
+> era, a directory of the HPC systems currently in service, an archive of
+> historical presentations and papers, and community events.
+> Maintained by the Thai HPC community. Content is CC BY 4.0.
+
+Every page exists in Thai at the paths below and in English under /en/.
+All content is generated from the JSON files in /data/, which are the
+canonical source and are usually the fastest thing to read.
+
+## Data (read these first)
+
+- [Timeline](https://hpc.in.th/data/timeline.json): 49 milestones across 5 eras, 1963–present. Bilingual. Updated 2026-09-14.
+- [Systems](https://hpc.in.th/data/systems.json): 11 HPC systems with CPU/GPU/storage/interconnect specs and coordinates. Updated 2026-09-16.
+- [Reference documents](https://hpc.in.th/data/reference.json): 30 presentations, reports and papers, 6 categories. Updated 2026-09-17.
+- [Events](https://hpc.in.th/data/events.json): community events. Updated 2026-09-14.
+- [UI strings](https://hpc.in.th/data/ui.json): every interface string, in both languages.
+- [JSON Schemas](https://hpc.in.th/data/schema/): the contract each data file follows.
+
+## Pages
+
+- [Six decades of high performance computing in Thailand](https://hpc.in.th/en/): From the first IBM 1620 in 1963 to the petascale AI-HPC era — the machines, networks and people that built the country's computing infrastructure.
+- [HPC systems in Thailand](https://hpc.in.th/en/systems/): An overview of the high performance computing systems currently in service, contributed directly by HPC centres and their engineering teams.
+- [Reference documents](https://hpc.in.th/en/reference/): An archive of Thai HPC presentations, reports, manuals and papers — from the ThaiGrid era to today, open for study and citation.
+- [HPC infrastructure statistics](https://hpc.in.th/en/stats/): Aggregate figures across every system in the database, updated whenever a centre submits new data.
+- [Events and conferences](https://hpc.in.th/en/events/): Seminars, workshops and training on HPC and AI-HPC in Thailand.
+- [Submit data](https://hpc.in.th/en/submit/): HPC centres and system engineers can contribute systems, statistics, events or timeline entries through GitHub. Everything is public and traceable.
+
+## Notes for machine readers
+
+- Buddhist-era years are always computed as CE + 543; the data stores CE only.
+- Bilingual fields are objects of the shape {"th": "...", "en": "..."}.
+- System specifications are as declared by each centre, not benchmarked. A
+  system without a "verifiedOn" date has not been confirmed by its operator.
+- Coordinates are [longitude, latitude], GeoJSON order.
+
+## Optional
+
+- [Source repository](https://github.com/HPC-Thailand/hpc-th.github.io)
+- [How to contribute data](https://hpc.in.th/en/submit/)

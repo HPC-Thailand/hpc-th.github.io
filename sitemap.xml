@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hpc.in.th/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://hpc.in.th/systems/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://hpc.in.th/reference/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hpc.in.th/stats/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://hpc.in.th/events/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://hpc.in.th/submit/</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://hpc.in.th/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/en/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/systems/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/systems/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/systems/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/systems/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/en/systems/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/systems/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/systems/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/systems/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/reference/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/reference/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/reference/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/reference/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/en/reference/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/reference/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/reference/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/reference/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/stats/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/stats/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/stats/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/stats/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/en/stats/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/stats/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/stats/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/stats/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/events/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/events/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/events/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/events/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/en/events/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/events/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/events/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/events/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/submit/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/submit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/submit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/submit/"/>
+  </url>
+  <url>
+    <loc>https://hpc.in.th/en/submit/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="th" href="https://hpc.in.th/submit/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hpc.in.th/en/submit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hpc.in.th/submit/"/>
+  </url>
 </urlset>

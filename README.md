@@ -92,7 +92,11 @@ _The history and landscape of high performance computing in Thailand._
 │   ├── ui.json           ข้อความ UI ทั้งหมด (สองภาษา)
 │   └── schema/           JSON Schema สำหรับ editor autocomplete
 ├── historical/page png/  สไลด์ต้นฉบับความละเอียดเต็ม (4K)
-├── tools/validate-data.mjs
+├── tools/
+│   ├── validate-data.mjs  ตรวจความถูกต้องของ JSON
+│   ├── prerender.mjs      อบข้อมูลลง HTML + สร้าง /en/, sitemap, llms.txt
+│   ├── fetch-fonts.mjs    ดึงฟอนต์มาเก็บเอง
+│   └── fetch-vendor.mjs   ดึงไลบรารี JS มาเก็บเอง
 └── docs/                 คู่มือ deploy และการเพิ่ม subdomain
 ```
 
@@ -135,6 +139,77 @@ node tools/validate-data.mjs
 ```
 
 GitHub Actions รันคำสั่งนี้อัตโนมัติกับทุก PR ที่แตะ `data/`
+
+## ทุกอย่างเสิร์ฟจากโดเมนตัวเอง
+
+เว็บนี้ไม่มี request ออกนอก `hpc.in.th` เลย ยกเว้นแผนที่ (tile ของ OpenStreetMap)
+
+| เดิม | ตอนนี้ |
+| --- | --- |
+| Google Fonts (2 origin, บล็อกการ render) | `assets/fonts/` — 13 ไฟล์ 111 KB |
+| unpkg (Leaflet) | `assets/vendor/leaflet-1.9.4/` |
+| jsDelivr (Chart.js) | `assets/vendor/chart.js-4.4.1/` |
+| cdnjs (PDF.js) | `assets/vendor/pdf.js-4.10.38/` |
+
+เหตุผล: CDN แต่ละเจ้าคือ DNS + TLS เพิ่มหนึ่งรอบ, rate-limit ได้, ล่มได้ และเวอร์ชัน
+ถูกถอดออกได้ การเสิร์ฟเองแลกด้วยพื้นที่ ~2 MB ในรีโป แล้วได้ความแน่นอนว่าเว็บจะอยู่ได้
+นานเท่าที่รีโปยังอยู่ — ไม่มีค่าใช้จ่าย ไม่มีบริการภายนอกให้ต้องดูแล
+
+สคริปต์ทั้งสองปักเวอร์ชันไว้ตายตัว รันใหม่เฉพาะตอนจะอัปเกรด:
+
+```bash
+node tools/fetch-fonts.mjs    # ดึงฟอนต์จาก Google มาเก็บเอง (เฉพาะ subset latin + thai)
+node tools/fetch-vendor.mjs   # ดึง Leaflet / Chart.js / PDF.js มาเก็บเอง
+```
+
+หมายเหตุฟอนต์: ใช้ **IBM Plex Sans Thai** ตัวเดียว ไม่ได้โหลด IBM Plex Sans ด้วย
+เพราะวัดความกว้างข้อความละตินแล้วได้เท่ากันทุกทศนิยม — เดิมโหลดสองตระกูลเพื่อวาด
+ตัวอักษรชุดเดียว ตัดออกแล้วฟอนต์ต่อหน้าเหลือ 21 KB จาก 47 KB
+
+น้ำหนักหน้าแรก (gzip ตามที่ Pages เสิร์ฟจริง): HTML 8.7 + CSS 9.8 + JS 8.1 +
+ข้อมูล 14.8 + ฟอนต์ 21 ≈ **62 KB** ต่อการเข้าครั้งแรก
+
+## Prerender — ทำไมต้องมีขั้นตอนนี้
+
+หน้าเว็บอ่านข้อมูลจาก JSON ด้วย JavaScript ซึ่งแปลว่า HTML ที่ส่งออกไปจริงๆ **ว่างเปล่า**
+Google พอ render JS ได้ (ช้าและไม่แน่นอน) แต่ Bing / DuckDuckGo ทำได้แย่กว่ามาก และ
+**LLM crawler กับ AI agent ทั้งหมดไม่รัน JS เลย** — ClaudeBot, GPTBot, PerplexityBot,
+CCBot รวมถึง coding agent ที่ยิง HTTP GET ธรรมดา
+
+ก่อนมีขั้นตอนนี้ ทุกหน้ามีข้อความที่อ่านได้ 20 ตัวอักษร และ `<h1>` ว่าง
+
+`tools/prerender.mjs` อบข้อมูลจาก `data/` ลงไปใน HTML และสร้างฉบับภาษาอังกฤษใต้ `/en/`:
+
+```bash
+node tools/prerender.mjs          # เขียนไฟล์
+node tools/prerender.mjs --check  # ตรวจว่า output ตรงกับข้อมูลหรือยัง (CI ใช้อันนี้)
+```
+
+**แก้ JSON ใน `data/` แล้วต้องรัน `node tools/prerender.mjs` ก่อน commit เสมอ**
+GitHub Actions จะ fail ถ้าลืม
+
+สิ่งที่สคริปต์นี้สร้าง:
+
+| ไฟล์ | หน้าที่ |
+| --- | --- |
+| `index.html`, `systems/`, … | เนื้อหาจริงฝังใน HTML + JSON-LD |
+| `en/**` | ฉบับภาษาอังกฤษ พร้อม canonical และ hreflang ชี้กลับหากัน |
+| `sitemap.xml` | ทุก URL สองภาษา พร้อม `lastmod` และ hreflang |
+| `llms.txt` | สรุปเว็บไซต์แบบ markdown สำหรับ LLM / agent |
+| `robots.txt` | อนุญาต crawler รวมถึง AI agent อย่างชัดเจน |
+
+markup ที่ prerender ออกมาเน้นความหมาย ไม่ได้เหมือน UI จริงเป๊ะๆ เพราะ client จะเขียนทับ
+ตอน boot อยู่แล้ว หน้าที่ของมันคือพา "ข้อความ ลิงก์ และ structured data" ไปให้ครบ
+ข้อมูลมาจาก JSON ชุดเดียวกัน จึงเป็น fallback ไม่ใช่ cloaking
+
+## ภาษาอยู่ใน URL
+
+- ไทย: `hpc.in.th/systems/`
+- อังกฤษ: `hpc.in.th/en/systems/`
+
+URL เป็นตัวกำหนดภาษา ไม่ใช่ localStorage — แต่ละภาษาจึงมีหน้าที่ index ได้ของตัวเอง
+ปุ่มสลับภาษาจะ navigate ไปอีก URL หนึ่ง ทำให้ address bar, `<html lang>` และเนื้อหา
+ตรงกันเสมอ
 
 ## รันบนเครื่อง / Local preview
 

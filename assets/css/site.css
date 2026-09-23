@@ -21,7 +21,7 @@
   --hpc-on-dark-muted: #A0A8B4;
 
   /* --- Type ------------------------------------------------- */
-  --font-sans: "IBM Plex Sans", "IBM Plex Sans Thai", -apple-system, BlinkMacSystemFont,
+  --font-sans: "IBM Plex Sans Thai", -apple-system, BlinkMacSystemFont,
                "Segoe UI", "Noto Sans Thai", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
@@ -1430,3 +1430,30 @@ pre.code {
 .text-muted { color: var(--muted); }
 .mt-0 { margin-top: 0; }
 .mb-0 { margin-bottom: 0; }
+
+/* Data table — the crawlable, screen-readable twin of the charts. */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+  margin-top: 6px;
+}
+.data-table th, .data-table td {
+  text-align: start;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.data-table thead th {
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.data-table tbody th { font-weight: 500; color: var(--ink); }
+.data-table td { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td { border-bottom: 0; }
+.data-table tbody tr:hover th,
+.data-table tbody tr:hover td { background: var(--surface-2); }
