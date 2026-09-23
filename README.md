@@ -92,7 +92,9 @@ _The history and landscape of high performance computing in Thailand._
 │   ├── ui.json           ข้อความ UI ทั้งหมด (สองภาษา)
 │   └── schema/           JSON Schema สำหรับ editor autocomplete
 ├── historical/page png/  สไลด์ต้นฉบับความละเอียดเต็ม (4K)
-├── tools/validate-data.mjs
+├── tools/
+│   ├── validate-data.mjs  ตรวจความถูกต้องของ JSON
+│   └── prerender.mjs      อบข้อมูลลง HTML + สร้าง /en/, sitemap, llms.txt
 └── docs/                 คู่มือ deploy และการเพิ่ม subdomain
 ```
 
@@ -135,6 +137,48 @@ node tools/validate-data.mjs
 ```
 
 GitHub Actions รันคำสั่งนี้อัตโนมัติกับทุก PR ที่แตะ `data/`
+
+## Prerender — ทำไมต้องมีขั้นตอนนี้
+
+หน้าเว็บอ่านข้อมูลจาก JSON ด้วย JavaScript ซึ่งแปลว่า HTML ที่ส่งออกไปจริงๆ **ว่างเปล่า**
+Google พอ render JS ได้ (ช้าและไม่แน่นอน) แต่ Bing / DuckDuckGo ทำได้แย่กว่ามาก และ
+**LLM crawler กับ AI agent ทั้งหมดไม่รัน JS เลย** — ClaudeBot, GPTBot, PerplexityBot,
+CCBot รวมถึง coding agent ที่ยิง HTTP GET ธรรมดา
+
+ก่อนมีขั้นตอนนี้ ทุกหน้ามีข้อความที่อ่านได้ 20 ตัวอักษร และ `<h1>` ว่าง
+
+`tools/prerender.mjs` อบข้อมูลจาก `data/` ลงไปใน HTML และสร้างฉบับภาษาอังกฤษใต้ `/en/`:
+
+```bash
+node tools/prerender.mjs          # เขียนไฟล์
+node tools/prerender.mjs --check  # ตรวจว่า output ตรงกับข้อมูลหรือยัง (CI ใช้อันนี้)
+```
+
+**แก้ JSON ใน `data/` แล้วต้องรัน `node tools/prerender.mjs` ก่อน commit เสมอ**
+GitHub Actions จะ fail ถ้าลืม
+
+สิ่งที่สคริปต์นี้สร้าง:
+
+| ไฟล์ | หน้าที่ |
+| --- | --- |
+| `index.html`, `systems/`, … | เนื้อหาจริงฝังใน HTML + JSON-LD |
+| `en/**` | ฉบับภาษาอังกฤษ พร้อม canonical และ hreflang ชี้กลับหากัน |
+| `sitemap.xml` | ทุก URL สองภาษา พร้อม `lastmod` และ hreflang |
+| `llms.txt` | สรุปเว็บไซต์แบบ markdown สำหรับ LLM / agent |
+| `robots.txt` | อนุญาต crawler รวมถึง AI agent อย่างชัดเจน |
+
+markup ที่ prerender ออกมาเน้นความหมาย ไม่ได้เหมือน UI จริงเป๊ะๆ เพราะ client จะเขียนทับ
+ตอน boot อยู่แล้ว หน้าที่ของมันคือพา "ข้อความ ลิงก์ และ structured data" ไปให้ครบ
+ข้อมูลมาจาก JSON ชุดเดียวกัน จึงเป็น fallback ไม่ใช่ cloaking
+
+## ภาษาอยู่ใน URL
+
+- ไทย: `hpc.in.th/systems/`
+- อังกฤษ: `hpc.in.th/en/systems/`
+
+URL เป็นตัวกำหนดภาษา ไม่ใช่ localStorage — แต่ละภาษาจึงมีหน้าที่ index ได้ของตัวเอง
+ปุ่มสลับภาษาจะ navigate ไปอีก URL หนึ่ง ทำให้ address bar, `<html lang>` และเนื้อหา
+ตรงกันเสมอ
 
 ## รันบนเครื่อง / Local preview
 

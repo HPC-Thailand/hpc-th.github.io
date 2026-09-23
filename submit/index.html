@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="th" data-theme="light">
+<html lang="th" data-lang="th" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="submit.title">ส่งข้อมูลเข้าสู่ระบบ</title>
 <meta name="description" content="ศูนย์ HPC และวิศวกรระบบส่งข้อมูลระบบ สถิติ กิจกรรม หรือเหตุการณ์ในไทม์ไลน์ เข้ามาได้ที่นี่ — Contribute HPC data to hpc.in.th.">
 <link rel="canonical" href="https://hpc.in.th/submit/">
+<link rel="alternate" hreflang="th" href="https://hpc.in.th/submit/">
+<link rel="alternate" hreflang="en" href="https://hpc.in.th/en/submit/">
+<link rel="alternate" hreflang="x-default" href="https://hpc.in.th/submit/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hpc.in.th">
 <meta property="og:title" content="ส่งข้อมูลเข้าสู่ระบบ — hpc.in.th">
 <meta property="og:url" content="https://hpc.in.th/submit/">
+<meta property="og:locale" content="th_TH">
 <meta property="og:image" content="https://hpc.in.th/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -29,18 +33,72 @@
     localStorage.getItem('hpcth.theme') ||
     (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hpc.in.th/#organization",
+      "name": "HPC Thailand",
+      "url": "https://hpc.in.th",
+      "description": "The history and landscape of high performance computing in Thailand"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hpc.in.th/#website",
+      "url": "https://hpc.in.th",
+      "name": "HPC Thailand",
+      "description": "ประวัติศาสตร์และภูมิทัศน์ของคอมพิวเตอร์สมรรถนะสูงในประเทศไทย",
+      "inLanguage": "th-TH",
+      "publisher": {
+        "@id": "https://hpc.in.th/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hpc.in.th/submit/#webpage",
+      "url": "https://hpc.in.th/submit/",
+      "name": "ส่งข้อมูลเข้าสู่ระบบ",
+      "description": "ศูนย์ HPC และวิศวกรระบบสามารถส่งข้อมูลระบบ สถิติ กิจกรรม หรือเหตุการณ์ในไทม์ไลน์ เข้ามาได้ผ่าน GitHub ข้อมูลทั้งหมดเป็นสาธารณะและตรวจสอบย้อนกลับได้",
+      "inLanguage": "th-TH",
+      "isPartOf": {
+        "@id": "https://hpc.in.th/#website"
+      },
+      "dateModified": "2026-09-16"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "HPC Thailand",
+          "item": "https://hpc.in.th/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ส่งข้อมูลเข้าสู่ระบบ",
+          "item": "https://hpc.in.th/submit/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
-<a class="skip-link" href="#main" data-i18n="nav.skip">ข้ามไปยังเนื้อหาหลัก</a>
+<a class="skip-link" href="#main" data-i18n="nav.skip"><!--prerender-->ข้ามไปยังเนื้อหาหลัก<!--/prerender--></a>
 <header class="site-header" id="site-header"></header>
 
 <main id="main">
   <section class="hero" style="padding-block:clamp(36px,4vw,60px)">
     <div class="container">
-      <span class="eyebrow" data-i18n="nav.submit"></span>
-      <h1 data-i18n="submit.title"></h1>
-      <p class="lead" data-i18n="submit.lead"></p>
+      <span class="eyebrow" data-i18n="nav.submit"><!--prerender-->ส่งข้อมูล<!--/prerender--></span>
+      <h1 data-i18n="submit.title"><!--prerender-->ส่งข้อมูลเข้าสู่ระบบ<!--/prerender--></h1>
+      <p class="lead" data-i18n="submit.lead"><!--prerender-->ศูนย์ HPC และวิศวกรระบบสามารถส่งข้อมูลระบบ สถิติ กิจกรรม หรือเหตุการณ์ในไทม์ไลน์ เข้ามาได้ผ่าน GitHub ข้อมูลทั้งหมดเป็นสาธารณะและตรวจสอบย้อนกลับได้<!--/prerender--></p>
     </div>
   </section>
 
@@ -48,55 +106,55 @@
     <div class="container" style="display:grid;gap:22px;grid-template-columns:1fr">
 
       <div class="panel reveal">
-        <h2 data-i18n="submit.optionIssue" style="font-size:1.2rem"></h2>
-        <p class="text-muted" style="font-size:.92rem" data-i18n="submit.optionIssueDesc"></p>
+        <h2 data-i18n="submit.optionIssue" style="font-size:1.2rem"><!--prerender-->วิธีที่ 1 — กรอกฟอร์ม (ง่ายที่สุด)<!--/prerender--></h2>
+        <p class="text-muted" style="font-size:.92rem" data-i18n="submit.optionIssueDesc"><!--prerender-->กรอกข้อมูลด้านล่าง ระบบจะสร้าง GitHub issue พร้อมข้อมูลให้อัตโนมัติ ทีมดูแลจะตรวจสอบและนำขึ้นเว็บไซต์<!--/prerender--></p>
 
         <div class="notice" style="margin-bottom:20px">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
             <path d="M12 9v4M12 17h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20.5h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>
           </svg>
-          <p class="mb-0" data-i18n="submit.privacyNote"></p>
+          <p class="mb-0" data-i18n="submit.privacyNote"><!--prerender-->ข้อมูลที่ส่งจะกลายเป็น GitHub issue สาธารณะ กรุณาอย่ากรอกข้อมูลส่วนบุคคล รหัสผ่าน คีย์ หรือข้อมูลภายในที่ไม่ต้องการเปิดเผย<!--/prerender--></p>
         </div>
 
         <form id="submit-form" class="form-grid">
           <div class="field">
-            <label for="f-type" data-i18n="submit.formType"></label>
+            <label for="f-type" data-i18n="submit.formType"><!--prerender-->ประเภทข้อมูล<!--/prerender--></label>
             <select id="f-type"></select>
           </div>
           <div id="type-fields" class="form-grid"></div>
           <div class="form-row-2">
             <div class="field">
-              <label for="f-contact" data-i18n="submit.fieldContactName"></label>
+              <label for="f-contact" data-i18n="submit.fieldContactName"><!--prerender-->ชื่อผู้ส่ง<!--/prerender--></label>
               <input id="f-contact" autocomplete="off">
             </div>
             <div class="field">
-              <label for="f-email" data-i18n="submit.fieldContactEmail"></label>
+              <label for="f-email" data-i18n="submit.fieldContactEmail"><!--prerender-->อีเมลติดต่อ (ไม่บังคับ)<!--/prerender--></label>
               <input id="f-email" type="email" autocomplete="off">
             </div>
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button type="submit" class="btn btn-primary" data-i18n="submit.generate"></button>
-            <button type="button" class="btn btn-ghost" id="copy-preview" data-i18n="submit.copy"></button>
+            <button type="submit" class="btn btn-primary" data-i18n="submit.generate"><!--prerender-->สร้าง GitHub issue<!--/prerender--></button>
+            <button type="button" class="btn btn-ghost" id="copy-preview" data-i18n="submit.copy"><!--prerender-->คัดลอก<!--/prerender--></button>
           </div>
         </form>
 
-        <h3 style="margin-top:26px;font-size:.95rem" data-i18n="submit.preview"></h3>
+        <h3 style="margin-top:26px;font-size:.95rem" data-i18n="submit.preview"><!--prerender-->ตัวอย่างข้อมูลที่จะส่ง<!--/prerender--></h3>
         <pre class="code" id="preview"></pre>
       </div>
 
       <div class="panel reveal">
-        <h2 data-i18n="submit.optionPr" style="font-size:1.2rem"></h2>
-        <p class="text-muted" style="font-size:.92rem" data-i18n="submit.optionPrDesc"></p>
+        <h2 data-i18n="submit.optionPr" style="font-size:1.2rem"><!--prerender-->วิธีที่ 2 — ส่ง Pull Request<!--/prerender--></h2>
+        <p class="text-muted" style="font-size:.92rem" data-i18n="submit.optionPrDesc"><!--prerender-->แก้ไขไฟล์ JSON ใน data/ โดยตรง เหมาะกับผู้ที่คุ้นเคยกับ Git<!--/prerender--></p>
 
         <ol class="steps">
-          <li data-i18n="submit.step1"></li>
+          <li data-i18n="submit.step1"><!--prerender-->Fork repository HPC-Thailand/hpc-th.github.io<!--/prerender--></li>
           <li id="step-2"></li>
-          <li data-i18n="submit.step3"></li>
-          <li data-i18n="submit.step4"></li>
+          <li data-i18n="submit.step3"><!--prerender-->เปิด Pull Request พร้อมลิงก์อ้างอิงหรือเอกสารยืนยันสเปก<!--/prerender--></li>
+          <li data-i18n="submit.step4"><!--prerender-->ทีมดูแลตรวจสอบและ merge — เว็บไซต์อัปเดตทันทีเมื่อ deploy<!--/prerender--></li>
         </ol>
 
         <div id="tpl-wrap" style="margin-top:20px">
-          <h3 style="font-size:.95rem" data-i18n="submit.schemaTitle"></h3>
+          <h3 style="font-size:.95rem" data-i18n="submit.schemaTitle"><!--prerender-->โครงสร้างข้อมูล<!--/prerender--></h3>
           <pre class="code" id="tpl-json"></pre>
         </div>
 
@@ -104,7 +162,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
             <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/>
           </svg>
-          <p class="mb-0" data-i18n="submit.noBuild"></p>
+          <p class="mb-0" data-i18n="submit.noBuild"><!--prerender-->ทุกไฟล์ข้อมูลเป็น JSON ล้วน ไม่มี build step — แก้แล้ว merge ได้เลย<!--/prerender--></p>
         </div>
       </div>
 

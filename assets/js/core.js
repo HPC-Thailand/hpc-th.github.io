@@ -17,17 +17,33 @@ export const SITE = {
 const LANGS = ['th', 'en'];
 const LANG_KEY = 'hpcth.lang';
 
+/**
+ * The URL decides the language: Thai lives at /, English under /en/.
+ * Each language therefore has its own crawlable URL and its own prerendered
+ * HTML, which is what makes the site indexable and readable by agents.
+ * `?lang=` still works for links written before the split.
+ */
 export function detectLang() {
+  const fromPath = LANG_PREFIX ? 'en' : 'th';
+  const declared = document.documentElement.dataset.lang;
+  if (LANGS.includes(declared)) return declared;
   const fromQuery = new URLSearchParams(location.search).get('lang');
   if (LANGS.includes(fromQuery)) return fromQuery;
-  try {
-    const saved = localStorage.getItem(LANG_KEY);
-    if (LANGS.includes(saved)) return saved;
-  } catch { /* storage blocked */ }
-  return navigator.language?.toLowerCase().startsWith('th') ? 'th' : 'en';
+  return fromPath;
 }
 
+/** '/en' when the current page is an English mirror, '' otherwise. */
+export const LANG_PREFIX = typeof location !== 'undefined'
+  && /^\/en(\/|$)/.test(location.pathname) ? '/en' : '';
+
 export let lang = detectLang();
+
+/** The same page in the other language, as an absolute path. */
+export function altLangPath(target) {
+  const path = location.pathname;
+  const bare = LANG_PREFIX ? path.slice(LANG_PREFIX.length) || '/' : path;
+  return target === 'en' ? `/en${bare === '/' ? '/' : bare}` : bare;
+}
 
 const langListeners = new Set();
 
@@ -40,6 +56,11 @@ export function onLangChange(fn) {
 
 export function setLang(next) {
   if (!LANGS.includes(next) || next === lang) return;
+  // Move to the other language's URL so the address bar, <html lang> and the
+  // prerendered HTML never disagree. Falls through to an in-place swap if the
+  // mirror is missing.
+  const to = altLangPath(next);
+  if (to !== location.pathname) { location.assign(to + location.hash); return; }
   lang = next;
   try { localStorage.setItem(LANG_KEY, next); } catch { /* ignore */ }
   document.documentElement.lang = next;
@@ -92,17 +113,28 @@ export function tData(dict, value) {
  *   <input data-i18n-attr="placeholder:timeline.searchPlaceholder">
  */
 export function applyI18n(scope = document) {
+  // A missing key leaves whatever is already there — the prerendered text —
+  // rather than painting the key itself over it.
+  const resolved = (key) => {
+    const out = t(key);
+    return out === key ? null : out;
+  };
+
   scope.querySelectorAll('[data-i18n]').forEach((el) => {
-    el.textContent = t(el.dataset.i18n);
+    const text = resolved(el.dataset.i18n);
+    if (text != null) el.textContent = text;
   });
   scope.querySelectorAll('[data-i18n-attr]').forEach((el) => {
     el.dataset.i18nAttr.split(',').forEach((pair) => {
       const [attr, key] = pair.split(':').map((s) => s.trim());
-      if (attr && key) el.setAttribute(attr, t(key));
+      if (!attr || !key) return;
+      const text = resolved(key);
+      if (text != null) el.setAttribute(attr, text);
     });
   });
   const title = document.querySelector('title[data-i18n]');
-  if (title) document.title = `${t(title.dataset.i18n)} — ${SITE.domain}`;
+  const titleText = title && resolved(title.dataset.i18n);
+  if (titleText) document.title = `${titleText} — ${SITE.domain}`;
 }
 
 /* ---------------------------------------------------------------- data */
@@ -201,7 +233,7 @@ const NAV = [
 
 function navMarkup(active) {
   return NAV.map(({ key, href }) => {
-    const url = new URL(href, ROOT).pathname;
+    const url = `${LANG_PREFIX}${new URL(href, ROOT).pathname}`;
     const current = key === active ? ' aria-current="page"' : '';
     return `<li><a href="${url}"${current} data-i18n="nav.${key}"></a></li>`;
   }).join('');
@@ -209,7 +241,7 @@ function navMarkup(active) {
 
 /** Render the shared header + footer. `active` is a NAV key. */
 export function renderChrome(active) {
-  const home = new URL('', ROOT).pathname;
+  const home = `${LANG_PREFIX}${new URL('', ROOT).pathname}` || '/';
 
   document.getElementById('site-header')?.replaceChildren(h(`
     <div class="container">
@@ -250,7 +282,7 @@ export function renderChrome(active) {
           <ul>
             <li><a href="${SITE.repoUrl}" rel="noopener" data-i18n="footer.sourceCode"></a></li>
             <li><a href="${SITE.repoUrl}/issues/new" rel="noopener" data-i18n="footer.reportIssue"></a></li>
-            <li><a href="${new URL('submit/', ROOT).pathname}" data-i18n="nav.submit"></a></li>
+            <li><a href="${LANG_PREFIX}${new URL('submit/', ROOT).pathname}" data-i18n="nav.submit"></a></li>
           </ul>
         </div>
       </div>

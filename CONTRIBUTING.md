@@ -73,9 +73,13 @@
 ### 5. ตรวจก่อน push
 
 ```bash
-node tools/validate-data.mjs
-python3 -m http.server 8000   # แล้วเปิดดูที่ localhost:8000
+node tools/validate-data.mjs   # ตรวจข้อมูล
+node tools/prerender.mjs       # อบข้อมูลลง HTML — จำเป็น ไม่งั้น CI fail
+python3 -m http.server 8000    # แล้วเปิดดูที่ localhost:8000
 ```
+
+`prerender.mjs` จะแก้ไฟล์ `.html` และสร้าง `en/`, `sitemap.xml`, `llms.txt` ให้
+ต้อง commit ไฟล์ที่มันสร้างไปด้วย เพราะ GitHub Pages เสิร์ฟจาก branch ตรงๆ
 
 ### 6. เปิด PR
 

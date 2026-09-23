@@ -1,11 +1,9 @@
-name: Validate data
+name: Validate data and prerendered HTML
 
 on:
   push:
     branches: [main]
-    paths: ['data/**', 'tools/**', '.github/workflows/validate-data.yml']
   pull_request:
-    paths: ['data/**', 'tools/**', '.github/workflows/validate-data.yml']
   workflow_dispatch:
 
 jobs:
@@ -16,5 +14,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
       - name: Validate JSON data files
         run: node tools/validate-data.mjs
+
+      # The site serves prerendered HTML so that search engines and AI agents,
+      # which do not run JavaScript, can read it. That HTML is generated from
+      # data/ and committed, so it has to be regenerated whenever data changes.
+      - name: Check prerendered HTML is up to date
+        run: node tools/prerender.mjs --check

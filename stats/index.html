@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="th" data-theme="light">
+<html lang="th" data-lang="th" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="stats.title">สถิติโครงสร้างพื้นฐาน HPC</title>
 <meta name="description" content="สถิติรวมของโครงสร้างพื้นฐาน HPC ในประเทศไทย — CPU cores, GPU, การกระจายตามภูมิภาคและคอนซอร์เทียม.">
 <link rel="canonical" href="https://hpc.in.th/stats/">
+<link rel="alternate" hreflang="th" href="https://hpc.in.th/stats/">
+<link rel="alternate" hreflang="en" href="https://hpc.in.th/en/stats/">
+<link rel="alternate" hreflang="x-default" href="https://hpc.in.th/stats/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="hpc.in.th">
 <meta property="og:title" content="สถิติโครงสร้างพื้นฐาน HPC — hpc.in.th">
 <meta property="og:url" content="https://hpc.in.th/stats/">
+<meta property="og:locale" content="th_TH">
 <meta property="og:image" content="https://hpc.in.th/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -29,50 +33,158 @@
     localStorage.getItem('hpcth.theme') ||
     (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hpc.in.th/#organization",
+      "name": "HPC Thailand",
+      "url": "https://hpc.in.th",
+      "description": "The history and landscape of high performance computing in Thailand"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hpc.in.th/#website",
+      "url": "https://hpc.in.th",
+      "name": "HPC Thailand",
+      "description": "ประวัติศาสตร์และภูมิทัศน์ของคอมพิวเตอร์สมรรถนะสูงในประเทศไทย",
+      "inLanguage": "th-TH",
+      "publisher": {
+        "@id": "https://hpc.in.th/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hpc.in.th/stats/#webpage",
+      "url": "https://hpc.in.th/stats/",
+      "name": "สถิติโครงสร้างพื้นฐาน HPC",
+      "description": "ตัวเลขรวมจากระบบที่อยู่ในฐานข้อมูล อัปเดตทุกครั้งที่มีศูนย์ส่งข้อมูลเข้ามา",
+      "inLanguage": "th-TH",
+      "isPartOf": {
+        "@id": "https://hpc.in.th/#website"
+      },
+      "dateModified": "2026-09-16"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "HPC Thailand",
+          "item": "https://hpc.in.th/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "สถิติโครงสร้างพื้นฐาน HPC",
+          "item": "https://hpc.in.th/stats/"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "สถิติโครงสร้างพื้นฐาน HPC",
+      "description": "ตัวเลขรวมจากระบบที่อยู่ในฐานข้อมูล อัปเดตทุกครั้งที่มีศูนย์ส่งข้อมูลเข้ามา",
+      "url": "https://hpc.in.th/stats/",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://hpc.in.th/#organization"
+      },
+      "dateModified": "2026-09-16",
+      "keywords": [
+        "high performance computing",
+        "supercomputer",
+        "Thailand",
+        "HPC",
+        "GPU",
+        "AI infrastructure"
+      ],
+      "isAccessibleForFree": true,
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://hpc.in.th/data/systems.json"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
-<a class="skip-link" href="#main" data-i18n="nav.skip">ข้ามไปยังเนื้อหาหลัก</a>
+<a class="skip-link" href="#main" data-i18n="nav.skip"><!--prerender-->ข้ามไปยังเนื้อหาหลัก<!--/prerender--></a>
 <header class="site-header" id="site-header"></header>
 
 <main id="main">
   <section class="hero" style="padding-block:clamp(36px,4vw,60px)">
     <div class="container">
-      <span class="eyebrow" data-i18n="nav.stats"></span>
-      <h1 data-i18n="stats.title"></h1>
-      <p class="lead" data-i18n="stats.lead"></p>
+      <span class="eyebrow" data-i18n="nav.stats"><!--prerender-->สถิติ<!--/prerender--></span>
+      <h1 data-i18n="stats.title"><!--prerender-->สถิติโครงสร้างพื้นฐาน HPC<!--/prerender--></h1>
+      <p class="lead" data-i18n="stats.lead"><!--prerender-->ตัวเลขรวมจากระบบที่อยู่ในฐานข้อมูล อัปเดตทุกครั้งที่มีศูนย์ส่งข้อมูลเข้ามา<!--/prerender--></p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="kpi-grid" id="kpi-grid"></div>
+      <div class="kpi-grid" id="kpi-grid"><!--prerender-->
+<div class="stat-card"><b>85,296</b><span>CPU cores รวม</span></div>
+<div class="stat-card"><b>1,524</b><span>GPU รวม</span></div>
+<div class="stat-card"><b>11</b><span>ระบบ</span></div>
+<div class="stat-card"><b>11</b><span>หน่วยงาน</span></div>
+<!--/prerender--></div>
 
       <div class="chart-grid">
         <div class="chart-card reveal" style="grid-column:1/-1">
-          <h3 data-i18n="stats.byOrg"></h3>
+          <h3 data-i18n="stats.byOrg"><!--prerender-->CPU cores แยกตามระบบ<!--/prerender--></h3>
           <div class="chart-box" style="height:380px"><canvas id="chart-cores"></canvas></div>
         </div>
         <div class="chart-card reveal">
-          <h3 data-i18n="stats.byGpu"></h3>
+          <h3 data-i18n="stats.byGpu"><!--prerender-->GPU แยกตามระบบ<!--/prerender--></h3>
           <div class="chart-box"><canvas id="chart-gpu"></canvas></div>
         </div>
         <div class="chart-card reveal">
-          <h3 data-i18n="stats.byRegion"></h3>
+          <h3 data-i18n="stats.byRegion"><!--prerender-->ระบบแยกตามจังหวัด<!--/prerender--></h3>
           <div class="chart-box"><canvas id="chart-region"></canvas></div>
         </div>
         <div class="chart-card reveal">
-          <h3 data-i18n="stats.byOrgType"></h3>
+          <h3 data-i18n="stats.byOrgType"><!--prerender-->ระบบแยกตามประเภทหน่วยงาน<!--/prerender--></h3>
           <div class="chart-box"><canvas id="chart-orgtype"></canvas></div>
         </div>
         <div class="chart-card reveal">
-          <h3 data-i18n="stats.byVendor"></h3>
+          <h3 data-i18n="stats.byVendor"><!--prerender-->สถาปัตยกรรม GPU<!--/prerender--></h3>
           <div class="chart-box"><canvas id="chart-vendor"></canvas></div>
         </div>
       </div>
 
+      <section class="panel" style="margin-top:26px;overflow-x:auto">
+        <h2 style="font-size:1.05rem" data-i18n="stats.tableTitle"><!--prerender-->ตารางข้อมูลระบบ<!--/prerender--></h2>
+        <table class="data-table">
+          <thead id="stats-table-head"><!--prerender-->
+<tr><th scope="col">ระบบ</th><th scope="col">หน่วยงาน</th><th scope="col">CPU cores</th><th scope="col">GPU</th><th scope="col">สมรรถนะสูงสุด</th><th scope="col">จังหวัด</th></tr>
+<!--/prerender--></thead>
+          <tbody id="stats-table"><!--prerender-->
+<tr><th scope="row">The Crust 2.5</th><td>ปตท.สำรวจและผลิตปิโตรเลียม</td><td>47,360</td><td>512</td><td>21.68 PFLOPS</td><td>กรุงเทพมหานคร</td></tr>
+<tr><th scope="row">LANTA</th><td>ศูนย์ทรัพยากรคอมพิวเตอร์เพื่อการคำนวณขั้นสูง (ThaiSC), สวทช.</td><td>31,744</td><td>704</td><td>13.77 PFLOPS</td><td>ปทุมธานี</td></tr>
+<tr><th scope="row">VISTEC</th><td>สถาบันวิทยสิริเมธี</td><td>2,464</td><td>100</td><td>—</td><td>ระยอง</td></tr>
+<tr><th scope="row">APEX</th><td>มหาวิทยาลัยซีเอ็มเคแอล</td><td>768</td><td>48</td><td>—</td><td>กรุงเทพมหานคร</td></tr>
+<tr><th scope="row">MU-AI Center</th><td>คณะเทคโนโลยีสารสนเทศและการสื่อสาร (MUICT), มหาวิทยาลัยมหิดล</td><td>624</td><td>24</td><td>—</td><td>นครปฐม</td></tr>
+<tr><th scope="row">KU Nontri AI</th><td>มหาวิทยาลัยเกษตรศาสตร์</td><td>512</td><td>32</td><td>—</td><td>กรุงเทพมหานคร</td></tr>
+<tr><th scope="row">ERAWAN</th><td>สำนักบริการเทคโนโลยีสารสนเทศ (ITSC), มหาวิทยาลัยเชียงใหม่</td><td>512</td><td>28</td><td>—</td><td>เชียงใหม่</td></tr>
+<tr><th scope="row">CU AI Research Center</th><td>จุฬาลงกรณ์มหาวิทยาลัย</td><td>480</td><td>24</td><td>—</td><td>กรุงเทพมหานคร</td></tr>
+<tr><th scope="row">KMUTT AI Center</th><td>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</td><td>320</td><td>20</td><td>—</td><td>กรุงเทพมหานคร</td></tr>
+<tr><th scope="row">PSU-Singkhorn</th><td>สถาบันวิจัยและนวัตกรรมดิจิทัล (DRii), มหาวิทยาลัยสงขลานครินทร์</td><td>256</td><td>16</td><td>—</td><td>สงขลา</td></tr>
+<tr><th scope="row">KKU</th><td>สำนักเทคโนโลยีดิจิทัล (ODT), มหาวิทยาลัยขอนแก่น</td><td>256</td><td>16</td><td>—</td><td>ขอนแก่น</td></tr>
+<!--/prerender--></tbody>
+        </table>
+      </section>
+
       <p class="result-count" style="margin-top:22px" id="stats-note"></p>
-      <p class="result-count" data-i18n="stats.note"></p>
+      <p class="result-count" data-i18n="stats.note"><!--prerender-->ตัวเลขเป็นค่าที่ประกาศโดยแต่ละศูนย์ ไม่ใช่ผลการวัด benchmark<!--/prerender--></p>
     </div>
   </section>
 </main>

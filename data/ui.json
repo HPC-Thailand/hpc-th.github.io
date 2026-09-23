@@ -355,37 +355,106 @@
       }
     },
     "provinceLabels": {
-      "Bangkok": { "th": "กรุงเทพมหานคร", "en": "Bangkok" },
-      "Chiang Mai": { "th": "เชียงใหม่", "en": "Chiang Mai" },
-      "Khon Kaen": { "th": "ขอนแก่น", "en": "Khon Kaen" },
-      "Nakhon Pathom": { "th": "นครปฐม", "en": "Nakhon Pathom" },
-      "Pathum Thani": { "th": "ปทุมธานี", "en": "Pathum Thani" },
-      "Rayong": { "th": "ระยอง", "en": "Rayong" },
-      "Songkhla": { "th": "สงขลา", "en": "Songkhla" }
+      "Bangkok": {
+        "th": "กรุงเทพมหานคร",
+        "en": "Bangkok"
+      },
+      "Chiang Mai": {
+        "th": "เชียงใหม่",
+        "en": "Chiang Mai"
+      },
+      "Khon Kaen": {
+        "th": "ขอนแก่น",
+        "en": "Khon Kaen"
+      },
+      "Nakhon Pathom": {
+        "th": "นครปฐม",
+        "en": "Nakhon Pathom"
+      },
+      "Pathum Thani": {
+        "th": "ปทุมธานี",
+        "en": "Pathum Thani"
+      },
+      "Rayong": {
+        "th": "ระยอง",
+        "en": "Rayong"
+      },
+      "Songkhla": {
+        "th": "สงขลา",
+        "en": "Songkhla"
+      }
     },
     "coolingLabels": {
-      "Air cooling": { "th": "ระบายความร้อนด้วยอากาศ", "en": "Air cooling" },
-      "Liquid cooling": { "th": "ระบายความร้อนด้วยของเหลว", "en": "Liquid cooling" },
-      "Direct liquid cooling": { "th": "ระบายความร้อนด้วยของเหลวโดยตรง", "en": "Direct liquid cooling" },
-      "Immersion cooling": { "th": "ระบายความร้อนแบบจุ่มของเหลว", "en": "Immersion cooling" }
+      "Air cooling": {
+        "th": "ระบายความร้อนด้วยอากาศ",
+        "en": "Air cooling"
+      },
+      "Liquid cooling": {
+        "th": "ระบายความร้อนด้วยของเหลว",
+        "en": "Liquid cooling"
+      },
+      "Direct liquid cooling": {
+        "th": "ระบายความร้อนด้วยของเหลวโดยตรง",
+        "en": "Direct liquid cooling"
+      },
+      "Immersion cooling": {
+        "th": "ระบายความร้อนแบบจุ่มของเหลว",
+        "en": "Immersion cooling"
+      }
     },
     "accessLabels": {
-      "open_academic": { "th": "เปิดให้ภาควิชาการ", "en": "Open academic" },
-      "restricted": { "th": "จำกัดสิทธิ์", "en": "Restricted" },
-      "commercial": { "th": "เชิงพาณิชย์", "en": "Commercial" },
-      "hybrid": { "th": "ไฮบริด", "en": "Hybrid" }
+      "open_academic": {
+        "th": "เปิดให้ภาควิชาการ",
+        "en": "Open academic"
+      },
+      "restricted": {
+        "th": "จำกัดสิทธิ์",
+        "en": "Restricted"
+      },
+      "commercial": {
+        "th": "เชิงพาณิชย์",
+        "en": "Commercial"
+      },
+      "hybrid": {
+        "th": "ไฮบริด",
+        "en": "Hybrid"
+      }
     },
     "userBaseLabels": {
-      "academic": { "th": "ภาควิชาการ", "en": "Academic" },
-      "government": { "th": "ภาครัฐ", "en": "Government" },
-      "industry": { "th": "ภาคเอกชน", "en": "Industry" },
-      "sea_region": { "th": "ภูมิภาคอาเซียน", "en": "SEA region" }
+      "academic": {
+        "th": "ภาควิชาการ",
+        "en": "Academic"
+      },
+      "government": {
+        "th": "ภาครัฐ",
+        "en": "Government"
+      },
+      "industry": {
+        "th": "ภาคเอกชน",
+        "en": "Industry"
+      },
+      "sea_region": {
+        "th": "ภูมิภาคอาเซียน",
+        "en": "SEA region"
+      }
     },
     "schedulerLabels": {
-      "slurm": { "th": "Slurm", "en": "Slurm" },
-      "pbs": { "th": "PBS", "en": "PBS" },
-      "lsf": { "th": "LSF", "en": "LSF" },
-      "other": { "th": "อื่น ๆ", "en": "Other" }
+      "slurm": {
+        "th": "Slurm",
+        "en": "Slurm"
+      },
+      "pbs": {
+        "th": "PBS",
+        "en": "PBS"
+      },
+      "lsf": {
+        "th": "LSF",
+        "en": "LSF"
+      },
+      "other": {
+        "th": "อื่น ๆ",
+        "en": "Other"
+      }
     },
     "software": {
       "th": "ซอฟต์แวร์",
@@ -448,6 +517,34 @@
     "byOrgType": {
       "th": "ระบบแยกตามประเภทหน่วยงาน",
       "en": "Systems by organisation type"
+    },
+    "tableTitle": {
+      "th": "ตารางข้อมูลระบบ",
+      "en": "System data table"
+    },
+    "colSystem": {
+      "th": "ระบบ",
+      "en": "System"
+    },
+    "colOrg": {
+      "th": "หน่วยงาน",
+      "en": "Organisation"
+    },
+    "colCores": {
+      "th": "CPU cores",
+      "en": "CPU cores"
+    },
+    "colGpus": {
+      "th": "GPU",
+      "en": "GPUs"
+    },
+    "colPeak": {
+      "th": "สมรรถนะสูงสุด",
+      "en": "Peak"
+    },
+    "colProvince": {
+      "th": "จังหวัด",
+      "en": "Province"
     }
   },
   "events": {

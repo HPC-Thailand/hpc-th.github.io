@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HPC systems in Thailand — hpc.in.th</title>
+<meta name="description" content="An overview of the high performance computing systems currently in service, contributed directly by HPC centres and their engineering teams.">
+<link rel="canonical" href="https://hpc.in.th/en/systems/">
+<link rel="alternate" hreflang="th" href="https://hpc.in.th/systems/">
+<link rel="alternate" hreflang="en" href="https://hpc.in.th/en/systems/">
+<link rel="alternate" hreflang="x-default" href="https://hpc.in.th/systems/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="hpc.in.th">
+<meta property="og:title" content="HPC systems in Thailand">
+<meta property="og:url" content="https://hpc.in.th/en/systems/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://hpc.in.th/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon/apple-touch-icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#16181C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script>
+  try { document.documentElement.dataset.theme =
+    localStorage.getItem('hpcth.theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hpc.in.th/#organization",
+      "name": "HPC Thailand",
+      "url": "https://hpc.in.th",
+      "description": "The history and landscape of high performance computing in Thailand"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hpc.in.th/#website",
+      "url": "https://hpc.in.th",
+      "name": "HPC Thailand",
+      "description": "The history and landscape of high performance computing in Thailand",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://hpc.in.th/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hpc.in.th/en/systems/#webpage",
+      "url": "https://hpc.in.th/en/systems/",
+      "name": "HPC systems in Thailand",
+      "description": "An overview of the high performance computing systems currently in service, contributed directly by HPC centres and their engineering teams.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://hpc.in.th/#website"
+      },
+      "dateModified": "2026-09-16"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "HPC Thailand",
+          "item": "https://hpc.in.th/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "HPC systems in Thailand",
+          "item": "https://hpc.in.th/en/systems/"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "name": "HPC systems in Thailand",
+      "description": "An overview of the high performance computing systems currently in service, contributed directly by HPC centres and their engineering teams.",
+      "url": "https://hpc.in.th/en/systems/",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://hpc.in.th/#organization"
+      },
+      "dateModified": "2026-09-16",
+      "keywords": [
+        "high performance computing",
+        "supercomputer",
+        "Thailand",
+        "HPC",
+        "GPU",
+        "AI infrastructure"
+      ],
+      "isAccessibleForFree": true,
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://hpc.in.th/data/systems.json"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-i18n="nav.skip"><!--prerender-->Skip to main content<!--/prerender--></a>
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+  <section class="hero" style="padding-block:clamp(36px,4vw,60px)">
+    <div class="container">
+      <span class="eyebrow" data-i18n="nav.systems"><!--prerender-->Systems<!--/prerender--></span>
+      <h1 data-i18n="systems.title"><!--prerender-->HPC systems in Thailand<!--/prerender--></h1>
+      <p class="lead" data-i18n="systems.lead"><!--prerender-->An overview of the high performance computing systems currently in service, contributed directly by HPC centres and their engineering teams.<!--/prerender--></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="tl-controls-inner" style="margin-bottom:18px">
+        <div class="chips" id="consortium-chips" role="group" aria-label="Organisation type filter"></div>
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+          </svg>
+          <label class="visually-hidden" for="sys-search" data-i18n="systems.searchPlaceholder"><!--prerender-->Search system, organisation or province…<!--/prerender--></label>
+          <input type="search" id="sys-search" autocomplete="off"
+                 data-i18n-attr="placeholder:systems.searchPlaceholder">
+        </div>
+        <div class="field" style="flex:none">
+          <label class="visually-hidden" for="sys-sort" data-i18n="systems.sortBy"><!--prerender-->Sort by<!--/prerender--></label>
+          <select id="sys-sort" style="padding:8px 13px;border-radius:999px"></select>
+        </div>
+      </div>
+
+      <p class="result-count" id="sys-count"></p>
+      <div class="card-grid" id="sys-grid"><!--prerender-->
+<article class="sys-card" id="s-crust-25">
+  <h3>The Crust 2.5 (2024)</h3>
+  <p>PTT Exploration and Production Public Company Limited — Private</p>
+  <dl><dt>CPU</dt><dd>47,360 cores · AMD EPYC 9354</dd><dt>GPU</dt><dd>512 × NVIDIA H100</dd><dt>Storage</dt><dd>11 PB · Lustre</dd><dt>Interconnect</dt><dd>InfiniBand NDR400 · 400 Gb/s</dd><dt>Cooling</dt><dd>Liquid cooling</dd><dt>Performance</dt><dd>21.68 PFLOPS (13.85 PFLOPS sustained)</dd><dt>Access</dt><dd>Restricted · Industry</dd><dt>Location</dt><dd>Bangkok</dd></dl>
+  <p><a href="https://www.pttep.com/en/home" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-lanta">
+  <h3>LANTA (2022)</h3>
+  <p>ThaiSC, NSTDA — Government research</p>
+  <dl><dt>CPU</dt><dd>31,744 cores · AMD EPYC 7713</dd><dt>GPU</dt><dd>704 × NVIDIA A100</dd><dt>Storage</dt><dd>10.9 PB · Lustre</dd><dt>Interconnect</dt><dd>HPE Slingshot-11 · 200 Gb/s</dd><dt>Cooling</dt><dd>Direct liquid cooling</dd><dt>Performance</dt><dd>13.77 PFLOPS (8.15 PFLOPS sustained)</dd><dt>Access</dt><dd>Open academic · Academic · Government</dd><dt>Location</dt><dd>Pathum Thani</dd></dl>
+  <p><a href="https://thaisc.io/thaisc-resorces/lanta" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-vistec-ist">
+  <h3>VISTEC (2018)</h3>
+  <p>School of Information Science and Technology (IST), VISTEC — University</p>
+  <dl><dt>CPU</dt><dd>2,464 cores · Intel Xeon Gold 6240R</dd><dt>GPU</dt><dd>100 × NVIDIA V100, NVIDIA V100, NVIDIA A100</dd><dt>Storage</dt><dd>1.2 PB · BeeGFS</dd><dt>Interconnect</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Rayong</dd></dl>
+  <p><a href="https://vistec.ist/" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-apex">
+  <h3>APEX (2020)</h3>
+  <p>CMKL University — University</p>
+  <dl><dt>CPU</dt><dd>768 cores · AMD EPYC 7742</dd><dt>GPU</dt><dd>48 × NVIDIA A100</dd><dt>Storage</dt><dd>3 PB · Lustre (DDN EXAScaler)</dd><dt>Interconnect</dt><dd>InfiniBand HDR200 · 200 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Bangkok</dd></dl>
+  <p><a href="https://www.cmkl.ac.th/research/apex" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-mu-ai">
+  <h3>MU-AI Center (2021)</h3>
+  <p>MUICT, Mahidol University — University</p>
+  <dl><dt>CPU</dt><dd>624 cores · Intel Xeon Gold 6248R</dd><dt>GPU</dt><dd>24 × NVIDIA A100, NVIDIA H100</dd><dt>Storage</dt><dd>0.31 PB · BeeGFS</dd><dt>Interconnect</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Nakhon Pathom</dd></dl>
+  <p><a href="https://www.ict.mahidol.ac.th/" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-ku-nontri-ai">
+  <h3>KU Nontri AI (2024)</h3>
+  <p>OCS, Kasetsart University — University</p>
+  <dl><dt>CPU</dt><dd>512 cores · AMD EPYC 7742</dd><dt>GPU</dt><dd>32 × NVIDIA A100</dd><dt>Storage</dt><dd>0.76 PB · BeeGFS</dd><dt>Interconnect</dt><dd>InfiniBand HDR200 · 200 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Bangkok</dd></dl>
+  <p><a href="https://nontriai.ku.ac.th/" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-cu-ai">
+  <h3>CU AI Research Center</h3>
+  <p>Chulalongkorn University — University</p>
+  <dl><dt>CPU</dt><dd>480 cores · Intel Xeon Gold 6248R</dd><dt>GPU</dt><dd>24 × NVIDIA A100</dd><dt>Storage</dt><dd>0.25 PB · BeeGFS</dd><dt>Interconnect</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Bangkok</dd></dl>
+  <p><a href="https://www.chula.ac.th/" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-erawan">
+  <h3>ERAWAN (2021)</h3>
+  <p>Information Technology Service Center (ITSC), Chiang Mai University — University</p>
+  <dl><dt>CPU</dt><dd>512 cores · AMD EPYC 7742, AMD EPYC 9534</dd><dt>GPU</dt><dd>28 × NVIDIA A100, NVIDIA H100</dd><dt>Storage</dt><dd>0.438 PB · BeeGFS</dd><dt>Interconnect</dt><dd>InfiniBand HDR200 · 200 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Chiang Mai</dd></dl>
+  <p><a href="https://hpc.cmu.ac.th/" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-kmutt-ai">
+  <h3>KMUTT AI Center</h3>
+  <p>King Mongkut&#39;s University of Technology Thonburi — University</p>
+  <dl><dt>CPU</dt><dd>320 cores · Intel Xeon Gold 6240R</dd><dt>GPU</dt><dd>20 × NVIDIA A100, NVIDIA A100</dd><dt>Storage</dt><dd>0.19 PB · BeeGFS</dd><dt>Interconnect</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Bangkok</dd></dl>
+  <p><a href="https://www.kmutt.ac.th/" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-psu-singkhorn">
+  <h3>PSU-Singkhorn (2021)</h3>
+  <p>Digital Research and Innovation Institute (DRii), Prince of Songkla University — University</p>
+  <dl><dt>CPU</dt><dd>256 cores · Intel Xeon Gold 6240R</dd><dt>GPU</dt><dd>16 × NVIDIA A100</dd><dt>Storage</dt><dd>0.13 PB · BeeGFS</dd><dt>Interconnect</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Songkhla</dd></dl>
+  <p><a href="https://www.facebook.com/drii.psu" rel="noopener">Website</a></p>
+</article>
+<article class="sys-card" id="s-kku-hpc">
+  <h3>KKU (2021)</h3>
+  <p>Office of Digital Technology (ODT), Khon Kaen University — University</p>
+  <dl><dt>CPU</dt><dd>256 cores · Intel Xeon Gold 6240R</dd><dt>GPU</dt><dd>16 × NVIDIA A100</dd><dt>Storage</dt><dd>0.13 PB · BeeGFS</dd><dt>Interconnect</dt><dd>InfiniBand HDR100 · 100 Gb/s</dd><dt>Cooling</dt><dd>Air cooling</dd><dt>Access</dt><dd>Restricted · Academic</dd><dt>Location</dt><dd>Khon Kaen</dd></dl>
+  <p><a href="https://digital.kku.ac.th/" rel="noopener">Website</a></p>
+</article>
+<!--/prerender--></div>
+      <p class="result-count" style="margin-top:18px" id="sys-note"></p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal"><h2 data-i18n="systems.mapTitle"><!--prerender-->Map of HPC systems<!--/prerender--></h2></div>
+      <div id="map" class="reveal"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script type="module" src="/assets/js/systems.js"></script>
+</body>
+</html>
